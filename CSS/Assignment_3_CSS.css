@@ -4,6 +4,7 @@ body {
 }
 
 #introPictures {
-    border: 2px;
+    border: solid;
     background-color: aqua;
+    align-items: right;
 }
