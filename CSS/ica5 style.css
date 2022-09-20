@@ -41,6 +41,9 @@ h1 {
 /* Your CSS below here */
 
 article {
-  background-image: url(../img/ICA5/top-image.png);
-  background-sizeg: contain;
+  background-image: url(../img/ICA5/top-image.png), url(../img/ICA5/bottom-image.png), linear-gradient(to bottom,rgba(255 0 0 1),rgba(0 255 0 1),rgba(0 0 255 1));
+  background-size: contain, contain, contain;
+  background-repeat: no-repeat, no-repeat,no-repeat;
+  background-position: top center, bottom center, right;
+
 }
