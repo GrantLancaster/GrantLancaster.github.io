@@ -39,3 +39,8 @@ h1 {
 }
 
 /* Your CSS below here */
+
+article {
+  background-image: url(../img/ICA5/top-image.png);
+  background-sizeg: contain;
+}
