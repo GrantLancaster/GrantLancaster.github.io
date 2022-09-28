@@ -2,30 +2,56 @@
 body {
     background-color: #FFFBF6; 
 }
+
 header {
     border: solid 3px black;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+}
+
+#logoPic{
+    grid-row: 1;
+}
+
+header h1 {
+    border: 5px solid aquamarine;
+    grid-column: 2/4;
 }
 nav {
     border: solid 3px Green;
     text-align: center;
+    grid-row: 1;
 }
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 nav button {
     padding-left: 20px;
     padding-right: 20px;
     margin: 0 35px 0 35px;
 }
+
 Main {
     border: solid 3px blue;
 }
+
 section {
     border: solid 3px purple;
 }
+
 article {
     border: solid 3px orange;
 }
+
 article hr {
     border: solid 5px #FFE4C0;
 }
+
 footer {
     border: solid 3px red;
 }
