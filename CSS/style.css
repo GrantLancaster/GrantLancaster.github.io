@@ -1,68 +1,3 @@
-/*The following are style changes to the body, and the section inside the body*/
-body {
-    background-color: #FFFBF6;
-    margin: 50px 100px 50px 100px; 
-}
-
-header {
-    border: solid 3px black;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 20px;
-}
-
-#logoPic{
-    grid-row: 1;
-}
-
-header h1 {
-    border: 5px solid aquamarine;
-    grid-column: 2/4;
-}
-nav {
-    border: solid 3px Green;
-    text-align: center;
-    grid-row: 1/4;
-    text-align: center;
-}
-
-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-nav button {
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: 5px 20px 5px 20px;
-    border-radius: 20px;
-    border: 3px solid #8ACDEA;
-}
-button:hover {
-    border: 6px solid #8ACDEA;
-}
-
-#mainBody {
-    display: grid;
-    grid-template-columns: 1fr 8fr;
-}
-Main {
-    border: solid 3px blue;
-}
-
-article {
-    border: solid 3px orange;
-}
-
-article hr {
-    border: solid 5px #FFE4C0;
-}
-
-footer {
-    border: solid 3px red;
-}
-
 /*The Following are Text styles (h's, p, etc.)*/
 h1 {
     font-family: "montserrat", sans-serif;
@@ -103,8 +38,113 @@ p {
     text-align: center;
 }
 
-@media screen and (min-width: 1900px) {
+/*This starts the Mobile chunk */
+@media screen and (max-width: 999px) {
     body {
-        background-color: blue;
+        background-color: aqua;
+        margin: 10%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        grid-template-areas:
+            "a"
+            "b"
+            "c"
+            "d"
+            "e";
     }
-}   
+    header {
+        border: 2px solid black;
+        display: flex;
+        flex-direction: column;
+    }
+    #logoPic {
+        border: 2px solid red;
+    }
+    #logoPic img {
+        display: block;
+        width: 50%;
+        margin: 0 auto 0 auto;
+        border-radius: 50%;
+    }
+    nav {
+        border: 3px solid orange;
+        grid-area: a;
+    }
+}
+
+/* This starts the Desktop chunk */
+@media screen and (min-width: 1000px) {
+    body {
+        background-color: #FFFBF6;
+        margin: 50px 100px 50px 100px; 
+    }
+    
+    header {
+        border: solid 3px black;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: 20px;
+    }
+    
+    #logoPic{
+        grid-row: 1/8;
+        border: 5px solid green;
+    }
+    #logoPic img {
+        display: block;
+        width: 100%;
+        margin: 0 auto 0 auto;
+    }
+    
+    header h1 {
+        border: 5px solid aquamarine;
+        grid-column: 2/4;
+        margin: auto;
+        align-self: center;
+    }
+    nav {
+        border: solid 3px Green;
+        text-align: center;
+        grid-row: 1/4;
+        text-align: center;
+    }
+    
+    nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    nav button {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 5px 20px 5px 20px;
+        border-radius: 20px;
+        border: 3px solid #8ACDEA;
+        float: none;
+    }
+    button:hover {
+        border: 6px solid #8ACDEA;
+    }
+    
+    #mainBody {
+        display: grid;
+        grid-template-columns: 1fr 8fr;
+    }
+    Main {
+        border: solid 3px blue;
+    }
+    
+    article {
+        border: solid 3px orange;
+    }
+    
+    article hr {
+        border: solid 5px #FFE4C0;
+    }
+    
+    footer {
+        border: solid 3px red;
+    }
+}
