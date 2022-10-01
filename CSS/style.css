@@ -58,6 +58,9 @@ p {
         display: flex;
         flex-direction: column;
     }
+    header h1 {
+        padding: 0;
+    }
     #logoPic {
         border: 2px solid red;
     }
@@ -67,10 +70,30 @@ p {
         margin: 0 auto 0 auto;
         border-radius: 50%;
     }
-    nav {
-        border: 3px solid orange;
+    nav { /*This is the Absolute parent nav box*/
         grid-area: a;
     }
+        nav ul {
+            list-style: none;
+            float: none;
+            display: flex;
+            flex-direction: row;
+            flex: 1;
+            border: 3px solid red;
+        }
+        nav li {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            border: 2px solid yellowgreen;
+        }
+        nav button {
+            border: 3px solid #8ACDEA;
+            flex: 1;
+        }
+        button:hover {
+            border: 6px solid #8ACDEA;
+        }
 }
 
 /* This starts the Desktop chunk */
@@ -95,6 +118,7 @@ p {
         display: block;
         width: 100%;
         margin: 0 auto 0 auto;
+        border-radius: 50%;
     }
     
     header h1 {
@@ -127,7 +151,7 @@ p {
     button:hover {
         border: 6px solid #8ACDEA;
     }
-    
+
     #mainBody {
         display: grid;
         grid-template-columns: 1fr 8fr;
