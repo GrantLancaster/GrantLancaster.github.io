@@ -4,7 +4,6 @@ h1 {
     font-weight: 700;
     font-style: normal;
     font-size: 72pt;
-    Text-align: center;
 }
 h2 {
     font-family: "montserrat", sans-serif;
@@ -35,17 +34,16 @@ p {
     font-weight: 400;
     font-style: normal;
     font-size: 14pt;
-    text-align: center;
 }
 
 /*This starts the Mobile chunk */
 @media screen and (max-width: 999px) {
     body {
         background-color: #FFFBF6;
-        margin: 10%;
+        margin: 0;
         display: grid;
         grid-template-columns: 1fr;
-        gap: 5vw;
+        gap: 10px;
         grid-template-areas:
             "a"
             "b"
@@ -54,8 +52,17 @@ p {
             "e";
     }
 
+    .topBanner {
+        background-color: #08415C;
+        position: sticky;
+        top: 0;
+    }
+
     .topBanner h5 {
         grid-area: a;
+        margin: 0;
+        color: white;
+        padding: 10px 0 10px 15px;
     }
 
     header {
@@ -64,8 +71,12 @@ p {
         flex-direction: column;
         }
 
+        header h1 {
+            margin: 0 10% 0 10%;
+            text-align: center;
+        }
+
         #logoPic {
-            border: 2px solid red;
         }
 
         #logoPic img {
@@ -99,6 +110,14 @@ p {
             justify-content: center;
         }
 
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            width: 100%;
+        }
+
         #projectsButton {
             grid-area: b;
             display: flex;
@@ -126,6 +145,7 @@ p {
             border-radius: 30px;
             height: 50px;
             width: 100%;
+            margin: 0 10% 0 10%;
         }
 
         button:hover {
@@ -136,26 +156,36 @@ p {
             border-radius: 30px;
         }
 
-    article hr {
-        border: 5px solid #FFE4C0;
+    article {
+        margin: 5px 0 5px 0;
     }
 
-    #mainBody {
+    article hr {
+        border: 2px dashed #FFE4C0;
+    }
+
+    .mainBody {
         grid-area:c;
     }
 
-    #mainBody main h4 {
+    .mainBody main h4 {
         display: flex;
         align-items: center;
         justify-content: center;
+        margin: 0;
     }
 
-    #mainBody p {
+    #description {
+        margin: 0 0 10px 0;
+    }
 
+    .mainBody p {
+        text-align: center;
+        margin: 0 10% 7% 10%;
     } 
 }
 
-/* This starts the Desktop chunk */
+/* This starts the Desktop chunk -------------------------------------- */
 @media screen and (min-width: 1000px) {
     body {
         background-color: #FFFBF6;
