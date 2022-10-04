@@ -61,6 +61,7 @@ p {
         }
         header h1 {
             padding: 0;
+            border: 5px solid green;
         }
         #logoPic {
             border: 2px solid red;
@@ -126,6 +127,9 @@ p {
             font-style: bold;
             border-radius: 30px;
         }
+    article hr {
+        border: 5px solid #FFE4C0;
+    }
 }
 
 /* This starts the Desktop chunk */
