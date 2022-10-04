@@ -45,7 +45,7 @@ p {
         margin: 10%;
         display: grid;
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 5vw;
         grid-template-areas:
             "a"
             "b"
@@ -53,28 +53,32 @@ p {
             "d"
             "e";
     }
-    header {
+
+    .topBanner h5 {
         grid-area: a;
-        border: 2px solid black;
+    }
+
+    header {
+        grid-area: b;
         display: flex;
         flex-direction: column;
         }
-        header h1 {
-            padding: 0;
-            border: 5px solid green;
-        }
+
         #logoPic {
             border: 2px solid red;
         }
+
         #logoPic img {
             display: block;
             width: 50%;
             margin: 0 auto 0 auto;
             border-radius: 50%;
         }
+
     nav { /*This is the Absolute parent nav box*/
-        grid-area: c;
+        grid-area: d;
     }
+
         nav .navigation {
             list-style: none;
             float: none;
@@ -82,44 +86,48 @@ p {
             grid-template-columns: repeat(4 1fr);
             gap: 5px;
             grid-template-areas:
-            "a b"
-            "c d";
-            border: 3px solid red;
+            "a"
+            "b"
+            "c"
+            "d";
         }
+
         #homeButton {
-            grid-area: c;
-            border: 2px solid yellowgreen;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        #projectsButton {
             grid-area: a;
-            border: 2px solid yellowgreen;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        #aboutButton {
-            grid-area: d;
-            border: 3px solid yellowgreen;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        #contactButton {
+
+        #projectsButton {
             grid-area: b;
-            border: 3px solid yellowgreen;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+
+        #aboutButton {
+            grid-area: c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #contactButton {
+            grid-area: d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         nav button {
             border: 3px solid #8ACDEA;
             display: inline-block;
+            border-radius: 30px;
             height: 50px;
             width: 100%;
         }
+
         button:hover {
             border: 3px solid #8ACDEA;
             background-color: #08415C;
@@ -127,9 +135,24 @@ p {
             font-style: bold;
             border-radius: 30px;
         }
+
     article hr {
         border: 5px solid #FFE4C0;
     }
+
+    #mainBody {
+        grid-area:c;
+    }
+
+    #mainBody main h4 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #mainBody p {
+
+    } 
 }
 
 /* This starts the Desktop chunk */
