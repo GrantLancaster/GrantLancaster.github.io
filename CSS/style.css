@@ -41,7 +41,7 @@ p {
 /*This starts the Mobile chunk */
 @media screen and (max-width: 999px) {
     body {
-        background-color: aqua;
+        background-color: #FFFBF6;
         margin: 10%;
         display: grid;
         grid-template-columns: 1fr;
@@ -54,6 +54,7 @@ p {
             "e";
     }
     header {
+        grid-area: a;
         border: 2px solid black;
         display: flex;
         flex-direction: column;
@@ -61,9 +62,9 @@ p {
         header h1 {
             padding: 0;
         }
-    #logoPic {
-        border: 2px solid red;
-    }
+        #logoPic {
+            border: 2px solid red;
+        }
         #logoPic img {
             display: block;
             width: 50%;
@@ -71,29 +72,59 @@ p {
             border-radius: 50%;
         }
     nav { /*This is the Absolute parent nav box*/
-        grid-area: a;
+        grid-area: c;
     }
-        nav ul {
+        nav .navigation {
             list-style: none;
             float: none;
-            display: flex;
-            justify-items: center;
-            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(4 1fr);
+            gap: 5px;
+            grid-template-areas:
+            "a b"
+            "c d";
             border: 3px solid red;
         }
-        nav li {
-            flex: 1;
-            display: flex;
-            justify-content: center;
+        #homeButton {
+            grid-area: c;
             border: 2px solid yellowgreen;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #projectsButton {
+            grid-area: a;
+            border: 2px solid yellowgreen;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #aboutButton {
+            grid-area: d;
+            border: 3px solid yellowgreen;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #contactButton {
+            grid-area: b;
+            border: 3px solid yellowgreen;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         nav button {
             border: 3px solid #8ACDEA;
-            flex: 1;
-            padding: 10px 0 10px 0;
+            display: inline-block;
+            height: 50px;
+            width: 100%;
         }
         button:hover {
-            border: 6px solid #8ACDEA;
+            border: 3px solid #8ACDEA;
+            background-color: #08415C;
+            color: white;
+            font-style: bold;
+            border-radius: 30px;
         }
 }
 
