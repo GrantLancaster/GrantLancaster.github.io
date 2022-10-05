@@ -267,7 +267,7 @@ p {
             width: auto;
         }
         #outroImage p {
-            padding: 3% 0 10% 0;
+            padding: 3% 0 7% 0;
             margin: 0;
             text-align: center;
             color: white;
@@ -278,75 +278,233 @@ p {
 @media screen and (min-width: 1000px) {
     body {
         background-color: #FFFBF6;
-        margin: 50px 100px 50px 100px; 
-    }
-    
-    header {
-        border: solid 3px black;
+        margin: 50px 100px 50px 100px;
         display: grid;
-        grid-template-columns: 1fr 3fr;
-        gap: 20px;
+        grid-template-columns: repeat(8 1fr);
+        gap: 10px;
+        grid-template-areas:
+            "a a a a a a a a" /*Top Banner*/
+            "c c c c c c c c" /*Header*/
+            "b b e e e e e e" /*Main Body Content*/
+            "b b e e e e e e" /*Navigation*/
+            "g g g g g g g g"; /*unassigned*/ 
     }
     
-    #logoPic{
-        grid-row: 1/8;
-        border: 5px solid green;
+    .topBanner {
+        grid-area: a;
+        background-color: #08415C;
+        position: sticky;
+        top: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        grid-template-areas:
+            "a b";
     }
-    #logoPic img {
-        display: block;
-        width: 100%;
-        margin: 0 auto 0 auto;
-        border-radius: 50%;
-    }
-    
-    header h1 {
-        border: 5px solid aquamarine;
-        grid-column: 2/4;
-        margin: auto;
-        align-self: center;
-    }
-    nav {
-        border: solid 3px Green;
-        text-align: center;
-        grid-row: 1/4;
-        text-align: center;
-    }
-    
-    nav ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-    
-    nav button {
-        padding-left: 20px;
-        padding-right: 20px;
-        margin: 5px 20px 5px 20px;
-        border-radius: 20px;
-        border: 3px solid #8ACDEA;
-        float: none;
-    }
-    button:hover {
-        border: 6px solid #8ACDEA;
-    }
+        .topBanner h5 {
+            grid-area: a;
+            margin: 0;
+            color: white;
+            padding: 10px 0 10px 15px;
+        }
+        .topBanner #logoImage {
+            grid-area: b;
+            display: flex;
+            align-items: center;
+            justify-content: right;
+        }
+        #logoImage img {
+            height: 50px;
+            width: auto;
+            padding-right: 15px;
+        }
 
-    #mainBody {
+    header {
+        grid-area: c;
+        display: flex;
+        flex-direction: column;
+        }
+    
+        header h1 {
+            margin: 0 10% 0 10%;
+            text-align: center;
+        }
+    
+        header h4 {
+            margin: 10px 10% 0 10%;
+            text-align: center;
+        }
+
+    nav { /*This is the Absolute parent nav box*/
+        grid-area: b;
+    }
+    
+        nav .navigation {
+            list-style: none;
+            float: none;
+            display: grid;
+            grid-template-columns: repeat(4 1fr);
+            gap: 5px;
+            grid-template-areas:
+            "a"
+            "b"
+            "c"
+            "d";
+        }
+    
+        #homeButton {
+            grid-area: a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            width: 100%;
+            text-decoration: none;
+        }
+    
+        #projectsButton {
+            grid-area: b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
+    
+        #aboutButton {
+            grid-area: c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        #contactButton {
+            grid-area: d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        nav button {
+            border: 3px solid #8ACDEA;
+            display: inline-block;
+            border-radius: 30px;
+            height: 50px;
+            width: 100%;
+            margin: 0 10% 0 10%;
+        }
+    
+        button:hover {
+            border: 3px solid #8ACDEA;
+            background-color: #08415C;
+            color: white;
+            font-style: bold;
+            border-radius: 30px;
+        }
+
+
+    .mainBody {
+        grid-area: e;
+        margin: 10% 10% 0 10%;
         display: grid;
-        grid-template-columns: 1fr 8fr;
+        grid-template-columns: repeat(1 1fr);
+        gap: 5px; 
+        grid-template-areas:
+        "a" /*Project 1*/
+        "b" /*Project 2*/
+        "c"/*Project 3*/
+        "d";/*Project 4*/
     }
-    Main {
-        border: solid 3px blue;
-    }
-    
-    article {
-        border: solid 3px orange;
-    }
-    
-    article hr {
-        border: solid 5px #FFE4C0;
-    }
-    
+        .mainBody main h4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        #description {
+            margin: 0 0 10px 0;
+        }
+
+        .mainBody p {
+            text-align: center;
+            margin: 0 10% 7% 10%;
+        }
+        .mainBody #project1 {
+            grid-area: a;
+            border: 2px solid red;
+            height: 300px;
+            width: 100%;
+            margin-bottom: 10%;
+        }
+        #project1 p {
+            float: left;
+            margin: 0;
+        }
+        .mainBody #project2 {
+            grid-area: a;
+            border: 2px solid red;
+            height: 300px;
+            width: 100%;
+            margin-bottom: 10%;
+        }
+        #project2 p {
+            float: left;
+            margin: 0;
+        }
+        .mainBody #project3 {
+            grid-area: a;
+            border: 2px solid red;
+            height: 300px;
+            width: 100%;
+            margin-bottom: 10%;
+        }
+        #project3 p {
+            float: left;
+            margin: 0;
+        }
+        .mainBody #project4 {
+            grid-area: a;
+            border: 2px solid red;
+            height: 300px;
+            width: 100%;
+        }
+        #project4 p {
+            float: left;
+            margin: 0;
+        }
+
+
     footer {
-        border: solid 3px red;
+        grid-area: g;
+        display: grid;
+        grid-template-columns: repeat(1 1fr);
+        grid-template-areas:
+        "a" 
+        "b";
     }
+        footer #outroImage {
+            grid-area: a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 10% 0 0 0;
+            padding: 10% 0 0 0;
+            background-color: #08415C;
+        }
+        #outroImage img {
+            height: 100px;
+            width: auto;
+        }
+        #outroImage p {
+            padding: 3% 0 7% 0;
+            margin: 0;
+            text-align: center;
+            color: white;
+        }
 }
