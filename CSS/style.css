@@ -36,7 +36,7 @@ p {
     font-size: 14pt;
 }
 
-/*This starts the Mobile chunk */
+/*This starts the Mobile chunk ---------------------------------------- */
 @media screen and (max-width: 999px) {
     body {
         background-color: #FFFBF6;
@@ -307,13 +307,13 @@ p {
         background-color: #FFFBF6;
         margin: 0;
         display: grid;
-        grid-template-columns: repeat(8 1fr);
+        grid-template-columns: repeat(8, 1fr);
         gap: 10px;
         grid-template-areas:
             "a a a a a a a a" /*Top Banner*/
             "c c c c c c c c" /*Header*/
-            "b b b e e e e e" /*Main Body Content*/
-            "b b b e e e e e" /* b = Navigation*/
+            "b b e e e e e e" /*Main Body Content*/
+            "b b e e e e e e" /* b = Navigation*/
             "f f f f f f f f"
             "g g g g g g g g"; /*Footer*/ 
     }
@@ -359,7 +359,7 @@ p {
         }
     
         header h4 {
-            margin: 10px 10% 0 10%;
+            margin: 10px 10% 2% 10%;
             text-align: center;
         }
 
@@ -371,14 +371,14 @@ p {
             position: sticky;
             top: 75px;
             display: grid;
-            grid-template-columns: repeat(4 1fr);
+            grid-template-columns: repeat(1, 1fr);
             gap: 5px;
             grid-template-areas:
             "a"
             "b"
             "c"
             "d";
-            width: 200px;
+            width: auto;
             margin: 0 0 0 10%;
         }
     
@@ -441,13 +441,14 @@ p {
         grid-area: e;
         margin: 0 3% 0 0;
         display: grid;
-        grid-template-columns: repeat(1 1fr);
+        grid-template-columns: repeat (1, 1fr);
         gap: 5px; 
         grid-template-areas:
-        "a" /*Project 1*/
-        "b" /*Project 2*/
-        "c"/*Project 3*/
-        "d";/*Project 4*/
+        "a"
+        "b"
+        "c"
+        "d"; /*Project_1 project_2*/
+        /*Project_3 project_4*/
     }
         .mainBody main h4 {
             display: flex;
@@ -476,7 +477,7 @@ p {
                 margin: 0;
             }
         .mainBody #project2 {
-            grid-area: a;
+            grid-area: b;
             border: 2px solid red;
             height: 300px;
             width: 100%;
@@ -487,7 +488,7 @@ p {
                 margin: 0;
             }
         .mainBody #project3 {
-            grid-area: a;
+            grid-area: c;
             border: 2px solid red;
             height: 300px;
             width: 100%;
@@ -498,7 +499,7 @@ p {
                 margin: 0;
             }
         .mainBody #project4 {
-            grid-area: a;
+            grid-area: d;
             border: 2px solid red;
             height: 300px;
             width: 100%;
@@ -513,7 +514,7 @@ p {
             gap: 5px; 
             grid-template-areas:
             "a b b b b b";
-            margin: 3% 0 3% 5%;   
+            margin: 3% 0 3% 3%;   
         }
             summary .summaryTitle {
                 grid-area: a;
@@ -551,7 +552,7 @@ p {
         grid-area: g;
         display: grid;
         gap: 0;
-        grid-template-columns: repeat(1 1fr);
+        grid-template-columns: repeat(1, 1fr);
         grid-template-areas:
         "a" 
         "b";
