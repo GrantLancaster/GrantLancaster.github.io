@@ -209,10 +209,10 @@ p {
             width: 100%;
             margin-bottom: 10%;
         }
-        #project1 p {
-            float: left;
-            margin: 0;
-        }
+            #project1 p {
+                float: left;
+                margin: 0;
+            }
         .mainBody #project2 {
             grid-area: a;
             border: 2px solid red;
@@ -220,10 +220,10 @@ p {
             width: 100%;
             margin-bottom: 10%;
         }
-        #project2 p {
-            float: left;
-            margin: 0;
-        }
+            #project2 p {
+                float: left;
+                margin: 0;
+            }
         .mainBody #project3 {
             grid-area: a;
             border: 2px solid red;
@@ -231,20 +231,47 @@ p {
             width: 100%;
             margin-bottom: 10%;
         }
-        #project3 p {
-            float: left;
-            margin: 0;
-        }
+            #project3 p {
+                float: left;
+                margin: 0;
+            }
         .mainBody #project4 {
             grid-area: a;
             border: 2px solid red;
             height: 300px;
             width: 100%;
         }
-        #project4 p {
-            float: left;
-            margin: 0;
+            #project4 p {
+                float: left;
+                margin: 0;
+            }
+
+    summary {
+        display: grid;
+        grid-template-columns: repeat(1 1fr);
+        gap: 5px; 
+        grid-template-areas:
+        "a"
+        "b";
+        margin: 3% 0 3% 0;   
+    }
+        summary .summaryTitle {
+            grid-area: a;
+            margin: 20% auto 0 auto;
+            width: 200px;
         }
+            .summaryTitle #qck {
+                text-align: left;
+                margin: 0;
+            }
+            .summaryTitle #and {
+                text-align: center;
+                margin: 0;
+            }
+            .summaryTitle #drt {
+                text-align: right;
+                margin: 0;
+            }
     footer {
         display: grid;
         grid-template-columns: repeat(1 1fr);
@@ -278,16 +305,17 @@ p {
 @media screen and (min-width: 1000px) {
     body {
         background-color: #FFFBF6;
-        margin: 50px 100px 50px 100px;
+        margin: 0;
         display: grid;
         grid-template-columns: repeat(8 1fr);
         gap: 10px;
         grid-template-areas:
             "a a a a a a a a" /*Top Banner*/
             "c c c c c c c c" /*Header*/
-            "b b e e e e e e" /*Main Body Content*/
-            "b b e e e e e e" /*Navigation*/
-            "g g g g g g g g"; /*unassigned*/ 
+            "b b b e e e e e" /*Main Body Content*/
+            "b b b e e e e e" /* b = Navigation*/
+            "f f f f f f f f"
+            "g g g g g g g g"; /*Footer*/ 
     }
     
     .topBanner {
@@ -326,7 +354,7 @@ p {
         }
     
         header h1 {
-            margin: 0 10% 0 10%;
+            margin: 0 10% 3% 10%;
             text-align: center;
         }
     
@@ -340,8 +368,8 @@ p {
     }
     
         nav .navigation {
-            list-style: none;
-            float: none;
+            position: sticky;
+            top: 75px;
             display: grid;
             grid-template-columns: repeat(4 1fr);
             gap: 5px;
@@ -350,6 +378,8 @@ p {
             "b"
             "c"
             "d";
+            width: 200px;
+            margin: 0 0 0 10%;
         }
     
         #homeButton {
@@ -409,7 +439,7 @@ p {
 
     .mainBody {
         grid-area: e;
-        margin: 10% 10% 0 10%;
+        margin: 0 3% 0 0;
         display: grid;
         grid-template-columns: repeat(1 1fr);
         gap: 5px; 
@@ -441,10 +471,10 @@ p {
             width: 100%;
             margin-bottom: 10%;
         }
-        #project1 p {
-            float: left;
-            margin: 0;
-        }
+            #project1 p {
+                float: left;
+                margin: 0;
+            }
         .mainBody #project2 {
             grid-area: a;
             border: 2px solid red;
@@ -452,10 +482,10 @@ p {
             width: 100%;
             margin-bottom: 10%;
         }
-        #project2 p {
-            float: left;
-            margin: 0;
-        }
+            #project2 p {
+                float: left;
+                margin: 0;
+            }
         .mainBody #project3 {
             grid-area: a;
             border: 2px solid red;
@@ -463,25 +493,64 @@ p {
             width: 100%;
             margin-bottom: 10%;
         }
-        #project3 p {
-            float: left;
-            margin: 0;
-        }
+            #project3 p {
+                float: left;
+                margin: 0;
+            }
         .mainBody #project4 {
             grid-area: a;
             border: 2px solid red;
             height: 300px;
             width: 100%;
         }
-        #project4 p {
-            float: left;
-            margin: 0;
+            #project4 p {
+                float: left;
+                margin: 0;
+            }
+        summary {
+            display: grid;
+            grid-template-columns: 1fr 5fr;
+            gap: 5px; 
+            grid-template-areas:
+            "a b b b b b";
+            margin: 3% 0 3% 5%;   
         }
+            summary .summaryTitle {
+                grid-area: a;
+                margin-top: 20%;
+            }
+                .summaryTitle #qck {
+                    text-align: left;
+                    margin: 0;
+                }
+                .summaryTitle #and {
+                    text-align: center;
+                    margin: 0;
+                }
+                .summaryTitle #drt {
+                    text-align: right;
+                    margin: 0;
+                }
+            summary ul {
+                padding-left: 100px;
+                text-align: left;
+            }
+                summary ul p {
+                    margin: 0;
+                }
 
 
+    article {
+        margin: 5px 0 5px 0;
+    }
+        article hr {
+            border: 2px solid #FFE4C0;
+            color: #FFE4C0;
+        }
     footer {
         grid-area: g;
         display: grid;
+        gap: 0;
         grid-template-columns: repeat(1 1fr);
         grid-template-areas:
         "a" 
@@ -493,8 +562,8 @@ p {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin: 10% 0 0 0;
-            padding: 10% 0 0 0;
+            margin: 5% 0 0 0;
+            padding: 1% 0 0 0;
             background-color: #08415C;
         }
         #outroImage img {
@@ -502,7 +571,7 @@ p {
             width: auto;
         }
         #outroImage p {
-            padding: 3% 0 7% 0;
+            padding: 1% 0 2% 0;
             margin: 0;
             text-align: center;
             color: white;
