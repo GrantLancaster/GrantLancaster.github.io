@@ -202,6 +202,10 @@ p {
             text-align: center;
             margin: 0 10% 7% 10%;
         }
+        .mainbody main p a {
+            margin: 0;
+            width: 10
+        }
         .mainBody #project1 {
             grid-area: a;
             border: 2px solid red;
@@ -273,6 +277,7 @@ p {
                 margin: 0;
             }
     footer {
+        grid-area: e;
         display: grid;
         grid-template-columns: repeat(1 1fr);
         grid-template-areas:
