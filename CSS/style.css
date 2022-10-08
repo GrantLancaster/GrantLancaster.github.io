@@ -121,7 +121,7 @@ p {
             justify-content: center;
         }
 
-        a {
+         .navigation a {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -196,16 +196,31 @@ p {
 
         #description {
             margin: 0 0 10px 0;
+            text-align: center;
         }
-
+        .mainbody #profilePic {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: auto;
+            max-height: 20%;
+        }
         .mainBody p {
             text-align: center;
             margin: 0 10% 7% 10%;
         }
-        .mainbody main p a {
-            margin: 0;
-            width: 10
+        #biography {
+            text-align: left;
         }
+        .mainbody #socialLinks {
+            margin: 0;
+        }
+            #socialLinks:link {
+                color: #D36135;
+            }
+            #socialLinks:visited {
+                color: #08415C;
+            }
         .mainBody #project1 {
             grid-area: a;
             border: 2px solid red;
@@ -268,11 +283,7 @@ p {
                 text-align: left;
                 margin: 0;
             }
-            .summaryTitle #and {
-                text-align: center;
-                margin: 0;
-            }
-            .summaryTitle #drt {
+            .summaryTitle #brkdwn {
                 text-align: right;
                 margin: 0;
             }
@@ -283,6 +294,7 @@ p {
         grid-template-areas:
         "a" 
         "b";
+        bottom: 0;
     }
         footer #outroImage {
             grid-area: a;
