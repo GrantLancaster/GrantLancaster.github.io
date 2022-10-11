@@ -1,0 +1,13 @@
+body {
+    background-color: orange;
+}
+button {
+    color: blue;
+    position: fixed;
+    top: 50;
+    right: 50;
+}
+h1 {
+    font-size: 150pt;
+    text-align: center;
+}
