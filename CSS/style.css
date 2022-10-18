@@ -198,12 +198,16 @@ p {
             margin: 0 0 10px 0;
             text-align: center;
         }
-        .mainbody #profilePic {
+        #profilePic {
             display: flex;
             align-items: center;
             justify-content: center;
             width: auto;
-            max-height: 20%;
+        }
+        #thatsMe {
+            width: 70%;
+            height: auto;
+            border-radius: 20%;
         }
         .mainBody p {
             text-align: center;
@@ -406,7 +410,7 @@ p {
             justify-content: center;
         }
     
-        a {
+        #navLink {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -477,11 +481,33 @@ p {
         #description {
             margin: 0 0 10px 0;
         }
-
+        #profilePic {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: auto;
+        }
+        #thatsMe {
+            width: 20%;
+            height: auto;
+            border-radius: 20%;
+        }
         .mainBody p {
             text-align: center;
             margin: 0 10% 7% 10%;
         }
+        #biography {
+            text-align: left;
+        }
+        .mainbody #socialLinks {
+            margin: 0;
+        }
+            #socialLinks:link {
+                color: #D36135;
+            }
+            #socialLinks:visited {
+                color: #08415C;
+            }
         .mainBody #project1 {
             grid-area: a;
             border: 2px solid red;
@@ -565,6 +591,28 @@ p {
             border: 2px solid #FFE4C0;
             color: #FFE4C0;
         }
+    summary {
+        display: grid;
+        grid-template-columns: repeat(1 1fr);
+        gap: 5px; 
+        grid-template-areas:
+        "a"
+        "b";
+        margin: 3% 0 3% 0;   
+    }
+        summary .summaryTitle {
+            grid-area: a;
+            margin: 20% auto 0 auto;
+            width: 200px;
+        }
+            .summaryTitle #qck {
+                text-align: left;
+                margin: 0;
+            }
+            .summaryTitle #brkdwn {
+                text-align: right;
+                margin: 0;
+            }
     footer {
         grid-area: g;
         display: grid;
