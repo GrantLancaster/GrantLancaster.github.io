@@ -1,11 +1,16 @@
 h1 {
-  font-family: helvetica, arial, sans-serif;
+  font-family: "montserrat", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 48pt;
   text-align: center;
+  border-bottom: 5px solid gray;
 }
 
 body {
   width: 640px;
   margin: 0 auto;
+  background-color: peachpuff;
 }
 
 .full-img {
@@ -19,6 +24,8 @@ body {
   object-fit: contain;
   width: 640px;
   height: auto;
+  border-radius: 10%;
+
 }
 
 .overlay {
@@ -26,8 +33,9 @@ body {
   top: 0;
   left: 0;
   width: 640px;
-  height: 480px;
+  height: 427px;
   background-color: rgba(0,0,0,0);
+  border-radius: 10%;
 }
 
 button {
@@ -39,6 +47,10 @@ button {
   cursor: pointer;
   top: 2px;
   left: 2px;
+}
+
+.thumb-bar {
+  border: 5px solid gray;
 }
 
 .thumb-bar img {

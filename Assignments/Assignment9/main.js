@@ -8,7 +8,7 @@ const theaterBox = document.querySelector(".full-img");
 
 
 /* Declaring the array of image filenames */
-const picArray = ["images/E_BOlkeVEAAJ_cE.png","images/francesco.jpg","images/hobbiton.jpg","images/johannes.jpg","images/pic5.jpg"];
+const picArray = ["images/alexsander.jpg","images/francesco.jpg","images/hobbiton.jpg","images/johannes.jpg","images/podnar.jpg"];
 /* Declaring the alternative text for each image file */
 const altArray = ["Just an eyeball","sea foam","Flowers","Egyptian hyroglyphs","butterfly"];
 /* Looping through images */
@@ -18,10 +18,6 @@ function swapImage(val) {
     displayedImage.alt = val.target.alt;
 }
 function darkLight() {
-    const tBoxWidth = getComputedStyle(displayedImage, width);
-    const tBoxHeight = getComputedStyle(displayedImage, height);
-    overlay.setAttribute("width", tBoxWidth);
-    overlay.setAttribute("height", tBoxHeight);
     if (btn.getAttribute("class") === "dark") {
         btn.setAttribute("class", "light");
         btn.textContent = "Lighten";
