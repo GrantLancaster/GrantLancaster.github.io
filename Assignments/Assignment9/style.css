@@ -13,6 +13,12 @@ body {
   display: block;
   width: 640px;
   height: 480px;
+  object-fit: scale-down;
+}
+.full-img img {
+  object-fit: contain;
+  width: 640px;
+  height: auto;
 }
 
 .overlay {
@@ -38,6 +44,7 @@ button {
 .thumb-bar img {
   display: block;
   width: 20%;
+  height: auto;
   float: left;
   cursor: pointer;
 }

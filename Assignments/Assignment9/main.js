@@ -3,10 +3,12 @@ const thumbBar = document.querySelector('.thumb-bar');
 
 const btn = document.querySelector('button');
 const overlay = document.querySelector('.overlay');
+const theaterBox = document.querySelector(".full-img");
+
 
 
 /* Declaring the array of image filenames */
-const picArray = ["images/pic1.jpg","images/pic2.jpg","images/pic3.jpg","images/pic4.jpg","images/pic5.jpg"];
+const picArray = ["images/E_BOlkeVEAAJ_cE.png","images/francesco.jpg","images/hobbiton.jpg","images/johannes.jpg","images/pic5.jpg"];
 /* Declaring the alternative text for each image file */
 const altArray = ["Just an eyeball","sea foam","Flowers","Egyptian hyroglyphs","butterfly"];
 /* Looping through images */
@@ -16,6 +18,10 @@ function swapImage(val) {
     displayedImage.alt = val.target.alt;
 }
 function darkLight() {
+    const tBoxWidth = getComputedStyle(displayedImage, width);
+    const tBoxHeight = getComputedStyle(displayedImage, height);
+    overlay.setAttribute("width", tBoxWidth);
+    overlay.setAttribute("height", tBoxHeight);
     if (btn.getAttribute("class") === "dark") {
         btn.setAttribute("class", "light");
         btn.textContent = "Lighten";
@@ -33,6 +39,7 @@ newImage.setAttribute('src', picArray[i]);
 newImage.setAttribute('alt', altArray[i]);
 thumbBar.appendChild(newImage);
 newImage.addEventListener("click", swapImage);
+
 }
 
 /* Wiring up the Darken/Lighten button */
