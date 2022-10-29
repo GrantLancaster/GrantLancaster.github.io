@@ -1,42 +1,121 @@
-async function populate() {
+const header = document.querySelector("header"); 
+const resetButton = document.querySelector("button");
+resetButton.addEventListener("click", reset);
 
-    const requestURL = "hr.json";
-    const request = new Request(requestURL);
-  
-    const response = await fetch(request);
-    const superHeroes = await response.json();
-  
-    populateHeader(companyName);
-    populateHeroes(compnayName);
-  
-  }
-  const company = {
-    companyName: "Tech Stars",
-    website: "www.techstars.site",
-    employees: [ {
-        firstName: "Sam:",
-        deparment: "Tech",
-        designation: "Manager",
-        salary: 40000,
-        raiseEligible: true
-        },
-    {   firstName: "Mary",
-        department: "Finance",
-        designation: "Trainee",
-        salary: 18500,
-        raiseEligible: true
-        },
-    {   firstName: "Bill",
-        department: "Hr",
-        designation: "Exectuve",
-        salary: 21200,
-        raiseEligible: false
+let company = `{
+    "companyName": "Tech Stars",
+    "website": "www.techstars.site",
+    "employees": [ {
+        "firstName": "Sam",
+        "department": "Tech",
+        "designation": "Manager",
+        "salary": 40000,
+        "raiseEligible": true
+    },
+    {
+        "firstName": "Mary",
+        "department": "Finance",
+        "designation": "Trainee",
+        "salary": 18500,
+        "raiseEligible": true
+    },
+    {
+        "firstName": "Bill",
+        "department": "Hr",
+        "designation": "Executive",
+        "salary": 21200,
+        "raiseEligible": false
+    },
+    {
+        "firstName": "Anna",
+        "department": "Tech",
+        "designation": "Executive",
+        "salary": 25600,
+        "raiseEligible": false
+    }
+    ]
+}`
+
+
+function addWFH() {
+    company.employees[0].wfh = "True";
+    console.log(company.employees[0]);
+}
+
+//Does the math for question 5
+function giveRaise(answerKey) {
+    for (let int = 0; int <= 3; int++) {
+        let rE = JSON.parse(company).employees[int].raiseEligible;
+        let salary = JSON.parse(company).employees[int].salary;
+        if (rE == true) {
+            salary = salary * 1.10;
+            rE = false;
         }
-    ],
-    people: function () {
-        console.log(this.employees[0]);
+        addParagraph(salary, answerKey);
+        addParagraph(rE, " ");
+
     }
 }
 
-  
-  
+//resets the page and prompts the user again for another question request
+function reset() {
+    const clearP = document.getElementById("answer");
+    clearP.textContent = "";
+    header.appendChild(clearP);
+
+    const clearSubtitle = document.getElementById("subtitle");
+    clearSubtitle.textContent = "";
+    header.appendChild(clearSubtitle);
+
+    askQuestion();
+}
+
+//Adds info the website so you don't need to open the console
+function addParagraph(question, number) {
+    if (number != " ") {
+        const subtitle = document.createElement("h1");
+        subtitle.setAttribute("id", "subtitle");
+        subtitle.textContent = `Question ${number}`;
+        header.appendChild(subtitle);
+        }  
+
+    const newP = document.createElement("p");
+    newP.setAttribute("id", "answer");
+    newP.textContent = JSON.stringify(question);
+    header.appendChild(newP);
+
+    console.log(`Question ${number}`);
+    console.log(question);
+}
+
+//Prompts the user for which Question they would like the answer to
+function askQuestion() {
+    let answerKey = prompt("Enter the number for the question you would like the answer to");
+       switch(answerKey) {
+        case "1":
+            addParagraph(JSON.parse(company).employees.slice(0, -1), answerKey);
+            break;
+        case "2":
+            addParagraph(JSON.parse(company), answerKey);
+            break;
+        case "3":
+            addParagraph(JSON.parse(company).employees.slice(-1), answerKey);
+            break;
+        case "4":
+            addParagraph(JSON.parse(company).employees[0].salary +
+                        JSON.parse(company).employees[1].salary +
+                        JSON.parse(company).employees[2].salary +
+                        JSON.parse(company).employees[3].salary +
+                        " dollars a year total",
+                        answerKey);
+            break;
+        case "5":
+            giveRaise(answerKey);
+            break;
+        case "6":
+            addParagraph();
+            break;
+       }
+}
+
+askQuestion();
