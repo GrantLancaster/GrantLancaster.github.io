@@ -1,6 +1,8 @@
 const header = document.querySelector("header"); 
 const resetButton = document.querySelector("button");
 resetButton.addEventListener("click", reset);
+let headerList = [];
+let paraList = [];
 
 let company = `{
     "companyName": "Tech Stars",
@@ -10,37 +12,36 @@ let company = `{
         "department": "Tech",
         "designation": "Manager",
         "salary": 40000,
-        "raiseEligible": true
+        "raiseEligible": true,
+        "wfh": true
     },
     {
         "firstName": "Mary",
         "department": "Finance",
         "designation": "Trainee",
         "salary": 18500,
-        "raiseEligible": true
+        "raiseEligible": true,
+        "wfh": false
     },
     {
         "firstName": "Bill",
         "department": "Hr",
         "designation": "Executive",
         "salary": 21200,
-        "raiseEligible": false
+        "raiseEligible": false,
+        "wfh": false
     },
     {
         "firstName": "Anna",
         "department": "Tech",
         "designation": "Executive",
         "salary": 25600,
-        "raiseEligible": false
+        "raiseEligible": false,
+        "wfh": true
     }
     ]
 }`
 
-
-function addWFH() {
-    company.employees[0].wfh = "True";
-    console.log(company.employees[0]);
-}
 
 //Does the math for question 5
 function giveRaise(answerKey) {
@@ -76,12 +77,14 @@ function addParagraph(question, number) {
         const subtitle = document.createElement("h1");
         subtitle.setAttribute("id", "subtitle");
         subtitle.textContent = `Question ${number}`;
+        headerList.append = subtitle;
         header.appendChild(subtitle);
         }  
 
     const newP = document.createElement("p");
     newP.setAttribute("id", "answer");
     newP.textContent = JSON.stringify(question);
+    paraList.append = newP;
     header.appendChild(newP);
 
     console.log(`Question ${number}`);
@@ -113,7 +116,10 @@ function askQuestion() {
             giveRaise(answerKey);
             break;
         case "6":
-            addParagraph();
+            for (let int = 0; int <= JSON.parse(company).employees.length; int++) {
+                let workFromHome = JSON.parse(company).employees[int].wfh;
+                addParagraph(workFromHome, answerKey);
+            }
             break;
        }
 }
