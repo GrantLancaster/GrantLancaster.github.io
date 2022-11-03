@@ -1,0 +1,8 @@
+#demoCanvas {
+    border: 5px solid black;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin: auto;
+    
+}
