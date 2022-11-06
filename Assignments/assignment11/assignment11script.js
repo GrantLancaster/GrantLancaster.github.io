@@ -25,29 +25,47 @@ class init {
     }
 }
 class circles {
-    constructor(stage, x, y) {
+    constructor(stage, xPosition, yPosition) {
         this.stage = stage;
         this.newColor = "red";
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
         const circle = new createjs.Shape();
         circle.graphics.beginFill(newColor);
         circle.graphics.drawCircle(0,0,50);
-        circle.x = x;
-        circle.y = y;
+        circle.x = this.xPosition;
+        circle.y = this.yPosition;
         stage.addChild(circle);
         stage.update();
+        //this.animateCircle(circle, stage);
+        stage.addEventListener("click", this.justATest()); //HOW DO I GET THIS TO NOT AUTO RUN!!!!!
     }
-
-    //const stage = new createjs.Stage("demoCanvas");
-    //const circle = new createjs.Shape();
-    //stage.update();
-    animateCirclel() {
-        createjs.Tween.get(circle, {loop: true})
-            .to({alpha: 0, x: 500}, 1000, createjs.Ease.getPowInOut(4))
+/*
+What I'm working on now:
+I need to get a keypress to either initiate a method that makes it move,
+or have a class that controls how the circle moves. 
+*/
+    animateCircle(shape, stage) {
+        createjs.Tween.get(shape, {loop: true})
+            .to({alpha: 1, x: 500}, 1000, createjs.Ease.getPowInOut(4))
             .to({alpha: 1, y: 100}, 500, createjs.Ease.getPowInOut(2))
             .to({alpha: 1, x: 100}, 500, createjs.Ease.getPowInOut(2))
             .to({alpha: 1, y: 650}, 500, createjs.Ease.getPowInOut(2))
-            .to({alpha: 0, x: 300}, 800, createjs.Ease.getPowInOut(2));
-        createjs.Ticker.setFPS(120);
-        createjs.Ticker.addEventListener("tick", changeColor);
+            .to({alpha: 1, x: 300}, 800, createjs.Ease.getPowInOut(2));
+        createjs.Ticker.setFPS(60);
+        createjs.Ticker.addEventListener("tick", stage);
+    }
+    moveCircle(shape, stage, xPosition, yPosition) {
+        this.shape = shape;
+        this.stage = stage;
+        this.xPos = xPosition;
+        this.yPos = yPosition;
+        createjs.Tween.get(shape)
+            .to({x: xPosition+100}, 1000, createjs.Ease.getPowInOut(1));
+        stage.update();
+        console.log("key pressed");
+    }
+    justATest() {
+        console.log("testing this bithc");
     }
 }
