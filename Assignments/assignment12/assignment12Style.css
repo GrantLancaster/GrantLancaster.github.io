@@ -1,0 +1,81 @@
+.numberDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+form{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 350px;
+    height: 350px;
+    margin: 0 auto 0 auto;
+    grid-template-areas: 
+        "a b c"
+        "d e f"
+        "g h i"
+        "j k l";
+    justify-content: center;
+}
+form input {
+    display: inline-block;
+    margin: auto;
+    padding: 10px;
+    width: 75px;
+    height: 75px;
+    border: 10px solid #08415C;
+}
+form input:hover {
+    background-color: black;
+    color: white;
+}
+.oneButton {
+    grid-area: a;
+    border-radius: 50px;
+}
+.twoButton {
+    grid-area: b;
+    border-radius: 50px;
+
+}
+.threeButton {
+    grid-area: c;
+    border-radius: 50px;
+ 
+}
+.fourButton {
+    grid-area: d;
+    border-radius: 50px;
+
+}
+.fiveButton {
+    grid-area: e;
+    border-radius: 50px;
+
+}
+.sixButton {
+    grid-area: f;
+    border-radius: 50px;
+
+}
+.sevenButton {
+    grid-area: g;
+    border-radius: 50px;
+
+}
+.eightButton {
+    grid-area: h;
+    border-radius: 50px;
+
+}
+.nineButton {
+    grid-area: i;
+    border-radius: 50px;
+
+}
+.zeroButton {
+    grid-area: k;
+    border-radius: 50px;
+
+}
