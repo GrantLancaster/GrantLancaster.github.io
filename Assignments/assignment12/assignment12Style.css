@@ -83,3 +83,13 @@ form input:hover {
     border-radius: 50px;
 
 }
+.confirm {
+    grid-area: l;
+    border-radius: 50px;
+}
+.confirm:hover {
+    background-color: green;
+}
+article {
+    grid-area: m;
+}
