@@ -75,19 +75,21 @@ function swapButtonsGrid(target, max=11) {
                 }
                 }
             block.toString();
+            block = '"'+block+'"';
             newPosList.push(block);
             console.log(block);
             console.log(typeof block);
-            block = " ";
+            block = "";
             }
             console.log(`Position List: ${newPosList}`);
             console.log(newPosList[0]);
             console.log(typeof newPosList[0]);
-            let string1 = newPosList[0] + newPosList[1] + newPosList[2] + newPosList[3];
+            let string1 = newPosList[0] + " " + newPosList[1] + " " + newPosList[2] + " " + newPosList[3];
             console.log(string1);
-            let string2 = String(string1);
-            console.log( typeof string2);
-            form.style.gridTemplateAreas = String(newPosList[0] + " " + newPosList[1] + " " + newPosList[2] + " " + newPosList[3]);
+            let string2 = "'" +string1+ "'";
+            console.log(string2);
+            //form.style.gridTemplateAreas = string2;
+            form.style.gridTemplateAreas = '"c b a" "d e f" "g h i" "l j k"';
 }
 
 function activeNumPad(target) {
