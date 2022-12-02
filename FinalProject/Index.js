@@ -22,29 +22,43 @@ class Player {
     constructor(canvas, ctx, posX, posY, color) {
         this.canvas = canvas;
         this.ctx = ctx;
-        this.color = color;
-        this.position = {
+        this.color = color; //Color of the player square
+        this.position = { //The starting positions of the player 
             x: posX,
             y: posY
             }
-        this.size = {
-            width: 100,
-            height: 100
+
+        this.size = { //How big of a box that you want the player to be
+            width: 64,
+            height: 64
             }
-        this.velocity = {
+
+        this.velocity = { //Speeds a which the player should move (pixels/frame)
             x: 0,
             Xmax: 7,
             y: 0,
             Ymax: 7
             }
+
         this.sides = {
             right: this.position.x + this.size.width,
-            bottom: this.position.y + this.size.height
+            rightMiddle: (this.position.x + this.size.width) + (this.size.height / 2),
+
+            left: this.position.x,
+            leftMiddle: this.position.x + (this.size.height / 2),
+
+            bottom: this.position.y + this.size.height,
+            bottomMiddle: (this.position.y + this.size.height) + (this.size.width / 2),
+            
+            top: this.position.y,
+            topMiddle: this.position.y + (this.size.width / 2)
             }
+
         this.acceleration = { //This is acceleration due to gravity
             x: 2,
             y: 2
             }
+
         this.keys ={
              ArrowUp: { //Up Arrow not pressed by default
                 pressed: false
@@ -64,7 +78,7 @@ class Player {
     draw() {
         this.ctx.fillStyle = this.color;
         this.ctx.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
-    }//End of Draw Method
+    }//End of 'Draw' Method
 
     gravity() {
         this.position.y += this.acceleration.y;
@@ -82,6 +96,8 @@ class Player {
     }//End of 'Update' Method
 
     move() {
+        //Conditions that act when an arrow key is pressed down.
+        //These are what tell the player how to move, and the direction
         if (this.keys.ArrowUp.pressed) {
             this.velocity.y = -(this.velocity.Ymax);
         }else if (this.keys.ArrowDown.pressed) {
@@ -96,6 +112,8 @@ class Player {
         }
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
+
+        //this makes the player move when an arrow key is pressed down
         window.addEventListener("keydown", (e) => {
             switch (e.key) {
                 case "ArrowUp":
@@ -112,6 +130,8 @@ class Player {
                     break;
             }
         })
+
+        //This This makes the player stop moving when the arrow key is released
         window.addEventListener("keyup", (e) => {
             switch (e.key) {
                 case "ArrowUp":
@@ -128,18 +148,152 @@ class Player {
                     break;
             }
         })
+
+        //These keep the sides of the player updated as it moves
+        this.sides.bottom = this.position.y + this.size.height;
+        this.sides.top = this.position.y; 
+        this.sides.left = this.position.x; 
+        this.sides.right = this.position.x + this.size.width; 
+
+        //These are the conditions that make the player hit the walls of the board
+        if (this.sides.bottom > canvas.height) {
+            this.position.y = canvas.height - this.size.height;
+        }
+        if (this.sides.top < 0) {
+            this.position.y = 0;
+        }
+        if (this.sides.right > canvas.width) {
+            this.position.x = canvas.width - this.size.width;
+        }
+        if (this.sides.left < 0) {
+            this.position.x = 0;
+        }
+
     } //End of 'Move' Method
-    
+
 }//end of Player class
 
-const playArea = new GameBoard(canvas, ctx, 500, 700, "pink");
-const player = new Player(canvas, ctx, 200, 300, "blue");
+class Enemy {
+    constructor(canvas, ctx, xPos, yPos, width, height, color, health) {
+        this.canvas = canvas;
+        this.ctx = ctx;
+        this.color = color;
+        this.health = health;
+        this.size ={
+            width: width,
+            height: height
+        }
+        this.position ={
+            x: xPos,
+            y: yPos
+        }
+        this.velocity ={
+            x: 5,
+            y: 5
+        }
+        this.sides ={
+            top: this.position.y,
+            right: this.position.x + this.size.width,
+            bottom: this.position.y + this.size.height,
+            left: this.position.x
+        }
+    }
+    draw() {
+        this.ctx.fillStyle = this.color;
+        this.ctx.fillRect(this.position.x, this.position.y, this.size.width, this.size.height); 
+    }//end of 'draw' method
+    move() {
+        this.sides.bottom = this.position.y + this.size.height;
+        this.sides.top = this.position.y; 
+        this.sides.left = this.position.x; 
+        this.sides.right = this.position.x + this.size.width;
+
+        this.position.x -= this.velocity.x;
+
+        if(this.position.x < Math.floor(0.1 * canvas.width)) {
+            this.velocity.x = ((-1) * this.velocity.x);
+        }else if (this.position.x +this.size.width > Math.floor(0.9 * canvas.width)) {
+            this.velocity.x = ((-1) * this.velocity.x);
+        }
+    }//end of 'move' method
+    update() {
+        this.draw();
+        this.move();
+    }
+}//end of 'Enemy' class
+
+class Bullet {
+    constructor(canvas, ctx, width, height, color) {
+        this.canvas = canvas;
+        this.ctx = ctx;
+        this.color = color;
+        this.size = {
+            width: width,
+            height: height
+        }
+        this.position ={
+            x: player.position.x + (0.5 * player.size.width) - (Math.floor(0.5 * this.size.width)),
+            y: player.position.y - (Math.floor(1.2 * this.size.height))
+        }
+        this.velocity ={
+            x: 0,
+            y: 15
+        }
+        this.damage = 5;
+        this.bulletCount = 1;
+    }
+
+    draw() {
+        this.ctx.fillStyle = this.color;
+        this.ctx.fillRect(this.position.x, this.position.y, this.size.width, this.size.height); 
+        this.bulletTravel();   
+    }// end of 'draw' method
+
+    update() {
+        this.draw();
+        this.clearBullet();
+    }//end of 'update' method
+
+    bulletTravel() {
+        this.position.y -= this.velocity.y;
+    }//end of 'bulletTravel' method
+
+    clearBullet() {
+        if (this.position.y < 0) {
+            this.ctx.clearRect(this.position.x, this.position.y, this.size.width, this.size.height);
+            bullets.splice(0,1);
+        }
+    }//End of 'clearBullet' method
+}
+
+
+//----------Non-class code/Game Initialization-----------//
+const playArea = new GameBoard(canvas, ctx, (64 * 8), (64 * 12), "pink");
+const player = new Player(canvas, ctx, 200, 600, "blue");
+const alien = new Enemy(canvas, ctx, 200, 100, 64, 64, "green", 5);
+
+const bullets = [];
+
+window.addEventListener("keydown", (e) => {
+    switch (e.key) {
+        case " ":
+            console.log("animate function bullet flag");
+            bullets.push(new Bullet(canvas, ctx, 7, 16, "red"));
+            console.log(bullets);
+
+    }
+})
 
 function animate() {
     window.requestAnimationFrame(animate);
-    const whiteOut = new GameBoard(canvas, ctx, 500, 700, "pink");
+    const whiteOut = new GameBoard(canvas, ctx, canvas.width, canvas.height, "pink");
     player.draw();
     player.update();
+    alien.update();
+
+
+    bullets.forEach((bullet) => {bullet.update()});
+
+
 }
-console.log(player.sides.bottom);
 animate();

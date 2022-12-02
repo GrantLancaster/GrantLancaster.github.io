@@ -1,4 +1,4 @@
-#demoCanvas {
+canvas {
     border: 5px solid black;
     display: flex;
     align-self: center;
