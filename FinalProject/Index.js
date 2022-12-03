@@ -92,6 +92,7 @@ class Player {
 
     update() {
         //this.gravity(); //force it to have gravity
+        this.draw();
         this.move();
     }//End of 'Update' Method
 
@@ -196,12 +197,14 @@ class Enemy {
             right: this.position.x + this.size.width,
             bottom: this.position.y + this.size.height,
             left: this.position.x
-        }
+        }//end of 'constructor' method
     }
+    
     draw() {
         this.ctx.fillStyle = this.color;
         this.ctx.fillRect(this.position.x, this.position.y, this.size.width, this.size.height); 
     }//end of 'draw' method
+
     move() {
         this.sides.bottom = this.position.y + this.size.height;
         this.sides.top = this.position.y; 
@@ -216,10 +219,24 @@ class Enemy {
             this.velocity.x = ((-1) * this.velocity.x);
         }
     }//end of 'move' method
+
+    detectHit() {
+        if (bullets.length > 0) {
+            if (bullets[0].position.y < this.sides.bottom && bullets[0].position.y > this.sides.top
+                && bullets[0].position.x > this.sides.left && bullets[0].position.x < this.sides.right) {
+                    console.log("Bullet hit the enemy");
+                    bullets[0].bulletEndTrav();
+                    bullets[0].clearBullet();
+
+            } 
+        }
+    }//end of 'detectHit' method
+
     update() {
         this.draw();
         this.move();
-    }
+        this.detectHit();
+    }//end of 'update' method
 }//end of 'Enemy' class
 
 class Bullet {
@@ -237,11 +254,12 @@ class Bullet {
         }
         this.velocity ={
             x: 0,
-            y: 15
+            y: 15,
+            confirm: true
         }
         this.damage = 5;
         this.bulletCount = 1;
-    }
+    }//end of 'constructor' method
 
     draw() {
         this.ctx.fillStyle = this.color;
@@ -250,19 +268,32 @@ class Bullet {
     }// end of 'draw' method
 
     update() {
-        this.draw();
-        this.clearBullet();
+        this.tick = 0
+        if (this.tick == 0) {
+            this.draw();
+            this.tick + 1; 
+        }
+        if (this.position.y < 0) {
+            this.clearBullet();
+        }
     }//end of 'update' method
 
     bulletTravel() {
-        this.position.y -= this.velocity.y;
+        if (this.velocity.confirm) {
+            this.position.y -= this.velocity.y;
+        }
     }//end of 'bulletTravel' method
 
-    clearBullet() {
-        if (this.position.y < 0) {
-            this.ctx.clearRect(this.position.x, this.position.y, this.size.width, this.size.height);
-            bullets.splice(0,1);
+    bulletEndTrav() {
+        this.velocity.confirm = false;
+        if (this.velocity.confirm != true) {
+            this.velocity.y = 0;
         }
+    }//End of 'bulletEndTrav' method
+
+    clearBullet() {
+        this.ctx.clearRect(this.position.x, this.position.y, this.size.width, this.size.height);
+        bullets.splice(0,1);
     }//End of 'clearBullet' method
 }
 
@@ -280,20 +311,17 @@ window.addEventListener("keydown", (e) => {
             console.log("animate function bullet flag");
             bullets.push(new Bullet(canvas, ctx, 7, 16, "red"));
             console.log(bullets);
-
     }
 })
 
 function animate() {
     window.requestAnimationFrame(animate);
     const whiteOut = new GameBoard(canvas, ctx, canvas.width, canvas.height, "pink");
-    player.draw();
+    //player.draw();
     player.update();
     alien.update();
 
-
     bullets.forEach((bullet) => {bullet.update()});
-
-
 }
+
 animate();
