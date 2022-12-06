@@ -1,11 +1,14 @@
 
 const canvas = document.getElementById("#canvas");
 const ctx = canvas.getContext("2d");
+const score = document.getElementById("Score");
 
 class GameBoard {
-    constructor(canvas, ctx, width, height, color) {
+    constructor(canvas, ctx, width, height, color, maxEnemies) {
         this.canvas = canvas;
         this.ctx = ctx
+        this.makeEnemies = true;
+        this.maxEnemies = maxEnemies
         this.size = {
             width: width,
             height: height
@@ -19,10 +22,12 @@ class GameBoard {
 }//end of GameBoard class
 
 class Player {
-    constructor(canvas, ctx, posX, posY, color) {
+    constructor(canvas, ctx, posX, posY, color, lives) {
         this.canvas = canvas;
         this.ctx = ctx;
         this.color = color; //Color of the player square
+        this.lives = lives;
+        this.playerScore = 0;
         this.position = { //The starting positions of the player 
             x: posX,
             y: posY
@@ -53,6 +58,13 @@ class Player {
             top: this.position.y,
             topMiddle: this.position.y + (this.size.width / 2)
             }
+
+        this.corners = {
+            topLeft: this.position.y,
+            topRight: this.position.x + this.size.width,
+            bottomLeft: this.position.y + this.size.height,
+            bottomRight: this.position.x + this.size.width + this.size.height
+        }
 
         this.acceleration = { //This is acceleration due to gravity
             x: 2,
@@ -180,6 +192,9 @@ class Enemy {
         this.ctx = ctx;
         this.color = color;
         this.health = health;
+        this.dead = false;
+        this.tick = 0
+        this.score = health * 100;
         this.size ={
             width: width,
             height: height
@@ -197,45 +212,80 @@ class Enemy {
             right: this.position.x + this.size.width,
             bottom: this.position.y + this.size.height,
             left: this.position.x
-        }//end of 'constructor' method
-    }
+        }
+        this.corners ={
+            topLeft: this.position.y,
+            topRight: this.position.x + this.size.width,
+            bottomLeft: this.position.y + this.size.height,
+            bottomRight: this.position.x + this.size.width + this.size.height
+        }
+    }//end of 'constructor' method
     
     draw() {
+        if (this.dead) {
+            this.removeEnemy();
+        }else {
         this.ctx.fillStyle = this.color;
-        this.ctx.fillRect(this.position.x, this.position.y, this.size.width, this.size.height); 
+        this.ctx.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
+        } 
     }//end of 'draw' method
 
     move() {
-        this.sides.bottom = this.position.y + this.size.height;
-        this.sides.top = this.position.y; 
-        this.sides.left = this.position.x; 
-        this.sides.right = this.position.x + this.size.width;
+        this.sides.bottom = this.position.y + this.size.height; //bottom left corner
+        this.sides.top = this.position.y; //top left corner
+        this.sides.left = this.position.x; //top left corner
+        this.sides.right = this.position.x + this.size.width; //top right corner
 
         this.position.x -= this.velocity.x;
 
         if(this.position.x < Math.floor(0.1 * canvas.width)) {
             this.velocity.x = ((-1) * this.velocity.x);
+            this.position.y += 10;
+            this.tick += 1;
         }else if (this.position.x +this.size.width > Math.floor(0.9 * canvas.width)) {
             this.velocity.x = ((-1) * this.velocity.x);
+            this.position.y += 10;
+            this.tick += 1;
         }
     }//end of 'move' method
 
     detectHit() {
-        if (bullets.length > 0) {
+        if (bullets.length > 0) { //Checks the bullet list for content
             if (bullets[0].position.y < this.sides.bottom && bullets[0].position.y > this.sides.top
-                && bullets[0].position.x > this.sides.left && bullets[0].position.x < this.sides.right) {
+                && bullets[0].position.x > this.sides.left && bullets[0].position.x < this.sides.right) { //Checks if the bullet is inside of the enemy
                     console.log("Bullet hit the enemy");
                     bullets[0].bulletEndTrav();
                     bullets[0].clearBullet();
 
+                    this.health -= 1;
+                    if (this.health <= 0) {
+                        this.dead = true;
+                        player.playerScore += this.score;
+                        console.log(`Player Score is ${player.playerScore}`);
+                        score.innerHTML = "Score: " + player.playerScore;
+
+                    }
             } 
         }
     }//end of 'detectHit' method
 
+    hitPlayer() {
+        if (player.corners.topLeft < this.corners.bottomLeft < player.corners.bottomLeft && player.corners.topLeft < this.corners.bottomLeft < player.corners.topRight
+            || player.corners.topLeft < this.corners.bottomRight < player.corners.bottomLeft && player.corners.topLeft < this.corners.bottomRight < player.corners.topRight
+            || player.corners.topLeft < this.corners.topLeft < player.corners.bottomLeft && player.corners.topLeft < this.corners.topLeft < player.corners.topRight
+            || player.corners.topLeft < this.corners.topRight < player.corners.bottomLeft && player.corners.topLeft < this.corners.topRight < player.corners.topRight
+            ) {
+                console.log("enemy hit the player");
+            }
+    }
+
     update() {
+        if (this.dead != true) {
         this.draw();
         this.move();
         this.detectHit();
+        //this.hitPlayer();
+        }
     }//end of 'update' method
 }//end of 'Enemy' class
 
@@ -299,11 +349,13 @@ class Bullet {
 
 
 //----------Non-class code/Game Initialization-----------//
-const playArea = new GameBoard(canvas, ctx, (64 * 8), (64 * 12), "pink");
-const player = new Player(canvas, ctx, 200, 600, "blue");
+const playArea = new GameBoard(canvas, ctx, (64 * 8), (64 * 12), "pink", 10);
+const player = new Player(canvas, ctx, 200, 600, "blue", 3);
 const alien = new Enemy(canvas, ctx, 200, 100, 64, 64, "green", 5);
 
 const bullets = [];
+const enemies = [];
+enemies.push(alien);
 
 window.addEventListener("keydown", (e) => {
     switch (e.key) {
@@ -317,9 +369,17 @@ window.addEventListener("keydown", (e) => {
 function animate() {
     window.requestAnimationFrame(animate);
     const whiteOut = new GameBoard(canvas, ctx, canvas.width, canvas.height, "pink");
-    //player.draw();
+    
     player.update();
-    alien.update();
+    
+    enemies.forEach((alien) => {alien.update()}); //updates all the enemies on screen
+    if (enemies[enemies.length-1].tick >= 3 && playArea.makeEnemies) { //Spawns Enemies into the playarea
+        enemies.push(new Enemy(canvas, ctx, Math.floor((canvas.width * Math.random())), 100, 64, 64, "orange", 10))
+        enemies[enemies.length-1].tick = 0;
+    }
+    if (enemies.length >= playArea.maxEnemies) { //if true, stops enemy spawning in play area
+        playArea.makeEnemies = false;
+    }
 
     bullets.forEach((bullet) => {bullet.update()});
 }
