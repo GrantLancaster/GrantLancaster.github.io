@@ -28,14 +28,19 @@ class Player {
         this.color = color; //Color of the player square
         this.lives = lives;
         this.playerScore = 0;
-        this.position = { //The starting positions of the player 
-            x: posX,
-            y: posY
-            }
-
         this.size = { //How big of a box that you want the player to be
             width: 64,
             height: 64
+            }
+
+        this.startPosition = {
+            x: (posX / 2) - (this.size.width / 2),
+            y: (posY * 0.85)
+        }
+
+        this.position = { //The starting positions of the player 
+            x: (posX * 0.5) - (this.size.width * 0.5),
+            y: (posY * 0.85) 
             }
 
         this.velocity = { //Speeds a which the player should move (pixels/frame)
@@ -101,6 +106,12 @@ class Player {
             this.acceleration.y =0;
         }
     }//End of 'gravity' Method
+
+    loseLife() {
+        console.log("player lost a life");
+        this.position.x = this.startPosition.x;
+        this.position.y = this.startPosition.y;
+    }
 
     update() {
         //this.gravity(); //force it to have gravity
@@ -249,23 +260,6 @@ class Enemy {
         }
     }//end of 'move' method
 
-    spawnTick() {
-        this.sides.bottom = this.position.y + this.size.height; //bottom left corner
-        this.sides.top = this.position.y; //top left corner
-        this.sides.left = this.position.x; //top left corner
-        this.sides.right = this.position.x + this.size.width; //top right corner
-
-        this.position.x -= this.velocity.x;
-
-        if(this.position.x < Math.floor(0.1 * canvas.width)) {
-            this.velocity.x = ((-1) * this.velocity.x);
-            this.tick += 1;
-        }else if (this.position.x +this.size.width > Math.floor(0.9 * canvas.width)) {
-            this.velocity.x = ((-1) * this.velocity.x);
-            this.tick += 1;
-        }
-    }
-
     detectHit() {
         if (bullets.length > 0) { //Checks the bullet list for content
             if (bullets[0].position.y < this.sides.bottom && bullets[0].position.y > this.sides.top
@@ -365,8 +359,8 @@ class Bullet {
 
 
 //----------Non-class code/Game Initialization-----------//
-const playArea = new GameBoard(canvas, ctx, (64 * 8), (64 * 12), "pink", 10);
-const player = new Player(canvas, ctx, 200, 600, "blue", 3);
+const playArea = new GameBoard(canvas, ctx, (64 * 8), (64 * 12), "pink", 15);
+const player = new Player(canvas, ctx, canvas.width, canvas.height, "blue", 3);
 const alien = new Enemy(canvas, ctx, 200, 100, 64, 64, "green", 5);
 const fps = 120;
 
@@ -384,19 +378,38 @@ window.addEventListener("keydown", (e) => {
     }
 })
 
+function checkCollision() {
+    if(player.sides.bottom < alien.sides.bottom && player.sides.bottom > alien.sides.top && player.sides.left > alien.sides.left && player.sides.left < alien.sides.right
+        || player.sides.right < alien.sides.right && player.sides.right > alien.sides.left && player.sides.top > alien.sides.top && player.sides.top < alien.sides.bottom) {
+        console.log("collision check in CheckCollision");
+        player.loseLife();
+    }
+}
+
 function animate() {
+    //Conditions for the randomness of the spawn point for enemies
+    let spawnPosX = Math.floor(Math.random() * canvas.width);
+    if (0.1 * playArea.size.width > spawnPosX) {
+        spawnPosX = 0.4 * playArea.size.width;
+    } else if (0.9 *playArea.size.width < spawnPosX) {
+        spawnPosX = 0.6 * playArea.size.width;
+    }
+
     const whiteOut = new GameBoard(canvas, ctx, canvas.width, canvas.height, "pink");
     
     player.update();
     
+    //Spawns all the enemies and keeps them updated
     enemies.forEach((alien) => {alien.update()}); //updates all the enemies on screen
     if (enemies[enemies.length-1].tick >= 2 && playArea.makeEnemies) { //Spawns Enemies into the playarea
-        enemies.push(new Enemy(canvas, ctx, Math.floor((canvas.width * Math.random())), Math.floor((canvas.height * 0.15) * Math.random()), 64, 64, "orange", Math.floor(15 * Math.random())))
+        enemies.push(new Enemy(canvas, ctx, spawnPosX, Math.floor((canvas.height * 0.15) * Math.random()), 64, 64, "orange", Math.floor(15 * Math.random())))
         enemies[enemies.length-1].tick = 0;
     }
     if (enemies.length >= playArea.maxEnemies) { //if true, stops enemy spawning in play area
         playArea.makeEnemies = false;
     }
+
+    checkCollision();
 
     bullets.forEach((bullet) => {bullet.update()});
 
