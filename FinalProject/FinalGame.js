@@ -223,7 +223,7 @@ class Enemy {
     
     draw() {
         if (this.dead) {
-            this.removeEnemy();
+            //this.removeEnemy();
         }else {
         this.ctx.fillStyle = this.color;
         this.ctx.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
@@ -249,6 +249,23 @@ class Enemy {
         }
     }//end of 'move' method
 
+    spawnTick() {
+        this.sides.bottom = this.position.y + this.size.height; //bottom left corner
+        this.sides.top = this.position.y; //top left corner
+        this.sides.left = this.position.x; //top left corner
+        this.sides.right = this.position.x + this.size.width; //top right corner
+
+        this.position.x -= this.velocity.x;
+
+        if(this.position.x < Math.floor(0.1 * canvas.width)) {
+            this.velocity.x = ((-1) * this.velocity.x);
+            this.tick += 1;
+        }else if (this.position.x +this.size.width > Math.floor(0.9 * canvas.width)) {
+            this.velocity.x = ((-1) * this.velocity.x);
+            this.tick += 1;
+        }
+    }
+
     detectHit() {
         if (bullets.length > 0) { //Checks the bullet list for content
             if (bullets[0].position.y < this.sides.bottom && bullets[0].position.y > this.sides.top
@@ -261,7 +278,6 @@ class Enemy {
                     if (this.health <= 0) {
                         this.dead = true;
                         player.playerScore += this.score;
-                        console.log(`Player Score is ${player.playerScore}`);
                         score.innerHTML = "Score: " + player.playerScore;
 
                     }
@@ -352,8 +368,10 @@ class Bullet {
 const playArea = new GameBoard(canvas, ctx, (64 * 8), (64 * 12), "pink", 10);
 const player = new Player(canvas, ctx, 200, 600, "blue", 3);
 const alien = new Enemy(canvas, ctx, 200, 100, 64, 64, "green", 5);
+const fps = 120;
 
 const bullets = [];
+
 const enemies = [];
 enemies.push(alien);
 
@@ -367,14 +385,13 @@ window.addEventListener("keydown", (e) => {
 })
 
 function animate() {
-    window.requestAnimationFrame(animate);
     const whiteOut = new GameBoard(canvas, ctx, canvas.width, canvas.height, "pink");
     
     player.update();
     
     enemies.forEach((alien) => {alien.update()}); //updates all the enemies on screen
-    if (enemies[enemies.length-1].tick >= 3 && playArea.makeEnemies) { //Spawns Enemies into the playarea
-        enemies.push(new Enemy(canvas, ctx, Math.floor((canvas.width * Math.random())), 100, 64, 64, "orange", 10))
+    if (enemies[enemies.length-1].tick >= 2 && playArea.makeEnemies) { //Spawns Enemies into the playarea
+        enemies.push(new Enemy(canvas, ctx, Math.floor((canvas.width * Math.random())), Math.floor((canvas.height * 0.15) * Math.random()), 64, 64, "orange", Math.floor(15 * Math.random())))
         enemies[enemies.length-1].tick = 0;
     }
     if (enemies.length >= playArea.maxEnemies) { //if true, stops enemy spawning in play area
@@ -382,6 +399,10 @@ function animate() {
     }
 
     bullets.forEach((bullet) => {bullet.update()});
+
+    setTimeout(() => {
+        window.requestAnimationFrame(animate);
+    }, 1000 / fps);
 }
 
 animate();
