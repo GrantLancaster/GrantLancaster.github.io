@@ -1,10 +1,22 @@
 body {
     background-color: black;
+}
+#gameStatus {
+    color: red;
+    font-size: 32pt;
+}
+#gameStatus2 {
+    color: red;
+    font-size: 32pt;
+}
+#gameContent {
+    background-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 #leftBox {
+    width: 10%;
     margin: auto;
     color: white;
 }
@@ -13,9 +25,16 @@ canvas {
     display: flex;
     align-self: center;
     justify-content: center;
-    margin: auto;
+    margin: 100px;
 }
 #rightBox {
+    width: 10%;
     margin: auto;
     color: white;
+}
+footer {
+    display:flex;
+    align-self: center;
+    Justify-content: center;
+    background-color: black;
 }

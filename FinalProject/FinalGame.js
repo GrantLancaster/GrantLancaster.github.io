@@ -2,32 +2,110 @@
 const canvas = document.getElementById("#canvas");
 const ctx = canvas.getContext("2d");
 const score = document.getElementById("Score");
+const lives = document.getElementById("Lives");
+const gameStatus = document.getElementById("gameStatus");
+const gameStatus2 = document.getElementById("gameStatus2");
 
-class GameBoard {
-    constructor(canvas, ctx, width, height, color, maxEnemies) {
+class Button {
+    constructor(canvas, ctx, xPos, yPos, width, height, btnColor, txtColor) {
         this.canvas = canvas;
         this.ctx = ctx
+        this.btnColor = btnColor;
+        this.txtColor = txtColor;
+        this.playing = false;
+        this.size ={
+            width: width,
+            height: height
+        }
+        this.position ={
+            x: (xPos / 2) - (this.size.width / 2),
+            y: (yPos / 2) - (this.size.height / 2)
+        }
+    }
+    draw() {
+        if (!this.playing) {
+            this.ctx.fillStyle = this.btnColor;
+            this.ctx.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
+        }
+    }
+    drawText() {
+        if (!this.playing) {
+            this.ctx.fillstyle = this.txtColor;
+            this.ctx.font = "22px serif";
+            this.ctx.fillText("Start Game", this.position.x, this.position.y);
+        }
+    }
+    onClick() {
+        window.addEventListener("click", (e) => {
+            this.clearButton();
+            this.startGame();
+        })
+    }
+    startGame() {
+        this.playing = true;
+    }
+    clearButton() {
+        this.ctx.clearRect(this.position.x, this.position.y, this.size.width, this.size.height);
+    }
+    update() {
+        this.draw();
+        this.drawText();
+        this.onClick();
+    }
+}
+
+class Sprite {
+    constructor({position = undefined, size = undefined, imageSource}) {
+        this.position = position;
+        this.size = size;
+        this.image = new Image()
+        this.image.onload = () => {
+            this.loaded = true;
+        }
+        this.image.src = imageSource;
+        this.loaded = false;
+    }
+    draw() {
+        if (!this.loaded) {
+            return;
+        }
+        ctx.drawImage(this.image, this.position.x, this.position.y, this.size.width, this.size.height);
+
+    }
+}
+
+class GameBoard extends Sprite {
+    constructor(canvas, ctx, width, height, color, maxEnemies, imageSource) {
+        super({imageSource});
+        this.canvas = canvas;
+        this.ctx = ctx
+        this.color = color;
         this.makeEnemies = true;
         this.maxEnemies = maxEnemies
         this.size = {
             width: width,
             height: height
         }
+        this.position = {
+            x: 0,
+            y: 0
+        }
         this.canvas.width = this.size.width;
         this.canvas.height = this.size.height;
-
-        this.ctx.fillStyle = color;
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }//end of GameBoard class
 
-class Player {
-    constructor(canvas, ctx, posX, posY, color, lives) {
+
+
+class Player extends Sprite {
+    constructor(canvas, ctx, posX, posY, color, lives, imageSource) {
+        super({imageSource})
         this.canvas = canvas;
         this.ctx = ctx;
         this.color = color; //Color of the player square
         this.lives = lives;
         this.playerScore = 0;
+        this.imgSrc = "images/ShipSprite.png"
         this.size = { //How big of a box that you want the player to be
             width: 64,
             height: 64
@@ -92,10 +170,19 @@ class Player {
             }
         }
 
-    draw() {
-        this.ctx.fillStyle = this.color;
-        this.ctx.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
-    }//End of 'Draw' Method
+
+    //no longer used because of Sprite draw() method.
+    /*draw() {
+        
+        //this.ctx.fillStyle = this.color;
+        //this.ctx.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
+
+        const playerSprite = new Image();
+        playerSprite.onload = () => {
+            this.ctx.drawImage(playerSprite, this.position.x, this.position.y, this.size.width, this.size.height);
+        };
+        playerSprite.src = this.imgSrc;
+    }//End of 'Draw' Method*/
 
     gravity() {
         this.position.y += this.acceleration.y;
@@ -103,14 +190,17 @@ class Player {
         if (this.sides.bottom + this.acceleration.y < canvas.height) {
             this.acceleration.y += 1;
         } else {
-            this.acceleration.y =0;
+            this.acceleration.y = 0;
         }
     }//End of 'gravity' Method
 
     loseLife() {
-        console.log("player lost a life");
         this.position.x = this.startPosition.x;
         this.position.y = this.startPosition.y;
+        this.playerScore -= 100;
+        score.innerHTML = "Score: " + this.playerScore;
+
+
     }
 
     update() {
@@ -197,8 +287,9 @@ class Player {
 
 }//end of Player class
 
-class Enemy {
-    constructor(canvas, ctx, xPos, yPos, width, height, color, health) {
+class Enemy extends Sprite {
+    constructor(canvas, ctx, xPos, yPos, width, height, color, health, imageSource) {
+        super({imageSource})
         this.canvas = canvas;
         this.ctx = ctx;
         this.color = color;
@@ -206,6 +297,7 @@ class Enemy {
         this.dead = false;
         this.tick = 0
         this.score = health * 100;
+        this.spawned = 1;
         this.size ={
             width: width,
             height: height
@@ -232,14 +324,15 @@ class Enemy {
         }
     }//end of 'constructor' method
     
-    draw() {
+    //no longer used because of Sprite draw() method.
+    /*draw() {
         if (this.dead) {
             //this.removeEnemy();
         }else {
         this.ctx.fillStyle = this.color;
         this.ctx.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
         } 
-    }//end of 'draw' method
+    }//end of 'draw' method*/
 
     move() {
         this.sides.bottom = this.position.y + this.size.height; //bottom left corner
@@ -251,12 +344,17 @@ class Enemy {
 
         if(this.position.x < Math.floor(0.1 * canvas.width)) {
             this.velocity.x = ((-1) * this.velocity.x);
-            this.position.y += 10;
+            this.position.y += 16;
             this.tick += 1;
         }else if (this.position.x +this.size.width > Math.floor(0.9 * canvas.width)) {
             this.velocity.x = ((-1) * this.velocity.x);
-            this.position.y += 10;
+            this.position.y += 16;
             this.tick += 1;
+        }
+
+        if(this.position.y > canvas.height) {
+            this.position.x = canvas.width/2;
+            this.position.y = canvas.height * 0.1;
         }
     }//end of 'move' method
 
@@ -264,7 +362,6 @@ class Enemy {
         if (bullets.length > 0) { //Checks the bullet list for content
             if (bullets[0].position.y < this.sides.bottom && bullets[0].position.y > this.sides.top
                 && bullets[0].position.x > this.sides.left && bullets[0].position.x < this.sides.right) { //Checks if the bullet is inside of the enemy
-                    console.log("Bullet hit the enemy");
                     bullets[0].bulletEndTrav();
                     bullets[0].clearBullet();
 
@@ -273,28 +370,25 @@ class Enemy {
                         this.dead = true;
                         player.playerScore += this.score;
                         score.innerHTML = "Score: " + player.playerScore;
-
+                        this.removeEnemy();
                     }
             } 
         }
     }//end of 'detectHit' method
 
-    hitPlayer() {
-        if (player.corners.topLeft < this.corners.bottomLeft < player.corners.bottomLeft && player.corners.topLeft < this.corners.bottomLeft < player.corners.topRight
-            || player.corners.topLeft < this.corners.bottomRight < player.corners.bottomLeft && player.corners.topLeft < this.corners.bottomRight < player.corners.topRight
-            || player.corners.topLeft < this.corners.topLeft < player.corners.bottomLeft && player.corners.topLeft < this.corners.topLeft < player.corners.topRight
-            || player.corners.topLeft < this.corners.topRight < player.corners.bottomLeft && player.corners.topLeft < this.corners.topRight < player.corners.topRight
-            ) {
-                console.log("enemy hit the player");
+    removeEnemy() {
+        for (let i = 0; i <= enemies.length - 1; i++) {
+            if(enemies[i].dead) {
+                enemies.splice(i, 1);
             }
-    }
+        }
+    }//end of removeEnemy method
 
     update() {
         if (this.dead != true) {
         this.draw();
         this.move();
         this.detectHit();
-        //this.hitPlayer();
         }
     }//end of 'update' method
 }//end of 'Enemy' class
@@ -357,65 +451,84 @@ class Bullet {
     }//End of 'clearBullet' method
 }
 
-
 //----------Non-class code/Game Initialization-----------//
-const playArea = new GameBoard(canvas, ctx, (64 * 8), (64 * 12), "pink", 15);
-const player = new Player(canvas, ctx, canvas.width, canvas.height, "blue", 3);
-const alien = new Enemy(canvas, ctx, 200, 100, 64, 64, "green", 5);
+const playArea = new GameBoard(canvas, ctx, (64 * 8), (64 * 12), "pink", 5, "images/CanvasBackground.jpg");
+const startButton = new Button(canvas, ctx, canvas.width, canvas.height, 100, 50, "lime", "white");
+const player = new Player(canvas, ctx, canvas.width, canvas.height, "blue", 3, "images/ShipSprite.png");
+const alien = new Enemy(canvas, ctx, 200, 100, 64, 64, "green", 5, "images/AlienSprite.png");
 const fps = 120;
 
 const bullets = [];
 
 const enemies = [];
+let enemiesSpawned = 1;
 enemies.push(alien);
 
-window.addEventListener("keydown", (e) => {
-    switch (e.key) {
-        case " ":
-            console.log("animate function bullet flag");
-            bullets.push(new Bullet(canvas, ctx, 7, 16, "red"));
-            console.log(bullets);
-    }
-})
+function gameOver() {
+    startButton.playing = false;
+    gameStatus.innerHTML = "Game Over";
+    gameStatus2.innerHTML = "Game Over";
+    score.style.color = "Yellow";
+}
 
 function checkCollision() {
-    if(player.sides.bottom < alien.sides.bottom && player.sides.bottom > alien.sides.top && player.sides.left > alien.sides.left && player.sides.left < alien.sides.right
-        || player.sides.right < alien.sides.right && player.sides.right > alien.sides.left && player.sides.top > alien.sides.top && player.sides.top < alien.sides.bottom) {
-        console.log("collision check in CheckCollision");
-        player.loseLife();
+    for (let i = 0; i <= enemies.length - 1; i++) {
+        if(player.sides.bottom < alien.sides.bottom && player.sides.bottom > alien.sides.top && player.sides.left > alien.sides.left && player.sides.left < alien.sides.right
+            || player.sides.right < alien.sides.right && player.sides.right > alien.sides.left && player.sides.top > alien.sides.top && player.sides.top < alien.sides.bottom) {
+            player.loseLife();
+        } if(player.sides.bottom < enemies[i].sides.bottom && player.sides.bottom > enemies[i].sides.top && player.sides.left > enemies[i].sides.left && player.sides.left < enemies[i].sides.right
+                || player.sides.right < enemies[i].sides.right && player.sides.right > enemies[i].sides.left && player.sides.top > enemies[i].sides.top && player.sides.top < enemies[i].sides.bottom) {
+            player.loseLife();
+            }
     }
 }
 
 function animate() {
-    //Conditions for the randomness of the spawn point for enemies
-    let spawnPosX = Math.floor(Math.random() * canvas.width);
-    if (0.1 * playArea.size.width > spawnPosX) {
-        spawnPosX = 0.4 * playArea.size.width;
-    } else if (0.9 *playArea.size.width < spawnPosX) {
-        spawnPosX = 0.6 * playArea.size.width;
-    }
+    if (startButton.playing) {
+        //Conditions for the randomness of the spawn point for enemies
+        let spawnPosX = Math.floor(Math.random() * canvas.width);
+        if (0.1 * playArea.size.width > spawnPosX) {
+            spawnPosX = 0.4 * playArea.size.width;
+        } else if (0.9 *playArea.size.width < spawnPosX) {
+            spawnPosX = 0.6 * playArea.size.width;
+        }
 
-    const whiteOut = new GameBoard(canvas, ctx, canvas.width, canvas.height, "pink");
+        playArea.draw();    
+        player.update();
+        
+        //Spawns all the enemies and keeps them updated
+        enemies.forEach((alien) => {alien.update()}); //updates all the enemies on screen
+        if (enemies.length == 0) {
+            gameOver();
+            return;
+        }
+        if (enemies[enemies.length-1].tick >= 2 && playArea.makeEnemies) { //Spawns Enemies into the playarea
+            enemies.push(new Enemy(canvas, ctx, spawnPosX, Math.floor((canvas.height * 0.15) * Math.random()), 64, 64, "orange", Math.floor(15 * Math.random()), "images/AlienSprite.png"))
+            enemies[enemies.length-1].tick = 0;
+            enemiesSpawned += 1;
+        }
+        if (enemiesSpawned >= playArea.maxEnemies) { //if true, stops enemy spawning in play area
+            playArea.makeEnemies = false;
+        }
+
+        bullets.forEach((bullet) => {bullet.update()});
+
+        checkCollision();
+
+        window.addEventListener("keydown", (e) => {
+            switch (e.key) {
+                case " ":
+                    bullets.push(new Bullet(canvas, ctx, 7, 16, "red"));
+            }
+        })
+    }
+        setTimeout(() => {
+            window.requestAnimationFrame(animate);
+        }, 1000 / fps);
     
-    player.update();
+
+
     
-    //Spawns all the enemies and keeps them updated
-    enemies.forEach((alien) => {alien.update()}); //updates all the enemies on screen
-    if (enemies[enemies.length-1].tick >= 2 && playArea.makeEnemies) { //Spawns Enemies into the playarea
-        enemies.push(new Enemy(canvas, ctx, spawnPosX, Math.floor((canvas.height * 0.15) * Math.random()), 64, 64, "orange", Math.floor(15 * Math.random())))
-        enemies[enemies.length-1].tick = 0;
-    }
-    if (enemies.length >= playArea.maxEnemies) { //if true, stops enemy spawning in play area
-        playArea.makeEnemies = false;
-    }
-
-    checkCollision();
-
-    bullets.forEach((bullet) => {bullet.update()});
-
-    setTimeout(() => {
-        window.requestAnimationFrame(animate);
-    }, 1000 / fps);
 }
-
+startButton.update();
 animate();
