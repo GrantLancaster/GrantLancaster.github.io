@@ -452,7 +452,7 @@ class Bullet {
 }
 
 //----------Non-class code/Game Initialization-----------//
-const playArea = new GameBoard(canvas, ctx, (64 * 8), (64 * 12), "pink", 5, "images/CanvasBackground.jpg");
+const playArea = new GameBoard(canvas, ctx, (64 * 8), (64 * 12), "pink", 15, "images/CanvasBackground.jpg");
 const startButton = new Button(canvas, ctx, canvas.width, canvas.height, 100, 50, "lime", "white");
 const player = new Player(canvas, ctx, canvas.width, canvas.height, "blue", 3, "images/ShipSprite.png");
 const alien = new Enemy(canvas, ctx, 200, 100, 64, 64, "green", 5, "images/AlienSprite.png");
