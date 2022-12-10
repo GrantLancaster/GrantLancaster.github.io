@@ -9,6 +9,7 @@ body {
     justify-content: center;
 }
 #myCanvas {
-
+    width: 90vw;
+    height: 90vh; 
     background-color:#154372;
 }
