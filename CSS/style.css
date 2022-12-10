@@ -28,6 +28,7 @@ h5 {
     font-weight: 300;
     font-style: normal;
     font-size: 24pt;
+    margin: 0 0 10px 0;
 }
 p {
     font-family: "calibri", sans-serif;
@@ -232,9 +233,13 @@ p {
             width: 100%;
             margin-bottom: 10%;
         }
+            h5 #projectTitle {
+                text-align: center;
+            }
             #project1 p {
                 float: left;
                 margin: 0;
+                text-align: left;
             }
         .mainBody #project2 {
             grid-area: a;
@@ -496,6 +501,15 @@ p {
             text-align: center;
             margin: 0 10% 7% 10%;
         }
+        .mainBody #smmryTitle {
+            font-size: 20px;
+            margin: 0;
+            text-align: left;
+        }
+        .mainBody #smmryText {
+            margin: 0;
+            text-align: left;
+        }
         #biography {
             text-align: left;
         }
@@ -508,38 +522,50 @@ p {
             #socialLinks:visited {
                 color: #08415C;
             }
+        #projectPhotos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #projectPhotos img {
+            width: 50%;
+            height: auto;
+        }
         .mainBody #project1 {
             grid-area: a;
-            border: 2px solid red;
-            height: 300px;
+            height: auto;
             width: 100%;
             margin-bottom: 10%;
         }
             #project1 p {
-                float: left;
                 margin: 0;
+                text-align: center;
+            }
+            #projectTitle {
+                text-align: center;
             }
         .mainBody #project2 {
             grid-area: b;
-            border: 2px solid red;
-            height: 300px;
+            height: auto;
             width: 100%;
             margin-bottom: 10%;
         }
             #project2 p {
-                float: left;
                 margin: 0;
+                text-align: center;
+            }
+            #projectTitle {
+                text-align: center;
             }
         .mainBody #project3 {
             grid-area: c;
-            border: 2px solid red;
-            height: 300px;
+            height: auto;
             width: 100%;
             margin-bottom: 10%;
         }
             #project3 p {
-                float: left;
                 margin: 0;
+                text-align: center;
             }
         .mainBody #project4 {
             grid-area: d;
