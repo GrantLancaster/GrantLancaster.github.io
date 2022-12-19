@@ -87,68 +87,63 @@ class LogoStar {
         img.onload = () => {
             this.ctx.fillStyle = this.color; 
             this.ctx.fillRect(this.Position.x, this.Position.y, this.imgSize.width, this.imgSize.height); //shows the box of the image
-            this.ctx.drawImage(img, this.Position.x, this.Position.y, this.imgSize.width, this.imgSize.height);
+            //this.ctx.drawImage(img, this.Position.x, this.Position.y, this.imgSize.width, this.imgSize.height);
         };
         img.src = this.planetImage;
+        this.ctx.drawImage(img, this.Position.x, this.Position.y, this.imgSize.width, this.imgSize.height);
+
     }
 }
 
 class Planet {
-    constructor(canvas, ctx, image=undefined, xPos, yPos, zPos, imgWidth, imgHeight, planetRadius, orbitSpeed) {
+    constructor(canvas, ctx, image=undefined, xPos, yPos, zPos, imgWidth, imgHeight, planetRadius, orbitSpeed, color, orbitUsedX, orbitUsedY, orbitAngle) {
         this.canvas = canvas;
         this.ctx = ctx;
         this.planetImage = image;
         this.radius = planetRadius;
         this.speed = orbitSpeed;
-        this.color = "red";
+        this.color = color;
         this.image = image;
         this.moving = false;
         this.tValue = Math.PI;
+        this.angle = orbitAngle;
         this.imgSize = {
             width: imgWidth,
             height: imgHeight
+        }
+        this.orbitUsed = {
+            x: orbitUsedX,
+            y: orbitUsedY
         }
         this.position = {
             x: xPos,
             y: yPos,
             z: zPos
         }
-        this.startPos = {
-            x: xPos,
-            y: yPos
-        }
     }
 
     update() {
         this.draw();
-        //this.checkPlanet();
         this.move();
     }
 
     draw() {
         this.ctx.beginPath();
-        this.ctx.fillStyle = "orange";
+        this.ctx.fillStyle = this.color;
         this.ctx.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI);
         this.ctx.fill();
     }
 
-    checkPlanet() {
-        /* equation of Ellipse
-         x^2    y^2
-         ---- + ---- = radius
-        xRad^2  yRad^2
-        */
-       if (this.position.x <= this.startPos.x) {
-            this.moving = true;
-       }else if (this.position.x  >= this.startPos.x + 2*orbit1Front.radii.xRad) {
-            this.moving = false;
-       }
-    }
     move() {
+        /*
+        Ellipse Parametric equations with off-axis rotation:
+        x = (X-AxisRadius)cos(range)cos(rotationAngle) - (Y-axisRadius)sin(range)sin(rotationAngle) + horizontalShift
+        y = (Y-AxisRadius)cos(range)sin(rotationAngle) + (Y-axisRadius)sin(range)cos(rotationAngle) + verticalShift
+        */
         this.moving = true;
         if (this.moving == true) {
-            this.position.x = (Math.cos(this.tValue) * orbit1Front.radii.xRad) + (drawSpace.size.width/2);
-            this.position.y = (Math.sin(this.tValue) * orbit1Front.radii.yRad) + (drawSpace.size.height/2);
+            this.position.x = (Math.cos(this.tValue) * this.orbitUsed.x * Math.cos(this.angle) - this.orbitUsed.y * Math.sin(this.tValue) * Math.sin(this.angle)) + (drawSpace.size.width/2);
+            this.position.y = (Math.sin(this.tValue) * this.orbitUsed.y * Math.cos(this.angle) + this.orbitUsed.x * Math.cos(this.tValue) * Math.sin(this.angle)) + (drawSpace.size.height/2);
             this.tValue += this.speed * Math.PI;
         } else {
             this.position.x -= 1;
@@ -157,18 +152,24 @@ class Planet {
     }
 }
 
-//canvas.width = 1500;
-//canvas.height = 1000
-
 const drawSpace = new Canvas(canvas, ctx, canvas.offsetWidth, canvas.offsetHeight);
 
 const orbit1Front = new Orbits(canvas, ctx, drawSpace.size.width, drawSpace.size.height, drawSpace.size.width *0.4, drawSpace.size.width * 0.05, 0, 0, Math.PI, "gold");
 const orbit1Back = new Orbits(canvas, ctx, drawSpace.size.width, drawSpace.size.height, drawSpace.size.width *0.4, drawSpace.size.width * 0.05, 0, Math.PI, Math.PI * 2, "gold");
-// Orbit Attributes: (canvas, ctx, xPos, yPos, xRadius, yRadius, rotation, sAngle, eAngle, color)
+
+const orbit2Front = new Orbits(canvas, ctx, drawSpace.size.width, drawSpace.size.height, drawSpace.size.width *0.2, drawSpace.size.width * 0.02, 0, 0, Math.PI, "gold")
+const orbit2Back = new Orbits(canvas, ctx, drawSpace.size.width, drawSpace.size.height, drawSpace.size.width *0.2, drawSpace.size.width * 0.02, 0, Math.PI, Math.PI * 2, "gold");
+
+const orbit3Front = new Orbits(canvas, ctx, drawSpace.size.width, drawSpace.size.height, drawSpace.size.width *0.3, drawSpace.size.width * 0.03, -Math.PI/6, 0, Math.PI, "gold")
+const orbit3Back = new Orbits(canvas, ctx, drawSpace.size.width, drawSpace.size.height, drawSpace.size.width *0.3, drawSpace.size.width * 0.03, -Math.PI/6, Math.PI, Math.PI * 2, "gold");
+// Orbit Attributes: (canvas, ctx, xPos, yPos, xRadius, yRadius, rotation, sAngle, eAngle, color, orbitUsedX, orbitUsedY)
 
 const logo = new LogoStar(canvas, ctx, "images/Logo.png", drawSpace.size.width, drawSpace.size.height, 100, drawSpace.size.width * 0.2, drawSpace.size.width * 0.2, drawSpace.size.width * 0.1);
-const plane = new Planet(canvas, ctx, undefined, (drawSpace.size.width/2) /*- orbit1Front.radii.xRad*/, orbit1Front.position.y, 100, drawSpace.size.width * 0.2, drawSpace.size.width * 0.2, drawSpace.size.width * 0.05, 0.002)
-// planet Attributes: (canvas, ctx, image=undefined, xPos, yPos, zPos, imgWidth, imgHeight, radius
+
+const planet1 = new Planet(canvas, ctx, undefined, (drawSpace.size.width/2) /*- orbit1Front.radii.xRad*/, orbit1Front.position.y, 100, drawSpace.size.width * 0.2, drawSpace.size.width * 0.2, drawSpace.size.width * 0.05, 0.002, "orange", orbit1Front.radii.xRad, orbit1Front.radii.yRad, orbit1Front.rotation);
+const planet2 = new Planet(canvas, ctx, undefined, (drawSpace.size.width/2) /*- orbit2Front.radii.xRad*/, orbit3Front.position.y, 100, drawSpace.size.width * 0.2, drawSpace.size.width * 0.2, drawSpace.size.width * 0.03, 0.004, "green", orbit2Front.radii.xRad, orbit2Front.radii.yRad, orbit2Front.rotation);
+const planet3 = new Planet(canvas, ctx, undefined, (drawSpace.size.width/2) /*- orbit2Front.radii.xRad*/, orbit3Front.position.y, 100, drawSpace.size.width * 0.2, drawSpace.size.width * 0.2, drawSpace.size.width * 0.03, 0.003, "red", orbit3Front.radii.xRad, orbit3Front.radii.yRad, orbit3Front.rotation);
+//constructor(canvas, ctx, image=undefined, xPos, yPos, zPos, imgWidth, imgHeight, planetRadius, orbitSpeed, color, orbitUsedX, orbitUsedY, orbitAngle) {
 
 function onReload() {
     window.location.reload();
@@ -176,18 +177,24 @@ function onReload() {
 
 function animate() {
     drawSpace.resize();
+
     orbit1Back.draw();
+    orbit2Back.draw();
+    orbit3Back.draw();
+
     logo.update();
 
     orbit1Front.draw();
-    plane.update();
+    orbit2Front.draw();
+    orbit3Front.draw();
+
+    planet1.update();
+    planet2.update();
+    planet3.update();
 
     window.requestAnimationFrame(animate);
 
 }
-
-//const planetData = orbit1Front.ctx.getImageData(0, 0, canvas.width, canvas.height);
-//console.log(planetData);
 
 window.addEventListener("resize", drawSpace.resize);
 window.addEventListener("resize", onReload);
