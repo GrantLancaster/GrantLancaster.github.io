@@ -181,16 +181,16 @@ function animate() {
     orbit1Back.draw();
     orbit2Back.draw();
     orbit3Back.draw();
-
+    
     logo.update();
 
     orbit1Front.draw();
     orbit2Front.draw();
     orbit3Front.draw();
 
-    planet1.update();
-    planet2.update();
     planet3.update();
+    planet2.update();
+    planet1.update();
 
     window.requestAnimationFrame(animate);
 
@@ -198,5 +198,8 @@ function animate() {
 
 window.addEventListener("resize", drawSpace.resize);
 window.addEventListener("resize", onReload);
+window.addEventListener("click", (e) => {
+    console.log("I clicked the orange planet");
+})
 
 animate();
