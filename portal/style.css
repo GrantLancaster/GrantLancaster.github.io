@@ -1,0 +1,56 @@
+/*This marks the start of the Desktop styling of the main portal*/
+@media screen and (min-width: 1000px) {
+    body {
+        background-color: darkcyan;
+        display: flex;
+    }
+    p {
+        color: pink;
+    }
+    .box {
+        padding: 100px;
+        margin: 0 0 0 10%;
+        transition: all .2s ease-in-out;
+    }
+    #topleft {
+        border: 5px solid red;
+    }
+    #topleft:hover {
+        background-color: green;
+        transform: scale(1.5)
+    }
+    #topright {
+        border: 5px solid green;
+    }
+    #topright:hover {
+        transform: translate(50px, 100px);
+    }
+    #bottomleft {
+        border: 5px solid blue;
+    }
+    #bottomright {
+        border: 5px solid yellow;
+    }
+}
+/*This marks the strat of Mobile styling of the main portal*/
+@media screen and (max-width: 999px) {
+    body {
+        background-color: lightgreen;
+    }
+    .box {
+        padding: 100px;
+        margin: 10% 0 0 0;
+    }
+    #topleft {
+        border: 5px solid red;
+    }
+    #topright {
+        border: 5px solid green;
+    }
+    #bottomleft {
+        border: 5px solid blue;
+    }
+    #bottomright {
+        border: 5px solid yellow;
+    }
+}
