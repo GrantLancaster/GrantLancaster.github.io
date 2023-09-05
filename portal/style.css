@@ -3,6 +3,8 @@
     body {
         background-color: darkcyan;
         display: flex;
+        justify-content: center;
+        margin: 10% 0 0 0;
     }
     p {
         color: pink;
@@ -11,19 +13,22 @@
         padding: 100px;
         margin: 0 0 0 10%;
         transition: all .2s ease-in-out;
+        /*Clip path is the same as a layer mask in photoshop*/
+        clip-path: polygon(0% 100%, 50% 0%, 100% 50%, 100% 100%)
     }
     #topleft {
         border: 5px solid red;
     }
     #topleft:hover {
-        background-color: green;
-        transform: scale(1.5)
+        background-color: darkblue;
+        transform: scale(1.1)
     }
     #topright {
         border: 5px solid green;
     }
     #topright:hover {
-        transform: translate(50px, 100px);
+        background-color: darkblue;
+        transform: scale(1.1)
     }
     #bottomleft {
         border: 5px solid blue;
