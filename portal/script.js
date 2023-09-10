@@ -1,6 +1,7 @@
 class ParentBox {
   constructor(num) {
     this.num = num;
+    parentArray.push(this);
   }
 
   styleParent() {
@@ -28,8 +29,7 @@ class Module {
     this.border = border;
     this.num = number;
     this.fill = `${fill}`
-    array.push(this);
-
+    childArray.push(this);
   }
 
   style(color, backgroundColor, curve, padding, margin, fill) { 
@@ -53,7 +53,7 @@ class Module {
     newDiv.setAttribute("id", `objdiv ${this.num}`);
     document.body.appendChild(newDiv);
 
-    this.style(this.color, this.bgColor, "10px", "1%", "1%", this.fill);
+    this.style(this.color, this.bgColor, "10px", "0.5em", "1%", this.fill);
   }
 
   buildAsChild() { //Builds as a child of another <div>
@@ -65,22 +65,27 @@ class Module {
     newDiv.setAttribute("id", `objdiv ${this.num}`);
     parent.appendChild(newDiv);
 
-    this.style(this.color, this.bgColor, "10px", "1%", "1%", this.fill);
+    this.style(this.color, this.bgColor, "10px", "0.5em", "1%", this.fill);
   }
 }
 
-const array = [];
-const parent = new ParentBox(1);
-parent.buildParent();
-const mod = new Module(1, "Im a new div", "black", "5px solid black", 1, "white", 1);
-const mod2 = new Module(1, "I'm another new div", "black", "2px solid orange", 2, "white", 3);
-const mod3 = new Module(1, "I am gonna screen", "blue", "2px solid black", 3, "white", 4);
-mod.buildAsChild();
-mod2.buildAsChild();
-mod3.build();
-/*for (let i = 0; i < array.length; i++) {
-  array[i].build();
-}*/
+function trigger() {
+  const childArray = [];
+  const parentArray = [];
+  const parent = new ParentBox(1);
+  const mod = new Module(1, "Im a new div", "black", "5px solid black", 1, "white", 1);
+  const mod2 = new Module(1, "I'm another new div", "black", "2px solid orange", 2, "white", 3);
+  const mod3 = new Module(1, "I am gonna screen", "blue", "2px solid black", 3, "white", 4);
+
+  for (let i = 0; i < parentArray.length; i++) {
+    parentArray[i].buildParent();
+  }
+  for (let i = 0; i < childArray.length; i++) {
+    childArray[i].build();
+    //childArray[i].buildAsChild();
+  }
+}
+
 
 //document.body.onload = addElement;
 /*
