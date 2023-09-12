@@ -57,6 +57,10 @@ header {
 main {
     min-height: 100%;
 }
+a {
+    text-decoration: none;
+    width: 100%;
+}
 #parent {
     display: flex;
     column-gap: 1em;
@@ -68,6 +72,7 @@ article {
     background-color: #3D3E45;
     display: flex;
     align-items: flex-end;
+    height: 15em;
 }
 .bg {
     width: 100%;
@@ -78,27 +83,47 @@ article {
 }
 .oneQuarter {
     flex: 1;
-    height: 15em;
     border: 2px solid green;
     padding: 0;
 }
 .twoQuarter {
     flex: 2;
-    height: 15em;
     border: 2px solid orange;
     padding: 0;
 }
 .threeQuarter {
     flex: 3;
-    height: 15em;
     border: 2px solid blue;
     padding: 0;
 }
 .fourQuarter {
     flex: 4;
-    height: 15em;
     border: 2px solid purple;
     padding: 0;
+}
+#github {
+    background: url(./images/github-mark-white.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#project1 {
+    background: url(../img/A-FramePic1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#project2 {
+    background: url(../img/AudioVisualizerPic1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#finalProject {
+    background: url();
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 footer {
     position: sticky;
