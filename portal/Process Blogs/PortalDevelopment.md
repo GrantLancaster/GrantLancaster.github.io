@@ -9,6 +9,10 @@ Today was spent working an getting the layout to look the way I want it to. That
 ### Dev Log 9/5/23
 Scrapped the hexagon idea for the portal. it was too complex and led to some things that would have been very annoying to fix. It looked really cool, and ill keep it as a side project for later. I need this to actually be workable though. I probably could have made it work, but it would have taken too long. The new idea is based off of modules, and I want it to have a sort of dark theme, with maybe some star-esque background for the site.
 
+### Dev Log 9/2/23
+I have gotten the hexagons to work, and they have click/hover functionality. It looks really cool on desktop, and I was even able to add some simple animations to it. The words on the cells are not looking correct though. I was able to fix it by rotating them with a hexagons, and then coloring them the same color as un-interacted version of the shape. 
+I am running into some issues when it comes to the potential mobile version of the site. Getting the block elements to line up the way I want them is not really working out for me. They may just have to be a vertical line of things.
+
 ### Dev Log 8/31/23
 I have come up with a new idea for the build of the portal. I want it to look like cells almost. They will have hexagon shape, and when you click on them, they will take you to the new pages. I really like geometry so I think this will be cool. I'm not entirely sure how I am going to shape a div to look like a hexagon, but I can figure that part out with some google searching. I think this will be really cool, not sure how it will come together, but Ill try to get a build going and we'll see!
 
