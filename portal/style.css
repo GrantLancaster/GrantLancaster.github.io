@@ -56,6 +56,9 @@ p {
         background-color: #121420;
         margin: 0;
         height: 100vh;
+        animation-name: bgColor;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
     }
     header {
         position: sticky;
@@ -64,6 +67,15 @@ p {
         margin: 1em 1em 1.5em 1em;
         padding: 0.5em 1em 0.5em 1em;
         border-radius: 0.5em;
+        display: flex;
+        justify-content: center;
+        animation-name: moveInTop;
+        animation-duration: 1s;
+        gap: 2em;
+    }
+    img {
+        height: 3em;
+        width: auto;
     }
     main {
         min-height: 100%;
@@ -117,24 +129,36 @@ p {
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
+        animation-name: moveInRight;
+        animation-duration: 1s;
+    }
+    #processBlog {
+        animation-name: moveInLeft;
+        animation-duration: 1s;
     }
     #project1 {
-        background: url(../img/A-FramePic1.png);
+        background: url(./images/E_BOlkeVEAAJ_cE.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+        animation-name: moveInRight;
+        animation-duration: 1s;
     }
     #project2 {
         background: url(../img/AudioVisualizerPic1.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+        animation-name: moveInLeft;
+        animation-duration: 1s;
     }
     #finalProject {
-        background: url();
+        background: url(../img/AudioVisualizerPic2.png);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
+        animation-name: moveInBottom;
+        animation-duration: 1s;
     }
     footer {
         position: sticky;
@@ -144,6 +168,38 @@ p {
         padding: 0.5em 1em 0.5em 1em;
         border-radius: 0.5em;
         color:gainsboro;
+        animation-name: moveInBottom;
+        animation-duration: 1s;
+    }
+    #robot {
+        background-color: red;
+        position: static;
+        height: 2em;
+        width: 200px;
+        animation-name: moveIn;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+    }
+    @keyframes bgColor {
+        0% {background-color: #121420;}
+        50% {background-color: black;}
+        100% {background-color: #121420;}
+    }
+    @keyframes moveInRight {
+        0% {transform: translateX(-100vw)}
+        100% {transform: translateX(inherit)}
+    }
+    @keyframes moveInLeft {
+        0% {transform: translatex(100vw)}
+        100% {transform: translateX(inherit)}
+    }
+    @keyframes moveInTop {
+        0% {transform: translateY(-50vh)}
+        100% {transform: translateY(inherit)}
+    }
+    @keyframes moveInBottom {
+        0% {transform: translateY(100vh)}
+        100% {transform: translateY(inherit)}
     }
 }
 
