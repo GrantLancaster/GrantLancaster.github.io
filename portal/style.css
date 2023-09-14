@@ -164,6 +164,21 @@ p {
         animation-name: moveInBottom;
         animation-duration: 1s;
     }
+    #project3 {
+        background-position: center;
+        animation-name: moveInRight;
+        animation-duration: 1s;
+    }
+    #project4 {
+        background-position: center;
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+    }
+    #project5 {
+        background-position: center;
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+    }
     footer {
         position: sticky;
         bottom: 1em;
@@ -200,5 +215,77 @@ p {
 
 /*This is the start of the mobile portaion */
 @media screen and (max-width: 999px) {
-    
+    body {
+        background-color: #121420;
+        margin: 0;
+        height: 100vh;
+        animation-name: bgColor;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+    }
+    header {
+        position: sticky;
+        top: 1em;
+        background-color: #38384F;
+        margin: 1em 1em 1.5em 1em;
+        padding: 0.5em 1em 0.5em 1em;
+        border-radius: 0.5em;
+        display: flex;
+        justify-content: center;
+        animation-name: moveInTop;
+        animation-duration: 1s;
+        gap: 0.5em;
+    }
+    header h4 {
+        font-size: 2em;
+    }
+    img {
+        height: 2.5em;
+        width: auto;
+    }
+    main {
+        min-height: 100%;
+    }
+    a {
+        text-decoration: none;
+        width: 100%;
+    }
+    #parent {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        margin: 1em 10% 1em 10%;
+    }
+    article {
+        border-radius: 1em;
+        background-color: #3D3E45;
+        display: flex;
+        align-items: flex-end;
+        height: 15em;
+    }
+    article:hover {
+        transform: scale(1.05);
+        border: 5px solid #937337;
+    }
+    .bg {
+        width: 100%;
+        background-color: black;
+        margin: 0;
+        padding: 0.5em 0 0.5em 0;
+        border-radius: 0 0 0.75em 0.75em;
+    }
+    footer {
+        display: flex;
+        justify-content: center;
+        position: sticky;
+        bottom: 1em;
+        background-color: #38384F;
+        margin: 1.5em 1em 1em 1em;
+        padding: 0.5em 1em 0.5em 1em;
+        border-radius: 0.5em;
+        color:gainsboro;
+        animation-name: moveInBottom;
+        animation-duration: 1s;
+    }
+
 }
