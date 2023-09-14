@@ -97,6 +97,10 @@ p {
         align-items: flex-end;
         height: 15em;
     }
+    article:hover {
+        transform: scale(1.05);
+        border: 5px solid #937337;
+    }
     .bg {
         width: 100%;
         background-color: black;
@@ -170,15 +174,6 @@ p {
         color:gainsboro;
         animation-name: moveInBottom;
         animation-duration: 1s;
-    }
-    #robot {
-        background-color: red;
-        position: static;
-        height: 2em;
-        width: 200px;
-        animation-name: moveIn;
-        animation-duration: 4s;
-        animation-iteration-count: infinite;
     }
     @keyframes bgColor {
         0% {background-color: #121420;}
