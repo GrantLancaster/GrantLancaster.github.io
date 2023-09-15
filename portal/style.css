@@ -57,7 +57,7 @@ p {
         margin: 0;
         height: 100vh;
         animation-name: bgColor;
-        animation-duration: 10s;
+        animation-duration: 20s;
         animation-iteration-count: infinite;
     }
     header {
@@ -183,6 +183,7 @@ p {
         animation-duration: 1s;
     }
     footer {
+        display: flex;
         position: sticky;
         bottom: 1em;
         background-color: #38384F;
