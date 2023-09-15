@@ -1,5 +1,8 @@
 # Portal Development Log
 
+### Dev Log 9/14/23
+Started working on the mobile portion of the site. Simple changes needed to be made to fit all the modules into their respective places. The flex had to be shifted in order to fit everything into a cohesive column, but overall, the CSS was pretty close to a copy and paste.
+
 ### Dev Log 9/12/23
 The main focus today was to get all div blocks to have an image background that actively resizes with the page. The current images are just placeholder, and will updated as I have pictures of the projects that the modules link to. I also started adding some links to the modules, that will take you to various places. The only workng link at the moment takes you to my github repo for my live site. Some smaller details and visual stuff was changed as I no longer needed those attributes in 'development mode' and can solidify them into the build. I changed some border colors, as well as the heading and footers to be more cohesive with the rest of the build.
 

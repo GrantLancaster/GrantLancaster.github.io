@@ -99,7 +99,7 @@ p {
     }
     article:hover {
         transform: scale(1.05);
-        border: 5px solid #937337;
+        border: 5px solid #00E8FF;
     }
     .bg {
         width: 100%;
@@ -140,7 +140,7 @@ p {
         animation-name: moveInLeft;
         animation-duration: 1s;
     }
-    #project1 {
+    #assignments {
         background: url(./images/E_BOlkeVEAAJ_cE.png);
         background-size: cover;
         background-repeat: no-repeat;
@@ -148,17 +148,25 @@ p {
         animation-name: moveInRight;
         animation-duration: 1s;
     }
-    #project2 {
-        background: url(../img/AudioVisualizerPic1.png);
+    #project1 {
+        background: url(./images/E_BOlkeVEAAJ_cE.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         animation-name: moveInLeft;
         animation-duration: 1s;
     }
+    #project2 {
+        background: url(../img/AudioVisualizerPic1.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        animation-name: moveInRight;
+        animation-duration: 1s;
+    }
     #finalProject {
         background: url(../img/AudioVisualizerPic2.png);
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         animation-name: moveInBottom;
@@ -166,15 +174,10 @@ p {
     }
     #project3 {
         background-position: center;
-        animation-name: moveInRight;
-        animation-duration: 1s;
-    }
-    #project4 {
-        background-position: center;
         animation-name: moveInLeft;
         animation-duration: 1s;
     }
-    #project5 {
+    #project4 {
         background-position: center;
         animation-name: moveInLeft;
         animation-duration: 1s;
@@ -191,9 +194,14 @@ p {
         animation-duration: 1s;
     }
     @keyframes bgColor {
-        0% {background-color: #121420;}
-        50% {background-color: black;}
-        100% {background-color: #121420;}
+        0% {background-color: #193f4a;}
+        50% {background-color: #030504;}
+        100% {background-color: #193f4a;}
+    }
+    @keyframes lighting {
+        0% {border: 5px solid #2f8ca3}
+        50% {border: 5px solid #00E8FF}
+        100% {border: 5px solid #2f8ca3}
     }
     @keyframes moveInRight {
         0% {transform: translateX(-100vw)}
@@ -262,10 +270,14 @@ p {
         display: flex;
         align-items: flex-end;
         height: 15em;
+        border: 0.25em solid #2D2D30;
     }
     article:hover {
         transform: scale(1.05);
-        border: 5px solid #937337;
+        animation-name: lighting;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+
     }
     .bg {
         width: 100%;
@@ -274,9 +286,46 @@ p {
         padding: 0.5em 0 0.5em 0;
         border-radius: 0 0 0.75em 0.75em;
     }
+    #github {
+        background: url(./images/github-mark-white.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #processBlog {
+        /*Might need some stuff here*/
+        background-position: center;
+    }
+    #project1 {
+        background: url(./images/E_BOlkeVEAAJ_cE.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+    }
+    #project2 {
+        background: url(../img/AudioVisualizerPic1.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+    }
+    #finalProject {
+        background: url(../img/AudioVisualizerPic2.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+    }
+    #project3 {
+        background-position: center;
+
+    }
+    #project4 {
+        background-position: center;
+
+    }
     footer {
-        display: flex;
-        justify-content: center;
         position: sticky;
         bottom: 1em;
         background-color: #38384F;
@@ -286,6 +335,16 @@ p {
         color:gainsboro;
         animation-name: moveInBottom;
         animation-duration: 1s;
+    }
+    @keyframes bgColor {
+        0% {background-color: #193f4a;}
+        50% {background-color: #030504;}
+        100% {background-color: #193f4a;}
+    }
+    @keyframes lighting {
+        0% {border: 5px solid #2f8ca3}
+        50% {border: 5px solid #00E8FF}
+        100% {border: 5px solid #2f8ca3}
     }
 
 }
