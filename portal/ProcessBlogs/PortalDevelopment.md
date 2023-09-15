@@ -1,5 +1,8 @@
 # Portal Development Log
 
+### Dev log 9/15/23
+Some smaller changes today. Added a module that will take you to my weekly assignments from ATLS 2200, so that I can find them easily when I need them in recitation. Some other small edits are just adding some background pictures to some of the modules so it's not just a bunch of empty boxes.
+
 ### Dev Log 9/14/23
 Started working on the mobile portion of the site. Simple changes needed to be made to fit all the modules into their respective places. The flex had to be shifted in order to fit everything into a cohesive column, but overall, the CSS was pretty close to a copy and paste.
 

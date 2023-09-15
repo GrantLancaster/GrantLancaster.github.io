@@ -129,7 +129,7 @@ p {
         padding: 0;
     }
     #github {
-        background: url(./images/github-mark-white.svg);
+        background: url(../images/github-mark-white.svg);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -141,15 +141,26 @@ p {
         animation-duration: 1s;
     }
     #assignments {
-        background: url(./images/E_BOlkeVEAAJ_cE.png);
+        background: url(../images/E_BOlkeVEAAJ_cE.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         animation-name: moveInRight;
         animation-duration: 1s;
     }
+    #wa2 {
+        background: url(../images/wa2.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #wa3 {
+        background: url(../images/wa3.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
     #project1 {
-        background: url(./images/E_BOlkeVEAAJ_cE.png);
+        background: url(../images/E_BOlkeVEAAJ_cE.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -157,19 +168,11 @@ p {
         animation-duration: 1s;
     }
     #project2 {
-        background: url(../img/AudioVisualizerPic1.png);
+        background: url(../../img/AudioVisualizerPic1.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         animation-name: moveInRight;
-        animation-duration: 1s;
-    }
-    #finalProject {
-        background: url(../img/AudioVisualizerPic2.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        animation-name: moveInBottom;
         animation-duration: 1s;
     }
     #project3 {
@@ -178,8 +181,19 @@ p {
         animation-duration: 1s;
     }
     #project4 {
+        background: url(../images/jackson-sophat-_t-l5FFH8VA-unsplash.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
         background-position: center;
         animation-name: moveInLeft;
+        animation-duration: 1s;
+    }
+    #finalProject {
+        background: url(../../img/AudioVisualizerPic2.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        animation-name: moveInBottom;
         animation-duration: 1s;
     }
     footer {
