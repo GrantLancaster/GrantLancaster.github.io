@@ -159,6 +159,12 @@ p {
         background-size: cover;
         background-repeat: no-repeat;
     }
+    #assignment1 {
+        background: url(../images/assignment1SS.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
     #project1 {
         background: url(../images/E_BOlkeVEAAJ_cE.png);
         background-size: cover;
@@ -209,9 +215,9 @@ p {
         animation-duration: 1s;
     }
     @keyframes bgColor {
-        0% {background-color: #193f4a;}
-        50% {background-color: #030504;}
-        100% {background-color: #193f4a;}
+        0% {background-color: #030504;}
+        50% {background-color: #193f4a;}
+        100% {background-color: #030504;}
     }
     @keyframes lighting {
         0% {border: 5px solid #2f8ca3}
