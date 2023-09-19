@@ -45,7 +45,7 @@ body {
     float: right;
   }
 
-  /*Things I added*/
+  /*---------------Things I added----------------*/
   h2, p { /* Use commas to seperate multiple targets*/
     margin: 0;
   }
@@ -65,3 +65,37 @@ body {
     font-size: 1.5em;
     line-height: 1.5em
   }
+/*-----------------SECOND CARD------------------------*/
+.card2 {
+  font-family:Impact, 'Arial Narrow Bold', sans-serif;
+  width: 35em;
+  height: 22em;
+  margin: 5em auto;
+  background-color: #CF9314;
+  border: 0.2em solid #765715;
+  border-radius: 1.5em;
+}
+
+.card2 header{
+  background-image: linear-gradient(to bottom,rgba(0,0,0,0.1), rgba(0,0,0,0));
+  border-radius: 1.5em 1.5em 0 0;
+  /*Things I added*/
+  height: 3em;
+  padding: 1em;
+}
+
+.card2 footer{
+  background-image: linear-gradient(to bottom,rgba(0,0,0,0), rgba(0,0,0,0.1));
+  border-radius: 0 0 1.5em 1.5em;
+  /*Things I added*/
+  height: 3em;
+  padding: 1em;
+}
+
+.card2 article img{
+  max-height: 100%; /* Missing ; here*/
+  float: right;
+}
+.card2 p {
+  color: black;
+}
