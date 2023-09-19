@@ -1,5 +1,15 @@
 # Portal Development Log
 
+https://grantishdesigns.me/portal/ 
+
+### Credit for Images:
+"under Construction" image: Photo by Fernando Arcos from Pexels: https://www.pexels.com/photo/under-construction-signage-on-laptop-keyboard-211122/
+Github logo is property of github and was retrieved from the following page: https://github.com/logos 
+
+
+### Dev log 9/18/23
+Today was finishing up the final changes to the portal. The functionality that I need is there, and the links to pages are working. I will update the modules as they become available. For now, they have an "under construction" sign on them, so people know that they are not working. I figured it would be easier thia way.
+
 ### Dev log 9/15/23
 Some smaller changes today. Added a module that will take you to my weekly assignments from ATLS 2200, so that I can find them easily when I need them in recitation. Some other small edits are just adding some background pictures to some of the modules so it's not just a bunch of empty boxes.
 

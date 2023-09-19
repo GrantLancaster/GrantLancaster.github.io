@@ -70,7 +70,7 @@ p {
         display: flex;
         justify-content: center;
         animation-name: moveInTop;
-        animation-duration: 1s;
+        animation-duration: 0.5s;
         gap: 2em;
     }
     img {
@@ -134,11 +134,11 @@ p {
         background-repeat: no-repeat;
         background-position: center;
         animation-name: moveInRight;
-        animation-duration: 1s;
+        animation-duration: 0.5s;
     }
     #processBlog {
         animation-name: moveInLeft;
-        animation-duration: 1s;
+        animation-duration: 0.5s;
     }
     #assignments {
         background: url(../images/E_BOlkeVEAAJ_cE.png);
@@ -146,7 +146,7 @@ p {
         background-repeat: no-repeat;
         background-position: center;
         animation-name: moveInRight;
-        animation-duration: 1s;
+        animation-duration: 0.5s;
     }
     #wa2 {
         background: url(../images/wa2.png);
@@ -164,6 +164,8 @@ p {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+        animation-name: moveInRight;
+        animation-duration: 0.5s;
     }
     #project1 {
         background: url(../images/E_BOlkeVEAAJ_cE.png);
@@ -171,7 +173,7 @@ p {
         background-repeat: no-repeat;
         background-position: center;
         animation-name: moveInLeft;
-        animation-duration: 1s;
+        animation-duration: 0.5s;
     }
     #project2 {
         background: url(../../img/AudioVisualizerPic1.png);
@@ -179,12 +181,12 @@ p {
         background-repeat: no-repeat;
         background-position: center;
         animation-name: moveInRight;
-        animation-duration: 1s;
+        animation-duration: 0.5s;
     }
     #project3 {
         background-position: center;
         animation-name: moveInLeft;
-        animation-duration: 1s;
+        animation-duration: 0.5s;
     }
     #project4 {
         background: url(../images/jackson-sophat-_t-l5FFH8VA-unsplash.jpg);
@@ -192,7 +194,7 @@ p {
         background-repeat: no-repeat;
         background-position: center;
         animation-name: moveInLeft;
-        animation-duration: 1s;
+        animation-duration: 0.5s;
     }
     #finalProject {
         background: url(../../img/AudioVisualizerPic2.png);
@@ -200,7 +202,7 @@ p {
         background-repeat: no-repeat;
         background-position: center;
         animation-name: moveInBottom;
-        animation-duration: 1s;
+        animation-duration: 0.5s;
     }
     footer {
         display: flex;
@@ -212,7 +214,15 @@ p {
         border-radius: 0.5em;
         color:gainsboro;
         animation-name: moveInBottom;
-        animation-duration: 1s;
+        animation-duration: 0.5s;
+    }
+    #outOfOrder {
+        background: url("../images/pexels-fernando-arcos-211122.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        animation-name: moveInBottom;
+        animation-duration: 0.5s;
     }
     @keyframes bgColor {
         0% {background-color: #030504;}
@@ -308,7 +318,7 @@ p {
         border-radius: 0 0 0.75em 0.75em;
     }
     #github {
-        background: url(./images/github-mark-white.svg);
+        background: url(../images/github-mark-white.svg);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -316,9 +326,23 @@ p {
     #processBlog {
         /*Might need some stuff here*/
         background-position: center;
+    }/*-------------------------------------------------*/
+    #assignments {
+        background: url(../images/E_BOlkeVEAAJ_cE.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        animation-name: moveInRight;
+        animation-duration: 0.5s;
     }
+    #assignment1 {
+        background: url(../images/assignment1SS.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }/*-------------------------------------------------*/
     #project1 {
-        background: url(./images/E_BOlkeVEAAJ_cE.png);
+        background: url(../images/E_BOlkeVEAAJ_cE.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -331,20 +355,32 @@ p {
         background-position: center;
 
     }
-    #finalProject {
-        background: url(../img/AudioVisualizerPic2.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-
-    }
     #project3 {
         background-position: center;
 
     }
     #project4 {
+        background: url(../images/jackson-sophat-_t-l5FFH8VA-unsplash.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
         background-position: center;
-
+    }
+    #finalProject {
+        background: url(../img/AudioVisualizerPic2.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    } /*-------------------------------------------------*/
+    #wa2 {
+        background: url(../images/wa2.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #wa3 {
+        background: url(../images/wa3.png);
+        background-size: cover;
+        background-repeat: no-repeat;
     }
     footer {
         position: sticky;
@@ -356,6 +392,12 @@ p {
         color:gainsboro;
         animation-name: moveInBottom;
         animation-duration: 1s;
+    }
+    #outOfOrder {
+        background: url("../images/pexels-fernando-arcos-211122.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
     }
     @keyframes bgColor {
         0% {background-color: #193f4a;}
