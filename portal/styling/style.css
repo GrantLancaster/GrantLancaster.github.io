@@ -159,6 +159,12 @@ p {
         background-size: cover;
         background-repeat: no-repeat;
     }
+    #wa4 {
+        background: url(../images/wa4.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
     #assignment1 {
         background: url(../images/assignment1SS.png);
         background-size: cover;
@@ -381,6 +387,12 @@ p {
         background: url(../images/wa3.png);
         background-size: cover;
         background-repeat: no-repeat;
+    }
+    #wa4 {
+        background: url(../images/wa4.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: right;
     }
     footer {
         position: sticky;
