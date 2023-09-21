@@ -212,15 +212,20 @@ p {
     }
     footer {
         display: flex;
+        align-items: center;
+        justify-content: center;
         position: sticky;
         bottom: 1em;
         background-color: #38384F;
         margin: 1.5em 1em 1em 1em;
         padding: 0.5em 1em 0.5em 1em;
         border-radius: 0.5em;
-        color:gainsboro;
         animation-name: moveInBottom;
         animation-duration: 0.5s;
+    }
+    footer a {
+        text-decoration: none;
+        color: gainsboro;
     }
     #outOfOrder {
         background: url("../images/pexels-fernando-arcos-211122.jpg");
@@ -395,15 +400,20 @@ p {
         background-position: right;
     }
     footer {
+        display: flex;
+        justify-content: center;
         position: sticky;
         bottom: 1em;
         background-color: #38384F;
         margin: 1.5em 1em 1em 1em;
         padding: 0.5em 1em 0.5em 1em;
         border-radius: 0.5em;
-        color:gainsboro;
         animation-name: moveInBottom;
         animation-duration: 1s;
+    }
+    footer a {
+        text-decoration: none;
+        color: gainsboro;
     }
     #outOfOrder {
         background: url("../images/pexels-fernando-arcos-211122.jpg");
@@ -421,5 +431,4 @@ p {
         50% {border: 5px solid #00E8FF}
         100% {border: 5px solid #2f8ca3}
     }
-
 }

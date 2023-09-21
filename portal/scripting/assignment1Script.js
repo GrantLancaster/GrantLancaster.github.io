@@ -2,6 +2,7 @@ const lightMode = document.getElementById("light");
 const darkMode = document.getElementById("dark");
 const content = document.getElementById("content");
 const main = document.querySelector("main");
+const coords = document.getElementById("coords");
 let stop = 1
 
 function changeLight() {
@@ -33,7 +34,16 @@ function buildTunnel() {
   }
   spin(array);
 }
+/* Coord Capture was adapted from this link:
+https://codingbeautydev.com/blog/javascript-get-mouse-position/#:~:text=To%20get%20the%20current%20position,coordinates%20of%20the%20mouse%20respectively.
+*/
+function coordCapture(e) {
+  let mousePosX = e.clientX;
+  let mousePosY = e.clientY;
+  coords.textContent = `${mousePosX}px, ${mousePosY}px`;
+}
 
 lightMode.addEventListener("click", changeLight);
 darkMode.addEventListener("click", changeDark);
 content.addEventListener("click", buildTunnel);
+window.addEventListener("mousemove",coordCapture);
