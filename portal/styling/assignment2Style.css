@@ -72,3 +72,17 @@ a:hover {
     border-radius: 2em;
     border: 5px solid #00E8FF;
 }
+#spinBody {
+    animation-name: spin;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    text-align: center;
+    height: 15em;
+    width: 15em;
+}
+@keyframes spin {
+    0% {transform: rotate(0deg);}
+    50% {transform: rotate(360deg);}
+    100% {transform: rotate(0deg);}
+}
