@@ -1,3 +1,74 @@
+h1 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 72pt;
+}
+h2 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 700;
+    font-style: normal; 
+    font-size: 56pt;
+}
+h3 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 40pt;
+}
+h4 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30pt;
+    margin: 0;
+    color: gainsboro;
+}
+h5 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 24pt;
+    margin: 0; /*You may need this margin on all of them */
+    color: gainsboro;
+    padding-left: 0.5em;
+}
+h6 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 16pt;
+    margin: 0; /*You may need this margin on all of them */
+    color: gainsboro;
+    padding-left: 0.5em;
+}
+p {
+    font-family: "calibri", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16pt;
+    color: white;
+}
 body {
     background-color: #414141;
+    margin: 3em;
+}
+h6 a {
+    text-decoration: none;
+    color: gainsboro;
+}
+a:hover {
+    color: #00E8FF;
+}
+#contentBox {
+    position: fixed;
+    bottom: 3em;
+    right: 3em;
+    Display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 2em;
+    background-color: #424242;
+    border-radius: 2em;
+    border: 5px solid #00E8FF;
 }
