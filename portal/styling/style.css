@@ -173,6 +173,14 @@ p {
         animation-name: moveInRight;
         animation-duration: 0.5s;
     }
+    #assignment2 {
+        background: url(../images/Assignment2SS.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: left;
+        animation-name: moveInRight;
+        animation-duration: 0.5s;;
+    }
     #project1 {
         background: url(../images/E_BOlkeVEAAJ_cE.png);
         background-size: cover;
@@ -356,7 +364,7 @@ p {
         background: url(../images/Assignment2SS.png);
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: left;
     }
     /*-------------------------------------------------*/
     #project1 {
