@@ -6,11 +6,11 @@ function quiz() {
     ];
     const answers = [1, 82, 0];
   
-    const score = 0;
+    let score = 0;
   
-    let num = Math.floor(Math.random() * 1);
+    let num = Math.floor(Math.random() * 3);
   
-    for (let i = 0; i <= questions.count; i++) {
+    for (let i = 0; i < questions.length; i++) {
       const question = questions[num];
       let answer = prompt(question);
       if (answer == answers[num]) {

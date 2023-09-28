@@ -39,3 +39,32 @@ body {
     font-size: 1.8rem;
     font-weight: 700;
   }
+  /*I added the following code for the footer content box*/
+  h6 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 16pt;
+    margin: 0; /*You may need this margin on all of them */
+    color: gainsboro;
+    padding-left: 0.5em;
+  }
+  h6 a {
+    text-decoration: none;
+    color: gainsboro;
+  }
+  a:hover {
+    color: #00E8FF;
+  }
+  #contentBox {
+    position: fixed;
+    bottom: 3em;
+    right: 3em;
+    Display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 2em;
+    background-color: #424242;
+    border-radius: 2em;
+    border: 5px solid #00E8FF;
+  }
