@@ -165,6 +165,12 @@ p {
         background-repeat: no-repeat;
         background-position: center;
     }
+    #wa6 {
+        background: url(../images/wa6.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
     #assignment1 {
         background: url(../images/assignment1SS.png);
         background-size: cover;
@@ -427,6 +433,12 @@ p {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: right;
+    }
+    #wa6 {
+        background: url(../images/wa6.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
     }
     footer {
         display: flex;
