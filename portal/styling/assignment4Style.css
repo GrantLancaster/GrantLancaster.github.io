@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: gainsboro;
+}
+.boxStyle {
+    border: 5px solid orange;
+    background-color: lightsalmon;
+    border-radius: 3rem;
+    padding: 4rem;
+    margin: 10% 0 0 0;
+}
+#quoteBox {
+    color: white;
+}
+#buttonContainer {
+    position: fixed;
+    bottom: 5%;
+}
+button {
+    padding: 0.5rem;
+    border: 2px solid orange;
+}
+button:hover {
+    background-color: orange;
+    border: 2px solid salmon;
+}
