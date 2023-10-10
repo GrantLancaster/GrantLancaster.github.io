@@ -1,0 +1,20 @@
+# Project 1: Impossible Cube/Non-euclidian geometry exploration
+
+## Proposal
+This project will be an exploration/presentation of non-euclidian geometry, specifically focusing on an 'impossible cube'. The imposible cube is an open sided cube that shows something different on the inside when looking through the different faces of the cube. My inspiration for this revolves around non-euclidian geomtries and how they seem to break what we see as reality. An example of non-euclidian space would be sphereical space, which, if we were to draw a straight vector in our euclidian space, would end up forming a circle in sphereical space. Think of standing on top of a mountain and looking out to the horizon. In the real world, our sight line ends, but in sphereical space, our sightline would go around the earth and we would see the back of our own heads (provided that there is nothing to obstruct our vision). This is inteded to be a method of exposing people to these other weird ways of seeing the world, so the audience would be whomever walks by (think of an installation kind of thing). Noting this, the program needs to be user friendly and intuitve to use. 
+
+The whole process that this program will be using is the Three.js library, which allows one to render 3D-objects in a web browser, as well as manipulate things like shaders. Outside of some simple html and CSS, this whole project will be done using Three.js and some shaderlab. I have not used Three.js before so the documentation will be quite necessary. 
+
+https://threejs.org/docs/#manual/en/introduction/Installation 
+https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene 
+
+Adapting this program to different screen sizes will take some exploring on how I want to do it exactly, but my initial thought about it is by changing the camera view angle. As the screen gets smaller, less of the backrgound will be visible. The cube will be kept center of the screen as it is most important, and how much the camera sees will have to be altered. This could be done just by changing the FoV of the camera, but That may create some unwanted tunneling.
+
+##### Design Prototype
+[insert link here]
+
+### Goals:
+1. I have a function, but very simple version of the cube that runs in the Unity engine. I hoping that I can use some of that and carry it over into Three.js. Still confirming what Three.js uses for it's shaders, but if it is shaderlab compatible, than the stencil buffer should be pretty managable.
+2. The minimum viable project will have control functionality using touch on mobile screens, and the mouse on full-size computers. Each of the sides of the square will have some non-simple objects that can be seen through each of the sides. These objects will have some sort of interaction that can occur from the user, but nothing elaborate for the MVP
+3. Stretch goals for this include changing the background of the scene depending on the side of the square that is being looked through. Making the interactions on each of the objects more ellaborte, as well and connecting the interactions to other sides. Almost in a puzzle sense, having something that people cna try and figure out. Creating sounds and/or background music is another stretch goal that would come after all the necessary functionality is in place.
+
