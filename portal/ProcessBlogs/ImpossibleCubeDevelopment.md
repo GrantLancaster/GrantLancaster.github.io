@@ -8,6 +8,9 @@ The whole process that this program will be using is the Three.js library, which
 https://threejs.org/docs/#manual/en/introduction/Installation 
 https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene 
 
+Stencil Renderer: https://threejs.org/docs/#api/en/renderers/WebGLRenderer.stencil
+Stencil Example w/ code: https://threejs.org/examples/?q=stencil#webgl_clipping_stencil 
+
 Adapting this program to different screen sizes will take some exploring on how I want to do it exactly, but my initial thought about it is by changing the camera view angle. As the screen gets smaller, less of the backrgound will be visible. The cube will be kept center of the screen as it is most important, and how much the camera sees will have to be altered. This could be done just by changing the FoV of the camera, but That may create some unwanted tunneling.
 
 ##### Design Prototype
