@@ -171,6 +171,12 @@ p {
         background-repeat: no-repeat;
         background-position: center;
     }
+    #wa7 {
+        background: url(../images/wa7.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
     #assignment1 {
         background: url(../images/assignment1SS.png);
         background-size: cover;
@@ -450,6 +456,12 @@ p {
     }
     #wa6 {
         background: url(../images/wa6.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #wa7 {
+        background: url(../images/wa7.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
