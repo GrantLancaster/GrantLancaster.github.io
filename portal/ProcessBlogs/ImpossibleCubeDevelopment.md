@@ -26,4 +26,5 @@ I have gotten the code to render a custom 3D model, as well as give me orbit con
 Loading the 3D model: https://threejs.org/docs/#examples/en/loaders/GLTFLoader , https://threejs.org/docs/index.html#manual/en/introduction/Loading-3D-models , https://github.com/mrdoob/three.js/blob/master/examples/webgl_loader_gltf.html
 Finding/using pre-installed addons: https://threejs.org/docs/#manual/en/introduction/Installation
 Orbit Controls: https://threejs.org/docs/#examples/en/controls/OrbitControls , https://github.com/mrdoob/three.js/blob/master/examples/misc_controls_orbit.html
-
+Free 3D Modeling Software: https://web.blockbench.net/ 
+Vite glsl pluggin: https://www.npmjs.com/package/vite-plugin-glsl 
