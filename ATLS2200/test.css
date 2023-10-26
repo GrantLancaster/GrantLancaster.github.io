@@ -1,0 +1,38 @@
+
+/*
+So I figured out how to do this. We just had a few things flip flopped.
+*/
+body {
+    /*For the body, some things need to be moved.
+    -The body should have the z-index rule
+    -The top, bottom, left, right should also be on the body, not the background (lines 14-17).
+    -position of 'absolute' is correct. */
+    background-color: tan;
+    margin: 0; /*This is optional. Just removes some of the space around the image*/
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#background {
+    /* 
+    Make sure your width and height are set to fill the whole screen (lines 27,28).
+    - Posisiton of absolute on the background as well.
+    */
+    background: url(../img/A-FramePic2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw; /*Fill the whole width*/
+    height: 100vh; /*Fill the whole height*/
+    margin: 0;
+    opacity: 0.25; /*Change this to your desired opacity and look*/
+    position: absolute;
+}
+
+/*Ignore the stuff bellow this*/
+
+p {
+    margin: 25px;
+}
