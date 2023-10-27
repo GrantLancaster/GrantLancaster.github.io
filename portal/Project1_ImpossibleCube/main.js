@@ -9,8 +9,11 @@ const renderer = new THREE.WebGLRenderer();
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
+
 camera.position.z = 10;
 /*-----------------------------------------*/
+
+
 
 /*------------- Import Loader -------------*/
 const loader = new GLTFLoader();
@@ -19,59 +22,68 @@ loader.load('models/LargerCube.gltf', process);
 loader.load('models/test.gltf', process);
 /*-----------------------------------------*/
 
-/*------------ Materials Setup ------------*/
-const color = 0xFFFFFF;
-const intensity = 3;
-const light = new THREE.DirectionalLight(color, intensity);
 
+
+/*------------ Materials Setup ------------*/
 const material2 = new THREE.MeshBasicMaterial({color: 0xFFFFFF, side: THREE.DoubleSide});
 const material3 = new THREE.MeshBasicMaterial({color: 0x00AEFF, side: THREE.DoubleSide});
 /*-----------------------------------------*/
+
+
+
+/*------------- Light Setup ---------------*/
+const color = 0xFFFFFF;
+const intensity = 3;
+const light = new THREE.DirectionalLight(color, intensity);
+/*-----------------------------------------*/
+
+
 
 /*----------- Geometries Setup ------------*/
 const Plane = new THREE.PlaneGeometry(6, 6);
 const SphereGeo = new THREE.SphereGeometry(0.1);
 /*-----------------------------------------*/
 
+
+
 /*------ Mesh Initialization Setup --------*/
 const Sphere = new THREE.Mesh(SphereGeo, material2);
 const newPlane = new THREE.Mesh(Plane, material3);
 
-const model = new THREE.Object3D();
-const smallCube = new THREE.Object3D();
-
-let models = [model, smallCube];
+let bigCube = new THREE.Object3D();
+let lilCube = new THREE.Object3D();
+let models = [bigCube, lilCube];
 /*-----------------------------------------*/
+
+
 
 /*------------ Orbit Controls -------------*/
 const controls = new OrbitControls( camera, renderer.domElement );
-controls.addEventListener('change', render);
-	controls.update();
+controls.update();
 /*-----------------------------------------*/
-
-light.position.set(1, 2, 4);
-newPlane.position.set(0, 0, -3);
 
 
 function render() {
 	renderer.render(scene, camera);
+	models[1].rotation.y += 0.01;
+	requestAnimationFrame(render);
 }
 
-function animate() {
+function setup() {
 	scene.add(light);
 	scene.add(Sphere);
 	scene.add(newPlane);
-	renderer.render(scene, camera);
+
+	light.position.set(1, 2, 4);
+	newPlane.position.set(0, 0, -3);
+	console.log(models);
+	render();
 }
 
 function process(gltf) {
-	for (let i = 0; i < models.length; i++) {
-		gltf.scene.position.set(0, -3, 0);
-		gltf.scene.scale.set(2, 2, 2);
-		models[i].add(gltf.scene);
-		scene.add(models[i]);
-	}
-	renderer.render(scene, camera);
-
+	let newModel;
+	newModel = gltf.scene;
+	models.push(newModel);
+	scene.add(newModel);
 }
-animate();
+setup();
