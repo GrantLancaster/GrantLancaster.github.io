@@ -19,7 +19,7 @@ camera.position.z = 10;
 const loader = new GLTFLoader();
 
 loader.load('models/LargerCube.gltf', process);
-loader.load('models/test.gltf', process);
+//loader.load('models/test.gltf', process);
 /*-----------------------------------------*/
 
 
@@ -40,50 +40,75 @@ const light = new THREE.DirectionalLight(color, intensity);
 
 
 /*----------- Geometries Setup ------------*/
-const Plane = new THREE.PlaneGeometry(6, 6);
-const SphereGeo = new THREE.SphereGeometry(0.1);
+const planeWidth = 3;
+const planeHeight = 3;
+const depth = 3;
+const Plane = new THREE.PlaneGeometry(planeWidth, planeHeight);
 /*-----------------------------------------*/
 
 
 
 /*------ Mesh Initialization Setup --------*/
-const Sphere = new THREE.Mesh(SphereGeo, material2);
-const newPlane = new THREE.Mesh(Plane, material3);
+const backPlane = new THREE.Mesh(Plane, material3);
+const frontPlane = new THREE.Mesh(Plane, material3);
+const leftPlane = new THREE.Mesh(Plane, material3);
+const rightPlane = new THREE.Mesh(Plane, material3);
+const topPlane = new THREE.Mesh(Plane, material3);
+const bottomPlane = new THREE.Mesh(Plane, material3);
 
-let bigCube = new THREE.Object3D();
-let lilCube = new THREE.Object3D();
-let models = [bigCube, lilCube];
+let impossibleCube = new THREE.Object3D();
 /*-----------------------------------------*/
 
 
 
 /*------------ Orbit Controls -------------*/
-const controls = new OrbitControls( camera, renderer.domElement );
+const controls = new OrbitControls(camera, renderer.domElement);
 controls.update();
 /*-----------------------------------------*/
 
 
 function render() {
 	renderer.render(scene, camera);
-	models[1].rotation.y += 0.01;
+	impossibleCube.rotateY(0.01);
+	//impossibleCube.updateMatrixWorld(); This will update the tranform, scale, and rotate matrix for the object
 	requestAnimationFrame(render);
 }
 
 function setup() {
+	/*
+	All the initial setup for the scene should go here. Things like lights, static geometries,
+	stencil planes, and helpers that are initialized, etc.
+	*/
+	impossibleCube.add(backPlane, frontPlane, leftPlane, rightPlane, topPlane, bottomPlane);
+
 	scene.add(light);
-	scene.add(Sphere);
-	scene.add(newPlane);
+	scene.add(impossibleCube);
 
 	light.position.set(1, 2, 4);
-	newPlane.position.set(0, 0, -3);
-	console.log(models);
+	impossibleCube.scale.set(2, 2, 2);
+
+//Plane positions--------------------
+	backPlane.position.set(0, 0, -depth/2);
+	frontPlane.position.set(0, 0, depth/2.1);
+	leftPlane.position.set(-depth/2.1, 0, 0);
+	rightPlane.position.set(depth/2.1, 0, 0);
+	topPlane.position.set(0, depth/2, 0);
+	bottomPlane.position.set(0, -depth/2.1, 0);
+//Plane rotations---------------------
+	leftPlane.rotation.y = Math.PI / 2;
+	rightPlane.rotation.y = Math.PI / 2;
+	topPlane.rotation.x = Math.PI / 2;
+	bottomPlane.rotation.x = Math.PI / 2;
+
 	render();
 }
 
 function process(gltf) {
-	let newModel;
-	newModel = gltf.scene;
-	models.push(newModel);
-	scene.add(newModel);
+	/*
+	This function processes all imported models. This is call when the 
+	gltf loader is initiallized.
+	*/
+	gltf.scene.position.set(0, -planeHeight/2, 0);
+	impossibleCube.add(gltf.scene);
 }
 setup();

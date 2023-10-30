@@ -13,9 +13,6 @@ Stencil Example w/ code: https://threejs.org/examples/?q=stencil#webgl_clipping_
 
 Adapting this program to different screen sizes will take some exploring on how I want to do it exactly, but my initial thought about it is by changing the camera view angle. As the screen gets smaller, less of the backrgound will be visible. The cube will be kept center of the screen as it is most important, and how much the camera sees will have to be altered. This could be done just by changing the FoV of the camera, but That may create some unwanted tunneling.
 
-##### Design Prototype
-[insert link here]
-
 ### Goals:
 1. I have a function, but very simple version of the cube that runs in the Unity engine. I hoping that I can use some of that and carry it over into Three.js. Still confirming what Three.js uses for it's shaders, but if it is shaderlab compatible, than the stencil buffer should be pretty managable.
 2. The minimum viable project will have control functionality using touch on mobile screens, and the mouse on full-size computers. Each of the sides of the square will have some non-simple objects that can be seen through each of the sides. These objects will have some sort of interaction that can occur from the user, but nothing elaborate for the MVP
@@ -28,3 +25,12 @@ Finding/using pre-installed addons: https://threejs.org/docs/#manual/en/introduc
 Orbit Controls: https://threejs.org/docs/#examples/en/controls/OrbitControls , https://github.com/mrdoob/three.js/blob/master/examples/misc_controls_orbit.html
 Free 3D Modeling Software: https://web.blockbench.net/ 
 Vite glsl pluggin: https://www.npmjs.com/package/vite-plugin-glsl 
+
+## Dev Log 10/30/23
+- Managed to get the cube to have tranformations (move, rotate, scale)! In three.js, Object3D is deemed as a group, so you have ot manipulate it a little differently.
+- Got all planes in place to be able to apply the stencil buffers to them. 
+- All planes are grouped with the cube, so transforming the cube, also changes the planes. 
+This doesn't seem like much, but it has tekend forever to ge the transformations working the way I want them too.
+#### Resources:
+- Matrix transformations for changing position, direction, scaling, etc. https://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
+- Example code for moving Object3D around in the scene. https://plnkr.co/edit/92gBm8F4oClpnRkbHL7x?p=preview&preview 
