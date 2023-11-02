@@ -34,3 +34,9 @@ This doesn't seem like much, but it has tekend forever to ge the transformations
 #### Resources:
 - Matrix transformations for changing position, direction, scaling, etc. https://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
 - Example code for moving Object3D around in the scene. https://plnkr.co/edit/92gBm8F4oClpnRkbHL7x?p=preview&preview 
+
+## Dev Log 10/31/23
+
+#### Resources:
+- More Stencil code examples: https://codepen.io/strangerintheq/pen/yLNRwQY 
+- Exceptionally helpful Video: https://www.youtube.com/watch?v=X93GxW84t84 

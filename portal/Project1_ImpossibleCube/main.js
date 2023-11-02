@@ -19,14 +19,39 @@ camera.position.z = 10;
 const loader = new GLTFLoader();
 
 loader.load('models/LargerCube.gltf', process);
-//loader.load('models/test.gltf', process);
+/* Just Need to change the models that are linked for these
+Six ofjects, one for each side of the cube */
+loader.load('models/test.gltf', processForm);
+loader.load('models/test.gltf', processForm);
+loader.load('models/test.gltf', processForm);
+loader.load('models/test.gltf', processForm);
+loader.load('models/test.gltf', processForm);
+loader.load('models/test.gltf', processForm);
 /*-----------------------------------------*/
 
 
 
 /*------------ Materials Setup ------------*/
-const material2 = new THREE.MeshBasicMaterial({color: 0xFFFFFF, side: THREE.DoubleSide});
-const material3 = new THREE.MeshBasicMaterial({color: 0x00AEFF, side: THREE.DoubleSide});
+function createMat(isForObject, referenceNum, pColor, objColor ) {
+	if (!isForObject) {
+		const planeMaterial = new THREE.MeshPhongMaterial({color: pColor});
+		planeMaterial.stencilWrite = true;
+		planeMaterial.stencilRef = referenceNum;
+		planeMaterial.stencilFunc = THREE.AlwaysStencilFunc;
+		planeMaterial.stencilZPass = THREE.ReplaceStencilOp;
+		planeMaterial.colorWrite = false;
+		planeMaterial.depthWrite = false;
+		return planeMaterial;
+	}
+	else {
+		const objectMaterial = new THREE.MeshPhongMaterial({color: objColor});
+		objectMaterial.stencilWrite = true;
+		objectMaterial.stencilRef = referenceNum;
+		objectMaterial.stencilFunc = THREE.EqualStencilFunc;
+		return objectMaterial;
+	}
+}
+const floorMat = new THREE.MeshPhongMaterial({color: "lightpink"});
 /*-----------------------------------------*/
 
 
@@ -44,19 +69,29 @@ const planeWidth = 3;
 const planeHeight = 3;
 const depth = 3;
 const Plane = new THREE.PlaneGeometry(planeWidth, planeHeight);
+const floorPlane = new THREE.PlaneGeometry(100, 100);
+
+let objRefNum = 1;
+let indexNUm = 0;
+let objects = [];
 /*-----------------------------------------*/
 
 
 
 /*------ Mesh Initialization Setup --------*/
-const backPlane = new THREE.Mesh(Plane, material3);
-const frontPlane = new THREE.Mesh(Plane, material3);
-const leftPlane = new THREE.Mesh(Plane, material3);
-const rightPlane = new THREE.Mesh(Plane, material3);
-const topPlane = new THREE.Mesh(Plane, material3);
-const bottomPlane = new THREE.Mesh(Plane, material3);
+const floor = new THREE.Mesh(floorPlane, floorMat);
+const backPlane = new THREE.Mesh(Plane, createMat(false, 1, "white", "white"));
+const frontPlane = new THREE.Mesh(Plane, createMat(false, 2, "white", "white"));
+const leftPlane = new THREE.Mesh(Plane, createMat(false, 3, "white", "white"));
+const rightPlane = new THREE.Mesh(Plane, createMat(false, 4, "white", "white"));
+const topPlane = new THREE.Mesh(Plane, createMat(false, 5, "white", "white"));
+const bottomPlane = new THREE.Mesh(Plane, createMat(false, 6, "white", "white"));
 
 let impossibleCube = new THREE.Object3D();
+for (let i = 1; i < 7; i++) {
+	let object = new THREE.Object3D();
+	objects.push(object);
+}
 /*-----------------------------------------*/
 
 
@@ -70,7 +105,8 @@ controls.update();
 function render() {
 	renderer.render(scene, camera);
 	impossibleCube.rotateY(0.01);
-	//impossibleCube.updateMatrixWorld(); This will update the tranform, scale, and rotate matrix for the object
+	objects[0].rotateY(0.1);
+	objects[1].rotateZ(0.1);
 	requestAnimationFrame(render);
 }
 
@@ -82,12 +118,17 @@ function setup() {
 	impossibleCube.add(backPlane, frontPlane, leftPlane, rightPlane, topPlane, bottomPlane);
 
 	scene.add(light);
+	scene.add(floor)
 	scene.add(impossibleCube);
+	for (let i = 0; i < objects.length; i++) {
+		scene.add(objects[i]);
+	}
 
-	light.position.set(1, 2, 4);
+	light.position.set(2, 2, 4);
 	impossibleCube.scale.set(2, 2, 2);
 
 //Plane positions--------------------
+	floor.position.set(0, -10, 0);
 	backPlane.position.set(0, 0, -depth/2);
 	frontPlane.position.set(0, 0, depth/2.1);
 	leftPlane.position.set(-depth/2.1, 0, 0);
@@ -95,11 +136,12 @@ function setup() {
 	topPlane.position.set(0, depth/2, 0);
 	bottomPlane.position.set(0, -depth/2.1, 0);
 //Plane rotations---------------------
-	leftPlane.rotation.y = Math.PI / 2;
+	floor.rotation.x = -Math.PI/2;
+	backPlane.rotation.y = Math.PI;
+	leftPlane.rotation.y = -Math.PI / 2;
 	rightPlane.rotation.y = Math.PI / 2;
-	topPlane.rotation.x = Math.PI / 2;
+	topPlane.rotation.x = -Math.PI / 2;
 	bottomPlane.rotation.x = Math.PI / 2;
-
 	render();
 }
 
@@ -111,4 +153,17 @@ function process(gltf) {
 	gltf.scene.position.set(0, -planeHeight/2, 0);
 	impossibleCube.add(gltf.scene);
 }
+
+function processForm(gltf) {
+	// DO NOT CHANGE THE PARAMETERS IN THE FOR LOOP
+	for (let i = 0; i < 7; i++) {
+		gltf.scene.children[0].children[i].material.stencilWrite = true;
+		gltf.scene.children[0].children[i].material.stencilRef = objRefNum;
+		gltf.scene.children[0].children[i].material.stencilFunc = THREE.EqualStencilFunc;
+	}
+	objects[indexNUm].add(gltf.scene);
+	objRefNum++;
+	indexNUm++;
+}
+
 setup();
