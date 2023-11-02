@@ -18,15 +18,15 @@ camera.position.z = 10;
 /*------------- Import Loader -------------*/
 const loader = new GLTFLoader();
 
-loader.load('models/LargerCube.gltf', process);
+loader.load('./models/LargerCube.gltf', process);
 /* Just Need to change the models that are linked for these
 Six ofjects, one for each side of the cube */
-loader.load('models/test.gltf', processForm);
-loader.load('models/test.gltf', processForm);
-loader.load('models/test.gltf', processForm);
-loader.load('models/test.gltf', processForm);
-loader.load('models/test.gltf', processForm);
-loader.load('models/test.gltf', processForm);
+loader.load('./models/test.gltf', processForm);
+loader.load('./models/test.gltf', processForm);
+loader.load('./models/test.gltf', processForm);
+loader.load('./models/test.gltf', processForm);
+loader.load('./models/test.gltf', processForm);
+loader.load('./models/test.gltf', processForm);
 /*-----------------------------------------*/
 
 
@@ -105,8 +105,10 @@ controls.update();
 function render() {
 	renderer.render(scene, camera);
 	impossibleCube.rotateY(0.01);
-	objects[0].rotateY(0.1);
-	objects[1].rotateZ(0.1);
+	objects[0].rotateY(0.01);
+	objects[1].rotateZ(0.5);
+	objects[3].rotateX(0.05);
+	objects[4].rotateZ(0.02);
 	requestAnimationFrame(render);
 }
 
