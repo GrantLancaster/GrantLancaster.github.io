@@ -21,8 +21,8 @@ const loader = new GLTFLoader();
 loader.load('./models/LargerCube.gltf', process);
 /* Just Need to change the models that are linked for these
 Six ofjects, one for each side of the cube */
-loader.load('./models/test.gltf', processForm);
-loader.load('./models/test.gltf', processForm);
+loader.load('./models/ring.gltf', processForm);
+loader.load('./models/filledCube.gltf', processForm);
 loader.load('./models/test.gltf', processForm);
 loader.load('./models/test.gltf', processForm);
 loader.load('./models/test.gltf', processForm);
@@ -52,6 +52,7 @@ function createMat(isForObject, referenceNum, pColor, objColor ) {
 	}
 }
 const floorMat = new THREE.MeshPhongMaterial({color: "lightpink"});
+const wallMat = new THREE.MeshNormalMaterial();
 /*-----------------------------------------*/
 
 
@@ -70,6 +71,7 @@ const planeHeight = 3;
 const depth = 3;
 const Plane = new THREE.PlaneGeometry(planeWidth, planeHeight);
 const floorPlane = new THREE.PlaneGeometry(100, 100);
+const wallPlane = new THREE.PlaneGeometry(100,100);
 
 let objRefNum = 1;
 let indexNUm = 0;
@@ -80,6 +82,10 @@ let objects = [];
 
 /*------ Mesh Initialization Setup --------*/
 const floor = new THREE.Mesh(floorPlane, floorMat);
+const wall = new THREE.Mesh(wallPlane, wallMat);
+const wallL = new THREE.Mesh(wallPlane, wallMat);
+const wallR = new THREE.Mesh(wallPlane, wallMat);
+
 const backPlane = new THREE.Mesh(Plane, createMat(false, 1, "white", "white"));
 const frontPlane = new THREE.Mesh(Plane, createMat(false, 2, "white", "white"));
 const leftPlane = new THREE.Mesh(Plane, createMat(false, 3, "white", "white"));
@@ -96,19 +102,68 @@ for (let i = 1; i < 7; i++) {
 
 
 
-/*------------ Orbit Controls -------------*/
+/*------------ Controls -------------*/
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.update();
+
+let tick = 0;
+const up = document.querySelector(".top");
+let upMove = false;
+const down = document.querySelector(".bottom");
+let downMove = false
+const left = document.querySelector(".left");
+let leftMove = false;
+const right = document.querySelector(".right");
+let rightMove = false;
 /*-----------------------------------------*/
 
 
 function render() {
+	up.addEventListener("click", () => {upMove = true;})
+	down.addEventListener("click", () => {downMove = true;})
+	left.addEventListener("click", () => {leftMove = true;})
+	right.addEventListener("click", () => {rightMove = true;})
+
 	renderer.render(scene, camera);
-	impossibleCube.rotateY(0.01);
-	objects[0].rotateY(0.01);
-	objects[1].rotateZ(0.5);
-	objects[3].rotateX(0.05);
-	objects[4].rotateZ(0.02);
+	objects[0].rotateX(0.05);
+
+	if (upMove) {
+		console.log(impossibleCube);
+		impossibleCube.rotation.x -= 0.02;
+		tick += 0.02;
+		if (tick >= 1.55) {upMove = false; tick = 0; impossibleCube.updateMatrix()}
+	}
+	if (downMove) {
+		impossibleCube.rotation.x += 0.02;
+		tick += 0.02;
+		if (tick > 1.55) {downMove = false; tick = 0;}
+	}
+	if (((impossibleCube.rotation.x < -1.55)&&(impossibleCube.rotation.x > -3.1))
+	||((impossibleCube.rotation.x > +1.55)&&(impossibleCube.rotation.x < +3.1))) {
+		if (rightMove) {
+			impossibleCube.rotation.z += 0.02;
+			tick += 0.02;
+			if (tick > 1.55) {rightMove = false; tick = 0;}
+		}
+		if (leftMove) {
+			impossibleCube.rotation.z -= 0.02;
+			tick += 0.02;
+			if (tick > 1.55) {leftMove = false; tick = 0;}
+		}
+	}
+	else {
+		if (rightMove) {
+			impossibleCube.rotation.y += 0.02;
+			tick += 0.02;
+			if (tick > 1.55) {rightMove = false; tick = 0;}
+		}
+		if (leftMove) {
+			impossibleCube.rotation.y -= 0.02;
+			tick += 0.02;
+			if (tick > 1.55) {leftMove = false; tick = 0;}
+		}
+	}
+
 	requestAnimationFrame(render);
 }
 
@@ -121,6 +176,9 @@ function setup() {
 
 	scene.add(light);
 	scene.add(floor)
+	scene.add(wall);
+	scene.add(wallL);
+	scene.add(wallR);
 	scene.add(impossibleCube);
 	for (let i = 0; i < objects.length; i++) {
 		scene.add(objects[i]);
@@ -129,8 +187,13 @@ function setup() {
 	light.position.set(2, 2, 4);
 	impossibleCube.scale.set(2, 2, 2);
 
+	objects[0].scale.set(3, 3, 3);
 //Plane positions--------------------
 	floor.position.set(0, -10, 0);
+	wall.position.set(0, 40, -50);
+	wallL.position.set(50, 40, 0);
+	wallR.position.set(-50, 40, 0);
+
 	backPlane.position.set(0, 0, -depth/2);
 	frontPlane.position.set(0, 0, depth/2.1);
 	leftPlane.position.set(-depth/2.1, 0, 0);
@@ -139,6 +202,9 @@ function setup() {
 	bottomPlane.position.set(0, -depth/2.1, 0);
 //Plane rotations---------------------
 	floor.rotation.x = -Math.PI/2;
+	wallL.rotation.y = -Math.PI/2;
+	wallR.rotation.y = Math.PI/2;
+
 	backPlane.rotation.y = Math.PI;
 	leftPlane.rotation.y = -Math.PI / 2;
 	rightPlane.rotation.y = Math.PI / 2;
@@ -157,12 +223,9 @@ function process(gltf) {
 }
 
 function processForm(gltf) {
-	// DO NOT CHANGE THE PARAMETERS IN THE FOR LOOP
-	for (let i = 0; i < 7; i++) {
-		gltf.scene.children[0].children[i].material.stencilWrite = true;
-		gltf.scene.children[0].children[i].material.stencilRef = objRefNum;
-		gltf.scene.children[0].children[i].material.stencilFunc = THREE.EqualStencilFunc;
-	}
+	gltf.scene.children[0].children[0].material.stencilWrite = true;
+	gltf.scene.children[0].children[0].material.stencilRef = objRefNum;
+	gltf.scene.children[0].children[0].material.stencilFunc = THREE.EqualStencilFunc;
 	objects[indexNUm].add(gltf.scene);
 	objRefNum++;
 	indexNUm++;
