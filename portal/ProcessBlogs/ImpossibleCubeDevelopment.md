@@ -40,3 +40,14 @@ This doesn't seem like much, but it has tekend forever to ge the transformations
 #### Resources:
 - More Stencil code examples: https://codepen.io/strangerintheq/pen/yLNRwQY 
 - Exceptionally helpful Video: https://www.youtube.com/watch?v=X93GxW84t84 
+
+## Dev Log 11/6/23
+
+#### Resources:
+- Very helpful for Async stuff: https://discoverthreejs.com/book/first-steps/load-models/#:~:text=To%20load%20glTF%20files%2C%20first,this%20file%20in%20the%20editor. 
+
+# Reflection:
+This was assignment was tough purely because three.js can be pretty complex and hard to manipulate. A lot of the creative design was present from another project I was working on in Unity. I wasn't able to re-use assets from that project, but I could reuse the ideaology and planning that went into it. Making some of the assets is was very time consuming because I had to figure out what I wanted it to look like, as well as how to build it in blockbench without pulling all of my hair out. Modeling software can be quite annoying. 
+From the technical side, it was pretty straight forward from what I had been making in Unity. The biggest technical things for this were loading custom models and controlling when they are loaded, assigning the custom models the stencil buffer reference values that they needed, and setting up the movement functinality. 
+I was not able to hit all of the goals for this project that I had set before. Some of the reasons for this were was making custom models takes a long time, as well as running into some jankiness when it came to rendering the custom models. There was a lot of retooling to try and get the loader to do what I wanted, when I wanted it. I was able to get past some of the model loading things, but not necessarily in the way that I wanted to. The initial solution was to load all custom models at once and have them added to the scene whenever they were done. This made for some interesting randomization for the project, but broke some of the creative standpoints that I wanted to go for. I did figure out that there is another way to load models, but of course I found it out after the project was due. I am going to continue work on this using the new methodology.
+Once again, I have been humbled by my big eyes for the project, but limited other resources. One day I may learn to bite off less, but This project was not that project.

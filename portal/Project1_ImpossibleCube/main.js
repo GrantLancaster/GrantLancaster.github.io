@@ -13,7 +13,7 @@ document.body.appendChild(renderer.domElement);
 camera.position.z = 10;
 /*-----------------------------------------*/
 
-
+ const list = [];
 
 /*------------- Import Loader -------------*/
 const loader = new GLTFLoader();
@@ -23,7 +23,6 @@ loader.load('./models/LargerCube.gltf', process);
 Six ofjects, one for each side of the cube */
 loader.load('./models/ring.gltf', processForm);
 loader.load('./models/filledCube.gltf', processForm);
-loader.load('./models/test.gltf', processForm);
 loader.load('./models/test.gltf', processForm);
 loader.load('./models/test.gltf', processForm);
 loader.load('./models/test.gltf', processForm);
@@ -94,10 +93,11 @@ const topPlane = new THREE.Mesh(Plane, createMat(false, 5, "white", "white"));
 const bottomPlane = new THREE.Mesh(Plane, createMat(false, 6, "white", "white"));
 
 let impossibleCube = new THREE.Object3D();
-for (let i = 1; i < 7; i++) {
+for (let i = 1; i < 8; i++) {
 	let object = new THREE.Object3D();
 	objects.push(object);
 }
+
 /*-----------------------------------------*/
 
 
@@ -117,6 +117,53 @@ const right = document.querySelector(".right");
 let rightMove = false;
 /*-----------------------------------------*/
 
+async function setup() {
+	/*
+	All the initial setup for the scene should go here. Things like lights, static geometries,
+	stencil planes, and helpers that are initialized, etc.
+	*/
+	impossibleCube.add(backPlane, frontPlane, leftPlane, rightPlane, topPlane, bottomPlane);
+
+	scene.add(light);
+	scene.add(floor)
+	scene.add(wall);
+	scene.add(wallL);
+	scene.add(wallR);
+	scene.add(impossibleCube);
+
+	//scene.add(tester);
+
+	for (let i = 0; i < objects.length; i++) {
+		scene.add(objects[i]);
+	}
+
+	light.position.set(2, 2, 4);
+	impossibleCube.scale.set(2, 2, 2);
+
+//Plane positions--------------------
+	floor.position.set(0, -10, 0);
+	wall.position.set(0, 40, -50);
+	wallL.position.set(50, 40, 0);
+	wallR.position.set(-50, 40, 0);
+
+	backPlane.position.set(0, 0, -depth/2);
+	frontPlane.position.set(0, 0, depth/2.1);
+	leftPlane.position.set(-depth/2.1, 0, 0);
+	rightPlane.position.set(depth/2.1, 0, 0);
+	topPlane.position.set(0, depth/2, 0);
+	bottomPlane.position.set(0, -depth/2.1, 0);
+//Plane rotations---------------------
+	floor.rotation.x = -Math.PI/2;
+	wallL.rotation.y = -Math.PI/2;
+	wallR.rotation.y = Math.PI/2;
+
+	backPlane.rotation.y = Math.PI;
+	leftPlane.rotation.y = -Math.PI / 2;
+	rightPlane.rotation.y = Math.PI / 2;
+	topPlane.rotation.x = -Math.PI / 2;
+	bottomPlane.rotation.x = Math.PI / 2;
+	render();
+}
 
 function render() {
 	up.addEventListener("click", () => {upMove = true;})
@@ -124,11 +171,11 @@ function render() {
 	left.addEventListener("click", () => {leftMove = true;})
 	right.addEventListener("click", () => {rightMove = true;})
 
+
 	renderer.render(scene, camera);
 	objects[0].rotateX(0.05);
 
 	if (upMove) {
-		console.log(impossibleCube);
 		impossibleCube.rotation.x -= 0.02;
 		tick += 0.02;
 		if (tick >= 1.55) {upMove = false; tick = 0; impossibleCube.updateMatrix()}
@@ -167,52 +214,6 @@ function render() {
 	requestAnimationFrame(render);
 }
 
-function setup() {
-	/*
-	All the initial setup for the scene should go here. Things like lights, static geometries,
-	stencil planes, and helpers that are initialized, etc.
-	*/
-	impossibleCube.add(backPlane, frontPlane, leftPlane, rightPlane, topPlane, bottomPlane);
-
-	scene.add(light);
-	scene.add(floor)
-	scene.add(wall);
-	scene.add(wallL);
-	scene.add(wallR);
-	scene.add(impossibleCube);
-	for (let i = 0; i < objects.length; i++) {
-		scene.add(objects[i]);
-	}
-
-	light.position.set(2, 2, 4);
-	impossibleCube.scale.set(2, 2, 2);
-
-	objects[0].scale.set(3, 3, 3);
-//Plane positions--------------------
-	floor.position.set(0, -10, 0);
-	wall.position.set(0, 40, -50);
-	wallL.position.set(50, 40, 0);
-	wallR.position.set(-50, 40, 0);
-
-	backPlane.position.set(0, 0, -depth/2);
-	frontPlane.position.set(0, 0, depth/2.1);
-	leftPlane.position.set(-depth/2.1, 0, 0);
-	rightPlane.position.set(depth/2.1, 0, 0);
-	topPlane.position.set(0, depth/2, 0);
-	bottomPlane.position.set(0, -depth/2.1, 0);
-//Plane rotations---------------------
-	floor.rotation.x = -Math.PI/2;
-	wallL.rotation.y = -Math.PI/2;
-	wallR.rotation.y = Math.PI/2;
-
-	backPlane.rotation.y = Math.PI;
-	leftPlane.rotation.y = -Math.PI / 2;
-	rightPlane.rotation.y = Math.PI / 2;
-	topPlane.rotation.x = -Math.PI / 2;
-	bottomPlane.rotation.x = Math.PI / 2;
-	render();
-}
-
 function process(gltf) {
 	/*
 	This function processes all imported models. This is call when the 
@@ -220,6 +221,7 @@ function process(gltf) {
 	*/
 	gltf.scene.position.set(0, -planeHeight/2, 0);
 	impossibleCube.add(gltf.scene);
+
 }
 
 function processForm(gltf) {
@@ -229,6 +231,17 @@ function processForm(gltf) {
 	objects[indexNUm].add(gltf.scene);
 	objRefNum++;
 	indexNUm++;
+
 }
 
+async function loadModel() {
+	const loader = new GLTFLoader();
+	const data = await loader.loadAsync("./models/test.gltf");
+	console.log(data);
+}
+
+/*use this function to more easily specify the creation of loaded objects.
+This should hopfully allow me to build better */
+
 setup();
+await loadModel();
