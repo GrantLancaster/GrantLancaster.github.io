@@ -65,13 +65,14 @@ const wallR = new THREE.Mesh(wallPlane, wallMat);
 
 const backPlane = new THREE.Mesh(Plane, createMat(false, 1, "white", "white"));
 const frontPlane = new THREE.Mesh(Plane, createMat(false, 1, "white", "white"));
-const leftPlane = new THREE.Mesh(Plane, createMat(false, 3, "white", "white"));
+const leftPlane = new THREE.Mesh(Plane, createMat(false, 2, "white", "white"));
 const rightPlane = new THREE.Mesh(Plane, createMat(false, 4, "white", "white"));
 const topPlane = new THREE.Mesh(Plane, createMat(false, 5, "white", "white"));
 const bottomPlane = new THREE.Mesh(Plane, createMat(false, 6, "white", "white"));
 
 
 const rings = [];
+const blocks = [];
 /*-----------------------------------------*/
 
 let impossibleCube, block;
@@ -82,11 +83,15 @@ controls.update();
 /*-----------------------------------------*/
 
 function setup() {
-	scene.add(light);
     scene.add(frontPlane);
+	scene.add(leftPlane);
 
     frontPlane.position.set(0,0,2.90);
-	light.position.set(2, 2, 4);
+	leftPlane.position.set(-2.90, 0, 0);
+	leftPlane.rotation.set(0, -Math.PI/2, 0);
+	camera.add(light);
+	scene.add(camera);
+	light.position.set(10, 0, 4);
     
     build();
 }
@@ -94,6 +99,7 @@ function setup() {
 async function build() {
 	impossibleCube = await loadModel("./models/cubeFrame.gltf", false, 0);
 	await loadFrontFace();
+	await loadLeftFace();
 
 	scene.add(impossibleCube);
 
@@ -104,6 +110,7 @@ async function build() {
 function render() {
 	renderer.render(scene, camera);
 	animateFrontFace();
+	animateLeftFace();
 
 	requestAnimationFrame(render);
 }
@@ -112,7 +119,6 @@ async function loadModel(path, needStencil, refNum) {
 	const loader = new GLTFLoader();
 	const data = await loader.loadAsync(path);
     const object = data.scene.children[0];
-	console.log(object);
 	if (needStencil) {
 		if (object.children[0].children.length !== 0) {
 			object.children[0].children[0].material.stencilWrite = true;
@@ -165,13 +171,35 @@ async function loadFrontFace() {
 		}
 	}
 }
-
 function animateFrontFace() {
 	let x = 0;
 	for (let item = 0; item < rings.length; item++) {
 		rings[item].rotateX(0.01+x), rings[item].rotateY(-0.01+x);
 		x = x + 0.001;
 	}
+}
+
+async function loadLeftFace() {
+	for (let i = 0; i < 5; i++) {
+		for (let j = 0; j < 5; j++) {
+			const block = await loadModel("./models/filledCube.gltf", true, 2);
+			block.position.set((i)-1.5, -1, -2 + j);
+			blocks.push(block);
+			scene.add(block);
+		}
+	}
+}
+
+function animateLeftFace() {
+	let int = Math.floor(Math.random()*4);
+	let factor = Math.floor(Math.random() *10) / 3;
+	let index = Math.floor(Math.random() *25);
+	if (int % 2 != 0) {
+		blocks[index].position.y = int * (-1);
+		blocks[index].scale.set(factor, factor, factor);
+	} else {
+		blocks[index].position.y = int;
+	}	
 }
 
 setup();
