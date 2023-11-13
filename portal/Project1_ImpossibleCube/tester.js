@@ -146,12 +146,12 @@ async function loadModel(path, needStencil, refNum) {
 }
 
 async function loadFrontFace() {
-	block = await loadModel("./models/filledCube.gltf", true, 1);
+	block = await loadModel("models/filledCube.gltf", true, 1);
 	scene.add(block);
 	for (let j = 0; j < 3; j++) {
 		if (j == 0) {
 			for (let i = 0; i < 10; i++) {
-				const lip = await loadModel("./models/ring.gltf", true, 1);
+				const lip = await loadModel("models/ring.gltf", true, 1);
 				scene.add(lip);
 				lip.scale.set(0+i, 0+i, 0+i);
 				lip.rotation.z = Math.PI/2;
@@ -160,7 +160,7 @@ async function loadFrontFace() {
 			}
 		} else if (j == 1) {
 			for (let i = 0; i < 10; i++) {
-				const lip = await loadModel("./models/ring.gltf", true, 1);
+				const lip = await loadModel("models/ring.gltf", true, 1);
 				scene.add(lip);
 				lip.scale.set(0+i, 0+i, 0+i);
 				lip.rotation.z = -Math.PI/2;
@@ -169,7 +169,7 @@ async function loadFrontFace() {
 			}
 		} else {
 			for (let i = 0; i < 10; i++) {
-				const lip = await loadModel("./models/ring.gltf", true, 1);
+				const lip = await loadModel("models/ring.gltf", true, 1);
 				scene.add(lip);
 				lip.scale.set(2+i, 2+i, 2+i);
 				lip.rotation.x = Math.PI/2;
@@ -190,7 +190,7 @@ function animateFrontFace() {
 async function loadLeftFace() {
 	for (let i = 0; i < 5; i++) {
 		for (let j = 0; j < 5; j++) {
-			const block = await loadModel("./models/filledCube.gltf", true, 2);
+			const block = await loadModel("models/filledCube.gltf", true, 2);
 			block.position.set((i)-1.5, -1, -2 + j);
 			blocks.push(block);
 			scene.add(block);
@@ -212,7 +212,7 @@ function animateLeftFace() {
 async function loadRightFace() {
 	for (let i = 0; i < 3; i++) {
 		for (let j = 0; j < 4; j++) {
-			const bar = await loadModel("./models/test.gltf", true, 3);
+			const bar = await loadModel("models/test.gltf", true, 3);
 			bars[i].push(bar);
 			scene.add(bar);
 		}
