@@ -66,13 +66,14 @@ const wallR = new THREE.Mesh(wallPlane, wallMat);
 const backPlane = new THREE.Mesh(Plane, createMat(false, 1, "white", "white"));
 const frontPlane = new THREE.Mesh(Plane, createMat(false, 1, "white", "white"));
 const leftPlane = new THREE.Mesh(Plane, createMat(false, 2, "white", "white"));
-const rightPlane = new THREE.Mesh(Plane, createMat(false, 4, "white", "white"));
+const rightPlane = new THREE.Mesh(Plane, createMat(false, 3, "white", "white"));
 const topPlane = new THREE.Mesh(Plane, createMat(false, 5, "white", "white"));
 const bottomPlane = new THREE.Mesh(Plane, createMat(false, 6, "white", "white"));
 
 
 const rings = [];
 const blocks = [];
+const bars = [[], [], []] // Horizontal, Vertical, Front-back
 /*-----------------------------------------*/
 
 let impossibleCube, block;
@@ -85,10 +86,12 @@ controls.update();
 function setup() {
     scene.add(frontPlane);
 	scene.add(leftPlane);
+	scene.add(rightPlane);
 
     frontPlane.position.set(0,0,2.90);
-	leftPlane.position.set(-2.90, 0, 0);
-	leftPlane.rotation.set(0, -Math.PI/2, 0);
+	leftPlane.position.set(-2.90, 0, 0), leftPlane.rotation.set(0, -Math.PI/2, 0);
+	rightPlane.position.set(2.90, 0, 0), rightPlane.rotation.set(0, Math.PI/2, 0);
+
 	camera.add(light);
 	scene.add(camera);
 	light.position.set(10, 0, 4);
@@ -98,8 +101,12 @@ function setup() {
 
 async function build() {
 	impossibleCube = await loadModel("./models/cubeFrame.gltf", false, 0);
-	await loadFrontFace();
-	await loadLeftFace();
+	await Promise.all([
+		loadFrontFace(), 
+		loadLeftFace(), 
+		loadRightFace()
+	]);
+	
 
 	scene.add(impossibleCube);
 
@@ -111,6 +118,7 @@ function render() {
 	renderer.render(scene, camera);
 	animateFrontFace();
 	animateLeftFace();
+	animateRightFace();
 
 	requestAnimationFrame(render);
 }
@@ -189,7 +197,6 @@ async function loadLeftFace() {
 		}
 	}
 }
-
 function animateLeftFace() {
 	let int = Math.floor(Math.random()*4);
 	let factor = Math.floor(Math.random() *10) / 3;
@@ -200,6 +207,49 @@ function animateLeftFace() {
 	} else {
 		blocks[index].position.y = int;
 	}	
+}
+
+async function loadRightFace() {
+	for (let i = 0; i < 3; i++) {
+		for (let j = 0; j < 4; j++) {
+			const bar = await loadModel("./models/test.gltf", true, 3);
+			bars[i].push(bar);
+			scene.add(bar);
+		}
+	}
+}
+function animateRightFace() {
+	for (let i = 0; i < bars.length; i++) {
+		for (let j = 0; j < bars[i].length; j++) {
+			let randX = Math.floor(Math.random()*6);
+			let randY = Math.floor(Math.random()*6);
+			let randZ = Math.floor(Math.random()*6);
+			let randDist = Math.floor(Math.random()*15)+10;
+			let speed = Math.floor(Math.random()*10)/20;
+			bars[i][j].scale.set(1, 1, 10);
+			if (i == 0) {
+				if (bars[i][j].position.z >= randDist) {
+					bars[i][j].position.set(randX, randY, -randDist);
+				} else {
+					bars[i][j].translateZ(speed);
+				}
+			}else if (i == 1) {
+				bars[i][j].rotation.x = Math.PI/2;
+				if (bars[i][j].position.y >= randDist) {
+					bars[i][j].position.set(randX, -randDist, randZ);
+				} else {
+					bars[i][j].translateZ(-speed);
+				}
+			}else if (i == 2) {
+				bars[i][j].rotation.y = Math.PI/2;
+				if (bars[i][j].position.x <= -randDist) {
+					bars[i][j].position.set(randDist, randY, randZ);
+				} else {
+					bars[i][j].translateZ(-speed);
+				}
+			}
+		}
+	}
 }
 
 setup();

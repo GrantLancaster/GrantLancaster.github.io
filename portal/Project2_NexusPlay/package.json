@@ -1,0 +1,11 @@
+{
+  "name": "project2_nexusplay",
+  "version": "1.0.0",
+  "description": "A build of Nexus Play gaming portal",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Grant Lancaster",
+  "license": "ISC"
+}
