@@ -46,8 +46,27 @@ This doesn't seem like much, but it has tekend forever to ge the transformations
 #### Resources:
 - Very helpful for Async stuff: https://discoverthreejs.com/book/first-steps/load-models/#:~:text=To%20load%20glTF%20files%2C%20first,this%20file%20in%20the%20editor. 
 
-# Reflection:
+### Reflection:
 This was assignment was tough purely because three.js can be pretty complex and hard to manipulate. A lot of the creative design was present from another project I was working on in Unity. I wasn't able to re-use assets from that project, but I could reuse the ideaology and planning that went into it. Making some of the assets is was very time consuming because I had to figure out what I wanted it to look like, as well as how to build it in blockbench without pulling all of my hair out. Modeling software can be quite annoying. 
 From the technical side, it was pretty straight forward from what I had been making in Unity. The biggest technical things for this were loading custom models and controlling when they are loaded, assigning the custom models the stencil buffer reference values that they needed, and setting up the movement functinality. 
 I was not able to hit all of the goals for this project that I had set before. Some of the reasons for this were was making custom models takes a long time, as well as running into some jankiness when it came to rendering the custom models. There was a lot of retooling to try and get the loader to do what I wanted, when I wanted it. I was able to get past some of the model loading things, but not necessarily in the way that I wanted to. The initial solution was to load all custom models at once and have them added to the scene whenever they were done. This made for some interesting randomization for the project, but broke some of the creative standpoints that I wanted to go for. I did figure out that there is another way to load models, but of course I found it out after the project was due. I am going to continue work on this using the new methodology.
 Once again, I have been humbled by my big eyes for the project, but limited other resources. One day I may learn to bite off less, but This project was not that project.
+
+
+# Dev log Continued...
+
+## Dev log 11/15/23
+Current features:
+- All six faces have a unique buffer value and will show only rendered objects in their frame
+- four of the faces have custom scenarios that move are animated in some way. 
+- The bottom button allows for the face to sized larger to recieve a bigger picture of a particular side. It will then shrink down when moving out of a certainly boundry of the selected face.
+
+Where to go next:
+- top and Bottom faces need custom animated scenes
+- Custom background for each side of the cube. Think along the lines of having a different biome for each side of the cube.
+    - Potentially use AI to proceduraly generate these background
+        - Potential access pipline using ChatGPT and Shap-E: https://www.aporia.com/blog/generating-3d-game-assets-with-chatgpt-and-shap-e/ 
+
+Ideas from others:
+- have each face of the cube be a static scene, but use A.I. to bridge the gap and mesh the two scenes together.
+- Have the cube rotate on it's own (potentially use one of the other buttons as a toggle for rotation)

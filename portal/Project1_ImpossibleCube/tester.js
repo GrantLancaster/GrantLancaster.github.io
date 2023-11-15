@@ -9,6 +9,10 @@ const renderer = new THREE.WebGLRenderer();
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
+let toggle = document.querySelector(".bottom");
+const vector = new THREE.Vector3();
+let cameraPos;
+
 
 camera.position.z = 10;
 /*-----------------------------------------*/
@@ -56,14 +60,13 @@ const wallPlane = new THREE.PlaneGeometry(100,100);
 /*-----------------------------------------*/
 
 
-
 /*------ Mesh Initialization Setup --------*/
 const floor = new THREE.Mesh(floorPlane, floorMat);
 const wall = new THREE.Mesh(wallPlane, wallMat);
 const wallL = new THREE.Mesh(wallPlane, wallMat);
 const wallR = new THREE.Mesh(wallPlane, wallMat);
 
-const backPlane = new THREE.Mesh(Plane, createMat(false, 1, "white", "white"));
+const backPlane = new THREE.Mesh(Plane, createMat(false, 4, "white", "white"));
 const frontPlane = new THREE.Mesh(Plane, createMat(false, 1, "white", "white"));
 const leftPlane = new THREE.Mesh(Plane, createMat(false, 2, "white", "white"));
 const rightPlane = new THREE.Mesh(Plane, createMat(false, 3, "white", "white"));
@@ -73,24 +76,38 @@ const bottomPlane = new THREE.Mesh(Plane, createMat(false, 6, "white", "white"))
 
 const rings = [];
 const blocks = [];
+const triangles = [];
 const bars = [[], [], []] // Horizontal, Vertical, Front-back
 /*-----------------------------------------*/
 
 let impossibleCube, block;
+let whichPlane = "none";
+let toggleString;
+let sizing = false;
+const dif = 0.1;
+const buffDist = 0.05
+let direction = 1;
 
 /*------------ Controls -------------*/
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.update();
-/*-----------------------------------------*/
+toggle.addEventListener("click", ()=> {checkCameraPosition()});
 
+/*-----------------------------------------*/
 function setup() {
     scene.add(frontPlane);
 	scene.add(leftPlane);
 	scene.add(rightPlane);
+	scene.add(backPlane);
+	scene.add(topPlane);
+	scene.add(bottomPlane);
 
     frontPlane.position.set(0,0,2.90);
+	backPlane.position.set(0, 0, -2.90), backPlane.rotation.set(0, Math.PI, 0);
 	leftPlane.position.set(-2.90, 0, 0), leftPlane.rotation.set(0, -Math.PI/2, 0);
 	rightPlane.position.set(2.90, 0, 0), rightPlane.rotation.set(0, Math.PI/2, 0);
+	topPlane.position.set(0, 2.90, 0), topPlane.rotation.set(-Math.PI/2, 0, 0);
+	bottomPlane.position.set(0, -2.90, 0), bottomPlane.rotation.set(Math.PI/2, 0, 0);
 
 	camera.add(light);
 	scene.add(camera);
@@ -104,21 +121,26 @@ async function build() {
 	await Promise.all([
 		loadFrontFace(), 
 		loadLeftFace(), 
-		loadRightFace()
+		loadRightFace(),
+		loadBackFace(),
+		loadTopFace(),
+		loadBottomFace()
 	]);
 	
-
 	scene.add(impossibleCube);
-
 	impossibleCube.scale.set(2,2,2);
+
     render();
 }
-
 function render() {
 	renderer.render(scene, camera);
 	animateFrontFace();
+	animateBackFace();
 	animateLeftFace();
 	animateRightFace();
+
+	expandPlane(whichPlane, toggleString);
+	//console.log(whichPlane);
 
 	requestAnimationFrame(render);
 }
@@ -142,6 +164,92 @@ async function loadModel(path, needStencil, refNum) {
 	}
 	else {
 		return object;
+	}
+}
+
+function checkCameraPosition() {
+	cameraPos = camera.getWorldDirection(vector);
+	console.log(cameraPos);
+	
+	if (cameraPos.z > (-1-dif) && cameraPos.z < (-1+dif)) {
+		whichPlane = frontPlane;
+		toggleString = "front";
+		sizing = true;
+	}else if (cameraPos.z > (1-dif) && cameraPos.z < (1+dif)) {
+		whichPlane = backPlane;
+		toggleString = "back";			
+		sizing = true;
+	}else if (cameraPos.x > (-1-dif) && cameraPos.x < (-1+dif)) {
+		whichPlane = rightPlane;
+		toggleString = "right";
+		sizing = true;
+	}else if (cameraPos.x > (1-dif) && cameraPos.x < (1+dif)) {
+		whichPlane = leftPlane;
+		toggleString = "left";
+		sizing = true;
+	}else if (cameraPos.y > (-1-dif) && cameraPos.y < (-1+dif)) {
+		whichPlane = topPlane;
+		toggleString = "top";
+		sizing = true;
+	}else if (cameraPos.y > (1-dif) && cameraPos.y < (1+dif)) {
+		whichPlane = bottomPlane;
+		toggleString = "bottom";
+		sizing = true;
+	}
+}
+function expandPlane(Plane, toggleString) {
+	if(Plane == "none") {return};
+	cameraPos = camera.getWorldDirection(vector);
+	if (sizing == true) {
+		if (Plane.scale.x <= 2 && Plane.scale.y <= 2) {
+			Plane.scale.x +=0.01;
+			Plane.scale.y +=0.01;
+			console.log(Plane.scale.x);
+			console.log("conditional flag");
+			console.log(Plane);
+		} else {sizing = false}
+	}else if (toggleString == "front") {
+		if (cameraPos.z < (-1-buffDist) || cameraPos.z > (-1+buffDist)) {
+			if(Plane.scale.x >= 1 && Plane.scale.y >= 1) {
+			Plane.scale.x -= 0.05;
+			Plane.scale.y -= 0.05;
+			}
+		}
+	}else if (toggleString == "back") {
+		if (cameraPos.z < (1-buffDist) || cameraPos.z > (1+buffDist)) {
+			if(Plane.scale.x >= 1 && Plane.scale.y >= 1) {
+			Plane.scale.x -= 0.05;
+			Plane.scale.y -= 0.05;
+			}
+		}
+	}else if (toggleString == "right") {
+		if (cameraPos.x < (-1-buffDist) || cameraPos.x > (-1+buffDist)) {
+			if(Plane.scale.x >= 1 && Plane.scale.y >= 1) {
+			Plane.scale.x -= 0.05;
+			Plane.scale.y -= 0.05;
+			}
+		}
+	}else if (toggleString == "left") {
+		if (cameraPos.x < (1-buffDist) || cameraPos.x > (1+buffDist)) {
+			if(Plane.scale.x >= 1 && Plane.scale.y >= 1) {
+			Plane.scale.x -= 0.05;
+			Plane.scale.y -= 0.05;
+			}
+		}
+	}else if (toggleString == "top") {
+		if (cameraPos.y < (-1-buffDist) || cameraPos.y > (-1+buffDist)) {
+			if(Plane.scale.x >= 1 && Plane.scale.y >= 1) {
+			Plane.scale.x -= 0.05;
+			Plane.scale.y -= 0.05;
+			}
+		}
+	}else if (toggleString == "bottom") {
+		if (cameraPos.y < (1-buffDist) || cameraPos.y > (1+buffDist)) {
+			if(Plane.scale.x >= 1 && Plane.scale.y >= 1) {
+			Plane.scale.x -= 0.05;
+			Plane.scale.y -= 0.05;
+			}
+		}
 	}
 }
 
@@ -187,6 +295,27 @@ function animateFrontFace() {
 	}
 }
 
+async function loadBackFace() {
+	for (let i = 0; i < 20; i++) {
+		const frame = await loadModel("models/triangle.gltf", true, 4);
+		frame.scale.set(6-i/4, 6-i/4, 1);
+		frame.position.set(0, 0, -2.5);
+		scene.add(frame);
+		triangles.push(frame);
+	}
+}
+function animateBackFace() {
+	for (let i = 0; i < triangles.length; i++) {
+		triangles[i].position.z += i /300 * direction;
+		triangles[i].rotation.z += i/1000 * direction;
+		if(triangles[triangles.length-1].position.z > 25) {
+			direction = -4;
+		} else if(triangles[triangles.length-1].position.z < -8.5) {
+			direction = 1;
+		}	
+	}
+}
+
 async function loadLeftFace() {
 	for (let i = 0; i < 5; i++) {
 		for (let j = 0; j < 5; j++) {
@@ -221,9 +350,13 @@ async function loadRightFace() {
 function animateRightFace() {
 	for (let i = 0; i < bars.length; i++) {
 		for (let j = 0; j < bars[i].length; j++) {
-			let randX = Math.floor(Math.random()*6);
-			let randY = Math.floor(Math.random()*6);
-			let randZ = Math.floor(Math.random()*6);
+			let factor
+			let inverse = Math.floor(Math.random()*4);
+			if (inverse % 2 == 0) {factor = -1}
+			else {factor = 1}
+			let randX = Math.floor(Math.random()*3*factor);
+			let randY = Math.floor(Math.random()*3*factor);
+			let randZ = Math.floor(Math.random()*3*factor);
 			let randDist = Math.floor(Math.random()*15)+10;
 			let speed = Math.floor(Math.random()*10)/20;
 			bars[i][j].scale.set(1, 1, 10);
@@ -252,4 +385,21 @@ function animateRightFace() {
 	}
 }
 
+async function loadTopFace() {
+	const circle = await loadModel("models/ring.gltf", true, 5);
+	circle.scale.set(10, 10, 10);
+	scene.add(circle);
+}
+function animateTopFace() {
+
+}
+
+async function loadBottomFace() {
+	const boo = await loadModel("models/filledCube.gltf", true, 6);
+	boo.scale.set(40, 10, 10);
+	scene.add(boo);
+}
+function animateBottomFace() {
+
+}
 setup();
