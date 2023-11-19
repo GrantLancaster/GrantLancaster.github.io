@@ -20,8 +20,9 @@ function getQuote() {
     .then ((response) => {return response.json()})
     .then ((jsonData) => {
 
-    block.setAttribute("id" , `block${tick}`)
-    block.innerHTML = jsonData["joke"];
+    //block.setAttribute("id" , `block${tick}`)
+    //block.innerHTML = jsonData["joke"];
+    console.log(jsonData);
 
     base.appendChild(block);
     tick++;

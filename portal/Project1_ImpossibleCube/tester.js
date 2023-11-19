@@ -77,10 +77,12 @@ const bottomPlane = new THREE.Mesh(Plane, createMat(false, 6, "white", "white"))
 const rings = [];
 const blocks = [];
 const triangles = [];
+const hexagons = [];
+const diamonds = [];
 const bars = [[], [], []] // Horizontal, Vertical, Front-back
 /*-----------------------------------------*/
 
-let impossibleCube, block;
+let impossibleCube, block ;
 let whichPlane = "none";
 let toggleString;
 let sizing = false;
@@ -138,6 +140,7 @@ function render() {
 	animateBackFace();
 	animateLeftFace();
 	animateRightFace();
+	animateTopFace();
 
 	expandPlane(whichPlane, toggleString);
 	//console.log(whichPlane);
@@ -386,11 +389,25 @@ function animateRightFace() {
 }
 
 async function loadTopFace() {
-	const circle = await loadModel("models/ring.gltf", true, 5);
-	circle.scale.set(10, 10, 10);
-	scene.add(circle);
+	const diamond = await loadModel("models/diamond.gltf", true, 5);
+	for (let i = 0; i < 4; i++) {
+		const hexagon = await loadModel("models/hexagon.gltf", true, 5);
+		hexagon.scale.set(5, 5, 5);
+		hexagon.position.set(0, 0, i);
+		hexagons.push(hexagon);
+		scene.add(hexagon);
+	}
+	diamond.scale.set(3, 3, 3);
+	diamonds.push(diamond);
+	scene.add(diamond);
 }
 function animateTopFace() {
+	diamonds[0].rotation.x += 0.01;
+	diamonds[0].rotation.y -= 0.02;
+	for (let i = 0; i < hexagons.length; i++) {
+		hexagons[i].rotation.x -= 0.01;
+		hexagons[i].rotation.y += 0.02;
+	}
 
 }
 

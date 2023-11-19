@@ -7,7 +7,7 @@ export default function App() {
 
   const [count, setCount] = useState(0);
 
-  function SHIT() {
+  function SHIT() { //Something Happens If Triggered
       
       setCount(count + 1);
   }

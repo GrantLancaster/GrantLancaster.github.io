@@ -1,4 +1,4 @@
-import "./button.css";
+import "../button.css";
 import {useState} from "react";
 
 export default function MyButton({isSpecial, text}) {
