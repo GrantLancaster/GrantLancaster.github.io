@@ -138,6 +138,10 @@ p {
         animation-duration: 0.5s;
     }
     #processBlog {
+        background: url(../images/processBlogsSS.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
         animation-name: moveInLeft;
         animation-duration: 0.5s;
     }
@@ -211,7 +215,7 @@ p {
         animation-duration: 0.5s;
     }
     #project1 {
-        background: url(../images/E_BOlkeVEAAJ_cE.png);
+        background: url(../images/Project1SS.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -375,6 +379,9 @@ p {
     }
     #processBlog {
         /*Might need some stuff here*/
+        background: url(../images/processBlogsSS.png);
+        background-size: cover;
+        background-repeat: no-repeat;
         background-position: center;
     }/*-------------------------------------------------*/
     #assignments {
@@ -411,7 +418,7 @@ p {
     }
     /*-------------------------------------------------*/
     #project1 {
-        background: url(../images/E_BOlkeVEAAJ_cE.png);
+        background: url(../images/Project1SS.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
