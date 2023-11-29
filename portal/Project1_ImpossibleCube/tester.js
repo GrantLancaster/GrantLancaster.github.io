@@ -89,6 +89,7 @@ let sizing = false;
 const dif = 0.1;
 const buffDist = 0.05
 let direction = 1;
+let factor = 1;
 
 /*------------ Controls -------------*/
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -390,23 +391,27 @@ function animateRightFace() {
 
 async function loadTopFace() {
 	const diamond = await loadModel("models/diamond.gltf", true, 5);
-	for (let i = 0; i < 4; i++) {
+	for (let i = 0; i < 8; i++) {
 		const hexagon = await loadModel("models/hexagon.gltf", true, 5);
 		hexagon.scale.set(5, 5, 5);
-		hexagon.position.set(0, 0, i);
 		hexagons.push(hexagon);
-		scene.add(hexagon);
+		diamond.add(hexagon);
 	}
-	diamond.scale.set(3, 3, 3);
+	diamond.scale.set(2, 2, 2);
 	diamonds.push(diamond);
 	scene.add(diamond);
 }
 function animateTopFace() {
+	const distance = Math.sin((diamonds[0].rotation.y*50)*Math.PI/180);
 	diamonds[0].rotation.x += 0.01;
-	diamonds[0].rotation.y -= 0.02;
+	diamonds[0].rotation.y -= 0.01;
+	console.log(distance);
 	for (let i = 0; i < hexagons.length; i++) {
-		hexagons[i].rotation.x -= 0.01;
-		hexagons[i].rotation.y += 0.02;
+		if (i % 2 == 0) {factor = -1}
+		else if (i % 2 !== 0) {factor = 1};
+		hexagons[i].scale.set(2-(i*0.25), 2-(i*0.25), 2-(i*0.25));
+		hexagons[i].position.set(0, 0, distance*i*2*factor);
+		hexagons[i].rotation.set(-diamonds[0].rotation.x, 0, 0);
 	}
 
 }

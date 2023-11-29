@@ -70,3 +70,6 @@ Where to go next:
 Ideas from others:
 - have each face of the cube be a static scene, but use A.I. to bridge the gap and mesh the two scenes together.
 - Have the cube rotate on it's own (potentially use one of the other buttons as a toggle for rotation)
+
+## Dev Log 11/21/23
+Started creating a module that connects to OpenAI's API to use ChatGPT. Module can call the API without an error, but I am having issues accessing the data that is given back as the response. Once the response can be captured, it will be sent into another AI generator that creates 3D objects. These objects will be changed into .gltf files, and then rendered into one of the faces of the impossible cube.

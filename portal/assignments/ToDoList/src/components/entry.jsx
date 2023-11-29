@@ -2,7 +2,7 @@
 import "./compStyles/entry.css";
 import { useState } from "react";
 
-export default function Entry({title, description, date}) {
+export default function Entry({title, description, date, deleteEntry, key}) {
     const [currentClass, updateClass] = useState(false);
     function completeItem() {
         updateClass(!currentClass);
@@ -15,11 +15,18 @@ export default function Entry({title, description, date}) {
     i.e. from true to false or false to true
     */
     return (
-        <div className={currentClass ? "entryBox-finished" : "entryBox-unfinished"} onClick={completeItem}>
-            <h3 className="entryTitle">{title}</h3>
-            <p className="entryInfo">{description}</p>
-            <p className="entryDate">{date}</p>
+        <>
+            <div className="parentBox" key={key}>
+                <div className={currentClass ? "entryBox-finished" : "entryBox-unfinished"} onClick={completeItem}>
+                    <h3 className="entryTitle">{title}</h3>
+                    <p className="entryInfo">{description}</p>
+                    <p className="entryDate">{date}</p>
+                </div>
+                <div>
+                    <button onClick={deleteEntry}>Delete</button>
+                </div>
+            </div>
             <hr />
-        </div>
+        </>
     )
 }

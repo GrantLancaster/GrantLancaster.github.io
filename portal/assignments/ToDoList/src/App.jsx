@@ -16,15 +16,20 @@ https://react.dev/learn/updating-arrays-in-state
 export default function App() {
   const [entryArray, updateArray] = useState([]);
   const [entry, updateEntry] = useState()
-  const [currentClass, updateClass] = useState();
+
+  function deleteEntry() {
+    console.log(entryArray);
+    console.log(entry);
+    updateArray(entryArray.filter(entry => entry !== entryArray));
+}  
 
   
   return (
     <>
     <div className="card">
       <Title />
-      <EntryList array={entryArray} />
-      <AddEntry array={entryArray} updateArray={updateArray} entry={entry} updateEntry={updateEntry} />
+      <EntryList array={entryArray} updateArray={updateArray} deleteEntry={deleteEntry} />
+      <AddEntry array={entryArray} updateArray={updateArray} entry={entry} updateEntry={updateEntry} deleteEntry={deleteEntry} />
     </div>
     </>
   )

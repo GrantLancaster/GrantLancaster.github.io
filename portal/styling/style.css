@@ -214,6 +214,22 @@ p {
         animation-name: moveInLeft;
         animation-duration: 0.5s;
     }
+    #assignment6 {
+        background: url(../images/processBlogsSS.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        animation-name: moveInLeft;
+        animation-duration: 0.5s;
+    }
+    #assignment7 {
+        background: url(../images/Assignment5SS.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        animation-name: moveInRight;
+        animation-duration: 0.5s;
+    }
     #project1 {
         background: url(../images/Project1SS.png);
         background-size: cover;
@@ -412,6 +428,18 @@ p {
     }
     #assignment4 {
         background: url(../images/assignment4SS.PNG);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #assignment6 {
+        background: url(../images/processBlogsSS.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #assignment7 {
+        background: url(../images/Assignment5SS.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
