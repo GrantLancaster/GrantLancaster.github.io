@@ -9,7 +9,8 @@ const renderer = new THREE.WebGLRenderer();
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
-let toggle = document.querySelector(".bottom");
+let bottomButton = document.querySelector(".bottom");
+let rightButton = document.querySelector(".right");
 const vector = new THREE.Vector3();
 let cameraPos;
 
@@ -80,6 +81,7 @@ const triangles = [];
 const hexagons = [];
 const diamonds = [];
 const bars = [[], [], []] // Horizontal, Vertical, Front-back
+const cube = [];
 /*-----------------------------------------*/
 
 let impossibleCube, block ;
@@ -90,11 +92,14 @@ const dif = 0.1;
 const buffDist = 0.05
 let direction = 1;
 let factor = 1;
+let currentArrow;
 
 /*------------ Controls -------------*/
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.update();
-toggle.addEventListener("click", ()=> {checkCameraPosition()});
+bottomButton.addEventListener("click", ()=> {checkCameraPosition()});
+rightButton.addEventListener("click", () => {autoRotate(true)});
+document.addEventListener("keydown", (e) => {currentArrow = e.key});
 
 /*-----------------------------------------*/
 function setup() {
@@ -142,12 +147,13 @@ function render() {
 	animateLeftFace();
 	animateRightFace();
 	animateTopFace();
+	animateBottomFace();
 
 	expandPlane(whichPlane, toggleString);
 	//console.log(whichPlane);
 
 	requestAnimationFrame(render);
-}
+};
 
 async function loadModel(path, needStencil, refNum) {
 	const loader = new GLTFLoader();
@@ -169,7 +175,15 @@ async function loadModel(path, needStencil, refNum) {
 	else {
 		return object;
 	}
-}
+};
+
+function autoRotate(showCube) {
+	if (showCube) {
+		return
+	} else if (!showCube) {
+		scene.remove(impossibleCube);
+	}
+};
 
 function checkCameraPosition() {
 	cameraPos = camera.getWorldDirection(vector);
@@ -200,7 +214,7 @@ function checkCameraPosition() {
 		toggleString = "bottom";
 		sizing = true;
 	}
-}
+};
 function expandPlane(Plane, toggleString) {
 	if(Plane == "none") {return};
 	cameraPos = camera.getWorldDirection(vector);
@@ -255,7 +269,7 @@ function expandPlane(Plane, toggleString) {
 			}
 		}
 	}
-}
+};
 
 async function loadFrontFace() {
 	block = await loadModel("models/filledCube.gltf", true, 1);
@@ -290,7 +304,7 @@ async function loadFrontFace() {
 			}
 		}
 	}
-}
+};
 function animateFrontFace() {
 	let x = 0;
 	for (let item = 0; item < rings.length; item++) {
@@ -405,7 +419,7 @@ function animateTopFace() {
 	const distance = Math.sin((diamonds[0].rotation.y*50)*Math.PI/180);
 	diamonds[0].rotation.x += 0.01;
 	diamonds[0].rotation.y -= 0.01;
-	console.log(distance);
+	//console.log(distance);
 	for (let i = 0; i < hexagons.length; i++) {
 		if (i % 2 == 0) {factor = -1}
 		else if (i % 2 !== 0) {factor = 1};
@@ -418,10 +432,24 @@ function animateTopFace() {
 
 async function loadBottomFace() {
 	const boo = await loadModel("models/filledCube.gltf", true, 6);
-	boo.scale.set(40, 10, 10);
+	boo.scale.set(3, 3, 3);
+	cube.push(boo);
 	scene.add(boo);
 }
 function animateBottomFace() {
-
+	switch(currentArrow) {
+		case "ArrowRight":
+			cube[0].position.x += 0.03;
+			break;
+		case "ArrowLeft": 
+			cube[0].position.x -= 0.03;
+			break;
+		case "ArrowUp":
+			cube[0].position.z += 0.03;
+			break;
+		case "ArrowDown":
+			cube[0].position.z -= 0.03;
+			break;
+		}
 }
 setup();
