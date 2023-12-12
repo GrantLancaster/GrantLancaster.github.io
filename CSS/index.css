@@ -1,0 +1,154 @@
+h1 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 72pt;
+}
+h2 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 56pt;
+}
+h3 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 1000;
+    font-style: normal;
+    font-size: 40pt;
+}
+h4 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 1000;
+    font-style: normal;
+    font-size: 36pt;
+}
+h5 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 1000;
+    font-style: normal;
+    font-size: 18pt;
+    margin: 0 0 10px 0;
+}
+p {
+    font-family: "calibri", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14pt;
+    color: white;
+}
+h1, h2, h3, h4, h5, p {
+    margin: 0;
+    padding: 0;
+}
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #0F0F1E;
+    width: 100%;
+    height: 100vh; 
+}
+
+#name {
+    display: flex;;
+}
+#particles-js {
+    width: 100%;
+    height: 100%;
+}
+header {
+    position: fixed;
+    bottom: 5%;
+    left: 3%;
+}
+.container {
+    position: fixed;
+    bottom: 15%;;
+    right: 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    transform: perspective(300px) rotateY(-25deg) skew(0, 10deg) scale(0.8, 1.1);
+}
+
+.bodyBlock {
+    position: fixed;
+    top: 15%;
+    left: 3%;
+    width: 50%;
+    height: 50%;
+    transform: perspective(400px) rotateY(15deg) skew(0, 0deg) scale(0.8, 1.1);
+}
+.inviz {
+    animation: 0.5s ease-in-out 0s 1 visibility;
+}
+.newContent {
+    width: 100%;
+    height: 100%;
+    animation: 0.5s ease-in-out 0s 1 fadeIn;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1em;
+    border-radius: 2em;
+    position: fixed;
+    /*overflow-y: scroll;*/
+    scrollbar-width: 100px;
+
+}
+
+.mainContent {
+    width: fit-content;
+    color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke: 2px #00FFFF;
+}
+.mainContent:hover {
+    color:#00FFFF;
+    -webkit-text-stroke: 0px #00FFFF;
+    cursor: pointer;
+    z-index: 99;
+    transform: perspective(600px) rotateY(40deg) skew(0, -10deg) scale(1.2, 1.2);
+}
+a {
+    color: #00FFFF;
+}
+.travel {
+    font-size: 18pt;
+    position: relative;
+    bottom: 0;
+    text-align: center;
+
+}
+.filled {
+    color: #00FFFF;
+}
+.stroke {
+    color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke: 1px #00FFFF;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        width: 100%;
+        height: 0;
+    }
+    to {
+        height: 100%;
+    }
+}
+@keyframes visibility {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
