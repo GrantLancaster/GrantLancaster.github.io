@@ -1,4 +1,4 @@
-import projects from "./modules/info.js";
+import grantL from "./modules/info.js";
 
 const body = document.querySelector("body");
 body.innerHTML =`
@@ -43,13 +43,14 @@ function updatePage(e) {
     frame.innerHTML = `
     <div class="newContent">
         <div class="inviz">
-        <h4 class="stroke">${projects[target].name}</h4>
-        <h5 class="filled">${projects[target].dates}</h5>
-        <p>${projects[target].description}</p>
+        <h4 class="stroke">${grantL.projects[target].name}</h4>
+        <h5 class="filled">${grantL.projects[target].dates}</h5>
+        <p>${grantL.projects[target].description}</p>
         <p>Travel to live page bellow</p> 
-        <h5 class="travel"><a target="_blank" rel="noreferrer noopener" href=${projects[target].livePage}>Travel</a></h5>
+        <h5 class="travel"><a target="_blank" rel="noreferrer noopener" href=${grantL.projects[target].livePage}>Travel</a></h5>
         
         </div>
     </div>
     `
 }
+

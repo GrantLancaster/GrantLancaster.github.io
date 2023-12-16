@@ -49,7 +49,7 @@ const grantL = {
             "institution": "University of Colorado Boulder",
             "collaborators": "Jyotish Vardhan, Chin-Hsuan (Andrea) Wang",
             "hostingprofessor": "N/A",
-            "livePage": "http://grantishdesigns.me/portal"
+            "livePage": "https://nexus-play.vercel.app/"
         },
 
         "galaga": {
@@ -59,7 +59,7 @@ const grantL = {
             "institution": "University of Colorado Boulder",
             "collaborators": "Jyotish Vardhan, Chin-Hsuan (Andrea) Wang",
             "hostingprofessor": "N/A",
-            "livePage": "http://grantishdesigns.me/portal"
+            "livePage": "https://grantishdesigns.me/FinalProject/finalGame.html"
         },
 
         "audioTurtle": {
