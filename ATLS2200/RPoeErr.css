@@ -1,102 +1,21 @@
-body{
+html, body {
   margin: 0;
-  overflow: hidden;
-  background-color: darkgreen;
+  padding: 0;
 }
-
-#title{
-  text-align: center;
-  color: red;
-}
-
-.flexbox{
+body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
 }
-
-.box1 {
-  background-color: #fff;
-  width: 80px;
-  height: 100px;
-  color: black;
+.number {
+  font-size: 2rem;
 }
-
-.box2 {
-  background-color: #fff;
-  width: 80px;
-  height: 100px;
-  color: black;
-}
-
-.box3 {
-  background-color: #fff;
-  width: 80px;
-  height: 100px;
-  color: black;
-}
-
-.box4 {
-  background-color: #fff;
-  width: 80px;
-  height: 100px;
-  color: black;
-}
-
-.box5 {
-  background-color: #fff;
-  width: 80px;
-  height: 100px;
-  color: black;
-}
-
-.box6 {
-  background-color: #fff;
-  width: 80px;
-  height: 100px;
-  color: black;
-}
-
-.box7 {
-  background-color: #fff;
-  width: 80px;
-  height: 100px;
-  color: black;
-}
-
-.box8 {
-  background-color: #fff;
-  width: 80px;
-  height: 100px;
-  color: black;
-}
-
-.box9 {
-  background-color: #fff;
-  width: 80px;
-  height: 100px;
-  color: black;
-}
-
-.box10 {
-  background-color: #fff;
-  width: 80px;
-  height: 100px;
-  color: black;
-}
-
-/** this is the ball overlay, HINT text align center etc*/
-.ball-overlay-1 {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background-color: #3498db;
-  color: #fff;
-  font-size: 20px;
+button {
+  background-color: gray;
+  padding: 7px;
   border: none;
-  border-radius: 50%;
+  border-radius: 4px;
   cursor: pointer;
-  z-index: 9000;
-  text-align: center;
 }
