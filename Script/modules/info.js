@@ -6,6 +6,7 @@ const grantL = {
     Now I'm a front-end developer making applications for fun, for people, and for exploration; trying out new techniques, designs, 
     and functions. I love front-end, but my main passion is helping people, so I want to use my skills to create projects that 
     enhance people and how they live.
+    <hr>
     `,
     "resume":{
         "desiredjob": ["Front End Web Developer", "UX Designer", "Back-End Web Developer", "Full-Stack Developer", "Analytical Chemist"],

@@ -1,6 +1,7 @@
 :root {
     --cyan: #00FFFF;
     --magenta: #FF00FF;
+    --softWhite: #B7B7B7;
     --bgMagenta: #FF00FF0D;
     --bgColor: #1c1c1c;
     --bgBlue: #0F0F1E;
@@ -17,6 +18,7 @@
     height: 100%;
     z-index: -99;
 }
+
 /*--------- Text/Font ---------------*/
 h1 {
     font-family: "montserrat", sans-serif;
@@ -54,7 +56,7 @@ p {
     font-weight: 400;
     font-style: normal;
     font-size: 12pt;
-    color: #B7B7B7;
+    color: var(--softWhite);
 }
 h1, h2, h3, h4, h5, p {
     margin: 0;
@@ -95,12 +97,17 @@ body {
     position: sticky;
     top: 0;
     left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
 }
 .rightSide {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     padding: 2rem;
+    margin-right: 2rem;
 }
 header {
     margin: 2rem;
@@ -147,8 +154,22 @@ header {
     color: var(--bgColor);
 }
 #aboutMe p {
+    width: 500px;
     font-size: 14pt;
 }
+.linkParent {
+    position: relative;
+    bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+.icons {
+    width: 30px;
+    height: auto;;
+}
+
 
 .module {
     position: relative;
@@ -163,7 +184,7 @@ header {
     background-color: var(--bgMagenta)
 }
 .description {
-    min-width: 500px;
+    width: 500px;
 }
 .packages {
     margin: 1rem 0 1rem 0;
@@ -182,9 +203,18 @@ header {
     min-width: 4rem;
     text-align: center;
 }
+.titleParent {
+    display: flex;
+    justify-content: space-between;
+}
 .title {
     color: rgba(0, 0, 0, 0);
     -webkit-text-stroke: 1px var(--cyan);
+}
+.dates {
+    color: slategray;
+    margin: 0;
+    padding: 0;
 }
 .link {
     display: block;

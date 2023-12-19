@@ -1,23 +1,6 @@
 import grantL from "./info.js";
 
 let entry = "";
-/*for (let i = 0; i < grantL.projects.impossibleCube.packages.length; i++) {
-    stuff += `
-        <div class="package">
-            <p>${pckg[i]}</p>
-        </div>
-        `}
-
-entry =`
-    <div class="module" id="impossibleCube">
-        <p class="description">${grantL.projects.impossibleCube.description}</p>
-        <div class="packages">
-            ${stuff}
-        </div>
-        <h5 class="title">${grantL.projects.impossibleCube.name}</h5>
-    </div>
-`*/
-
 function buildEntries(key) {
     let stuff = "";
     let pckg = grantL.projects[key].packages;
@@ -34,7 +17,10 @@ function buildEntries(key) {
                 <div class="packages">
                     ${stuff}
                 </div>
-            <h5 class="title">${grantL.projects[key].name}</h5>
+            <div class="titleParent">
+                <h5 class="title">${grantL.projects[key].name}</h5>
+                <p class="dates">${grantL.projects[key].dates}</p>
+            </div>
             <a class="link" href=${grantL.projects[key].livePage} target="_blank" rel="noreferrer noopener"></a>
         </div>
 `
@@ -43,4 +29,5 @@ function buildEntries(key) {
 for (let key in grantL.projects) {
     buildEntries(key);
 }
+
 export default entry;
