@@ -1,5 +1,8 @@
 const grantL = {
-    "aboutme":``,
+    "aboutme":`This is effectively a test just to see whether things work or not.
+    lorem alksdjf afkje aksljf aksefj askfjasdfiojvr askj fkejf askdjf askrfj
+    a slkjf kldjfsklrj faklsdjflkasj dvoirj klsajg lkdfjaslkdfj aslkddfj 
+    aslkdjflkaj fkrj grklj slkvjas irf jaslkjf iosbijlkbj soidfj `,
     "resume":{
         "desiredjob": ["Front End Web Developer", "UX Designer", "Back-End Web Developer", "Full-Stack Developer", "Analytical Chemist"],
         "skills":{
@@ -39,6 +42,7 @@ const grantL = {
             "institution": "University of Colorado Boulder",
             "collaborators": "N/A",
             "hostingprofessor": "Anthony Pinter",
+            "packages": ["Three.js", "WebGL", "Javascript", "CSS", "BlockBench"],
             "livePage": "https://grantishdesigns.me/portal/Project1_ImpossibleCube/dist/index.html"
         },
 
@@ -49,6 +53,7 @@ const grantL = {
             "institution": "University of Colorado Boulder",
             "collaborators": "Jyotish Vardhan, Chin-Hsuan (Andrea) Wang",
             "hostingprofessor": "N/A",
+            "packages": ["react", "electron", "JSX", "Tailwind CSS", "rawg.io API", "fontawesome API"],
             "livePage": "https://nexus-play.vercel.app/"
         },
 
@@ -59,6 +64,7 @@ const grantL = {
             "institution": "University of Colorado Boulder",
             "collaborators": "Jyotish Vardhan, Chin-Hsuan (Andrea) Wang",
             "hostingprofessor": "N/A",
+            "packages": ["Three.js", "WebGL", "Javascript", "CSS", "BlockBench"],
             "livePage": "https://grantishdesigns.me/FinalProject/finalGame.html"
         },
 
@@ -69,6 +75,7 @@ const grantL = {
             "institution": "University of Colorado Boulder",
             "collaborators": "Jyotish Vardhan, Chin-Hsuan (Andrea) Wang",
             "hostingprofessor": "N/A",
+            "packages": ["Three.js", "WebGL", "Javascript", "CSS", "BlockBench"],
             "livePage": "http://grantishdesigns.me/portal"
         },
 
@@ -79,6 +86,7 @@ const grantL = {
             "institution": "University of Colorado Boulder",
             "collaborators": "Jyotish Vardhan, Chin-Hsuan (Andrea) Wang",
             "hostingprofessor": "N/A",
+            "packages": ["Three.js", "WebGL", "Javascript", "CSS", "BlockBench"],
             "livePage": "http://grantishdesigns.me/portal"
         }
     },

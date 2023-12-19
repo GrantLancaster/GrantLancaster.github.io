@@ -2,10 +2,10 @@
 let homescreen = `
 <header>
     <div id="name">
-        <h3>Grant </h3>
-        <h3>Lancaster</h3>
+        <p class="filled" id="firstName">Grant</p>
+        <hp class="stroke" id="lastName">Lancaster</p>
     </div>
-    <h5>Developer   |   Designer   |   Goofball</h5>
+    <p id="subHeader">Developer | Designer | <span id="Abutton" class="controllerButtons">A</span> <span id="Bbutton" class="controllerButtons">B</span> <span id="Xbutton" class="controllerButtons">X</span> <span id="Ybutton" class="controllerButtons">Y</span> Enthusiast</p>
 </header>
 `
 
