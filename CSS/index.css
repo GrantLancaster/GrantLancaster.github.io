@@ -2,6 +2,7 @@
     --cyan: #00FFFF;
     --magenta: #FF00FF;
     --bgColor: #1c1c1c;
+    --bgBlue: #0F0F1E;
 }
 @font-face {
     font-family: BubblePixels;
@@ -9,8 +10,11 @@
 }
 #particles-js {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    z-index: -99;
 }
 /*--------- Text/Font ---------------*/
 h1 {
@@ -45,7 +49,7 @@ h5 {
     margin: 0 0 10px 0;
 }
 p {
-    font-family: "calibri", sans-serif;
+    font-family: "montserrat", sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 14pt;
@@ -55,19 +59,68 @@ h1, h2, h3, h4, h5, p {
     margin: 0;
     padding: 0;
 }
+#firstName {
+    font-family: "BubblePixels";
+    font-size: 36pt;
+}
+#lastName {
+    font-family: "BubblePixels";
+    font-size: 36pt;
+}
 /*----------------------------------------*/
 
 body {
     padding: 0;
     margin: 0;
-    background-color: #0F0F1E;
+    background-color: var(--bgBlue);
     width: 100%;
-    height: 100vh; 
+    height: 100%; 
+}
+header {
+    margin: 2rem;
 }
 #name {
     display: flex;
     gap: 0.25rem;
 }
+#subHeader {
+    margin: 1rem 0 1rem 0;
+}
+.controllerButtons {
+    padding: 5px 9px 5px 9px;
+    background-color: var(--bgColor);
+    border-radius: 100%;
+    font-weight: bold;
+}
+#Abutton {
+    color: green;
+}
+#Abutton:hover {
+    background-color: green;
+    color: var(--bgColor);
+}
+#Bbutton {
+    color: red;
+}
+#Bbutton:hover {
+    background-color: red;
+    color: var(--bgColor);
+}
+#Xbutton {
+    color: royalblue;
+}
+#Xbutton:hover {
+    background-color: royalblue;
+    color: var(--bgColor);
+}
+#Ybutton {
+    color: yellow;
+}
+#Ybutton:hover {
+    background-color: yellow;
+    color: var(--bgColor);
+}
+
 /*------- Specific Styles for text----------*/
 .filled {
     color: var(--cyan);
