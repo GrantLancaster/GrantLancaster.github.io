@@ -29,12 +29,13 @@ function buildEntries(key) {
             </div>
         `}
     entry += `
-        <div class="module" id="impossibleCube">
+        <div class="module" id=${key}>
             <p class="description">${grantL.projects[key].description}</p>
                 <div class="packages">
                     ${stuff}
                 </div>
             <h5 class="title">${grantL.projects[key].name}</h5>
+            <a class="link" href=${grantL.projects[key].livePage} target="_blank" rel="noreferrer noopener"></a>
         </div>
 `
 }

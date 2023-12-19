@@ -60,6 +60,13 @@ h1, h2, h3, h4, h5, p {
     margin: 0;
     padding: 0;
 }
+a {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12pt;
+    color: var(--cyan);
+}
 #firstName {
     font-family: "BubblePixels";
     font-size: 30pt;
@@ -139,9 +146,14 @@ header {
     background-color: yellow;
     color: var(--bgColor);
 }
+#aboutMe p {
+    font-size: 14pt;
+}
 
 .module {
+    position: relative;
     padding: 1rem;
+    margin: 1rem 0 1rem 0;
     border-radius: 0.5rem;
     transition: transform 0.2s, border 0.2s, background-color 0.2s;
 }
@@ -151,7 +163,7 @@ header {
     background-color: var(--bgMagenta)
 }
 .description {
-    width: 500px;
+    min-width: 500px;
 }
 .packages {
     margin: 1rem 0 1rem 0;
@@ -161,7 +173,8 @@ header {
     justify-content: space-evenly;
 }
 .package p {
-    font-size: 8pt;
+    font-size: 10pt;
+    font-weight: bold;
     padding: 0.5rem;
     border: 1px solid var(--magenta);
     background-color:#FF00FF1A;
@@ -172,6 +185,15 @@ header {
 .title {
     color: rgba(0, 0, 0, 0);
     -webkit-text-stroke: 1px var(--cyan);
+}
+.link {
+    display: block;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 }
 /*------- Specific Styles for text----------*/
 .filled {
