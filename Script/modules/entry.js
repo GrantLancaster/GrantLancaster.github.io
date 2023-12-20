@@ -1,6 +1,8 @@
 import grantL from "./info.js";
 
+let int = 0;
 let entry = "";
+
 function buildEntries(key) {
     let stuff = "";
     let pckg = grantL.projects[key].packages;
@@ -21,9 +23,24 @@ function buildEntries(key) {
                 <h5 class="title">${grantL.projects[key].name}</h5>
                 <p class="dates">${grantL.projects[key].dates}</p>
             </div>
-            <a class="link" href=${grantL.projects[key].livePage} target="_blank" rel="noreferrer noopener"></a>
+            <a id="${int}" class="link" href=${grantL.projects[key].livePage} target="_blank" rel="noreferrer noopener"></a>
+
+            <div class="buttonParent" id="buttons${int}">
+                <div class="topbottom">
+                    <button class="controllerButtons" id="Ybutton">Y</button>
+                </div>
+                <div class="middle">
+                    <button class="controllerButtons" id="Xbutton">X</button>
+                    <button class="controllerButtons" id="Bbutton">B</button>
+                </div>
+                <div class="topbottom">
+                    <button class="controllerButtons" id="Abutton">A</button>
+                </div>
+            </div>
+
         </div>
 `
+int += 1;
 }
 
 for (let key in grantL.projects) {

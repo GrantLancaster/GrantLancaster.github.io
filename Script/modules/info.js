@@ -91,7 +91,7 @@ const grantL = {
             "collaborators": ["Peyton O'Brien", "Grant Young"],
             "hostingprofessor": "N/A",
             "packages": ["Python", "Turtle"],
-            "livePage": "http://grantishdesigns.me/portal"
+            "livePage": "https://github.com/GrantLancaster/Key-Projects/blob/main/Audio_Visualizer.py"
         },
 
         "dataDice": {
