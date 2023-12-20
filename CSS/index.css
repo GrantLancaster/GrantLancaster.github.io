@@ -10,6 +10,10 @@
     font-family: BubblePixels;
     src: url(../fonts/04B_30__.TTF);
 }
+@font-face {
+    font-family: BodyPixel;
+    src: url(../fonts/Minecraft.ttf);
+}
 #particles-js {
     position: fixed;
     top: 0;
@@ -77,6 +81,13 @@ a {
     font-family: "BubblePixels";
     font-size: 30pt;
 }
+#quote {
+    text-align: center;
+    font-family: "BodyPixel";
+    font-size: 24px;
+    color: var(--softWhite);
+    font-weight: lighter;
+}
 /*----------------------------------------*/
 
 body {
@@ -92,6 +103,7 @@ body {
     gap: 2rem;
 }
 .leftSide {
+    position: relative;
     height: 100vh;
     width: auto;
     position: sticky;
@@ -158,8 +170,9 @@ header {
     font-size: 14pt;
 }
 .linkParent {
-    position: relative;
+    position: absolute;
     bottom: 2rem;
+    left: 40%;
     display: flex;
     gap: 2rem;
     justify-content: center;
