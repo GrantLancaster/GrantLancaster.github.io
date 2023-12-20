@@ -16,7 +16,7 @@ function makeInvis(event) {
     let button =  document.querySelector(`#buttons${num}`);
     button.style.visibility = "hidden";
 
-    button.addEventListener("mouseenter", () => {
+    button.addEventListener("mouseleave", () => {
         button.style.visibility = "hidden";
     });
 }
