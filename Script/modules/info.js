@@ -23,15 +23,51 @@ const grantL = {
             "communityservice": {}
         },
         "education": {
-            "highschool": "",
-            "texastech": "",
-            "frontrangecommunitycollege": "",
-            "cuboulder": ""
+            "highschool": {
+                "name": "Peak to Peak Charter School",
+                "program": {
+                    "major": "N/A",
+                    "minor": "N/A"
+                },
+                "location": "Lafayette, Colorado",
+                "graduationDate": "May 2027"
+            },
+            "texastech": {
+                "name": "Texas Tech University",
+                "program": {
+                    "major": "Chemical Engineering",
+                    "minor": "N/A"
+                },
+                "location": "Lubbock, Texas",
+                "attendedDates": "August 2017 - December 2017",
+                "graduationDate": "N/A"
+            },
+            "frontrangecommunitycollege": {
+                "name": "Front Range Community College",
+                "program": {
+                    "major": "Chemistry",
+                    "minor": "N/A"
+                },
+                "location": "Westminster, Colorado",
+                "attendedDates": "January 2018 - May 2018",
+                "graduationDate": "N/A"
+            },
+            "cuboulder": {
+                "name": "Univesity of Colorado Boulder",
+                "program": {
+                    "major": "Chemistry",
+                    "minor": "Creative Technology and Design"
+                },
+                "location": "Boulder, Colorado",
+                "attendedDates": "August 2018 -  current",
+                "graduationDate": "N/A"
+            }
         },
         "links": {
-            "github": "",
-            "linkedin": "",
-            "portfoliosite": "",
+            "github": "https://github.com/GrantLancaster",
+            "linkedin": "https://www.linkedin.com/in/grant1shdesigns/",
+            "portfoliosite": "https://grantishdsigns.me",
+            "resume": "https://drive.google.com/file/d/1uUbULLOe9_A59Vvdxv8dZh_oPcJWH4YI/view?usp=sharing",
             "twitchtv": ""
         },
         "references": {}
@@ -46,8 +82,9 @@ const grantL = {
             "institution": "University of Colorado Boulder",
             "collaborators": "N/A",
             "hostingprofessor": "Anthony Pinter",
-            "packages": ["Three.js", "WebGL", "Javascript", "CSS", "BlockBench"],
-            "livePage": "https://grantishdesigns.me/portal/Project1_ImpossibleCube/dist/index.html"
+            "packages": ["Three.js", "WebGL", "Javascript", "CSS", "BlockBench", "vite"],
+            "livePage": "https://grantishdesigns.me/portal/Project1_ImpossibleCube/dist/index.html",
+            "isBuilt": true
         },
 
         "nexusPlay": {
@@ -62,7 +99,8 @@ const grantL = {
             "collaborators": "Jyotish Vardhan, Chin-Hsuan (Andrea) Wang",
             "hostingprofessor": "N/A",
             "packages": ["react", "electron", "JSX", "Tailwind CSS", "rawg.io API", "fontawesome API", "Vite", "Vercel"],
-            "livePage": "https://nexus-play.vercel.app/"
+            "livePage": "https://nexus-play.vercel.app/",
+            "isBuilt": true
         },
 
         "galaga": {
@@ -76,7 +114,8 @@ const grantL = {
             "collaborators": "N/A",
             "hostingprofessor": "N/A",
             "packages": ["Javascript", "CSS", "Canvas", "Pixilart.com"],
-            "livePage": "https://grantishdesigns.me/FinalProject/finalGame.html"
+            "livePage": "https://grantishdesigns.me/FinalProject/finalGame.html",
+            "isBuilt": true
         },
 
         "audioTurtle": {
@@ -89,7 +128,8 @@ const grantL = {
             "collaborators": ["Peyton O'Brien", "Grant Young"],
             "hostingprofessor": "N/A",
             "packages": ["Python", "Turtle"],
-            "livePage": "https://github.com/GrantLancaster/Key-Projects/blob/main/Audio_Visualizer.py"
+            "livePage": "https://github.com/GrantLancaster/Key-Projects/blob/main/Audio_Visualizer.py",
+            "isBuilt": true
         },
 
         "dataDice": {
@@ -101,8 +141,9 @@ const grantL = {
             "institution": "University of Colorado Boulder",
             "collaborators": "N/A",
             "hostingprofessor": "N/A",
-            "packages": ["Three.js", "WebGL", "Javascript", "CSS"],
-            "livePage": "http://grantishdesigns.me/portal"
+            "packages": ["Three.js", "WebGL", "Javascript", "CSS", "vite"],
+            "livePage": "http://grantishdesigns.me",
+            "isBuilt": false
         }
     },
     "contact": "grant.lancaster3@gmail.com"

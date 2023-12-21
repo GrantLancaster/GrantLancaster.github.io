@@ -2,10 +2,15 @@ import grantL from "./info.js";
 
 let int = 0;
 let entry = "";
+let construction = "";
 
 function buildEntries(key) {
     let stuff = "";
     let pckg = grantL.projects[key].packages;
+
+    if (grantL.projects[key].isBuilt === false) {
+        construction = `<p class="construct">Not Live -- Under Construction</p>`
+    } else {construction = ""};
 
     for (let i = 0; i < grantL.projects[key].packages.length; i++) {
         stuff += `
@@ -19,6 +24,7 @@ function buildEntries(key) {
                 <h5 class="title">${grantL.projects[key].name}</h5>
                 <p class="dates">${grantL.projects[key].dates}</p>
             </div>
+            ${construction}
             <p class="description">${grantL.projects[key].description}</p>
                 <div class="packages">
                     ${stuff}
@@ -37,7 +43,6 @@ function buildEntries(key) {
                     <button class="controllerButtons" id="Abutton">A</button>
                 </div>
             </div>
-
         </div>
 `
 int += 1;

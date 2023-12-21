@@ -251,7 +251,7 @@ header {
     z-index: 1;
     position: absolute;
     top: 0;
-    left: 0%;
+    left: 0;
     height: 100%;
     width: 100%;
 }
@@ -281,6 +281,9 @@ header {
 button {
     font-size: 12pt;
     border: none;
+}
+.construct {
+    color: red;
 }
 
 /*------- Specific Styles for text----------*/
