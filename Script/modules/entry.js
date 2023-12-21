@@ -15,14 +15,14 @@ function buildEntries(key) {
         `}
     entry += `
         <div class="module" id=${key}>
-            <p class="description">${grantL.projects[key].description}</p>
-                <div class="packages">
-                    ${stuff}
-                </div>
             <div class="titleParent">
                 <h5 class="title">${grantL.projects[key].name}</h5>
                 <p class="dates">${grantL.projects[key].dates}</p>
             </div>
+            <p class="description">${grantL.projects[key].description}</p>
+                <div class="packages">
+                    ${stuff}
+                </div>
             <a id="${int}" class="link" href=${grantL.projects[key].livePage} target="_blank" rel="noreferrer noopener"></a>
 
             <div class="buttonParent" id="buttons${int}">

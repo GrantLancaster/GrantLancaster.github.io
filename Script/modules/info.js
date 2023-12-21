@@ -6,7 +6,6 @@ const grantL = {
     Now I'm a front-end developer making applications for fun, for people, and for exploration; trying out new techniques, designs, 
     and functions. I love front-end, but my main passion is helping people, so I want to use my skills to create projects that 
     enhance people and how they live.
-    <hr>
     `,
     "resume":{
         "desiredjob": ["Front End Web Developer", "UX Designer", "Back-End Web Developer", "Full-Stack Developer", "Analytical Chemist"],
@@ -96,7 +95,9 @@ const grantL = {
 
         "dataDice": {
             "name": "Data Dice",
-            "description": "",
+            "description": `A data visualization based off of table top role-playing-games. 
+            Dice roll values, player prompts, and generative AI provide a secondary 'imagination' 
+            to the players to enhance their game in an interesting way.`,
             "dates": "Fall 2023-Spring 2024",
             "institution": "University of Colorado Boulder",
             "collaborators": "N/A",
