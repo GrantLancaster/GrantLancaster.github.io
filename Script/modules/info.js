@@ -68,15 +68,14 @@ const grantL = {
         "galaga": {
             "name": "Really Bad Galaga",
             "description": `My final project when I was just learning web development. Uses the canvas library and OOP to 
-            create and admittedly buggy Galaga clone. I created the sprites for the ship and aliens using 
-            <a href="https://www.pixilart.com/">pixilart.com</a>. 
+            create and admittedly buggy Galaga clone. I created the sprites for the ship and aliens. 
             The game definitely has some functionality quirks (i.e. don't hold the space bar), but it was a great experience in 
             game development as well as some mild crunch culture.`,
             "dates": "Fall 2021",
             "institution": "University of Colorado Boulder",
             "collaborators": "N/A",
             "hostingprofessor": "N/A",
-            "packages": ["Javascript", "CSS", "Canvas"],
+            "packages": ["Javascript", "CSS", "Canvas", "Pixilart.com"],
             "livePage": "https://grantishdesigns.me/FinalProject/finalGame.html"
         },
 
@@ -98,7 +97,7 @@ const grantL = {
             "description": `A data visualization based off of table top role-playing-games. 
             Dice roll values, player prompts, and generative AI provide a secondary 'imagination' 
             to the players to enhance their game in an interesting way.`,
-            "dates": "Fall 2023-Spring 2024",
+            "dates": "Fall 2023-Current",
             "institution": "University of Colorado Boulder",
             "collaborators": "N/A",
             "hostingprofessor": "N/A",

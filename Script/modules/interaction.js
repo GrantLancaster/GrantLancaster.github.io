@@ -37,3 +37,4 @@ function handleTitle() {
     quote.style.top = "50%";
 }
 handleTitle();
+window.addEventListener("resize", handleTitle);
