@@ -67,7 +67,7 @@ const grantL = {
             "github": "https://github.com/GrantLancaster",
             "linkedin": "https://www.linkedin.com/in/grant1shdesigns/",
             "portfoliosite": "https://grantishdsigns.me",
-            "resume": "https://drive.google.com/file/d/1uUbULLOe9_A59Vvdxv8dZh_oPcJWH4YI/view?usp=sharing",
+            "resume": "https://drive.google.com/file/d/1CVOWpCfhLM2YmB_baoGmM9nvmA-hEk2e/view?usp=sharing",
             "twitchtv": ""
         },
         "references": {}
