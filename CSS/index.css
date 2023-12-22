@@ -334,22 +334,26 @@ button {
         flex-direction: column;
         gap: 2rem;
     }
+    .rightSide {
+        margin: 0;
+        padding: 0 2rem 0 2rem;
+    }
     .leftSide {
+        position: relative;
         height: 100vh;
         width: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
         gap: 2rem;
-        position: static;
-    
     }
     header {
+        margin: 60% 2rem 0 2rem;
         position: sticky;
-        margin: 2rem;
         top: 2rem;
         z-index: 10;
+        display: flex;
+        flex-direction: column;
     }
     #name {
         display: flex;
@@ -358,10 +362,12 @@ button {
     }
     #quoteParent {
         position: absolute;
+        top: 45%;
+        margin: 0;
     }
     .linkParent {
-        position: static;
-        bottom: 2rem;
+        position: absolute;
+        bottom: 30%;
         display: flex;
         gap: 2rem;
         justify-content: center;
@@ -369,10 +375,10 @@ button {
     }
     #arrow {
         transform: rotateZ(0deg);
-        margin-top: 3rem;
+        margin-top: 0;
     }
     .module:hover {
-        transform: scale(1.1) translate(1rem, 0px);
+        transform: scale(1.1) translate(0rem, 0px);
         border: 2px solid var(--magenta);
         background-color: var(--bgMagenta);
         margin-bottom: 2rem;
