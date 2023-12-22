@@ -356,6 +356,9 @@ button {
         flex-direction: column;
         gap: 0.25rem;
     }
+    #quoteParent {
+        position: absolute;
+    }
     .linkParent {
         position: static;
         bottom: 2rem;
