@@ -137,6 +137,10 @@ header {
     background-color: var(--bgColor);
     border-radius: 100%;
     font-weight: bold;
+    text-decoration: none;
+}
+.controllerButtons:visited {
+    text-decoration: none;
 }
 #Abutton {
     color: green;

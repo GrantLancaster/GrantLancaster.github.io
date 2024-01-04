@@ -81,10 +81,10 @@ const triangles = [];
 const hexagons = [];
 const diamonds = [];
 const bars = [[], [], []] // Horizontal, Vertical, Front-back
-const cube = [];
+const cubes = [];
 /*-----------------------------------------*/
 
-let impossibleCube, block ;
+let impossibleCube, block, planet;
 let whichPlane = "none";
 let toggleString;
 let sizing = false;
@@ -160,18 +160,23 @@ async function loadModel(path, needStencil, refNum) {
 	const data = await loader.loadAsync(path);
     const object = data.scene.children[0];
 	if (needStencil) {
-		if (object.children[0].children.length !== 0) {
-			object.children[0].children[0].material.stencilWrite = true;
-			object.children[0].children[0].material.stencilRef = refNum;
-			object.children[0].children[0].material.stencilFunc = THREE.EqualStencilFunc;
-		}
-		else {
-		object.children[0].material.stencilWrite = true;
-		object.children[0].material.stencilRef = refNum;
-		object.children[0].material.stencilFunc = THREE.EqualStencilFunc;
-		}
+			if (object.children[0].children.length !== 0) {
+				object.children[0].children[0].material.stencilWrite = true;
+				object.children[0].children[0].material.stencilRef = refNum;
+				object.children[0].children[0].material.stencilFunc = THREE.EqualStencilFunc;
+
+				object.children[2].children[0].material.stencilWrite = true;
+				object.children[2].children[2].material.stencilRef = refNum;
+				object.children[2].children[2].material.stencilFunc = THREE.EqualStencilFunc;
+			}
+			else {
+				object.children[0].material.stencilWrite = true;
+				object.children[0].material.stencilRef = refNum;
+				object.children[0].material.stencilFunc = THREE.EqualStencilFunc;
+			}		
 		return object;
-	}
+		
+		}
 	else {
 		return object;
 	}
@@ -270,6 +275,13 @@ function expandPlane(Plane, toggleString) {
 		}
 	}
 };
+
+async function loadbackground() {
+	planet = await loadModel("models/lilPineTreePlanet.gltf", true, 1);
+	scene.add(planet);
+	planet.position.z = -5;
+	console.log (planet);
+}
 
 async function loadFrontFace() {
 	block = await loadModel("models/filledCube.gltf", true, 1);
@@ -431,25 +443,22 @@ function animateTopFace() {
 }
 
 async function loadBottomFace() {
-	const boo = await loadModel("models/filledCube.gltf", true, 6);
-	boo.scale.set(3, 3, 3);
-	cube.push(boo);
-	scene.add(boo);
+	planet = await loadModel("models/lilPineTreePlanet.gltf", true, 6);
+	planet.scale.set(2,2,2);
+
+	planet.children[1].children[0].material.stencilWrite = true;
+	planet.children[1].children[0].material.stencilRef = 6;
+	planet.children[1].children[0].material.stencilFunc = THREE.EqualStencilFunc;
+
+	planet.children[1].children[1].material.stencilWrite = true;
+	planet.children[1].children[1].material.stencilRef = 6;
+	planet.children[1].children[1].material.stencilFunc = THREE.EqualStencilFunc;
+
+	scene.add(planet);
 }
 function animateBottomFace() {
-	switch(currentArrow) {
-		case "ArrowRight":
-			cube[0].position.x += 0.03;
-			break;
-		case "ArrowLeft": 
-			cube[0].position.x -= 0.03;
-			break;
-		case "ArrowUp":
-			cube[0].position.z += 0.03;
-			break;
-		case "ArrowDown":
-			cube[0].position.z -= 0.03;
-			break;
-		}
+	planet.rotation.x += 0.005;
+	planet.rotation.z += 0.005;
+	planet.rotation.y -= 0.005;
 }
 setup();

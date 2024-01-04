@@ -4,6 +4,7 @@ let int = 0;
 let entry = "";
 let construction = "";
 
+
 function buildEntries(key) {
     let stuff = "";
     let pckg = grantL.projects[key].packages;
@@ -33,14 +34,14 @@ function buildEntries(key) {
 
             <div class="buttonParent" id="buttons${int}">
                 <div class="topbottom">
-                    <button class="controllerButtons" id="Ybutton">Y</button>
+                    <button class="controllerButtons" id="Ybutton" >Y</button>
                 </div>
                 <div class="middle">
                     <button class="controllerButtons" id="Xbutton">X</button>
                     <button class="controllerButtons" id="Bbutton">B</button>
                 </div>
                 <div class="topbottom">
-                    <button class="controllerButtons" id="Abutton">A</button>
+                    <a class="controllerButtons" id="Abutton" href=${grantL.projects[key].livePage} target="_blank" rel="noreferrer noopener">A</a>
                 </div>
             </div>
         </div>
