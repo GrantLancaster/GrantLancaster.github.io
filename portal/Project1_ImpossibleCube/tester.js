@@ -37,7 +37,7 @@ function createMat(isForObject, referenceNum, pColor, objColor ) {
 		objectMaterial.stencilFunc = THREE.EqualStencilFunc;
 		return objectMaterial;
 	}
-}
+};
 const floorMat = new THREE.MeshPhongMaterial({color: "lightpink"});
 const wallMat = new THREE.MeshNormalMaterial();
 /*-----------------------------------------*/
@@ -58,14 +58,22 @@ const planeHeight = 6;
 const Plane = new THREE.PlaneGeometry(planeWidth, planeHeight);
 const floorPlane = new THREE.PlaneGeometry(100, 100);
 const wallPlane = new THREE.PlaneGeometry(100,100);
+wallMat.stencilWrite = true;
+wallMat.stencilRef = 7;
+wallMat.stencilFunc = THREE.AlwaysStencilFunc;
+wallMat.stencilZPass = THREE.ReplaceStencilOp;
+
+console.log(wallPlane);
 /*-----------------------------------------*/
 
 
 /*------ Mesh Initialization Setup --------*/
-const floor = new THREE.Mesh(floorPlane, floorMat);
+const floor = new THREE.Mesh(floorPlane, wallMat);
 const wall = new THREE.Mesh(wallPlane, wallMat);
 const wallL = new THREE.Mesh(wallPlane, wallMat);
 const wallR = new THREE.Mesh(wallPlane, wallMat);
+const wallBack = new THREE.Mesh(wallPlane, wallMat);
+const roof = new THREE.Mesh(floorPlane, wallMat);
 
 const backPlane = new THREE.Mesh(Plane, createMat(false, 4, "white", "white"));
 const frontPlane = new THREE.Mesh(Plane, createMat(false, 1, "white", "white"));
@@ -80,7 +88,7 @@ const blocks = [];
 const triangles = [];
 const hexagons = [];
 const diamonds = [];
-const bars = [[], [], []] // Horizontal, Vertical, Front-back
+const bars = [[], [], []]; // Horizontal, Vertical, Front-back
 const cubes = [];
 /*-----------------------------------------*/
 
@@ -110,6 +118,13 @@ function setup() {
 	scene.add(topPlane);
 	scene.add(bottomPlane);
 
+	scene.add(wall);
+	scene.add(wallL);
+	scene.add(wallR);
+	scene.add(wallBack);
+	scene.add(floor);
+	scene.add(roof);
+
     frontPlane.position.set(0,0,2.90);
 	backPlane.position.set(0, 0, -2.90), backPlane.rotation.set(0, Math.PI, 0);
 	leftPlane.position.set(-2.90, 0, 0), leftPlane.rotation.set(0, -Math.PI/2, 0);
@@ -117,12 +132,19 @@ function setup() {
 	topPlane.position.set(0, 2.90, 0), topPlane.rotation.set(-Math.PI/2, 0, 0);
 	bottomPlane.position.set(0, -2.90, 0), bottomPlane.rotation.set(Math.PI/2, 0, 0);
 
+	wallL.position.set(-25, 0, 0), wallL.rotation.set(0, Math.PI/2, 0);
+	wallR.position.set(25, 0, 0), wallR.rotation.set(0, -Math.PI/2, 0);
+	wall.position.set(0, 0, -25);
+	floor.position.set(0, -25, 0), floor.rotation.set(-Math.PI/2, 0, 0);
+	roof.position.set(0, 25, 0), roof.rotation.set(Math.PI/2, 0, 0);
+	wallBack.position.set(0, 0, 25), wallBack.rotation.set(Math.PI, 0, 0);
+
 	camera.add(light);
 	scene.add(camera);
 	light.position.set(10, 0, 4);
     
     build();
-}
+};
 
 async function build() {
 	impossibleCube = await loadModel("./models/cubeFrame.gltf", false, 0);
@@ -139,7 +161,7 @@ async function build() {
 	impossibleCube.scale.set(2,2,2);
 
     render();
-}
+};
 function render() {
 	renderer.render(scene, camera);
 	animateFrontFace();
@@ -281,7 +303,7 @@ async function loadbackground() {
 	scene.add(planet);
 	planet.position.z = -5;
 	console.log (planet);
-}
+};
 
 async function loadFrontFace() {
 	block = await loadModel("models/filledCube.gltf", true, 1);
@@ -323,7 +345,7 @@ function animateFrontFace() {
 		rings[item].rotateX(0.01+x), rings[item].rotateY(-0.01+x);
 		x = x + 0.001;
 	}
-}
+};
 
 async function loadBackFace() {
 	for (let i = 0; i < 20; i++) {
@@ -333,7 +355,7 @@ async function loadBackFace() {
 		scene.add(frame);
 		triangles.push(frame);
 	}
-}
+};
 function animateBackFace() {
 	for (let i = 0; i < triangles.length; i++) {
 		triangles[i].position.z += i /300 * direction;
@@ -344,7 +366,7 @@ function animateBackFace() {
 			direction = 1;
 		}	
 	}
-}
+};
 
 async function loadLeftFace() {
 	for (let i = 0; i < 5; i++) {
@@ -355,7 +377,7 @@ async function loadLeftFace() {
 			scene.add(block);
 		}
 	}
-}
+};
 function animateLeftFace() {
 	let int = Math.floor(Math.random()*4);
 	let factor = Math.floor(Math.random() *10) / 3;
@@ -366,7 +388,7 @@ function animateLeftFace() {
 	} else {
 		blocks[index].position.y = int;
 	}	
-}
+};
 
 async function loadRightFace() {
 	for (let i = 0; i < 3; i++) {
@@ -376,7 +398,7 @@ async function loadRightFace() {
 			scene.add(bar);
 		}
 	}
-}
+};
 function animateRightFace() {
 	for (let i = 0; i < bars.length; i++) {
 		for (let j = 0; j < bars[i].length; j++) {
@@ -413,7 +435,7 @@ function animateRightFace() {
 			}
 		}
 	}
-}
+};
 
 async function loadTopFace() {
 	const diamond = await loadModel("models/diamond.gltf", true, 5);
@@ -426,7 +448,7 @@ async function loadTopFace() {
 	diamond.scale.set(2, 2, 2);
 	diamonds.push(diamond);
 	scene.add(diamond);
-}
+};
 function animateTopFace() {
 	const distance = Math.sin((diamonds[0].rotation.y*50)*Math.PI/180);
 	diamonds[0].rotation.x += 0.01;
@@ -440,7 +462,7 @@ function animateTopFace() {
 		hexagons[i].rotation.set(-diamonds[0].rotation.x, 0, 0);
 	}
 
-}
+};
 
 async function loadBottomFace() {
 	planet = await loadModel("models/lilPineTreePlanet.gltf", true, 6);
@@ -455,10 +477,10 @@ async function loadBottomFace() {
 	planet.children[1].children[1].material.stencilFunc = THREE.EqualStencilFunc;
 
 	scene.add(planet);
-}
+};
 function animateBottomFace() {
 	planet.rotation.x += 0.005;
 	planet.rotation.z += 0.005;
 	planet.rotation.y -= 0.005;
-}
+};
 setup();
