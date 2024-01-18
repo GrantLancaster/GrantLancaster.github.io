@@ -144,6 +144,20 @@ const grantL = {
             "packages": ["Three.js", "WebGL", "Javascript", "CSS", "vite"],
             "livePage": "http://grantishdesigns.me",
             "isBuilt": false
+        },
+
+        "portfolio": {
+            "name": "Personal Site",
+            "description": `Adaptive website built to house my personal projects, and present
+            them in a concise manner. The site is built to show my personal interest and style, as 
+            well as be fully adaptable to desktop and mobile.`,
+            "dates": "Ongoing Project",
+            "institution": "University of Colorado Boulder",
+            "collaborators": "N/A",
+            "hostingprofessor": "N/A",
+            "packages": ["JSON", "Javascript", "CSS", "particle.js"],
+            "livePage": "https://github.com/GrantLancaster/GrantLancaster.github.io/tree/main/Script",
+            "isBuilt": true
         }
     },
     "contact": "grant.lancaster3@gmail.com"
