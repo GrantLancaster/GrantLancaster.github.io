@@ -1,0 +1,10 @@
+.woodBlock, .stoneBlock {
+    width: 100px;
+    height: 100px;
+}
+.stoneBlock {
+    background-color: grey;
+}
+.woodBlock {
+    background-color: green;
+}
