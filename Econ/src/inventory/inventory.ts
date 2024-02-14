@@ -1,20 +1,5 @@
-function collect(material:string, amount:number) {
-    switch (material) {
-        case "wood": {
+import "../characterData.json";
 
-            break
-        }
-        case "stone": {
+export function buildInventory() {
 
-            break
-        }
-    }
 }
-
-const build =`
-    <div class="inventoryBox">
-        <h5>Resources:</h5>
-        <p>Wood: </p>
-        <p>Stone: </p>
-    </div>`
-export default build
