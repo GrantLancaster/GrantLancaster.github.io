@@ -2,4 +2,99 @@
   --background-color: #e6ff00;
   --text-body-color: #000000;
   --text-color-white: #ffffff;
+  height: 100%;
+  width: 100%;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* ----- ALL HEADER STYLES ----- */
+/*  
+https://scroll-driven-animations.style/demos/cover-to-fixed-header/css/
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations
+https://developer.chrome.com/docs/css-ui/scroll-driven-animations 
+*/
+.header {
+  background-color: var(--background-color);
+  height: 10%;
+  width: 100vw;
+  padding: 1em 3em 1em 3em;
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /*
+  animation-name: headerSlideUp;
+  animation-duration: 1s;
+  animation-direction: normal;
+  animation-iteration-count: 1;  
+  animation-timeline: scroll();
+  */
+}
+#headerImage {
+  height: 80%;
+  width: auto;
+}
+.headerButton {
+  background-color: rgba(0,0,0,0);
+  border: 0px solid transparent;
+  font-size: large;
+}
+.headerButton:hover {
+  border-bottom: 2px solid black;
+  border-top: 2px solid transparent;
+  margin: 0.1em, 0.5em, 0.1em, 0.5em;
+}
+
+@keyframes headerSlideUp {
+  0% {
+    top: 30%;
+    left: 30%;
+    height: 50%;
+    width: 50%;
+  }
+  5% {
+    top: 0;
+    left: 0;
+    height: 10%;
+    width: 100%;
+  }
+}
+/* ------------------------------ */
+
+
+/* ----- ALL FOOTER STYLES ----- */
+#footer {
+  background-color: var(--text-body-color);
+
+  width: 100%;
+  padding: 2em;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#footerImage {
+  /*width: 626px; --This matches the height with the typo lab log in the header (~40% of bowser width) */
+  width: 469px;
+  padding-left: 2em;
+}
+#footerAddress {
+  border: 0px solid orange;
+  width: 30%; /* Fix this when you have the right fonts to use. */
+  height: auto;
+}
+.addressLines {
+  margin: 0;
+  color: var(--text-color-white);
+}
+/* ------------------------------ */
+
