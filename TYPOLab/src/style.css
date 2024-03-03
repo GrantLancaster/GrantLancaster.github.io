@@ -20,52 +20,102 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations
 https://developer.chrome.com/docs/css-ui/scroll-driven-animations 
 */
 .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+
   background-color: var(--background-color);
-  height: 10%;
-  width: 100vw;
   padding: 1em 3em 1em 3em;
   position: fixed;
-  top: 0;
+  height: calc(50%/2);
+  width: 50%;
+  top: calc(50%/2);
+  left: calc(50%/2);
 
+}
+.animateHeader {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--background-color);
+  padding: 1em 3em 1em 3em;
+  position: fixed;
 
-  /*
   animation-name: headerSlideUp;
   animation-duration: 1s;
   animation-direction: normal;
-  animation-iteration-count: 1;  
-  animation-timeline: scroll();
-  */
+  animation-iteration-count: 1;
+}
+.postAnimationHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+  padding: 1em 3em 1em 3em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 10%;
+  width: 100%;
+  flex-direction: row;
 }
 #headerImage {
   height: 80%;
   width: auto;
+
+  animation-name: headerImageSize;
+  animation-duration: 1s;
+  animation-direction: normal;
+  animation-timeline: scroll();
 }
+
 .headerButton {
   background-color: rgba(0,0,0,0);
-  border: 0px solid transparent;
+  border: 2px solid transparent;
   font-size: large;
 }
 .headerButton:hover {
   border-bottom: 2px solid black;
   border-top: 2px solid transparent;
+
   margin: 0.1em, 0.5em, 0.1em, 0.5em;
 }
 
 @keyframes headerSlideUp {
   0% {
-    top: 30%;
-    left: 30%;
-    height: 50%;
+    height: calc(50%/2);
     width: 50%;
+    top: calc(50%/2);
+    left: calc(50%/2);
+    flex-direction: column;
+    gap: 1em;
   }
-  5% {
+  10% {
     top: 0;
     left: 0;
     height: 10%;
     width: 100%;
+    flex-direction: row;
+    gap: 0;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    height: 10%;
+    width: 100%;
+    flex-direction: row;
+  }
+}
+
+@keyframes headerImageSize {
+  0% {
+    width: fit-content;
+  }
+  10% {
+    height: 80%;
+    width: auto;
   }
 }
 /* ------------------------------ */
@@ -76,7 +126,7 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
   background-color: var(--text-body-color);
 
   width: 100%;
-  padding: 2em;
+  padding: 2em 0 2em 0;
 
   display: flex;
   align-items: center;

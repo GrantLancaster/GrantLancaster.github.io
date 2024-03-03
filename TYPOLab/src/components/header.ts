@@ -1,6 +1,16 @@
 import { TYPOLab } from "./info.ts";
 import { buttons } from "./buttons.ts";
 
+function animateHeader() {
+    const theheader = <HTMLDivElement>document.querySelector(".header");
+        document.removeEventListener("scroll", animateHeader);
+        theheader.className = "animateHeader";
+        theheader.addEventListener("animationend", () => {
+            theheader.className = "postAnimationHeader"
+            theheader.removeEventListener("animationend", ()=>{});
+        });
+}
+
 function buildHeader() {
     // Build the box that will ultimately be the header
     const headerBox: HTMLDivElement = document.createElement("div");
@@ -20,4 +30,4 @@ return headerBox
 
 let header = buildHeader();
 
-export { header }
+export { header, animateHeader }

@@ -2,7 +2,7 @@ import './style.css'
 
 import { TYPOLab } from './components/info.ts'
 import HomePage from './components/homePage.ts';
-import { header } from './components/header.ts';
+import { header, animateHeader } from './components/header.ts';
 import { footer } from './components/footer.ts';
 
 const body = document.querySelector<HTMLBodyElement>('body')!
@@ -13,4 +13,4 @@ body.appendChild(header);
 // 
 body.appendChild(footer);
 
-
+document.addEventListener("scroll", animateHeader);
