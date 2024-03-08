@@ -1,3 +1,9 @@
+/*
+  KEYWORDS:
+  HEADER
+  HOMEPAGE
+  FOOTER
+*/
 :root {
   --background-color: #e6ff00;
   --text-body-color: #000000;
@@ -24,16 +30,16 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1em;
+  gap: 2em;
 
   background-color: var(--background-color);
   padding: 1em 3em 1em 3em;
+  border-radius: 2em;
   position: fixed;
-  height: calc(50%/2);
+  height: 50%;
   width: 50%;
   top: calc(50%/2);
-  left: calc(50%/2);
-
+  left: calc(25% - 50px);
 }
 .animateHeader {
   display: flex;
@@ -44,14 +50,14 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
   position: fixed;
 
   animation-name: headerSlideUp;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-direction: normal;
   animation-iteration-count: 1;
 }
 .postAnimationHeader {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   background-color: var(--background-color);
   padding: 1em 3em 1em 3em;
   position: fixed;
@@ -64,13 +70,8 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
 #headerImage {
   height: 80%;
   width: auto;
-
-  animation-name: headerImageSize;
-  animation-duration: 1s;
-  animation-direction: normal;
-  animation-timeline: scroll();
+  margin-right: 2em;
 }
-
 .headerButton {
   background-color: rgba(0,0,0,0);
   border: 2px solid transparent;
@@ -91,14 +92,10 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
     left: calc(50%/2);
     flex-direction: column;
     gap: 1em;
+    border-radius: 2em;
   }
   10% {
-    top: 0;
-    left: 0;
-    height: 10%;
-    width: 100%;
     flex-direction: row;
-    gap: 0;
   }
   100% {
     top: 0;
@@ -106,20 +103,85 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
     height: 10%;
     width: 100%;
     flex-direction: row;
-  }
-}
-
-@keyframes headerImageSize {
-  0% {
-    width: fit-content;
-  }
-  10% {
-    height: 80%;
-    width: auto;
+    gap: 0;
   }
 }
 /* ------------------------------ */
 
+/* ----- ALL HOMEPAGE STYLES ----- */
+#preAnimationHomePage {
+  width: 100%;
+  height: 200%;
+  display: flex;
+  justify-content: center;
+}
+#animateHomePage {
+  width: 100%;
+  height: 200%;
+  display: flex;
+  justify-content: center;
+
+  animation-name: homePageSlideUp;
+  animation-duration: 0.5s;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+}
+#postAnimationHomePage {
+  width: 100%;
+  height: 200%; /* Remember to change this one back to normal sizing */
+  display: flex;
+  justify-content: center;
+}
+#homePageBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(blue, red, green);
+}
+#summary {
+  margin-top: 20%;
+  border: 0px solid transparent;
+  width: 15em;
+}
+
+@keyframes homePageSlideUp {
+  0% {
+    margin-top: 100%;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+/* ------------------------------- */
+
+/* ----- ALL PEOPLE PAGE STYLES ----- */
+#profileParent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 2em;
+  margin: 2em;
+}
+.profile {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  padding: 2em;
+}
+.profileImage {
+  width: 200px;
+  height: 200px;
+}
+.profileName {
+  border: 0px solid transparent;
+}
+.profileRole {
+  border: 0px solid transparent;
+}
+/* ------------------------------- */
 
 /* ----- ALL FOOTER STYLES ----- */
 #footer {

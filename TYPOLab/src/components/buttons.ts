@@ -1,5 +1,30 @@
 import { TYPOLab } from "./info.ts";
 
+let returnValue: string = "";
+function buttonClick(e: any) {
+    const target: string = e.target.innerText;
+    switch (target) {
+        case "About":
+            returnValue = target;
+        break;
+        case "Projects":
+            returnValue = target;
+        break;
+        case "People":
+            returnValue = target;
+        break;
+        case "Courses":
+            returnValue = target;
+        break;
+        case "Contact":
+            returnValue = target;
+        break;
+        default:
+            returnValue = "homePage";
+    }
+    console.log(returnValue);
+}
+
 function addButtons() {
     // Create the bucket that will hold all the buttons
     const buttonParent: HTMLDivElement = document.createElement("div");
@@ -10,6 +35,7 @@ function addButtons() {
             const button: HTMLButtonElement = document.createElement("button");
             button.className = "headerButton";
             button.textContent = `${Object.keys(TYPOLab.Sections)[i]}`
+            button.addEventListener("click", buttonClick);
             buttonParent.appendChild(button);
         }
     return buttonParent
@@ -17,5 +43,5 @@ function addButtons() {
 
 const buttons = addButtons();
 
-export { buttons }
+export { buttons, returnValue }
 

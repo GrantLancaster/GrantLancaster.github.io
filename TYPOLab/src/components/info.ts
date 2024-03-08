@@ -1,4 +1,10 @@
-export const TYPOLab = {
+
+interface info {
+    [keys: string | number]: string | Array<string> | Object | number;
+}
+
+
+export const TYPOLab: info = {
     "Sections": {
         "About": {
             "Copy": {
@@ -113,7 +119,7 @@ export const TYPOLab = {
                 "PersonalSite": "",
                 "Email": "",
                 "Image": ""
-            }
+            },
 
         },
         "Courses": {
@@ -174,7 +180,7 @@ export const TYPOLab = {
     "Summary": "A speculative design lab critically exploring the intersection of text and technology.",
     "InstagramLink": "https://www.instagram.com/typ.o.lab/",
     "Address": ["ATLAS Institute", "University of Colorado Boulder", "Roser ATLAS Center", "1125 18th St. 320 UCB", "Boulder, CO 80309-0320"],
-    "LabLogo": "/src/Images/typolabheader.png",
+    "LabLogo": "/src/Images/typolabheadershrunk.png",
     "ATLASLogo": "src/Images/cuatlas.png",
     "CULogo": ""
 }
