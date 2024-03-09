@@ -1,7 +1,10 @@
 import { TYPOLab } from "./info.ts";
+import { homePage, animateHomePage } from "./homePage.ts";
+import { profiles } from "./people.ts";
 
 let returnValue: string = "";
 function buttonClick(e: any) {
+    const bodyContent = document.querySelector<HTMLDivElement>("#pageContent")!;
     const target: string = e.target.innerText;
     switch (target) {
         case "About":
@@ -11,7 +14,7 @@ function buttonClick(e: any) {
             returnValue = target;
         break;
         case "People":
-            returnValue = target;
+            bodyContent.innerHTML = profiles.outerHTML.toString();
         break;
         case "Courses":
             returnValue = target;
@@ -20,9 +23,9 @@ function buttonClick(e: any) {
             returnValue = target;
         break;
         default:
-            returnValue = "homePage";
+            returnValue = homePage.outerHTML.toString();
     }
-    console.log(returnValue);
+    return returnValue
 }
 
 function addButtons() {
@@ -42,6 +45,7 @@ function addButtons() {
 }
 
 const buttons = addButtons();
+
 
 export { buttons, returnValue }
 

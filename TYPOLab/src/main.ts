@@ -1,24 +1,21 @@
 import './style.css'
 
-import { TYPOLab } from './components/info.ts'
 import { header, animateHeader } from './components/header.ts';
+import { pageContent, pageContentBackground } from './components/pageContent.ts';
+import { homePage } from './components/homePage.ts';
 import { returnValue } from './components/buttons.ts';
-import { homePage, animateHomePage } from './components/homePage.ts';
 import { footer } from './components/footer.ts';
-import { profiles } from './components/people.ts';
 
-let currentPage: HTMLDivElement = homePage;
 
-const body = document.querySelector<HTMLBodyElement>('body')!
+
+const body = document.querySelector<HTMLBodyElement>('body')!;
 body.appendChild(header);
-// 
-body.appendChild(currentPage);
-// Everything in between the header and footer will be changed when buttons are clicked
-// by default it should load the homepage.
-// 
+body.appendChild(pageContent); //Just container for all the page content
+body.appendChild(pageContentBackground); //Background for teh content of page
 body.appendChild(footer);
 
-document.addEventListener("scroll", animateHeader);
-document.addEventListener("scroll", animateHomePage);
+const bodyContent = document.querySelector<HTMLDivElement>("#pageContent")!;
+bodyContent.innerHTML = homePage.outerHTML.toString();
 
-console.log(body.children[2]);
+document.addEventListener("scroll", animateHeader);
+

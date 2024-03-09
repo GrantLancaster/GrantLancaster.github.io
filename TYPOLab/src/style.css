@@ -108,16 +108,32 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
 }
 /* ------------------------------ */
 
+/* ----- ALL PAGE CONTENT STYLES ----- */
+#pageContentBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(blue, red, green);
+}
+#pageContent {
+  width: 100%;
+  margin-top: 15%;
+}
+/* ------------------------------ */
+
 /* ----- ALL HOMEPAGE STYLES ----- */
 #preAnimationHomePage {
   width: 100%;
-  height: 200%;
+  height: 1000px;
   display: flex;
   justify-content: center;
 }
 #animateHomePage {
   width: 100%;
-  height: 200%;
+  height: 1000px;
   display: flex;
   justify-content: center;
 
@@ -128,18 +144,9 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
 }
 #postAnimationHomePage {
   width: 100%;
-  height: 200%; /* Remember to change this one back to normal sizing */
+  height: 1000px; /* Remember to change this one back to normal sizing */
   display: flex;
   justify-content: center;
-}
-#homePageBackground {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: linear-gradient(blue, red, green);
 }
 #summary {
   margin-top: 20%;
