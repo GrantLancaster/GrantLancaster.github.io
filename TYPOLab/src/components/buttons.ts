@@ -5,6 +5,7 @@ import { profiles } from "./people.ts";
 let returnValue: string = "";
 function buttonClick(e: any) {
     const bodyContent = document.querySelector<HTMLDivElement>("#pageContent")!;
+    const content = document.querySelector<HTMLDivElement>("#pageContent")!;
     const target: string = e.target.innerText;
     switch (target) {
         case "About":
@@ -14,6 +15,7 @@ function buttonClick(e: any) {
             returnValue = target;
         break;
         case "People":
+            content.style.height = "auto";
             bodyContent.innerHTML = profiles.outerHTML.toString();
         break;
         case "Courses":

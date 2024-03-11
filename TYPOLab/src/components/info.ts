@@ -119,8 +119,7 @@ export const TYPOLab: info = {
                 "PersonalSite": "",
                 "Email": "",
                 "Image": ""
-            },
-
+            }
         },
         "Courses": {
             "Summary": "Various courses use the TYPO Lab as a resource for the production of student work.",
