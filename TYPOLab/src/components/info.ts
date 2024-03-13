@@ -1,3 +1,5 @@
+// Could be useful to fix the inteface issue
+// https://www.educative.io/blog/typescript-interfaces
 
 interface info {
     [keys: string | number]: string | Array<string> | Object | number;
@@ -21,7 +23,7 @@ export const TYPOLab: info = {
                 "Name": "Experimental Typography Zine",
                 "Dates": "Fall 2023",
                 "People": ["Nita Byati", "Sam Chen", "Jason Fontillas", "Charlotte Garrett", "Marla Kassanoff", "Reed Little", "Ashley Paulson", "Robby Strong", "Q Tran", "Atlas Zaina"],
-                "ZinePDFLink" : "../pdf/ExperimentaTypographyFA2023Zine.pdf",
+                "ZinePDFLink" : "/src/pdf/ExperimentaTypographyFA2023Zine.pdf",
                 "Description": "N/A",
                 "Images": []
             },
@@ -38,7 +40,7 @@ export const TYPOLab: info = {
                 "Dates": "Spring 2021",
                 "People": ["Brad Gallagher", "Anonymous Student"],
                 "ZinePDFLink" : "N/A",
-                "Descrption": `These meanings can be mapped to representational vectors in a many-dimensional space that highlight relationships between those words within a body of text.
+                "Description": `These meanings can be mapped to representational vectors in a many-dimensional space that highlight relationships between those words within a body of text.
                 We used t-distributed stochastic neighbor embedding (TSNE) to reduce the 300-dimensional word vectors to 3 dimensions.
                 We used a word vector model called “fasttext-wiki-subwords-300” which was trained on 1 million unique words from the Wikipedia 2017, UMBC webbase corpus and statmt.org news dataset (16B tokens).
                 We then used MeshLab to make a closed surface of these 3d points.`,
@@ -49,7 +51,7 @@ export const TYPOLab: info = {
                 "Dates": "",
                 "People": ["Marla Kassanoff", "Joel Swanson"],
                 "ZinePDFLink" : "N/A",
-                "Descrption": `Inspired by the discontinuation of Alphabits™ cereal in May of 2021, this archival project seeks to document the breakfast cereal by 3D scanning and averaging the industrially produced letterforms for one of the few remaining boxes of the cereal. This dimensional typeface will then be used in an augmented reality installation that places viewers within a virtual bowl of cereal.`,
+                "Description": `Inspired by the discontinuation of Alphabits™ cereal in May of 2021, this archival project seeks to document the breakfast cereal by 3D scanning and averaging the industrially produced letterforms for one of the few remaining boxes of the cereal. This dimensional typeface will then be used in an augmented reality installation that places viewers within a virtual bowl of cereal.`,
                 "Images": []
             },
             5: {
@@ -57,23 +59,23 @@ export const TYPOLab: info = {
                 "Dates": "Spring 2021",
                 "People": ["Gray Assi", "Olivia Blankenship", "Bella Borenstein", "Willie Green", "Julia Hancock", "Siyang Liu", "Anna Lowrimore", "Sidd Nair", "Lily Pelton", "Ayesha Rawal", "Teddy Robinson", "Paola Solorzano", "Elodie Thelliez","John Whiteman"],
                 "ZinePDFLink" : "N/A", // I NEED THIS FROM JOEL. WRONG THING IS LINKED ON CURRENT SITE
-                "Descrption": "N/A",
+                "Description": "N/A",
                 "Images": []
             },
             6: {
                 "Name": "Experimental Typography Zine",
                 "Dates": "Fall 2020",
                 "People": ["Lillie Bahrami", "Joshua Diesenhaus", "Alana Faller", "Emily Gould", "Jack LeGrone", "Emily Lee", "Nicole Leon-Molina", "Anna Lynton", "Sarah Olick", "Jack Plantz", "Victoria Rios", "Haley Thompson", "Reese Turney", "Mandi Wilner", "Ellie Wright", "Mary Yoder"],
-                "ZinePDFLink" : "../pdf/ExperimentalTypographyFall2020Zine.pdf",
-                "Descrption": "N/A",
+                "ZinePDFLink" : "/src/pdf/ExperimentalTypographyFall2020Zine.pdf",
+                "Description": "N/A",
                 "Images": []
             },
             7: {
                 "Name": "Experimental Typography Zine",
                 "Dates": "Fall 2019",
                 "People": ["Logan Aker", "Gunnar Autterson", "Liz Brusco", "Bella Colosimo", "Alex Connor", "Graham Fee", "Maizie Grace", "Ruth Hunsinger", "Michael Morris", "Sofi Ozambela", "Calvin Ritger", "Dan Strangfeld", "Benjamin Vernon", "Aj Yang"],
-                "ZinePDFLink" : "../pdf/ExperimentalTypographyFA2019Zine.pdf",
-                "Descrption": "N/A",
+                "ZinePDFLink" : "/src/pdf/ExperimentalTypographyFA2019Zine.pdf",
+                "Description": "N/A",
                 "Images": []
             }
         },
@@ -180,6 +182,6 @@ export const TYPOLab: info = {
     "InstagramLink": "https://www.instagram.com/typ.o.lab/",
     "Address": ["ATLAS Institute", "University of Colorado Boulder", "Roser ATLAS Center", "1125 18th St. 320 UCB", "Boulder, CO 80309-0320"],
     "LabLogo": "/src/Images/typolabheadershrunk.png",
-    "ATLASLogo": "src/Images/cuatlas.png",
+    "ATLASLogo": "/src/Images/cuatlas.png",
     "CULogo": ""
 }

@@ -122,6 +122,9 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
   width: 100%;
   height: 100%;
 }
+.title {
+  font-size: 86px;
+}
 /* ------------------------------ */
 
 /* ----- ALL HOMEPAGE STYLES ----- */
@@ -168,6 +171,40 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
   }
 }
 /* ------------------------------- */
+
+/* ----- ABOUT PAGE STYLES ----- */
+#aboutParent {
+  background-color: var(--text-color-white);
+  padding: 4em;
+  border-radius: 1em;
+  margin: 10em 10em 6em 10em;
+}
+/* ------------------------------- */
+
+/*--------- PROJECT PAGE ---------- */
+
+.projectEntry {
+  background-color: var(--text-color-white);
+  padding: 5em;
+  border-radius: 1em;
+  margin: 5em;
+  display: flex;
+  gap: 1em;
+  justify-content: space-evenly;
+}
+.projectImages {
+  width: 200px;
+  height: 200px;
+}
+.projectCopy {
+  width: 50%;
+  display:flex;
+  text-wrap: wrap;
+
+}
+.projectCopy p {
+}
+/*--------------------------------- */
 
 /* ----- ALL PEOPLE PAGE STYLES ----- */
 #profileParent {

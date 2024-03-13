@@ -1,21 +1,24 @@
 import { TYPOLab } from "./info.ts";
 import { homePage, animateHomePage } from "./homePage.ts";
+import { aboutPage } from "./about.ts";
 import { profiles } from "./people.ts";
+import { projectPage } from "./projects.ts";
 
 let returnValue: string = "";
 function buttonClick(e: any) {
     const bodyContent = document.querySelector<HTMLDivElement>("#pageContent")!;
-    const content = document.querySelector<HTMLDivElement>("#pageContent")!;
     const target: string = e.target.innerText;
     switch (target) {
         case "About":
-            returnValue = target;
+            bodyContent.innerHTML = aboutPage.outerHTML.toString();
+            bodyContent.style.height = "auto";
         break;
         case "Projects":
-            returnValue = target;
+            bodyContent.style.height = "auto";
+            bodyContent.innerHTML = projectPage.outerHTML.toString();
         break;
         case "People":
-            content.style.height = "auto";
+            bodyContent.style.height = "auto";
             bodyContent.innerHTML = profiles.outerHTML.toString();
         break;
         case "Courses":

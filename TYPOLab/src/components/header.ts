@@ -24,6 +24,11 @@ function buildHeader() {
     logoImage.src = `${TYPOLab.LabLogo}`;
     logoImage.alt = "TYPO lab logo type";
     logoImage.id = "headerImage";
+    logoImage.addEventListener("click", ()=> {
+        const bodyContent = document.querySelector<HTMLDivElement>("#pageContent")!;
+        bodyContent.style.height = "100%";
+        bodyContent.innerHTML = homePage.outerHTML.toString();
+    } )
     headerBox.appendChild(logoImage);
     // Pull in the buttons that wil be used for navigation
     headerBox.appendChild(buttons);
