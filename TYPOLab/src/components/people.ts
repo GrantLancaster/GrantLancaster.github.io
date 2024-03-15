@@ -15,8 +15,13 @@ function buildProfiles() {
 
         const profileImage: HTMLImageElement = document.createElement("img");
         profileImage.className = "profileImage";
-        profileImage.src = `${TYPOLab.Sections.People[i].Image}`;
-        profileImage.alt = `Picture of ${TYPOLab.Sections.People[i].Name}`;
+        if (TYPOLab.Sections.People[i].Image != "") {
+            profileImage.src = `${TYPOLab.Sections.People[i].Image}`;
+            profileImage.alt = `Picture of ${TYPOLab.Sections.People[i].Name}`;
+        } else {
+            profileImage.src = "./src/Images/defaultProfilePic.png";
+            profileImage.alt = "No personal photo provided; substituted lab logo."
+        }
         profile.appendChild(profileImage);
 
         const name: HTMLHeadingElement = document.createElement("h2");

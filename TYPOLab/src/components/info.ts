@@ -85,7 +85,7 @@ export const TYPOLab: info = {
                 "Role": "Lab Director",
                 "PersonalSite": "joelswanson.art",
                 "Email": "joel.swanson@colorado.edu",
-                "Image": ""
+                "Image": "./src/Images/swansonHeadShot.jpg"
             },
             1: {
                 "Name": "Anna Lowrimore",
