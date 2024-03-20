@@ -3,6 +3,7 @@ import { homePage, animateHomePage } from "./homePage.ts";
 import { aboutPage } from "./about.ts";
 import { profiles } from "./people.ts";
 import { projectPage } from "./projects.ts";
+import { coursesPage } from "./courses.ts";
 
 let returnValue: string = "";
 function buttonClick(e: any) {
@@ -22,7 +23,8 @@ function buttonClick(e: any) {
             bodyContent.innerHTML = profiles.outerHTML.toString();
         break;
         case "Courses":
-            returnValue = target;
+            bodyContent.style.height = "auto";
+            bodyContent.innerHTML = coursesPage.outerHTML.toString();
         break;
         case "Contact":
             returnValue = target;

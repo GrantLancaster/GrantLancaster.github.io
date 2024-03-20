@@ -14,7 +14,8 @@ function buildProjects() {
         projectCopy.className = "projectCopy";
 
         const title: HTMLHeadingElement = document.createElement("h2");
-        title.innerHTML = `${TYPOLab.Sections.Projects[i].Name}`
+        title.className = "projectTitle";
+        title.innerText = `${TYPOLab.Sections.Projects[i].Name}`
         projectCopy.appendChild(title);
 
         const description: HTMLParagraphElement = document.createElement("p");
