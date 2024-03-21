@@ -3,7 +3,6 @@ import './style.css'
 import { header, animateHeader } from './components/header.ts';
 import { pageContent, pageContentBackground } from './components/pageContent.ts';
 import { homePage } from './components/homePage.ts';
-import { returnValue } from './components/buttons.ts';
 import { footer } from './components/footer.ts';
 
 

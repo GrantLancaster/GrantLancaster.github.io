@@ -3,7 +3,6 @@ import { buttons } from "./buttons.ts";
 import { homePage, animateHomePage } from "./homePage.ts";
 
 function animateHeader() {
-    const theHomePage = <HTMLDivElement>document.querySelector("#preAnimationHomePage");
     const theheader = <HTMLDivElement>document.querySelector(".header");
         document.removeEventListener("scroll", animateHeader);
         document.addEventListener("scroll", animateHomePage);

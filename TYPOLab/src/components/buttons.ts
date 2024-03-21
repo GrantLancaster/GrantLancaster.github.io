@@ -1,5 +1,5 @@
 import { TYPOLab } from "./info.ts";
-import { homePage, animateHomePage } from "./homePage.ts";
+import { homePage } from "./homePage.ts";
 import { aboutPage } from "./about.ts";
 import { profiles } from "./people.ts";
 import { projectPage } from "./projects.ts";

@@ -142,7 +142,7 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: no-repeat url("../src/Images/background1.jpg");
+  background: no-repeat url("./Images/background1.jpg");
   background-size: cover;
 }
 #pageContent {

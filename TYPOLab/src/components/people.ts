@@ -2,7 +2,6 @@
 
 
 import { TYPOLab } from "./info";
-import { footer } from "./footer.ts";
 
 function buildProfiles() {
     const profileParent: HTMLDivElement = document.createElement("div");
