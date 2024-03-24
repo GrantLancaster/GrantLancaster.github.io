@@ -6,31 +6,65 @@ import { projectPage } from "./projects.ts";
 import { coursesPage } from "./courses.ts";
 
 let returnValue: string = "";
+function fadeInOut(isInvis:boolean) {
+    const bodyContent = document.querySelector<HTMLDivElement>("#pageContent")!;
+    if (isInvis) {
+        bodyContent.style.animation = "0.3s ease-in-out fadeIn";
+    } else {
+        bodyContent.style.animation = "0.3s ease-in-out fadeOut";
+    }
+}
+
 function buttonClick(e: any) {
     const bodyContent = document.querySelector<HTMLDivElement>("#pageContent")!;
     const target: string = e.target.innerText;
     switch (target) {
         case "About":
-            bodyContent.innerHTML = aboutPage.outerHTML.toString();
-            bodyContent.style.height = "auto";
+            fadeInOut(false);
+            bodyContent.addEventListener("animationend", ()=>{
+                bodyContent.innerHTML = aboutPage.outerHTML.toString();
+                bodyContent.style.height = "auto";
+                fadeInOut(true);
+                bodyContent.removeEventListener("animationend", ()=>{});
+            })
         break;
         case "Projects":
-            bodyContent.style.height = "auto";
-            bodyContent.innerHTML = projectPage.outerHTML.toString();
+            fadeInOut(false);
+            bodyContent.addEventListener("animationend", ()=>{
+                bodyContent.style.height = "auto";
+                bodyContent.innerHTML = projectPage.outerHTML.toString();
+                fadeInOut(true);
+                bodyContent.removeEventListener("animationend", ()=>{});
+            })
         break;
         case "People":
-            bodyContent.style.height = "auto";
-            bodyContent.innerHTML = profiles.outerHTML.toString();
+            fadeInOut(false);
+            bodyContent.addEventListener("animationend", ()=>{
+                bodyContent.style.height = "auto";
+                bodyContent.innerHTML = profiles.outerHTML.toString();
+                fadeInOut(true);
+                bodyContent.removeEventListener("animationend", ()=>{});
+            })
         break;
         case "Courses":
-            bodyContent.style.height = "auto";
-            bodyContent.innerHTML = coursesPage.outerHTML.toString();
+            fadeInOut(false);
+            bodyContent.addEventListener("animationend", ()=>{
+                bodyContent.style.height = "auto";
+                bodyContent.innerHTML = coursesPage.outerHTML.toString();
+                fadeInOut(true);
+                bodyContent.removeEventListener("animationend", ()=>{});
+            })
         break;
         case "Contact":
             returnValue = target;
         break;
         default:
-            returnValue = homePage.outerHTML.toString();
+            fadeInOut(false);
+            bodyContent.addEventListener("animationend", ()=>{
+                returnValue = homePage.outerHTML.toString();
+                fadeInOut(true);
+                bodyContent.removeEventListener("animationend", ()=>{});
+            })
     }
     return returnValue
 }
@@ -54,5 +88,5 @@ function addButtons() {
 const buttons = addButtons();
 
 
-export { buttons, returnValue }
+export { buttons, returnValue, fadeInOut }
 

@@ -1,6 +1,7 @@
 import { TYPOLab } from "./info.ts";
 import { buttons } from "./buttons.ts";
 import { homePage, animateHomePage } from "./homePage.ts";
+import { fadeInOut } from "./buttons.ts";
 
 function animateHeader() {
     const theheader = <HTMLDivElement>document.querySelector(".header");
@@ -25,8 +26,13 @@ function buildHeader() {
     logoImage.id = "headerImage";
     logoImage.addEventListener("click", ()=> {
         const bodyContent = document.querySelector<HTMLDivElement>("#pageContent")!;
-        bodyContent.style.height = "100%";
-        bodyContent.innerHTML = homePage.outerHTML.toString();
+        fadeInOut(false);
+        bodyContent.addEventListener("animationend", ()=>{
+            bodyContent.style.height = "100%";
+            bodyContent.innerHTML = homePage.outerHTML.toString();
+            fadeInOut(true);
+            bodyContent.removeEventListener("animationend",()=>{});
+        })
     } )
     headerBox.appendChild(logoImage);
     // Pull in the buttons that wil be used for navigation

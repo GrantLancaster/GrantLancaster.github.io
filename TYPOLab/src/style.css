@@ -148,9 +148,26 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
 #pageContent {
   width: 100%;
   height: 100%;
+  opacity: 100;
 }
 .title {
   font-size: 86px;
+}
+@keyframes fadeOut {
+  from {
+    opacity: 100;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
 }
 /* ------------------------------ */
 
