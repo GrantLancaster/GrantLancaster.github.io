@@ -176,7 +176,24 @@ export const TYPOLab: info = {
                 }
             }
         },
-        Contact: {} //Left Empty for now....
+        Contact: {
+            callToAction: "Want to here more from us?",
+            subTitle: "Signup for our newsletter!",
+            fields: {
+                firstName: {
+                    title: "First Name",
+                    example: "John"
+                },
+                lastName: {
+                    title: "Last Name",
+                    example: "Doe",
+                },
+                email: {
+                    title: "Enter your email",
+                    example: "johndoesemail@email.com"
+                }
+            }
+        } //Left Empty for now....
     },
     Summary: "A speculative design lab critically exploring the intersection of text and technology.",
     InstagramLink: "https://www.instagram.com/typ.o.lab/",
