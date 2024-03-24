@@ -4,6 +4,7 @@ import { aboutPage } from "./about.ts";
 import { profiles } from "./people.ts";
 import { projectPage } from "./projects.ts";
 import { coursesPage } from "./courses.ts";
+import { contactPage } from "./contact.ts";
 
 let returnValue: string = "";
 function fadeInOut(isInvis:boolean) {
@@ -56,7 +57,13 @@ function buttonClick(e: any) {
             })
         break;
         case "Contact":
-            returnValue = target;
+            fadeInOut(false);
+            bodyContent.addEventListener("animationend", ()=>{
+                bodyContent.style.height = "fit-content";
+                bodyContent.innerHTML = contactPage.outerHTML.toString();
+                fadeInOut(true);
+                bodyContent.removeEventListener("animationend", ()=>{});
+            })
         break;
         default:
             fadeInOut(false);

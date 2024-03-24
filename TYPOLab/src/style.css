@@ -334,15 +334,50 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
 }
 /* ------------------------------------ */
 
+/* ----- ALL CONTACT PAGE STYLES ----- */
+#contactParent {
+  margin: 10em 10em 6em 10em;
+  border-radius: 1em;
+  padding: 4em;
+  background-color: var(--text-color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#formParent {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+#nameParent {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1em;
+}
+#submitButton {
+  padding: 1em;
+  border-radius: 1em;
+  border: 0px solid transparent;
+  font-weight: 800;
+}
+#submitButton:hover {
+  background-color: var(--background-color);
+  color: var(--text-body-color);
+}
+input {
+  padding: 1em;
+  border-radius: 1em;
+}
+/* ------------------------------------ */
+
 /* ----- ALL FOOTER STYLES ----- */
 #footer {
   background-color: var(--text-body-color);
-
   position: sticky;
   top: 100%;
   width: 100%;
   padding: 2em 0 2em 0;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
