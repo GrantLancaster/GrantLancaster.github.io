@@ -15,7 +15,11 @@ function buildProjects() {
 
         const title: HTMLHeadingElement = document.createElement("h2");
         title.className = "projectTitle";
-        title.innerText = `${TYPOLab.Sections.Projects[i].Name}`
+        if (TYPOLab.Sections.Projects[i].Dates != "") {
+            title.innerText = `${TYPOLab.Sections.Projects[i].Name} - ${TYPOLab.Sections.Projects[i].Dates}`;
+        } else {
+            title.innerText = `${TYPOLab.Sections.Projects[i].Name}`;
+        }
         projectCopy.appendChild(title);
 
         const description: HTMLParagraphElement = document.createElement("p");
@@ -31,6 +35,12 @@ function buildProjects() {
 
         const projectImages: HTMLDivElement = document.createElement("div");
         projectImages.className = "projectImages";
+        projectImages.style.backgroundImage = `url(${TYPOLab.Sections.Projects[i].EntryImage})`
+        const image: HTMLImageElement = document.createElement("img");
+        image.className = "projectEntryImage";
+        image.src = `${TYPOLab.Sections.Projects[i].EntryImage}`
+        image.alt = "Just a test";
+        //projectImages.appendChild(image);
 
         projectEntry.appendChild(projectImages);
 
