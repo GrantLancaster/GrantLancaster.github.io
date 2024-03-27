@@ -200,7 +200,7 @@ export const TYPOLab: info = {
                     example: "johndoesemail@email.com"
                 }
             }
-        } //Left Empty for now....
+        }
     },
     Summary: "A speculative design lab critically exploring the intersection of text and technology.",
     InstagramLink: "https://www.instagram.com/typ.o.lab/",
