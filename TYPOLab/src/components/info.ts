@@ -26,7 +26,7 @@ export const TYPOLab: info = {
                 ZinePDFLink : "/src/pdf/ExperimentaTypographyFA2023Zine.pdf",
                 Description: "N/A",
                 EntryImage: "./src/Images/ExpTypoZine2023/EntryImage.jpg",
-                Images: []
+                Images: [ "./src/Images/ExpTypoZine2023/EntryImage.jpg", "./src/Images/ExpTypoZine2023/EntryImage.jpg", "./src/Images/ExpTypoZine2023/EntryImage.jpg", "./src/Images/ExpTypoZine2023/EntryImage.jpg", "./src/Images/ExpTypoZine2023/EntryImage.jpg",]
             },
             2: {
                 Name: "Clews Typface",
@@ -34,7 +34,7 @@ export const TYPOLab: info = {
                 People: ["Nita Byati", "Sam Chen", "Jason Fontillas", "Charlotte Garrett", "Marla Kassanoff", "Reed Little", "Ashley Paulson", "Robby Strong", "Q Tran", "Atlas Zaina"],
                 ZinePDFLink : "N/A",
                 Description: "Inspired by hand-carved lettering found during a Château de la Napoule residency, this collaborative typeface was designed by the Fall 2023 Experimental Typography course. Each student was assigned a subset of the standard glyph set for Latin fonts. Once completed, we designed and printed a types pecimen at the Book Arts League. The typeface was printed using a custom polymer plate and the student's names were hand set in 14 pt. Futura Bold.",
-                EntryImage: "./src/Images/ExpTypoZine2023/EntryImage.jpg",
+                EntryImage: "./src/Images/ClewsTypefaceImg/EntryImage.jpeg",
                 Images: []
             },
             3: {
@@ -46,7 +46,7 @@ export const TYPOLab: info = {
                 We used t-distributed stochastic neighbor embedding (TSNE) to reduce the 300-dimensional word vectors to 3 dimensions.
                 We used a word vector model called “fasttext-wiki-subwords-300” which was trained on 1 million unique words from the Wikipedia 2017, UMBC webbase corpus and statmt.org news dataset (16B tokens).
                 We then used MeshLab to make a closed surface of these 3d points.`,
-                EntryImage: "./src/Images/ExpTypoZine2023/EntryImage.jpg",
+                EntryImage: "./src/Images/WordVectorSculpturesImg/EntryImage.jpeg",
                 Images: []
             },
             4: {
@@ -55,7 +55,7 @@ export const TYPOLab: info = {
                 People: ["Marla Kassanoff", "Joel Swanson"],
                 ZinePDFLink : "N/A",
                 Description: `Inspired by the discontinuation of Alphabits™ cereal in May of 2021, this archival project seeks to document the breakfast cereal by 3D scanning and averaging the industrially produced letterforms for one of the few remaining boxes of the cereal. This dimensional typeface will then be used in an augmented reality installation that places viewers within a virtual bowl of cereal.`,
-                EntryImage: "./src/Images/ExpTypoZine2023/EntryImage.jpg",
+                EntryImage: "./src/Images/3DAlphabitsImg/EntryImage.png",
                 Images: []
             },
             5: {
@@ -184,7 +184,7 @@ export const TYPOLab: info = {
             }
         },
         Contact: {
-            callToAction: "Want to here more from us?",
+            callToAction: "Want to hear more from us?",
             subTitle: "Signup for our newsletter!",
             fields: {
                 firstName: {

@@ -1,6 +1,24 @@
 
 import { TYPOLab } from "./info.ts";
 
+function projectExpand(e: any) {
+    console.log(e.target);
+    /*const projectExpansion: HTMLDivElement = document.createElement("div");
+    projectExpansion.className = "projectExpansion";
+
+    const projectGallery: HTMLDivElement = document.createElement("div");
+    projectGallery.className = "projectGallery";
+    for (let j =0; j < TYPOLab.Sections.Projects[i].Images.length; j++) {
+        let imageList: Array<string> = TYPOLab.Sections.Projects[i].Images;
+        const galleryImage: HTMLImageElement = document.createElement("img");
+        galleryImage.src = `${imageList[j]}`;
+        projectGallery.appendChild(galleryImage);
+
+    }
+    projectExpansion.appendChild(projectGallery);
+    //projectEntry.appendChild(projectExpansion);*/
+}
+
 function buildProjects() {
     const projectParent: HTMLDivElement = document.createElement("div");
     projectParent.id = "projectParent";
@@ -9,6 +27,9 @@ function buildProjects() {
     for (let i = 1; i < projectKeys.length; i++) {
         const projectEntry: HTMLDivElement = document.createElement("div");
         projectEntry.className = "projectEntry";
+
+        const projectBrief: HTMLDivElement = document.createElement("div");
+        projectBrief.className = "projectBrief";
 
         const projectCopy: HTMLDivElement = document.createElement("div");
         projectCopy.className = "projectCopy";
@@ -31,7 +52,7 @@ function buildProjects() {
             people.innerHTML += `${TYPOLab.Sections.Projects[i].People[j]}`+", ";
         }
         projectCopy.appendChild(people);
-        projectEntry.appendChild(projectCopy);
+        projectBrief.appendChild(projectCopy);
 
         const projectImages: HTMLDivElement = document.createElement("div");
         projectImages.className = "projectImages";
@@ -40,11 +61,13 @@ function buildProjects() {
         image.className = "projectEntryImage";
         image.src = `${TYPOLab.Sections.Projects[i].EntryImage}`
         image.alt = "Just a test";
-        //projectImages.appendChild(image);
+        projectBrief.appendChild(projectImages);
 
-        projectEntry.appendChild(projectImages);
+        projectEntry.appendChild(projectBrief);
 
         projectParent.appendChild(projectEntry);
+
+        projectEntry.addEventListener("click", projectExpand);
 
     }
 
