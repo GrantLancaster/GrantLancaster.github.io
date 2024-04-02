@@ -2,7 +2,7 @@ import { TYPOLab } from "./info.ts";
 import { homePage } from "./homePage.ts";
 import { aboutPage } from "./about.ts";
 import { profiles } from "./people.ts";
-import { projectPage } from "./projects.ts";
+import { projectPage, addListener } from "./projects.ts";
 import { coursesPage } from "./courses.ts";
 import { contactPage } from "./contact.ts";
 
@@ -35,6 +35,7 @@ function buttonClick(e: any) {
                 bodyContent.style.height = "auto";
                 bodyContent.innerHTML = projectPage.outerHTML.toString();
                 fadeInOut(true);
+                addListener();
                 bodyContent.removeEventListener("animationend", ()=>{});
             })
         break;

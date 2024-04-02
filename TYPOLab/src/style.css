@@ -175,7 +175,7 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
 #preAnimationHomePage {
   width: 100%;
   height: 100%;
-
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -269,10 +269,17 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
   text-wrap: wrap;
 }
 .projectExpansion {
-  visibility: hidden;
+  display: flex;
+  flex-direction: column;
 }
-.projectGallery {
-  visibility: hidden;
+.projectGallery img {
+  width: 500px;
+  height: 500px;
+}
+.closeTab {
+  width: 75px;
+  height: 75px;
+  border: 2px solid red;
 }
 /*--------------------------------- */
 
@@ -378,6 +385,7 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
   border-radius: 1em;
   border: 0px solid transparent;
   font-weight: 800;
+  font-size: 14pt;
 }
 #submitButton:hover {
   background-color: var(--background-color);
@@ -386,6 +394,7 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
 input {
   padding: 1em;
   border-radius: 1em;
+  font-size: 14pt;
 }
 /* ------------------------------------ */
 

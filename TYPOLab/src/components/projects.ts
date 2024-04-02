@@ -1,22 +1,66 @@
 
 import { TYPOLab } from "./info.ts";
 
+function addListener() {
+    const entry = document.querySelectorAll(".projectEntry")!;
+    entry.forEach((element) => element.addEventListener("click", projectExpand));
+}
+function removeListener() {
+    const entry = document.querySelectorAll(".projectEntry")!;
+    entry.forEach((element) => element.removeEventListener("click", projectExpand));
+}
+
+function closeExpand() {
+    removeListener();
+    console.log("AHAHAHAHAHAHAHHAHAHH");
+
+}
+
 function projectExpand(e: any) {
-    console.log(e.target);
-    /*const projectExpansion: HTMLDivElement = document.createElement("div");
+    let parent = document.getElementById(`${e.target.id}`)!;
+    let index = e.target.id;
+    
+    if (index == "") {
+        index = e.target.parentNode.id;
+        parent = document.getElementById(`${e.target.parentNode.id}`)!;
+        if (index == "") {
+            index = e.target.parentNode.parentNode.id;
+            parent = document.getElementById(`${e.target.parentNode.parentNode.id}`)!;
+            if (index == "") {
+                index = e.target.parentNode.parentNode.parentNode.id;
+                parent = document.getElementById(`${e.target.parentNode.parentNode.parentNode.id}`)!;
+            }
+        }
+    }
+
+    const projectExpansion: HTMLDivElement = document.createElement("div");
     projectExpansion.className = "projectExpansion";
 
     const projectGallery: HTMLDivElement = document.createElement("div");
     projectGallery.className = "projectGallery";
-    for (let j =0; j < TYPOLab.Sections.Projects[i].Images.length; j++) {
-        let imageList: Array<string> = TYPOLab.Sections.Projects[i].Images;
-        const galleryImage: HTMLImageElement = document.createElement("img");
-        galleryImage.src = `${imageList[j]}`;
-        projectGallery.appendChild(galleryImage);
-
-    }
+        for (let i = 0; i < TYPOLab.Sections.Projects[index].Images.length; i++) {
+            const galleryImage: HTMLImageElement = document.createElement("img");
+                galleryImage.src = `${TYPOLab.Sections.Projects[index].Images[i]}`;
+                galleryImage.alt = "More Testing";
+            projectGallery.appendChild(galleryImage);
+        }
     projectExpansion.appendChild(projectGallery);
-    //projectEntry.appendChild(projectExpansion);*/
+
+    const zineLink: HTMLAnchorElement = document.createElement ("a");
+    zineLink.href = `${TYPOLab.Sections.Projects[index].zineLink}`;
+    zineLink.innerText = "PDF of full zine";
+    projectExpansion.appendChild(zineLink);
+    
+    const close: HTMLImageElement = document.createElement("img");
+    close.className = "closeTab";
+    close.src = "";
+    close.alt = "Small X to close the expanded window";
+    projectExpansion.appendChild(close);
+
+    parent.appendChild(projectExpansion);
+
+    const closeButton = document.querySelector(".closeTab")!;
+    closeButton.addEventListener("click", closeExpand);
 }
 
 function buildProjects() {
@@ -27,6 +71,7 @@ function buildProjects() {
     for (let i = 1; i < projectKeys.length; i++) {
         const projectEntry: HTMLDivElement = document.createElement("div");
         projectEntry.className = "projectEntry";
+        projectEntry.id = `${i}`;
 
         const projectBrief: HTMLDivElement = document.createElement("div");
         projectBrief.className = "projectBrief";
@@ -57,17 +102,10 @@ function buildProjects() {
         const projectImages: HTMLDivElement = document.createElement("div");
         projectImages.className = "projectImages";
         projectImages.style.backgroundImage = `url(${TYPOLab.Sections.Projects[i].EntryImage})`
-        const image: HTMLImageElement = document.createElement("img");
-        image.className = "projectEntryImage";
-        image.src = `${TYPOLab.Sections.Projects[i].EntryImage}`
-        image.alt = "Just a test";
+
         projectBrief.appendChild(projectImages);
-
         projectEntry.appendChild(projectBrief);
-
         projectParent.appendChild(projectEntry);
-
-        projectEntry.addEventListener("click", projectExpand);
 
     }
 
@@ -76,4 +114,4 @@ function buildProjects() {
 
 const projectPage = buildProjects();
 
-export { projectPage }
+export { projectPage, addListener }
