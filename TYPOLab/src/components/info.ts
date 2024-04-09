@@ -84,6 +84,15 @@ export const TYPOLab: info = {
                 Description: "N/A",
                 EntryImage: "./src/Images/ExpTypoZine2023/EntryImage.jpg",
                 Images: []
+            },
+            8: {
+                Name: "Experimental Typography Zine",
+                Dates: "Fall 2019",
+                People: ["Logan Aker", "Gunnar Autterson", "Liz Brusco", "Bella Colosimo", "Alex Connor", "Graham Fee", "Maizie Grace", "Ruth Hunsinger", "Michael Morris", "Sofi Ozambela", "Calvin Ritger", "Dan Strangfeld", "Benjamin Vernon", "Aj Yang"],
+                ZinePDFLink : "/src/pdf/ExperimentalTypographyFA2019Zine.pdf",
+                Description: "N/A",
+                EntryImage: "./src/Images/ExpTypoZine2023/EntryImage.jpg",
+                Images: []
             }
         },
         People: {

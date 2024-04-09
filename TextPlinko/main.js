@@ -1,5 +1,23 @@
 import './style.css'
 
+class Circle {
+  constructor (ctx, x, y, radius, gravity) {
+    this.ctx = ctx;
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+    this.gravity = gravity;
+    this.color = "blue";
+  }
+  draw() {
+    this.ctx.fillStyle = this.color;
+    this.ctx.arc(this.x, this.y, this.radius, 0, 360, false);
+  }
+  update() {
+    this.x += this.gravity
+  }
+}
+
 const body = document.querySelector("body");
 
 const addCanvas = document.createElement("canvas")
@@ -9,8 +27,8 @@ const canvas = document.querySelector("canvas");
 const context = canvas.getContext("2d");
 let image = new Image()
 image.src="./images/Scan 5.jpeg";
-image.height = image.height/2;
-image.width = image.width/2;
+image.height = image.height;
+image.width = image.width;
 console.log(image.height, image.width);
 
 canvas.height = 1200;
@@ -21,11 +39,12 @@ let widthRatio = canvas.width / image.width;
 let ratio = Math.min(widthRatio, heightRatio);
 let centerShift_x = ( canvas.width - image.width*ratio ) / 2;
 let centerShift_y = ( canvas.height - image.height*ratio ) / 2;
+const circle = new Circle(context,200,30,15,0.5);
+
 
 image.onload = function () {
   context.drawImage(image,0,0,image.width, image.height,
     centerShift_x, centerShift_y, image.width*ratio, image.height*ratio);
-    //context.drawImage(image,0,0,canvas.height,canvas.width);
     console.log("loaded");
     const data = context.getImageData(0,0,image.width,image.height).data;
     const imageMap = buildMap(data);
@@ -84,11 +103,22 @@ function drawCondensed(array) {
     const a = array[p][5];
     buildBlock(x,y,255,0,0,a);
   }
+  circle.draw();
 }
 
 function buildBlock(x,y,r,g,b,a) {
-  context.fillStyle = `rgba(${r},${g},${b},${a})`
+  context.fillStyle = `rgba(${r},${g},${b},${a})`;
   context.beginPath();
   context.rect(x,y,1,1);
   context.fill();
+}
+
+
+function animate() {
+
+  window.requestAnimationFrame(animate);
+}
+
+function draw() {
+  
 }

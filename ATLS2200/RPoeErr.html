@@ -1,54 +1,110 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <script defer src="./RPoeErr.js"></script>
-    <title>Silly story generator</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Img's</title>
+</head>
+<style>
+    h1 {
+  font-family: helvetica, arial, sans-serif;
+  text-align: center;
+}
 
-    <style>
-      body {
-        font-family: helvetica, sans-serif;
-        width: 350px;
-      }
+body {
+  width: 300px;
+  margin: 0 auto;
+}
 
-      label {
-        font-weight: bold;
-      }
+.full-img {
+  position: relative;
+  display: block;
+  width: 640px;
+  height: 480px;
+}
 
-      div {
-        padding-bottom: 20px;
-      }
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 280px;
+  background-color: rgba(0,0,0,0);
+}
 
-      input[type="text"] {
-        padding: 5px;
-        width: 150px;
-      }
+button {
+  border: 0;
+  background: rgba(150,150,150,0.6);
+  text-shadow: 1px 1px 1px white;
+  border: 1px solid #999;
+  position: absolute;
+  cursor: pointer;
+  top: 2px;
+  left: 2px;
+}
 
-      p {
-        background: #ffc125;
-        color: #5e2612;
-        padding: 10px;
-        visibility: hidden;
-      }
-    </style>
-  </head>
+.thumb-bar img {
+  display: block;
+  width: 20%;
+  float: left;
+  cursor: pointer;
+}
+</style>
 
-  <body>
-    <div>
-      <label for="customname">Enter custom name:</label>
-      <input id="customname" type="text" placeholder="" />
-    </div>
-    <div>
-      <label for="us">US</label
-      ><input id="us" type="radio" name="ukus" value="us" checked />
-      <label for="uk">UK</label
-      ><input id="uk" type="radio" name="ukus" value="uk" />
-    </div>
-    <div>
-      <button class="randomize">Generate random story</button>
-    </div>
-    <!-- Thanks a lot to Willy Aguirre for his help with the code for this assessment -->
-    <p class="story"></p>
-  </body>
+<body>
+    <h1>Image gallery example</h1>
+    <div class="full-img">
+    <img
+        class="displayed-img"
+        src="./gallery-start/images/pic1.jpg" 
+        alt="Closeup of EJ" />
+  <div class="overlay"></div>
+  <button class="dark">Darken</button>
+  </div>
+
+   <div class="thumb-bar"></div>
+
+    <script>
+        const displayedImage=document.querySelector('.displayed-img');
+        const thumbBar=document.querySelector('.thumb-bar');
+
+        const btn =document.querySelector('button');
+        const overlay =document.querySelector('.overlay');
+
+
+
+        function makeBig (newImage){
+            console.log(newImage.src)
+        }
+        
+        const pics= ["./gallery-start/images/pic1.jpg", "./gallery-start/images/pic2.jpg", "./gallery-start/images/pic3.jpg", "./gallery-start/images/pic4.jpg", "./gallery-start/images/pic5.jpg", ];
+
+        const alts= ["J.cole",".its me","I think drake","oh I look good","pretty images"]
+        for (let i = 0; i<5;i++){
+            const newImage =document.createElement('img');
+            newImage.setAttribute('src',pics[i]);
+            newImage.setAttribute ('alt',alts[i]);
+            thumbBar.appendChild(newImage);
+            newImage.addEventListener("click", ()=>{
+                displayedImage.setAttribute('src',pics[i]);
+                displayedImage.setAttribute('alt',alts[i]);
+
+            });
+        }
+
+        btn.addEventListener('click',()=>{
+        const button =btn.getAttribute("class")
+        if (button== "dark"){
+            btn.setAttribute("class","light");
+            btn.textContent="light";
+            overlay.style.backgroundColor = "rgb(0 0 0/50%)";
+        } else {
+            btn.setAttribute("class","dark");
+            btn.textContent="dark";
+            overlay.style.backgroundColor = "rgb(0 0 0/0%)";
+        }
+        })
+
+    </script>
+</body>
 </html>
