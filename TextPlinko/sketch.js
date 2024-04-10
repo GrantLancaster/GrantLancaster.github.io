@@ -107,7 +107,7 @@ toggleBG.addEventListener("click", ()=>{
 })
 
 function preload() {
-  img = loadImage("./images/Scan 5.jpeg");
+  img = loadImage("../images/Scan 5.jpeg");
 }
 
 function setup() {
