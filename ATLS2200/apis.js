@@ -18,15 +18,26 @@ async function getJsonWithFetch1() {
 }*/
 
 
+const monsters = "https://botw-compendium.herokuapp.com/api/v3/compendium/category/monsters";
+const endpoint = "https://api.thecatapi.com/v1/images/search";
 
-async function getJsonWithFetch() {
+const body = document.querySelector("body");
+const p = document.createElement("p");
+const p2 = document.createElement("p");
+
+p.textContent = "Name: " + Name
+p2.textContent = "Location: " + location
+body.innerHTML += p2.outerHTML;
+// Name: Bokoblin
+
+
+async function getJsonWithFetch(category) {
 
     try {
-    const response = await fetch("https://techy-api.vercel.app/api/json");
-
+    const response = await fetch(category);
         const jsonData = await response.json();
-
         console.log(jsonData);
+        
     }
 
     catch (error) {
@@ -35,4 +46,6 @@ async function getJsonWithFetch() {
     }
 }
 
-getJsonWithFetch();
+getJsonWithFetch(monsters); 
+getJsonWithFetch(endpoint);
+

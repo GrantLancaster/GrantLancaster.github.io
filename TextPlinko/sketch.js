@@ -1,9 +1,9 @@
 class Cir {
   constructor() {
-    this.x = Math.floor(Math.random()*3400);
+    this.x = Math.floor(Math.random()*1080);
     this.y = 50;
-    this.width = 50;
-    this.height = 50;
+    this.width = 20;
+    this.height = 20;
     this.color = {
       r: Math.floor(Math.random()*255),
       g: Math.floor(Math.random()*255),
@@ -87,6 +87,7 @@ class Cir {
       }
   }
 }
+
 const circles = []
 const circle = new Cir;
 circles.push(circle);
@@ -95,6 +96,7 @@ const spawnBall = document.querySelector("#spawnBall");
 spawnBall.addEventListener("click", ()=>{
   console.log("ball Spawned");
   const ball = new Cir
+  Cir.x = 1 + Math.floor(Math.random()*4);
   circles.push(ball);
 })
 const toggleBG = document.querySelector("#backgroundToggle");
@@ -107,7 +109,7 @@ toggleBG.addEventListener("click", ()=>{
 })
 
 function preload() {
-  img = loadImage("../images/Scan 5.jpeg");
+  img = loadImage("../images/Scan5Shrunk.png");
 }
 
 function setup() {
