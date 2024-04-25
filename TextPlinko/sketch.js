@@ -11,7 +11,7 @@ class Cir {
     }
     this.gravity = 0.2;
     this.velocity = {
-      x: 3,
+      x: Math.random()*10,
       y: 0
     },
     this.collision = {
@@ -47,17 +47,17 @@ class Cir {
     this.y += this.velocity.y
     this.x += this.velocity.x
     this.velocity.y += this.gravity;
-    this.velocity.x -= 0.001
+    this.velocity.x -= 0.001;
     if (this.y > img.height) {
       this.y=-10
       this.color.r = Math.floor(Math.random()*255);
       this.color.g = Math.floor(Math.random()*255);
       this.color.b = Math.floor(Math.random()*255);
     }
-    if (this.x > img.width+10) {
-      this.x=-10
-    }else if (this.x < -20) {
-      this.x = img.width
+    if (this.x > img.width) {
+      this.velocity.x = -this.velocity.x;
+    }else if (this.x < 0) {
+      this.velocity.x = -this.velocity.x;
     }
   }
   collide() {

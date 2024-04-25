@@ -18,18 +18,7 @@ async function getJsonWithFetch1() {
 }*/
 
 
-const monsters = "https://botw-compendium.herokuapp.com/api/v3/compendium/category/monsters";
 const endpoint = "https://api.thecatapi.com/v1/images/search";
-
-const body = document.querySelector("body");
-const p = document.createElement("p");
-const p2 = document.createElement("p");
-
-p.textContent = "Name: " + Name
-p2.textContent = "Location: " + location
-body.innerHTML += p2.outerHTML;
-// Name: Bokoblin
-
 
 async function getJsonWithFetch(category) {
 
@@ -37,6 +26,18 @@ async function getJsonWithFetch(category) {
     const response = await fetch(category);
         const jsonData = await response.json();
         console.log(jsonData);
+
+        //  MAKE SURE THAT I AM GRABBING THE RIGHT THING
+        console.log(jsonData[0]["url"]);
+
+        //  CAPTURE THE IMAGE TAG IN THE HTML FILE
+        const imageTag = document.querySelector("img");
+
+        //  UPDATE THE SRC ATTRIBUTE WITH THE URL I GRABBED
+        imageTag.src = jsonData[0]["url"];
+        //  ADD AN ALT ATTRIBUTE SO IT DOESNT THROW AN ERROR
+        imageTag.alt = "Picture of a cat";
+
         
     }
 
@@ -46,6 +47,5 @@ async function getJsonWithFetch(category) {
     }
 }
 
-getJsonWithFetch(monsters); 
 getJsonWithFetch(endpoint);
 

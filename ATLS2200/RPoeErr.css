@@ -1,6 +1,54 @@
-.btn {
+.box {
+    width: 400px; /* Set the width of the box */
+    height: 600px; /* Set the height of the box */
+    background-color: #f0f0f0; /* Set the background color */
+    border: 4px solid;  /* Add a border */
+    padding: 20px; /* Add padding inside the box */
+    text-align: center; /* Center the text horizontally */
+    line-height: 100px; /* Center the text vertically */
+}
+  .volume-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+button {
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
 
 }
-#monsters {
-    
+
+.volume-level {
+  font-size: 24px;
+  margin: 0 20px;
 }
+.increase-volume-button{
+    position: absolute;
+    left:0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card {
+
+}
+.card-animate {
+
+}
+.card-end {}
+
+@keyframes flip {}
