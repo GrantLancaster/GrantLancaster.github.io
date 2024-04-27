@@ -90,6 +90,7 @@ const hexagons = [];
 const diamonds = [];
 const bars = [[], [], []]; // Horizontal, Vertical, Front-back
 const cubes = [];
+const skybox = ["models/SkyBoxBeach.gltf", "models/SkyBoxForest.gltf", "models/SkyBoxOcean.gltf", "models/SkyBoxSpaceCity.gltf"];
 /*-----------------------------------------*/
 
 let impossibleCube, block, planet;
@@ -118,12 +119,12 @@ function setup() {
 	scene.add(topPlane);
 	scene.add(bottomPlane);
 
-	scene.add(wall);
-	scene.add(wallL);
-	scene.add(wallR);
-	scene.add(wallBack);
-	scene.add(floor);
-	scene.add(roof);
+	// scene.add(wall);
+	// scene.add(wallL);
+	// scene.add(wallR);
+	// scene.add(wallBack);
+	// scene.add(floor);
+	// scene.add(roof);
 
     frontPlane.position.set(0,0,2.90);
 	backPlane.position.set(0, 0, -2.90), backPlane.rotation.set(0, Math.PI, 0);
@@ -141,7 +142,7 @@ function setup() {
 
 	camera.add(light);
 	scene.add(camera);
-	light.position.set(10, 0, 4);
+	//light.position.set(10, 0, 4);
     
     build();
 };
@@ -154,7 +155,8 @@ async function build() {
 		loadRightFace(),
 		loadBackFace(),
 		loadTopFace(),
-		loadBottomFace()
+		loadBottomFace(),
+		loadSkyBox()
 	]);
 	
 	scene.add(impossibleCube);
@@ -304,6 +306,19 @@ async function loadbackground() {
 	planet.position.z = -5;
 	console.log (planet);
 };
+
+async function loadSkyBox() {
+	for (let i = 0; i < skybox.length; i++ ) {
+		let env
+		if (i == 1) {
+			env = await loadModel(skybox[i], true, i+1);
+		} else {
+			env = await loadModel(skybox[i], true, i+1);
+		}
+		scene.add(env);
+		env.scale.set(20,20,20);
+	}
+}
 
 async function loadFrontFace() {
 	block = await loadModel("models/filledCube.gltf", true, 1);
