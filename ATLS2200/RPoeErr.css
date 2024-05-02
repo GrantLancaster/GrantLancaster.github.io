@@ -27,4 +27,42 @@ button {
 }
 .increase-volume-button{
     position: absolute;
+    left:0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card {
+    left:0;
+    top:0;
+}
+.card-animate {
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+.card-end {
+    left:50;
+    top:50;
+}
+
+@keyframes flip {
+ 0% {
+    left:0;
+    top:0;
+ }
+ 100% {
+    left:50;
+    top:50;
+ }
+
 }
