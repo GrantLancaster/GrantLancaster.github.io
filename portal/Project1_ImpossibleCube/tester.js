@@ -58,31 +58,30 @@ const light = new THREE.DirectionalLight(color, intensity);
 const planeWidth = 6;
 const planeHeight = 6;
 const Plane = new THREE.PlaneGeometry(planeWidth, planeHeight);
-const floorPlane = new THREE.PlaneGeometry(100, 100);
-const wallPlane = new THREE.PlaneGeometry(100,100);
+// const floorPlane = new THREE.PlaneGeometry(100, 100);
+// const wallPlane = new THREE.PlaneGeometry(100,100);
 wallMat.stencilWrite = true;
 wallMat.stencilRef = 7;
 wallMat.stencilFunc = THREE.AlwaysStencilFunc;
 wallMat.stencilZPass = THREE.ReplaceStencilOp;
 
-console.log(wallPlane);
 /*-----------------------------------------*/
 
 
 /*------ Mesh Initialization Setup --------*/
-const floor = new THREE.Mesh(floorPlane, wallMat);
-const wall = new THREE.Mesh(wallPlane, wallMat);
-const wallL = new THREE.Mesh(wallPlane, wallMat);
-const wallR = new THREE.Mesh(wallPlane, wallMat);
-const wallBack = new THREE.Mesh(wallPlane, wallMat);
-const roof = new THREE.Mesh(floorPlane, wallMat);
+// const floor = new THREE.Mesh(floorPlane, wallMat);
+// const wall = new THREE.Mesh(wallPlane, wallMat);
+// const wallL = new THREE.Mesh(wallPlane, wallMat);
+// const wallR = new THREE.Mesh(wallPlane, wallMat);
+// const wallBack = new THREE.Mesh(wallPlane, wallMat);
+// const roof = new THREE.Mesh(floorPlane, wallMat);
 
-const backPlane = new THREE.Mesh(Plane, createMat(false, 4, "white", "white"));
-const frontPlane = new THREE.Mesh(Plane, createMat(false, 1, "white", "white"));
-const leftPlane = new THREE.Mesh(Plane, createMat(false, 2, "white", "white"));
-const rightPlane = new THREE.Mesh(Plane, createMat(false, 3, "white", "white"));
-const topPlane = new THREE.Mesh(Plane, createMat(false, 5, "white", "white"));
-const bottomPlane = new THREE.Mesh(Plane, createMat(false, 6, "white", "white"));
+const backPlane = new THREE.Mesh(Plane, createMat(false, 5, "white", "white"));
+const frontPlane = new THREE.Mesh(Plane, createMat(false, 2, "white", "white"));
+const leftPlane = new THREE.Mesh(Plane, createMat(false, 3, "white", "white"));
+const rightPlane = new THREE.Mesh(Plane, createMat(false, 4, "white", "white"));
+const topPlane = new THREE.Mesh(Plane, createMat(false, 6, "white", "white"));
+const bottomPlane = new THREE.Mesh(Plane, createMat(false, 7, "white", "white"));
 
 
 const rings = [];
@@ -91,7 +90,9 @@ const triangles = [];
 const hexagons = [];
 const diamonds = [];
 const bars = [[], [], []]; // Horizontal, Vertical, Front-back
-const cubes = [];
+const cubesBig = [];
+const triangleBig = [];
+const diamondsBig = [];
 const skybox = ["models/SkyBoxCubeSmall.gltf","models/SkyBoxBeach.gltf", "models/SkyBoxForest.gltf", "models/SkyBoxOcean.gltf", "models/SkyBoxSpaceCity.gltf", "models/SkyBoxCityFixed.gltf", "models/SkyBoxVillage.gltf"];
 	/*---------Second Cube face contents-----*/
 const balls = [];
@@ -144,12 +145,12 @@ function setup() {
 	topPlane.position.set(0, 3, 0), topPlane.rotation.set(-Math.PI/2, 0, 0);
 	bottomPlane.position.set(0, -3, 0), bottomPlane.rotation.set(Math.PI/2, 0, 0);
 
-	wallL.position.set(-25, 0, 0), wallL.rotation.set(0, Math.PI/2, 0);
-	wallR.position.set(25, 0, 0), wallR.rotation.set(0, -Math.PI/2, 0);
-	wall.position.set(0, 0, -25);
-	floor.position.set(0, -25, 0), floor.rotation.set(-Math.PI/2, 0, 0);
-	roof.position.set(0, 25, 0), roof.rotation.set(Math.PI/2, 0, 0);
-	wallBack.position.set(0, 0, 25), wallBack.rotation.set(Math.PI, 0, 0);
+	// wallL.position.set(-25, 0, 0), wallL.rotation.set(0, Math.PI/2, 0);
+	// wallR.position.set(25, 0, 0), wallR.rotation.set(0, -Math.PI/2, 0);
+	// wall.position.set(0, 0, -25);
+	// floor.position.set(0, -25, 0), floor.rotation.set(-Math.PI/2, 0, 0);
+	// roof.position.set(0, 25, 0), roof.rotation.set(Math.PI/2, 0, 0);
+	// wallBack.position.set(0, 0, 25), wallBack.rotation.set(Math.PI, 0, 0);
 
 	camera.add(light);
 	scene.add(camera);
@@ -159,25 +160,34 @@ function setup() {
 };
 
 async function build() {
-	impossibleCube = await loadModel("./models/cubeFrame.gltf", true, 0);
+	impossibleCube = await loadModel("./models/cubeFrame.gltf", true, 1);
 	await Promise.all([
 		loadFrontFace(), 
 		loadLeftFace(), 
 		loadRightFace(),
 		loadBackFace(),
 		loadTopFace(),
-		loadBottomFace(),
-		loadSkyBox(),
-		buildSecondCube(),
-		loadFrontFaceBig()
+		loadBottomFace()
 	]);
 	
 	impossibleCube.children[0].material.stencilWrite = false;
 	scene.add(impossibleCube);
 	impossibleCube.scale.set(2,2,2);
 
-    render();
+    build2();
 };
+async function build2() {
+	await Promise.all([
+		buildSecondCube(),
+		loadRightFaceBig(),
+		loadFrontFaceBig(),
+		loadLeftFaceBig(),
+		loadBackFaceBig()
+
+	]);
+	await loadSkyBox()
+	render();
+}
 function render() {
 	renderer.render(scene, camera);
 	animateFrontFace();
@@ -186,13 +196,23 @@ function render() {
 	animateRightFace();
 	animateTopFace();
 	animateBottomFace();
-	animateFrontFaceBig()
+	animateRightFaceBig();
+	animateFrontFaceBig();
+	animateLeftFaceBig();
+	animateBackFaceBig();
 
 	expandPlane(whichPlane, toggleString);
-	//console.log(whichPlane);
-	//console.log(camera.position.distanceTo(impossibleCube.position));
+	cameraWrap();
 	requestAnimationFrame(render);
 };
+
+function cameraWrap() {
+	if (camera.position.distanceTo(impossibleCube.position)>1250){
+		camera.position.z = 1
+	}else if (camera.position.distanceTo(impossibleCube.position)<0.1) {
+		camera.position.z=1245
+	}
+}
 
 async function loadModel(path, needStencil, refNum) {
 	const loader = new GLTFLoader();
@@ -320,10 +340,10 @@ async function loadSkyBox() {
 		let env
 		if (i == 0) {
 			env = await loadModel(skybox[i], true, 0);
-			env.scale.set(21,21,21)
+			env.scale.set(20,20,20)
 		} else {
-			env = await loadModel(skybox[i], true, i);
-			env.scale.set(20,20,20);
+			env = await loadModel(skybox[i], true, i+1);
+			env.scale.set(18,18,18);
 		}
 		scene.add(env);
 
@@ -335,12 +355,12 @@ async function loadSkyBox() {
 }
 
 async function loadFrontFace() {
-	block = await loadModel("models/filledCube.gltf", true, 1);
+	block = await loadModel("models/filledCube.gltf", true, 2);
 	scene.add(block);
 	for (let j = 0; j < 3; j++) {
 		if (j == 0) {
 			for (let i = 0; i < 10; i++) {
-				const lip = await loadModel("models/ring.gltf", true, 1);
+				const lip = await loadModel("models/ring.gltf", true, 2);
 				scene.add(lip);
 				lip.scale.set(0+i, 0+i, 0+i);
 				lip.rotation.z = Math.PI/2;
@@ -349,7 +369,7 @@ async function loadFrontFace() {
 			}
 		} else if (j == 1) {
 			for (let i = 0; i < 10; i++) {
-				const lip = await loadModel("models/ring.gltf", true, 1);
+				const lip = await loadModel("models/ring.gltf", true, 2);
 				scene.add(lip);
 				lip.scale.set(0+i, 0+i, 0+i);
 				lip.rotation.z = -Math.PI/2;
@@ -358,7 +378,7 @@ async function loadFrontFace() {
 			}
 		} else {
 			for (let i = 0; i < 10; i++) {
-				const lip = await loadModel("models/ring.gltf", true, 1);
+				const lip = await loadModel("models/ring.gltf", true, 2);
 				scene.add(lip);
 				lip.scale.set(2+i, 2+i, 2+i);
 				lip.rotation.x = Math.PI/2;
@@ -379,7 +399,7 @@ function animateFrontFace() {
 
 async function loadBackFace() {
 	for (let i = 0; i < 20; i++) {
-		const frame = await loadModel("models/triangle.gltf", true, 4);
+		const frame = await loadModel("models/triangle.gltf", true, 5);
 		frame.scale.set(6-i/4, 6-i/4, 1);
 		frame.position.set(0, 0, -2.5);
 		scene.add(frame);
@@ -401,7 +421,7 @@ function animateBackFace() {
 async function loadLeftFace() {
 	for (let i = 0; i < 5; i++) {
 		for (let j = 0; j < 5; j++) {
-			const block = await loadModel("models/filledCube.gltf", true, 2);
+			const block = await loadModel("models/filledCube.gltf", true, 3);
 			block.position.set((i)-1.5, -1, -2 + j);
 			blocks.push(block);
 			scene.add(block);
@@ -423,7 +443,7 @@ function animateLeftFace() {
 async function loadRightFace() {
 	for (let i = 0; i < 3; i++) {
 		for (let j = 0; j < 4; j++) {
-			const bar = await loadModel("models/test.gltf", true, 3);
+			const bar = await loadModel("models/test.gltf", true, 4);
 			bars[i].push(bar);
 			scene.add(bar);
 		}
@@ -468,9 +488,9 @@ function animateRightFace() {
 };
 
 async function loadTopFace() {
-	const diamond = await loadModel("models/diamond.gltf", true, 5);
+	const diamond = await loadModel("models/diamond.gltf", true, 6);
 	for (let i = 0; i < 8; i++) {
-		const hexagon = await loadModel("models/hexagon.gltf", true, 5);
+		const hexagon = await loadModel("models/hexagon.gltf", true, 6);
 		hexagon.scale.set(5, 5, 5);
 		hexagons.push(hexagon);
 		diamond.add(hexagon);
@@ -495,15 +515,15 @@ function animateTopFace() {
 };
 
 async function loadBottomFace() {
-	planet = await loadModel("models/lilPineTreePlanet.gltf", true, 6);
+	planet = await loadModel("models/lilPineTreePlanet.gltf", true, 7);
 	planet.scale.set(2,2,2);
 
 	planet.children[1].children[0].material.stencilWrite = true;
-	planet.children[1].children[0].material.stencilRef = 6;
+	planet.children[1].children[0].material.stencilRef = 7;
 	planet.children[1].children[0].material.stencilFunc = THREE.EqualStencilFunc;
 
 	planet.children[1].children[1].material.stencilWrite = true;
-	planet.children[1].children[1].material.stencilRef = 6;
+	planet.children[1].children[1].material.stencilRef = 7;
 	planet.children[1].children[1].material.stencilFunc = THREE.EqualStencilFunc;
 
 	scene.add(planet);
@@ -515,12 +535,12 @@ function animateBottomFace() {
 };
 
 async function buildSecondPlanes() {
-	const frontPlane = new THREE.Mesh(Plane, createMat(false, 7, "white", "white"));
-	const rightPlane = new THREE.Mesh(Plane, createMat(false, 8, "white", "white"));
-	const leftPlane = new THREE.Mesh(Plane, createMat(false, 9, "white", "white"));
-	const backPlane = new THREE.Mesh(Plane, createMat(false, 10, "white", "white"));
-	const topPlane = new THREE.Mesh(Plane, createMat(false, 11, "white", "white"));
-	const bottomPlane = new THREE.Mesh(Plane, createMat(false, 12, "white", "white"));
+	const frontPlane = new THREE.Mesh(Plane, createMat(false, 8, "white", "white"));
+	const rightPlane = new THREE.Mesh(Plane, createMat(false, 9, "white", "white"));
+	const leftPlane = new THREE.Mesh(Plane, createMat(false, 10, "white", "white"));
+	const backPlane = new THREE.Mesh(Plane, createMat(false, 11, "white", "white"));
+	const topPlane = new THREE.Mesh(Plane, createMat(false, 12, "white", "white"));
+	const bottomPlane = new THREE.Mesh(Plane, createMat(false, 13, "white", "white"));
 
 	scene.add(frontPlane);
 	scene.add(rightPlane);
@@ -546,9 +566,79 @@ async function buildSecondCube() {
 }
 
 async function loadFrontFaceBig() {
+	for (let i=0; i<10; i++) {
+		for (let j=0; j<6; j++) {
+			const hallPiece = await loadModel("models/cubeFrame.gltf", true, 8);
+			hallPiece.scale.set(10/i,10/i,10/i);
+			if (j==0) {
+				hallPiece.position.set(-40*(i/2),0,0);
+			}else if (j==1) {
+				hallPiece.position.set(0,0,40*(i/2));
+			}else if (j==2) {
+				hallPiece.position.set(40*(i/2),0,0);
+			}else if (j==3) {
+				hallPiece.position.set(0,40*(i/2),0);
+			}else if (j==4) {
+				hallPiece.position.set(0,-40*(i/2),0);
+			}else if (j==5) {
+				hallPiece.position.set(0,0,-40*(i/2));
+			}
+			cubesBig.push(hallPiece);
+			scene.add(hallPiece);
+		}
+	}
+}
+function animateFrontFaceBig() {
+	for (let c=0; c<cubesBig.length; c++) {
+		if (c%2==0) {
+			cubesBig[c].rotation.x -=0.005;
+			cubesBig[c].rotation.y +=0.005;
+		} else {
+			cubesBig[c].rotation.x +=0.005;
+			cubesBig[c].rotation.y -=0.005;
+		}
+	}
+}
+
+async function loadLeftFaceBig() {
+	const planetBig = await loadModel("models/lilPineTreePlanet.gltf", true, 10);
+	planetBig.children[1].children[0].material.stencilWrite = true;
+	planetBig.children[1].children[0].material.stencilRef = 10;
+	planetBig.children[1].children[0].material.stencilFunc = THREE.EqualStencilFunc;
+
+	planetBig.children[1].children[1].material.stencilWrite = true;
+	planetBig.children[1].children[1].material.stencilRef = 10;
+	planetBig.children[1].children[1].material.stencilFunc = THREE.EqualStencilFunc;
+
+	planetBig.scale.set(20,20,20);
+	//planetBig.rotation.y = Math.PI/2;
+	for (let i=1; i<4; i++) {
+		const triangle = await loadModel("models/triangle.gltf", true, 10);
+		triangle.scale.set(20*(i/2),20*(i/2),20*(i/2));
+		triangle.rotation.y = Math.PI/2;
+		triangleBig.push(triangle);
+		scene.add(triangle);
+	}
+	scene.add(planetBig);
+}
+function animateLeftFaceBig() {
+	for (let t=0; t<triangleBig.length; t++) {
+		if (t==0) {
+			triangleBig[t].rotateX(-0.002);
+		}else if (t==1) {
+			triangleBig[t].rotateY(0.001);
+			triangleBig[t].rotateX(0.001);
+		}
+		else {
+			triangleBig[t].rotateX(0.001);
+		}
+	}
+}
+
+async function loadRightFaceBig() {
 	for (let i=0; i < skybox.length; i++) {
 	const settings = []
-	const ball = await loadModel(skybox[i], true, 8);
+	const ball = await loadModel(skybox[i], true, 9);
 	ball.scale.set(15,15,15);
 	ball.position.set(Math.random()*20, Math.random()*20, Math.random()*20)
 	const velx = Math.random()/2;
@@ -560,9 +650,7 @@ async function loadFrontFaceBig() {
 	balls.push(settings);
 	}
 }
-
-
-function animateFrontFaceBig() {
+function animateRightFaceBig() {
 	for (let b=0; b < balls.length; b++) {
 		balls[b][0].position.x += balls[b][1];
 		balls[b][0].position.y += balls[b][2];
@@ -571,14 +659,41 @@ function animateFrontFaceBig() {
 		balls[b][0].rotation.x += 0.005;
 		balls[b][0].rotation.y += 0.005;
 
-		// balls[b][0].scale.x += balls[0][1]/10;
-		// balls[b][0].scale.y += balls[0][2]/10;
-		// balls[b][0].scale.z += balls[0][3]/10;
-
 		if ((balls[b][0].position.x > 2.90*25)||(balls[b][0].position.x < -2.90*25)){balls[b][1] = -balls[b][1]}
 		if ((balls[b][0].position.y > 2.90*25)||(balls[b][0].position.y < -2.90*25)){balls[b][2] = -balls[b][2]}
 		if ((balls[b][0].position.z > 2.90*25)||(balls[b][0].position.z < -2.90*25)){balls[b][3] = -balls[b][3]}
 	}
+}
+
+async function loadBackFaceBig() {
+	let offset = 10;
+	for (let i=0; i<8; i++) {
+		for (let j=0; j<8; j++) {
+			if (j%2==0) {
+				offset = 0 ;
+			}else {
+				offset = 10
+			}
+			const group = [];
+			const diamond = await loadModel("models/diamond.gltf", true, 11);
+			let vely = 0.05;
+			diamond.scale.set(30,30,30);
+			diamond.position.set(60-(i*20)+(offset),60-(j*20),i*j/4);
+			group.push(diamond, vely);
+			diamondsBig.push(group);
+			scene.add(diamond);
+		}
+	}
+}
+function animateBackFaceBig() {
+
+	for (let i=0; i<diamondsBig.length; i++) {
+			diamondsBig[i][0].position.z += diamondsBig[i][1];
+		if (diamondsBig[i][0].position.z >20 || diamondsBig[i][0].position.z < -20) {
+			diamondsBig[i][1] = -diamondsBig[i][1];
+		}
+	}
+	
 }
 
 setup();
