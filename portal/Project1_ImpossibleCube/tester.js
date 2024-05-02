@@ -9,8 +9,10 @@ const renderer = new THREE.WebGLRenderer();
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
-let bottomButton = document.querySelector(".bottom");
-let rightButton = document.querySelector(".right");
+const bottomButton = document.querySelector(".bottom");
+const rightButton = document.querySelector(".right");
+const leftButton = document.querySelector(".left");
+
 const vector = new THREE.Vector3();
 let cameraPos;
 
@@ -90,7 +92,10 @@ const hexagons = [];
 const diamonds = [];
 const bars = [[], [], []]; // Horizontal, Vertical, Front-back
 const cubes = [];
-const skybox = ["models/SkyBoxBeach.gltf", "models/SkyBoxForest.gltf", "models/SkyBoxOcean.gltf", "models/SkyBoxSpaceCity.gltf"];
+const skybox = ["models/SkyBoxCubeSmall.gltf","models/SkyBoxBeach.gltf", "models/SkyBoxForest.gltf", "models/SkyBoxOcean.gltf", "models/SkyBoxSpaceCity.gltf", "models/SkyBoxCityFixed.gltf", "models/SkyBoxVillage.gltf"];
+	/*---------Second Cube face contents-----*/
+const balls = [];
+
 /*-----------------------------------------*/
 
 let impossibleCube, block, planet;
@@ -108,7 +113,13 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.update();
 bottomButton.addEventListener("click", ()=> {checkCameraPosition()});
 rightButton.addEventListener("click", () => {autoRotate(true)});
-document.addEventListener("keydown", (e) => {currentArrow = e.key});
+leftButton.addEventListener("click", () =>{
+	if (impossibleCube.children[0].material.stencilWrite == true) {
+		impossibleCube.children[0].material.stencilWrite = false;
+	} else if (impossibleCube.children[0].material.stencilWrite == false) {
+		impossibleCube.children[0].material.stencilWrite = true;
+	}
+})
 
 /*-----------------------------------------*/
 function setup() {
@@ -126,12 +137,12 @@ function setup() {
 	// scene.add(floor);
 	// scene.add(roof);
 
-    frontPlane.position.set(0,0,2.90);
-	backPlane.position.set(0, 0, -2.90), backPlane.rotation.set(0, Math.PI, 0);
-	leftPlane.position.set(-2.90, 0, 0), leftPlane.rotation.set(0, -Math.PI/2, 0);
-	rightPlane.position.set(2.90, 0, 0), rightPlane.rotation.set(0, Math.PI/2, 0);
-	topPlane.position.set(0, 2.90, 0), topPlane.rotation.set(-Math.PI/2, 0, 0);
-	bottomPlane.position.set(0, -2.90, 0), bottomPlane.rotation.set(Math.PI/2, 0, 0);
+    frontPlane.position.set(0,0,3);
+	backPlane.position.set(0, 0, -3), backPlane.rotation.set(0, Math.PI, 0);
+	leftPlane.position.set(-3, 0, 0), leftPlane.rotation.set(0, -Math.PI/2, 0);
+	rightPlane.position.set(3, 0, 0), rightPlane.rotation.set(0, Math.PI/2, 0);
+	topPlane.position.set(0, 3, 0), topPlane.rotation.set(-Math.PI/2, 0, 0);
+	bottomPlane.position.set(0, -3, 0), bottomPlane.rotation.set(Math.PI/2, 0, 0);
 
 	wallL.position.set(-25, 0, 0), wallL.rotation.set(0, Math.PI/2, 0);
 	wallR.position.set(25, 0, 0), wallR.rotation.set(0, -Math.PI/2, 0);
@@ -148,7 +159,7 @@ function setup() {
 };
 
 async function build() {
-	impossibleCube = await loadModel("./models/cubeFrame.gltf", false, 0);
+	impossibleCube = await loadModel("./models/cubeFrame.gltf", true, 0);
 	await Promise.all([
 		loadFrontFace(), 
 		loadLeftFace(), 
@@ -156,9 +167,12 @@ async function build() {
 		loadBackFace(),
 		loadTopFace(),
 		loadBottomFace(),
-		loadSkyBox()
+		loadSkyBox(),
+		buildSecondCube(),
+		loadFrontFaceBig()
 	]);
 	
+	impossibleCube.children[0].material.stencilWrite = false;
 	scene.add(impossibleCube);
 	impossibleCube.scale.set(2,2,2);
 
@@ -172,10 +186,11 @@ function render() {
 	animateRightFace();
 	animateTopFace();
 	animateBottomFace();
+	animateFrontFaceBig()
 
 	expandPlane(whichPlane, toggleString);
 	//console.log(whichPlane);
-
+	//console.log(camera.position.distanceTo(impossibleCube.position));
 	requestAnimationFrame(render);
 };
 
@@ -248,7 +263,7 @@ function expandPlane(Plane, toggleString) {
 	if(Plane == "none") {return};
 	cameraPos = camera.getWorldDirection(vector);
 	if (sizing == true) {
-		if (Plane.scale.x <= 2 && Plane.scale.y <= 2) {
+		if (Plane.scale.x < 4 && Plane.scale.y < 4) {
 			Plane.scale.x +=0.01;
 			Plane.scale.y +=0.01;
 			console.log(Plane.scale.x);
@@ -257,42 +272,42 @@ function expandPlane(Plane, toggleString) {
 		} else {sizing = false}
 	}else if (toggleString == "front") {
 		if (cameraPos.z < (-1-buffDist) || cameraPos.z > (-1+buffDist)) {
-			if(Plane.scale.x >= 1 && Plane.scale.y >= 1) {
+			if(Plane.scale.x > 1+0.05 && Plane.scale.y > 1+0.05) {
 			Plane.scale.x -= 0.05;
 			Plane.scale.y -= 0.05;
 			}
 		}
 	}else if (toggleString == "back") {
 		if (cameraPos.z < (1-buffDist) || cameraPos.z > (1+buffDist)) {
-			if(Plane.scale.x >= 1 && Plane.scale.y >= 1) {
+			if(Plane.scale.x > 1+0.05 && Plane.scale.y > 1+0.05) {
 			Plane.scale.x -= 0.05;
 			Plane.scale.y -= 0.05;
 			}
 		}
 	}else if (toggleString == "right") {
 		if (cameraPos.x < (-1-buffDist) || cameraPos.x > (-1+buffDist)) {
-			if(Plane.scale.x >= 1 && Plane.scale.y >= 1) {
+			if(Plane.scale.x > 1+0.05 && Plane.scale.y > 1+0.05) {
 			Plane.scale.x -= 0.05;
 			Plane.scale.y -= 0.05;
 			}
 		}
 	}else if (toggleString == "left") {
 		if (cameraPos.x < (1-buffDist) || cameraPos.x > (1+buffDist)) {
-			if(Plane.scale.x >= 1 && Plane.scale.y >= 1) {
+			if(Plane.scale.x > 1+0.05 && Plane.scale.y > 1+0.05) {
 			Plane.scale.x -= 0.05;
 			Plane.scale.y -= 0.05;
 			}
 		}
 	}else if (toggleString == "top") {
 		if (cameraPos.y < (-1-buffDist) || cameraPos.y > (-1+buffDist)) {
-			if(Plane.scale.x >= 1 && Plane.scale.y >= 1) {
+			if(Plane.scale.x > 1+0.05 && Plane.scale.y > 1+0.05) {
 			Plane.scale.x -= 0.05;
 			Plane.scale.y -= 0.05;
 			}
 		}
 	}else if (toggleString == "bottom") {
 		if (cameraPos.y < (1-buffDist) || cameraPos.y > (1+buffDist)) {
-			if(Plane.scale.x >= 1 && Plane.scale.y >= 1) {
+			if(Plane.scale.x > 1+0.05 && Plane.scale.y > 1+0.05) {
 			Plane.scale.x -= 0.05;
 			Plane.scale.y -= 0.05;
 			}
@@ -300,23 +315,22 @@ function expandPlane(Plane, toggleString) {
 	}
 };
 
-async function loadbackground() {
-	planet = await loadModel("models/lilPineTreePlanet.gltf", true, 1);
-	scene.add(planet);
-	planet.position.z = -5;
-	console.log (planet);
-};
-
 async function loadSkyBox() {
 	for (let i = 0; i < skybox.length; i++ ) {
 		let env
-		if (i == 1) {
-			env = await loadModel(skybox[i], true, i+1);
+		if (i == 0) {
+			env = await loadModel(skybox[i], true, 0);
+			env.scale.set(21,21,21)
 		} else {
-			env = await loadModel(skybox[i], true, i+1);
+			env = await loadModel(skybox[i], true, i);
+			env.scale.set(20,20,20);
 		}
 		scene.add(env);
-		env.scale.set(20,20,20);
+
+		if (i==4 || i==5) {
+			env.rotateY(Math.PI/2);
+			env.rotateZ(Math.PI/4);
+		}
 	}
 }
 
@@ -353,7 +367,8 @@ async function loadFrontFace() {
 			}
 		}
 	}
-};
+}
+
 function animateFrontFace() {
 	let x = 0;
 	for (let item = 0; item < rings.length; item++) {
@@ -498,4 +513,72 @@ function animateBottomFace() {
 	planet.rotation.z += 0.005;
 	planet.rotation.y -= 0.005;
 };
+
+async function buildSecondPlanes() {
+	const frontPlane = new THREE.Mesh(Plane, createMat(false, 7, "white", "white"));
+	const rightPlane = new THREE.Mesh(Plane, createMat(false, 8, "white", "white"));
+	const leftPlane = new THREE.Mesh(Plane, createMat(false, 9, "white", "white"));
+	const backPlane = new THREE.Mesh(Plane, createMat(false, 10, "white", "white"));
+	const topPlane = new THREE.Mesh(Plane, createMat(false, 11, "white", "white"));
+	const bottomPlane = new THREE.Mesh(Plane, createMat(false, 12, "white", "white"));
+
+	scene.add(frontPlane);
+	scene.add(rightPlane);
+	scene.add(leftPlane);
+	scene.add(backPlane);
+	scene.add(topPlane);
+	scene.add(bottomPlane);
+
+	frontPlane.position.set(0,0,2.90*15), frontPlane.scale.set(15,15,1);
+	backPlane.position.set(0, 0, -2.90*15), backPlane.rotation.set(0, Math.PI, 0), backPlane.scale.set(15,15,1);
+	leftPlane.position.set(-2.90*15, 0, 0), leftPlane.rotation.set(0, -Math.PI/2, 0), leftPlane.scale.set(15,15,1);
+	rightPlane.position.set(2.90*15, 0, 0), rightPlane.rotation.set(0, Math.PI/2, 0), rightPlane.scale.set(15,15,1);
+	topPlane.position.set(0, 2.90*15, 0), topPlane.rotation.set(-Math.PI/2, 0, 0), topPlane.scale.set(15,15,1);
+	bottomPlane.position.set(0, -2.90*15, 0), bottomPlane.rotation.set(Math.PI/2, 0, 0), bottomPlane.scale.set(15,15,1);
+
+}
+
+async function buildSecondCube() {
+	const cube = await loadModel("models/cubeFrame.gltf", false, 0)
+	await buildSecondPlanes();
+		scene.add(cube)
+		cube.scale.set(30,30,30);
+}
+
+async function loadFrontFaceBig() {
+	for (let i=0; i < skybox.length; i++) {
+	const settings = []
+	const ball = await loadModel(skybox[i], true, 8);
+	ball.scale.set(15,15,15);
+	ball.position.set(Math.random()*20, Math.random()*20, Math.random()*20)
+	const velx = Math.random()/2;
+	const vely = Math.random()/2;
+	const velz = Math.random()/2;
+	settings.push(ball, velx, vely, velz);
+	
+	scene.add(ball);
+	balls.push(settings);
+	}
+}
+
+
+function animateFrontFaceBig() {
+	for (let b=0; b < balls.length; b++) {
+		balls[b][0].position.x += balls[b][1];
+		balls[b][0].position.y += balls[b][2];
+		balls[b][0].position.z += balls[b][3];
+
+		balls[b][0].rotation.x += 0.005;
+		balls[b][0].rotation.y += 0.005;
+
+		// balls[b][0].scale.x += balls[0][1]/10;
+		// balls[b][0].scale.y += balls[0][2]/10;
+		// balls[b][0].scale.z += balls[0][3]/10;
+
+		if ((balls[b][0].position.x > 2.90*25)||(balls[b][0].position.x < -2.90*25)){balls[b][1] = -balls[b][1]}
+		if ((balls[b][0].position.y > 2.90*25)||(balls[b][0].position.y < -2.90*25)){balls[b][2] = -balls[b][2]}
+		if ((balls[b][0].position.z > 2.90*25)||(balls[b][0].position.z < -2.90*25)){balls[b][3] = -balls[b][3]}
+	}
+}
+
 setup();
