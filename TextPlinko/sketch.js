@@ -140,12 +140,12 @@ toggleBG.addEventListener("click", ()=>{
 */
 let song, song2;
 function preload() {
-  img = loadImage("../images/Scan5ShrunkRed.png");
-  overlay = loadImage("../images/Scan5Shrunk.png");
+  img = loadImage("./images/Scan5ShrunkRed.png");
+  overlay = loadImage("./images/Scan5Shrunk.png");
 
   // ADD FILE PATHS FOR SONGS HERE
   //song = loadSound();
-  song2 = loadSound("../audio/TimeToTalk,Avaya&RYVM-FoundYou[NCSRelease].mp3");
+  song2 = loadSound("./audio/TimeToTalk,Avaya&RYVM-FoundYou[NCSRelease].mp3");
 }
 
 function setup() {
@@ -172,7 +172,7 @@ function draw() {
     background(255);
   }
   image(img,0,0);
-  //image(overlay,0,0);
+  image(overlay,0,0);
   circles.forEach((ball)=>ball.update()); 
 
 }
