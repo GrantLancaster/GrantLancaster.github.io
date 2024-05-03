@@ -30,13 +30,19 @@ class Cir {
       vertical: {
         start: 0,
         end: 0
+      },
+      audio: {
+        start: 0,
+        end:0
       }
     }
+    this.audioInterval = 10;
     this.background = true;
   }
   draw() {
     fill(this.color.r, this.color.g, this.color.b)
     ellipse(this.x,this.y,this.width,this.height);
+  
   }
   update() {
     this.draw();
@@ -60,46 +66,54 @@ class Cir {
     }
   }
   collide() {
-
-    /*
-      This is what I am working on:
-      need an efficient way to check what part of the ellipse has collided.
-        the for loop check all points on the perimeter of the ellipse
-      Need to figure out how to balance the velocities so the ball doesn't get stuck
-        the collision timer can work as a stuck prevention (this is the situation it is set to right now)
-    */
     for (let deg=0; deg<=360; deg++) {
       const radian = deg * (Math.PI/180);
       this.data = img.get((this.x+((this.width/2)*Math.cos(radian))),(this.y+((this.height/2)*Math.sin(radian))));
-      //console.log((this.velocity.x * Math.sin(radian))+(this.velocity.y * Math.cos(radian)));
-      // this.dataV = img.get(this.x, this.y+11);
-      // this.dataH = img.get(this.x+13, this.y);
+      
+      //Checks for Vertical collisions
       if (this.collision.v) {
         if (this.data[3]>=200) {
           this.time.vertical.start = frameCount
           this.velocity.y = -(this.velocity.y)/1.5;
+
+          this.time.audio.start = frameCount;
+          //song2.play()
+          song2.jump(random(song2.duration()));
+
           this.collision.v = false;
         }
       }
+
+      // Checks For Horizontal collisions
       if ((deg==0 || deg==180)) {
         if (this.collision.h) {
           if (this.data[3]>=200) {
             this.time.horizontal.start = frameCount
             this.velocity.x = -(this.velocity.x)/1.01;
+
+            this.time.audio.start = frameCount
+            //song2.play();
+            song2.jump(random(song2.duration()));
+
             this.collision.h = false;
           }
         }
      }
+
+     // Resets the Collision Timer After The Set Period of Time
       this.time.vertical.end = frameCount;
       this.time.horizontal.end = frameCount;
+      this.time.audio.end = frameCount;
         if (this.time.vertical.end - this.time.vertical.start >=this.collisionIntervals.vertical) {
           this.collision.v = true;
         }
         if (this.time.horizontal.end - this.time.horizontal.start >=this.collisionIntervals.horizontal) {
           this.collision.h = true;
         }
+        if (this.time.audio.end - this.time.audio.start >= this.audioInterval) {
+          //song2.stop()
+        }
     }
-
   }
 }
 
@@ -124,13 +138,20 @@ toggleBG.addEventListener("click", ()=>{
   }
 })
 */
+let song, song2;
 function preload() {
   img = loadImage("../images/Scan5ShrunkRed.png");
   overlay = loadImage("../images/Scan5Shrunk.png");
+
+  // ADD FILE PATHS FOR SONGS HERE
+  //song = loadSound();
+  song2 = loadSound("../audio/TimeToTalk,Avaya&RYVM-FoundYou[NCSRelease].mp3");
 }
 
 function setup() {
   frameRate(60);
+  song2.play();
+  song2.loop();
   createCanvas(img.width, img.height);
   img.loadPixels();
 
@@ -151,7 +172,7 @@ function draw() {
     background(255);
   }
   image(img,0,0);
-  image(overlay,0,0);
+  //image(overlay,0,0);
   circles.forEach((ball)=>ball.update()); 
 
 }
