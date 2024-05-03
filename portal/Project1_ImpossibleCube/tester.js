@@ -12,6 +12,7 @@ document.body.appendChild(renderer.domElement);
 const bottomButton = document.querySelector(".bottom");
 const rightButton = document.querySelector(".right");
 const leftButton = document.querySelector(".left");
+const topButton = document.querySelector(".top");
 
 const vector = new THREE.Vector3();
 let cameraPos;
@@ -93,6 +94,9 @@ const bars = [[], [], []]; // Horizontal, Vertical, Front-back
 const cubesBig = [];
 const triangleBig = [];
 const diamondsBig = [];
+const mindBenderBig = [];
+let dir = 0.001;
+const storage = [];
 const skybox = ["models/SkyBoxCubeSmall.gltf","models/SkyBoxBeach.gltf", "models/SkyBoxForest.gltf", "models/SkyBoxOcean.gltf", "models/SkyBoxSpaceCity.gltf", "models/SkyBoxCityFixed.gltf", "models/SkyBoxVillage.gltf"];
 	/*---------Second Cube face contents-----*/
 const balls = [];
@@ -120,6 +124,9 @@ leftButton.addEventListener("click", () =>{
 	} else if (impossibleCube.children[0].material.stencilWrite == false) {
 		impossibleCube.children[0].material.stencilWrite = true;
 	}
+})
+topButton.addEventListener("click", ()=>{
+	location.reload();
 })
 
 /*-----------------------------------------*/
@@ -167,7 +174,8 @@ async function build() {
 		loadRightFace(),
 		loadBackFace(),
 		loadTopFace(),
-		loadBottomFace()
+		loadBottomFace(),
+		
 	]);
 	
 	impossibleCube.children[0].material.stencilWrite = false;
@@ -182,7 +190,9 @@ async function build2() {
 		loadRightFaceBig(),
 		loadFrontFaceBig(),
 		loadLeftFaceBig(),
-		loadBackFaceBig()
+		loadBackFaceBig(),
+		loadTopFaceBig(),
+		loadBottomFaceBig()
 
 	]);
 	await loadSkyBox()
@@ -200,6 +210,8 @@ function render() {
 	animateFrontFaceBig();
 	animateLeftFaceBig();
 	animateBackFaceBig();
+	animateTopFaceBig();
+	animateBottomFaceBig();
 
 	expandPlane(whichPlane, toggleString);
 	cameraWrap();
@@ -676,9 +688,9 @@ async function loadBackFaceBig() {
 			}
 			const group = [];
 			const diamond = await loadModel("models/diamond.gltf", true, 11);
-			let vely = 0.05;
+			let vely = 0.3;
 			diamond.scale.set(30,30,30);
-			diamond.position.set(60-(i*20)+(offset),60-(j*20),i*j/4);
+			diamond.position.set(60-(i*20)+(offset),60-(j*20),i*j/3);
 			group.push(diamond, vely);
 			diamondsBig.push(group);
 			scene.add(diamond);
@@ -686,7 +698,6 @@ async function loadBackFaceBig() {
 	}
 }
 function animateBackFaceBig() {
-
 	for (let i=0; i<diamondsBig.length; i++) {
 			diamondsBig[i][0].position.z += diamondsBig[i][1];
 		if (diamondsBig[i][0].position.z >20 || diamondsBig[i][0].position.z < -20) {
@@ -696,4 +707,43 @@ function animateBackFaceBig() {
 	
 }
 
+async function loadTopFaceBig() {
+	const thing = await loadModel("models/mindbender.gltf", true, 12);
+	thing.children[2].material.stencilWrite = true;
+	thing.children[2].material.stencilRef = 12;
+	thing.children[2].material.stencilFunc = THREE.EqualStencilFunc;
+	thing.children[3].material.stencilWrite = true;
+	thing.children[3].material.stencilRef = 12;
+	thing.children[3].material.stencilFunc = THREE.EqualStencilFunc;
+
+	thing.scale.set(40,40,40);
+	thing.rotateX(Math.PI/2);
+	mindBenderBig.push(thing);
+	scene.add(thing);
+}
+function animateTopFaceBig() {
+	mindBenderBig[0].children[0].rotation.z += 0.01;
+	mindBenderBig[0].children[1].rotation.z += 0.01;
+	mindBenderBig[0].children[0].rotation.y += 0.01;
+	mindBenderBig[0].children[1].rotation.y += 0.01;
+	mindBenderBig[0].children[3].rotation.x +=0.01;
+	if (mindBenderBig[0].children[3].scale.x < 40 || mindBenderBig[0].children[3].scale.x>45){
+		dir = -dir
+	}
+		mindBenderBig[0].children[3].scale.x +=dir;
+		mindBenderBig[0].children[3].scale.y +=dir;
+		mindBenderBig[0].children[3].scale.z +=dir;
+}
+
+async function loadBottomFaceBig() {
+	const bg = await loadModel("models/SkyBoxVillage.gltf", true, 13);
+	bg.scale.set(75,75,75);
+	storage.push(bg);
+	scene.add(bg);
+
+}
+function animateBottomFaceBig() {
+	storage[0].rotation.x += 0.001;
+	storage[0].rotation.y += 0.001;
+}
 setup();
