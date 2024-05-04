@@ -7,6 +7,7 @@
   HEADER
   HOMEPAGE
   PROJECT
+  EXPANDED_PROJECT
   ABOUT
   PEOPLE
   FOOTER
@@ -240,6 +241,10 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
   justify-content: space-between;
   align-items: center;
 }
+.projectEntry:hover {
+  border: 0.5em solid var(--background-color);
+  margin: 1.5em 9.5em 1.5em 9.5em;
+}
 .projectBrief {
   display: flex;
   gap: 1em;
@@ -276,12 +281,45 @@ https://developer.chrome.com/docs/css-ui/scroll-driven-animations
   width: 500px;
   height: 500px;
 }
-.closeTab {
-  width: 75px;
-  height: 75px;
-  border: 2px solid red;
-}
 /*--------------------------------- */
+
+/*---------EXPANDED PROJECT STYLES-------*/
+.bgDarken {
+  background-color: rgba(0,0,0,0.4);
+  position:fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.expandedProject {
+  background-color: var(--text-color-white);
+  border: 0.5em solid var(--background-color);
+  border-radius: 1em;
+  width: 85%;
+  height: 85%;
+  padding: 1em 5em 1em 5em;
+}
+.imageCarousel {
+  display: flex;
+  overflow-x: scroll;
+}
+.carouselImage {
+  height: 500px;
+  width: auto;
+  margin: 0.5em;
+}
+.closeButton {
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  width: 50px;
+  height: 50px;
+}
+/*-----------------------*/
 
 /* ----- ALL PEOPLE PAGE STYLES ----- */
 #profileParent {

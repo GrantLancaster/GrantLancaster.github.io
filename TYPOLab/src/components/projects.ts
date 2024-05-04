@@ -2,65 +2,85 @@
 import { TYPOLab } from "./info.ts";
 
 function addListener() {
-    const entry = document.querySelectorAll(".projectEntry")!;
-    entry.forEach((element) => element.addEventListener("click", projectExpand));
-}
-function removeListener() {
-    const entry = document.querySelectorAll(".projectEntry")!;
-    entry.forEach((element) => element.removeEventListener("click", projectExpand));
+    const things = document.querySelectorAll(".projectEntry");
+    things.forEach(thing =>{thing.addEventListener("click", function(this:HTMLElement, e: Event) {
+        projectExpand(parseInt(this.id));
+    })})   
 }
 
-function closeExpand() {
-    removeListener();
-    console.log("AHAHAHAHAHAHAHHAHAHH");
-
+function removePanel(parent: HTMLElement) {
+    const panel: HTMLElement = parent.parentElement!;
+    const body: HTMLElement = document.querySelector("body")!;
+    body.removeChild(panel);
 }
 
-function projectExpand(e: any) {
-    let parent = document.getElementById(`${e.target.id}`)!;
-    let index = e.target.id;
-    
-    if (index == "") {
-        index = e.target.parentNode.id;
-        parent = document.getElementById(`${e.target.parentNode.id}`)!;
-        if (index == "") {
-            index = e.target.parentNode.parentNode.id;
-            parent = document.getElementById(`${e.target.parentNode.parentNode.id}`)!;
-            if (index == "") {
-                index = e.target.parentNode.parentNode.parentNode.id;
-                parent = document.getElementById(`${e.target.parentNode.parentNode.parentNode.id}`)!;
+function projectExpand(id: number) {
+    const bgDarken: HTMLDivElement = document.createElement("div");
+    bgDarken.className = "bgDarken";
+
+    const expandedProject: HTMLDivElement = document.createElement("div");
+    expandedProject.className = "expandedProject";
+
+    const closeButton: HTMLImageElement = document.createElement("img");
+    closeButton.className = "closeButton"
+    closeButton.src = "./src/Images/closeIcon.png";
+    closeButton.alt = "An X to close the panel";
+    closeButton.addEventListener("click", function(this: HTMLElement, e: Event) {removePanel(this)});
+
+    const expandedCopy: HTMLDivElement = document.createElement("div");
+    expandedCopy.className = "expandedCopy";
+        //ADD THE TITLE TO THE EXPANDED PROJECT
+        const title: HTMLHeadingElement = document.createElement("h1");
+        title.innerText = `${TYPOLab.Sections.Projects[id].Name}`
+        expandedCopy.appendChild(title);
+        
+        //ADD ALL THE PEOPLE TO THE EXPANDED PROEJCT
+        const people: HTMLParagraphElement = document.createElement("p");
+        for (let p=0; p<TYPOLab.Sections.Projects[id].People.length; p++) {
+            if (p != TYPOLab.Sections.Projects[id].People.length-1) {
+            people.innerText += (TYPOLab.Sections.Projects[id].People[p] + ", ")
+            } else {
+                people.innerText += TYPOLab.Sections.Projects[id].People[p] 
             }
         }
+        expandedCopy.appendChild(people);
+
+        //ADD THE DESCRIPTION IF ONE IS PRESENT
+        if (TYPOLab.Sections.Projects[id].Description != "N/A") {
+            const description: HTMLParagraphElement = document.createElement("p");
+            description.innerText = TYPOLab.Sections.Projects[id].Description;
+            expandedCopy.appendChild(description);
+        }
+    expandedProject.appendChild(expandedCopy);
+
+    //BUILD THE IMAGE CAROUSEL
+    const imageCarousel: HTMLDivElement = document.createElement("div");
+    imageCarousel.className = "imageCarousel";
+    for (let pic=0; pic<TYPOLab.Sections.Projects[id].Images.length; pic++) {
+        const img: HTMLImageElement = document.createElement("img");
+        img.className = "carouselImage";
+        img.src = TYPOLab.Sections.Projects[id].Images[pic];
+        img.alt = "Example work";
+        imageCarousel.appendChild(img);
+    }
+    expandedProject.appendChild(imageCarousel);
+
+    //ADD LINK TO THE ZINE PDF
+    if (TYPOLab.Sections.Projects[id].ZinePDFLink != "N/A") {
+        const pdfLink: HTMLAnchorElement = document.createElement("a");
+        pdfLink.className = "pdfLink";
+        pdfLink.href = TYPOLab.Sections.Projects[id].ZinePDFLink;
+        pdfLink.target = "_blank";
+        pdfLink.rel = "noreferrer noopener";
+        pdfLink.textContent = "Link full Zine PDF";
+        expandedProject.appendChild(pdfLink);
     }
 
-    const projectExpansion: HTMLDivElement = document.createElement("div");
-    projectExpansion.className = "projectExpansion";
+    bgDarken.appendChild(expandedProject);
+    bgDarken.appendChild(closeButton);
 
-    const projectGallery: HTMLDivElement = document.createElement("div");
-    projectGallery.className = "projectGallery";
-        for (let i = 0; i < TYPOLab.Sections.Projects[index].Images.length; i++) {
-            const galleryImage: HTMLImageElement = document.createElement("img");
-                galleryImage.src = `${TYPOLab.Sections.Projects[index].Images[i]}`;
-                galleryImage.alt = "More Testing";
-            projectGallery.appendChild(galleryImage);
-        }
-    projectExpansion.appendChild(projectGallery);
-
-    const zineLink: HTMLAnchorElement = document.createElement ("a");
-    zineLink.href = `${TYPOLab.Sections.Projects[index].zineLink}`;
-    zineLink.innerText = "PDF of full zine";
-    projectExpansion.appendChild(zineLink);
-    
-    const close: HTMLImageElement = document.createElement("img");
-    close.className = "closeTab";
-    close.src = "";
-    close.alt = "Small X to close the expanded window";
-    projectExpansion.appendChild(close);
-
-    parent.appendChild(projectExpansion);
-
-    const closeButton = document.querySelector(".closeTab")!;
-    closeButton.addEventListener("click", closeExpand);
+    const body: HTMLElement = document.querySelector("body")!;
+    body.appendChild(bgDarken);
 }
 
 function buildProjects() {
@@ -69,6 +89,7 @@ function buildProjects() {
 
     const projectKeys = Object.keys(TYPOLab.Sections.Projects);
     for (let i = 1; i < projectKeys.length; i++) {
+        const project = [];
         const projectEntry: HTMLDivElement = document.createElement("div");
         projectEntry.className = "projectEntry";
         projectEntry.id = `${i}`;
@@ -105,13 +126,15 @@ function buildProjects() {
 
         projectBrief.appendChild(projectImages);
         projectEntry.appendChild(projectBrief);
+        project.push(projectEntry, i);
+
+        projectDetails.push(project);
+
         projectParent.appendChild(projectEntry);
-
     }
-
     return projectParent
 }
-
+const projectDetails: Array<Array<HTMLElement|number>> = [];
 const projectPage = buildProjects();
 
 export { projectPage, addListener }
