@@ -10,7 +10,6 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 const bottomButton = document.querySelector(".bottom");
-const rightButton = document.querySelector(".right");
 const leftButton = document.querySelector(".left");
 const topButton = document.querySelector(".top");
 
@@ -117,7 +116,6 @@ let currentArrow;
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.update();
 bottomButton.addEventListener("click", ()=> {checkCameraPosition()});
-rightButton.addEventListener("click", () => {autoRotate(true)});
 leftButton.addEventListener("click", () =>{
 	if (impossibleCube.children[0].material.stencilWrite == true) {
 		impossibleCube.children[0].material.stencilWrite = false;
