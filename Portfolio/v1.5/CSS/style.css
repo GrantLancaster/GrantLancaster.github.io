@@ -1,0 +1,716 @@
+/*The Following are Text styles (h's, p, etc.)*/
+h1 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 72pt;
+}
+h2 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 56pt;
+}
+h3 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 40pt;
+}
+h4 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 36pt;
+}
+h5 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 24pt;
+    margin: 0 0 10px 0;
+}
+p {
+    font-family: "calibri", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14pt;
+}
+
+/*This starts the Mobile chunk ---------------------------------------- */
+@media screen and (max-width: 999px) {
+    body {
+        background-color: #FFFBF6;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        grid-template-areas:
+            "a" /*Top Banner*/
+            "b" /*Header*/
+            "c" /*Main Body Content*/
+            "d" /*Navigation*/
+            "e"; /*unassigned*/
+    }
+
+    .topBanner {
+        grid-area: a;
+        background-color: #08415C;
+        position: sticky;
+        top: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        grid-template-areas:
+            "a b";
+    }
+        .topBanner h5 {
+            grid-area: a;
+            margin: 0;
+            color: white;
+            padding: 10px 0 10px 15px;
+        }
+        .topBanner #logoImage {
+            grid-area: b;
+            display: flex;
+            align-items: center;
+            justify-content: right;
+        }
+        #logoImage img {
+            height: 50px;
+            width: auto;
+            padding-right: 15px;
+        }
+
+    header {
+        grid-area: b;
+        display: flex;
+        flex-direction: column;
+        }
+
+        header h1 {
+            margin: 0 10% 0 10%;
+            text-align: center;
+        }
+
+        header h4 {
+            margin: 10px 10% 0 10%;
+            text-align: center;
+        }
+
+    nav { /*This is the Absolute parent nav box*/
+        grid-area: d;
+    }
+
+        nav .navigation {
+            list-style: none;
+            float: none;
+            display: grid;
+            grid-template-columns: repeat(4 1fr);
+            gap: 5px;
+            grid-template-areas:
+            "a"
+            "b"
+            "c"
+            "d";
+        }
+        .navigation img {
+            grid-area: x;
+            display: block;
+            margin: 0 auto 0 auto;
+            scale: 2;
+            padding: 10px 0 10px 0;
+        }
+
+        #homeButton {
+            grid-area: a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+         .navigation a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            width: 100%;
+            text-decoration: none;
+            padding: 10px 0 0 0;
+        }
+
+        #projectsButton {
+            grid-area: b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #aboutButton {
+            grid-area: c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #contactButton {
+            grid-area: d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav button {
+            border: 3px solid #8ACDEA;
+            display: inline-block;
+            border-radius: 30px;
+            height: 50px;
+            width: 100%;
+            margin: 0 10% 0 10%;
+        }
+
+        button:hover {
+            border: 3px solid #8ACDEA;
+            background-color: #08415C;
+            color: white;
+            font-style: bold;
+            border-radius: 30px;
+        }
+
+    article {
+        margin: 5px 0 5px 0;
+    }
+        article hr {
+            border: 2px dashed #FFE4C0;
+        }
+
+    .mainBody {
+        grid-area: c;
+        margin: 10% 10% 0 10%;
+        display: grid;
+        grid-template-columns: repeat(1 1fr);
+        gap: 5px; 
+        grid-template-areas:
+        "a" /*Project 1*/
+        "b"
+        "c"
+        "d";
+    }
+        .mainBody main h4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        #description {
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
+        #profilePic {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: auto;
+        }
+        #thatsMe {
+            width: 70%;
+            height: auto;
+            border-radius: 20%;
+        }
+        .mainBody p {
+            text-align: center;
+            margin: 0 10% 7% 10%;
+        }
+        #biography {
+            text-align: left;
+        }
+        .mainbody #socialLinks {
+            margin: 0;
+        }
+            #socialLinks:link {
+                color: #D36135;
+            }
+            #socialLinks:visited {
+                color: #08415C;
+            }
+        a:link {
+            color: #D36135;
+        }
+        a:visited {
+            color: #08415C;
+
+        }
+        
+        #projectPhotos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #DDB967;
+            padding: 5px;
+        }
+        #projectPhotos img {
+            width: 100%;
+            height: auto;
+        }
+        .mainBody #project1 {
+            grid-area: a;
+            height: auto;
+            width: 100%;
+            margin-bottom: 10%;
+        }
+            h5 #projectTitle {
+                text-align: center;
+            }
+            #project1 p {
+                float: left;
+                margin: 0;
+                text-align: left;
+            }
+        .mainBody #project2 {
+            grid-area: a;
+            height: auto;
+            width: 100%;
+            margin-bottom: 10%;
+        }
+            #project2 p {
+                float: left;
+                margin: 0;
+                text-align: left;
+            }
+        .mainBody #project3 {
+            grid-area: a;
+            height: auto;
+            width: 100%;
+            margin-bottom: 10%;
+        }
+            #project3 p {
+                float: left;
+                margin: 0;
+                text-align: left;
+            }
+        .mainBody #project4 {
+            grid-area: a;
+            height: auto;
+            width: 100%;
+        }
+            #project4 p {
+                float: left;
+                margin: 0;
+                text-align: left;
+            }
+
+    summary {
+        display: grid;
+        grid-template-columns: repeat(1 1fr);
+        gap: 5px; 
+        grid-template-areas:
+        "a"
+        "b";
+        margin: 3% 0 3% 0;   
+    }
+        summary .summaryTitle {
+            grid-area: a;
+            margin: 20% auto 0 auto;
+            width: 200px;
+        }
+            .summaryTitle #qck {
+                text-align: left;
+                margin: 0;
+            }
+            .summaryTitle #brkdwn {
+                text-align: right;
+                margin: 0;
+            }
+    footer {
+        grid-area: e;
+        display: grid;
+        grid-template-columns: repeat(1 1fr);
+        grid-template-areas:
+        "a" 
+        "b";
+        bottom: 0;
+    }
+        footer #outroImage {
+            grid-area: a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 10% 0 0 0;
+            padding: 5% 0 0 0;
+            background-color: #08415C;
+        }
+        #outroImage img {
+            height: 75px;
+            width: auto;
+        }
+        #outroImage p {
+            padding: 3% 0 3% 0;
+            margin: 0;
+            text-align: center;
+            color: white;
+        }
+}
+
+/* This starts the Desktop chunk -------------------------------------- */
+@media screen and (min-width: 1000px) {
+    body {
+        background-color: #FFFBF6;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 10px;
+        grid-template-areas:
+            "a a a a a a a a" /*Top Banner*/
+            "c c c c c c c c" /*Header*/
+            "b b e e e e e e" /*Main Body Content*/
+            "b b e e e e e e" /* b = Navigation*/
+            "f f f f f f f f"
+            "g g g g g g g g"; /*Footer*/ 
+    }
+    
+    .topBanner {
+        grid-area: a;
+        background-color: #08415C;
+        position: sticky;
+        top: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        grid-template-areas:
+            "a b";
+    }
+        .topBanner h5 {
+            grid-area: a;
+            margin: 0;
+            color: white;
+            padding: 10px 0 10px 15px;
+        }
+        .topBanner #logoImage {
+            grid-area: b;
+            display: flex;
+            align-items: center;
+            justify-content: right;
+        }
+        #logoImage img {
+            height: 50px;
+            width: auto;
+            padding-right: 15px;
+        }
+
+    header {
+        grid-area: c;
+        display: flex;
+        flex-direction: column;
+        }
+    
+        header h1 {
+            margin: 0 10% 3% 10%;
+            text-align: center;
+        }
+    
+        header h4 {
+            margin: 10px 10% 2% 10%;
+            text-align: center;
+        }
+
+    nav { /*This is the Absolute parent nav box*/
+        grid-area: b;
+    }
+    
+        nav .navigation {
+            position: sticky;
+            top: 100px;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 5px;
+            grid-template-areas:
+            "x"
+            "a"
+            "b"
+            "c"
+            "d";
+            width: auto;
+            margin: 0 0 0 10%;
+        }
+        .navigation img {
+            grid-area: x;
+            display: block;
+            margin: 0 auto 0 auto;
+            scale: 2;
+            padding: 0 0 10px 0;
+        }
+    
+        #homeButton {
+            grid-area: a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        #navLink {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            width: 100%;
+            text-decoration: none;
+        }
+    
+        #projectsButton {
+            grid-area: b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
+    
+        #aboutButton {
+            grid-area: c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        #contactButton {
+            grid-area: d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        nav button {
+            border: 3px solid #8ACDEA;
+            display: inline-block;
+            border-radius: 30px;
+            height: 50px;
+            width: 100%;
+            margin: 0 10% 0 10%;
+        }
+    
+        button:hover {
+            border: 3px solid #8ACDEA;
+            background-color: #08415C;
+            color: white;
+            font-style: bold;
+            border-radius: 30px;
+        }
+
+
+    .mainBody {
+        grid-area: e;
+        margin: 0 3% 0 0;
+        display: grid;
+        grid-template-columns: repeat (1, 1fr);
+        gap: 5px; 
+        grid-template-areas:
+        "a"
+        "b"
+        "c"
+        "d"; /*Project_1 project_2*/
+        /*Project_3 project_4*/
+    }
+
+        .mainBody main h4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            grid-area: a;
+        }
+        #description {
+            margin: 0 0 10px 0;
+            grid-area: a;
+        }
+        main p {
+            grid-area: a;
+        }
+        main img{
+            grid-area: b;
+        }
+        #profilePic {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: auto;
+        }
+        #thatsMe {
+            width: 20%;
+            height: auto;
+            border-radius: 20%;
+        }
+        .mainBody p {
+            text-align: center;
+            margin: 0 10% 7% 10%;
+        }
+        .mainBody #smmryTitle {
+            font-size: 20px;
+            margin: 0;
+            text-align: left;
+        }
+        .mainBody #smmryText {
+            margin: 0;
+            text-align: left;
+        }
+        #biography {
+            text-align: left;
+        }
+        .mainbody #socialLinks {
+            margin: 0;
+        }
+            #socialLinks:link {
+                color: #D36135;
+            }
+            #socialLinks:visited {
+                color: #08415C;
+            }
+        #projectPhotos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #DDB967;
+            padding: 5px;
+        }
+        #projectPhotos img {
+            width: 50%;
+            height: auto;
+        }
+        .mainBody #project1 {
+            grid-area: a;
+            height: auto;
+            width: 100%;
+            margin-bottom: 10%;
+        }
+            #project1 p {
+                margin: 0;
+                text-align: center;
+            }
+            #projectTitle {
+                text-align: center;
+            }
+        .mainBody #project2 {
+            grid-area: b;
+            height: auto;
+            width: 100%;
+            margin-bottom: 10%;
+        }
+            #project2 p {
+                margin: 0;
+                text-align: center;
+            }
+            #projectTitle {
+                text-align: center;
+            }
+        .mainBody #project3 {
+            grid-area: c;
+            height: auto;
+            width: 100%;
+            margin-bottom: 10%;
+        }
+            #project3 p {
+                margin: 0;
+                text-align: center;
+            }
+        .mainBody #project4 {
+            grid-area: d;
+            border: 2px solid red;
+            height: 300px;
+            width: 100%;
+        }
+            #project4 p {
+                float: left;
+                margin: 0;
+            }
+        summary {
+            display: grid;
+            grid-template-columns: 1fr 5fr;
+            gap: 5px; 
+            grid-template-areas:
+            "a b b b b b";
+            margin: 3% 0 3% 3%;   
+        }
+            summary .summaryTitle {
+                grid-area: a;
+                margin-top: 20%;
+            }
+                .summaryTitle #qck {
+                    text-align: left;
+                    margin: 0;
+                }
+                .summaryTitle #and {
+                    text-align: center;
+                    margin: 0;
+                }
+                .summaryTitle #drt {
+                    text-align: right;
+                    margin: 0;
+                }
+            summary ul {
+                padding-left: 100px;
+                text-align: left;
+            }
+                summary ul p {
+                    margin: 0;
+                }
+
+
+    article {
+        margin: 5px 0 5px 0;
+    }
+        article hr {
+            border: 2px solid #FFE4C0;
+            color: #FFE4C0;
+        }
+    summary {
+        display: grid;
+        grid-template-columns: repeat(1 1fr);
+        gap: 5px; 
+        grid-template-areas:
+        "a"
+        "b";
+        margin: 3% 0 3% 0;   
+    }
+        summary .summaryTitle {
+            grid-area: a;
+            margin: 20% auto 0 auto;
+            width: 200px;
+        }
+            .summaryTitle #qck {
+                text-align: left;
+                margin: 0;
+            }
+            .summaryTitle #brkdwn {
+                text-align: right;
+                margin: 0;
+            }
+    footer {
+        grid-area: g;
+        display: grid;
+        gap: 0;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas:
+        "a" 
+        "b";
+    }
+        footer #outroImage {
+            grid-area: a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 5% 0 0 0;
+            padding: 1% 0 0 0;
+            background-color: #08415C;
+        }
+        #outroImage img {
+            height: 75px;
+            width: auto;
+        }
+        #outroImage p {
+            padding: 0 0 1% 0;
+            margin: 0;
+            text-align: center;
+            color: white;
+        }
+}

@@ -706,7 +706,7 @@ function animateBackFaceBig() {
 }
 
 async function loadTopFaceBig() {
-	const thing = await loadModel("models/mindbender.gltf", true, 12);
+	const thing = await loadModel("models/MindBender.gltf", true, 12);
 	thing.children[2].material.stencilWrite = true;
 	thing.children[2].material.stencilRef = 12;
 	thing.children[2].material.stencilFunc = THREE.EqualStencilFunc;
