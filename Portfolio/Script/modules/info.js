@@ -67,7 +67,7 @@ const grantL = {
             github: "https://github.com/GrantLancaster",
             linkedin: "https://www.linkedin.com/in/grant1shdesigns/",
             portfoliosite: "https://grantishdsigns.me",
-            resume: "https://drive.google.com/file/d/1CVOWpCfhLM2YmB_baoGmM9nvmA-hEk2e/view?usp=sharing",
+            resume: "https://drive.google.com/file/d/1IMLxiAVApaXvmVyvBmXxrL_xdzfx-ryd/view?usp=sharing",
             twitchtv: ""
         },
         references: {}
@@ -82,7 +82,7 @@ const grantL = {
             collaborators: "N/A",
             hostingprofessor: "N/A",
             packages: ["Typescript", "Vite "],
-            livePage: "https://nexus-play.vercel.app/",
+            livePage: "https://grantishdesigns.me/TYPOLab/dist/index.html",
             isBuilt: true
         },
         impossibleCube: {
@@ -122,7 +122,7 @@ const grantL = {
             collaborators: "N/A",
             hostingprofessor: "N/A",
             packages: ["Javascript","p5.JS", "p5.sound"],
-            livePage: "https://nexus-play.vercel.app/",
+            livePage: "https://grantishdesigns.me/TextPlinko/",
             isBuilt: true
         },
         galaga: {
