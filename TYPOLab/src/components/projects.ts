@@ -3,7 +3,7 @@ import { TYPOLab } from "./info.ts";
 
 function addListener() {
     const things = document.querySelectorAll(".projectEntry");
-    things.forEach(thing =>{thing.addEventListener("click", function(this:HTMLElement, e: Event) {
+    things.forEach(thing =>{thing.addEventListener("click", function(this:HTMLElement) {
         projectExpand(parseInt(this.id));
     })})   
 }
@@ -25,7 +25,7 @@ function projectExpand(id: number) {
     closeButton.className = "closeButton"
     closeButton.src = "./src/Images/closeIcon.png";
     closeButton.alt = "An X to close the panel";
-    closeButton.addEventListener("click", function(this: HTMLElement, e: Event) {removePanel(this)});
+    closeButton.addEventListener("click", function(this: HTMLElement) {removePanel(this)});
 
     const expandedCopy: HTMLDivElement = document.createElement("div");
     expandedCopy.className = "expandedCopy";

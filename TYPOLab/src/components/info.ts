@@ -26,7 +26,28 @@ export const TYPOLab: info = {
                 ZinePDFLink : "/src/pdf/ExperimentaTypographyFA2023Zine.pdf",
                 Description: "N/A",
                 EntryImage: "./src/Images/ExpTypoZine2023/EntryImage.jpg",
-                Images: [ "./src/Images/ExpTypoZine2023/EntryImage.jpg", "./src/Images/ExpTypoZine2023/EntryImage.jpg", "./src/Images/ExpTypoZine2023/EntryImage.jpg", "./src/Images/ExpTypoZine2023/EntryImage.jpg", "./src/Images/ExpTypoZine2023/EntryImage.jpg",]
+                Images: [ "./src/Images/ExpTypoZine2023/FA2023Zine_Page_04.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_05.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_06.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_07.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_08.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_09.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_10.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_11.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_12.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_13.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_14.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_15.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_16.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_17.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_18.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_19.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_20.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_21.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_22.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_23.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_24.jpg", 
+                        "./src/Images/ExpTypoZine2023/FA2023Zine_Page_25.jpg"]
             },
             2: {
                 Name: "Clews Typface",
@@ -35,7 +56,7 @@ export const TYPOLab: info = {
                 ZinePDFLink : "N/A",
                 Description: "Inspired by hand-carved lettering found during a Château de la Napoule residency, this collaborative typeface was designed by the Fall 2023 Experimental Typography course. Each student was assigned a subset of the standard glyph set for Latin fonts. Once completed, we designed and printed a types pecimen at the Book Arts League. The typeface was printed using a custom polymer plate and the student's names were hand set in 14 pt. Futura Bold.",
                 EntryImage: "./src/Images/ClewsTypefaceImg/EntryImage.jpeg",
-                Images: []
+                Images: ["./src/Images/ClewsTypefaceImg/ClewsPage1.jpeg", "./src/Images/ClewsTypefaceImg/ClewsPage2.jpeg", "./src/Images/ClewsTypefaceImg/ClewsPage3.jpeg", "./src/Images/ClewsTypefaceImg/ClewsPage4.jpeg", ]
             },
             3: {
                 Name: "Word Vector Sculptures",
@@ -47,7 +68,16 @@ export const TYPOLab: info = {
                 We used a word vector model called “fasttext-wiki-subwords-300” which was trained on 1 million unique words from the Wikipedia 2017, UMBC webbase corpus and statmt.org news dataset (16B tokens).
                 We then used MeshLab to make a closed surface of these 3d points.`,
                 EntryImage: "./src/Images/WordVectorSculpturesImg/EntryImage.jpeg",
-                Images: []
+                Images: ["./src/Images/WordVectorSculpturesImg/VectorPage1.jpeg", 
+                        "./src/Images/WordVectorSculpturesImg/VectorPage2.jpeg", 
+                        "./src/Images/WordVectorSculpturesImg/VectorPage3.jpeg", 
+                        "./src/Images/WordVectorSculpturesImg/VectorPage4.jpeg", 
+                        "./src/Images/WordVectorSculpturesImg/VectorPage5.jpeg", 
+                        "./src/Images/WordVectorSculpturesImg/VectorPage6.jpeg", 
+                        "./src/Images/WordVectorSculpturesImg/VectorPage7.jpeg", 
+                        "./src/Images/WordVectorSculpturesImg/VectorPage8.jpeg", 
+                        "./src/Images/WordVectorSculpturesImg/VectorPage9.jpeg", 
+                ]
             },
             4: {
                 Name: "3D Alphabits™ Typeface",
@@ -56,7 +86,7 @@ export const TYPOLab: info = {
                 ZinePDFLink : "N/A",
                 Description: `Inspired by the discontinuation of Alphabits™ cereal in May of 2021, this archival project seeks to document the breakfast cereal by 3D scanning and averaging the industrially produced letterforms for one of the few remaining boxes of the cereal. This dimensional typeface will then be used in an augmented reality installation that places viewers within a virtual bowl of cereal.`,
                 EntryImage: "./src/Images/3DAlphabitsImg/EntryImage.png",
-                Images: []
+                Images: ["./src/Images/3DAlphabitsImg/AlphabitsPage1.png", "./src/Images/3DAlphabitsImg/AlphabitsPage2.jpg"]
             },
             5: {
                 Name: "Experimental Typography Zine",

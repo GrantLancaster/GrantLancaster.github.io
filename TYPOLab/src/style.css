@@ -44,6 +44,16 @@ body {
   height: 100%;
   width: 100%;
 }
+a {
+  color: var(--text-body-color);
+  font-family: "Red Hat Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+a:hover {
+  color: var(--background-color);
+}
 
 /* ----- ALL HEADER STYLES ----- */
 /*  
@@ -463,3 +473,77 @@ input {
 }
 /* ------------------------------ */
 
+@media screen and (max-width: 700px) {
+  #headerImage {
+    width: 20%;
+    height: auto;
+  }
+  .postAnimationHeader {
+    padding: 1em;
+  }
+  #summary {
+    margin: 1em;
+    padding: 1em;
+  }
+  #aboutParent {
+    padding: 1em;
+    margin: 10em 1em 6em 1em;
+  }
+  .projectEntry {
+    padding: 1em;
+    margin: 1em;
+  }
+  .projectBrief {
+    flex-direction: column;
+    align-items: baseline;
+  }
+  .projectCopy {
+    text-wrap:balance;
+  }
+  .projectCopy p  {
+    display: none;
+  }
+  .expandedProject {
+    overflow-y: scroll;
+    padding: 2em;
+    margin: 1.5em;
+  }
+  .carouselImage {
+    width: 250px;
+    height: auto;
+  }
+  #profileParent {
+    margin: 10em 1em 6em 1em;
+    justify-content: center;
+  }
+  #coursesParent {
+    margin: 10em 1em 6em 1em;
+  }
+  #courseHeading {
+    padding: 1em;
+  }
+  #courseHeading h1 {
+    font-size: 74px;
+  }
+  #courses {
+    flex-direction: column;
+  }
+  #contactParent {
+    margin: 10em 1em 5em 1em;
+    padding: 1em;
+  }
+  #nameParent {
+    flex-direction: column;
+  }
+  #footer {
+    flex-direction: column;
+    justify-content: baseline;
+  }
+  #footerAddress {
+    width: fit-content;
+    margin-top: 1em;
+  }
+  #footerImage {
+    width: 80%;
+  }
+}
