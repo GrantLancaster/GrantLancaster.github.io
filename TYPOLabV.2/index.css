@@ -1,0 +1,78 @@
+/* ------ LEGEND ------
+  USE CTRL + F OR CMD + F TO SEARCH TO KEY TERMS:
+    HEADER
+
+    FOOTER
+--------------------*/
+
+/* ----- ALL HEADER STYLES ----- */
+#headerParent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: fit-content;
+    width:100%;
+    flex-direction: row;
+    border-bottom:2px solid black;
+  }
+  #headerImage {
+    height: 60px;
+    width: auto;
+    margin:1em 0em 1em 6em;
+  }
+  #buttonParent {
+    margin: 1em 6em 1em 0em;
+  }
+  .headerButton {
+    background-color: rgba(0,0,0,0);
+    border: 2px solid transparent;
+    font-size: large;
+    font-weight: bold;
+  }
+  .headerButton:hover {
+    border-bottom: 2px solid black;
+    border-top: 2px solid transparent;
+    margin: 0.1em, 0.5em, 0.1em, 0.5em;
+  }
+  /* ------------------------------ */
+
+body {
+  margin: 0;
+  padding: 0;
+}
+#contentParent {
+  height: 2000px;
+  margin: 0;
+}
+
+  /* ----- ALL FOOTER STYLES ----- */
+#footerParent {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px solid black;
+  margin: 0;
+
+}
+#footerImage {
+  /*width: 626px; --This matches the height with the typo lab log in the header (~40% of bowser width) */
+  width: 469px;
+  padding-left: 2em;
+}
+#footerAddress {
+  border: 0px solid orange;
+  width: 30%; /* Fix this when you have the right fonts to use. */
+  height: auto;
+  margin: 1em 0em 1em 0em;
+}
+.addressLines {
+  margin: 0;
+  color: red;
+}
+/* ------------------------------ */
