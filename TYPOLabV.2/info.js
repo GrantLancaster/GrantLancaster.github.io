@@ -240,6 +240,6 @@ export const TYPOLab = {
     InstagramLink: "https://www.instagram.com/typ.o.lab/",
     Address: ["ATLAS Institute", "University of Colorado Boulder", "Roser ATLAS Center", "1125 18th St. 320 UCB", "Boulder, CO 80309-0320"],
     LabLogo: "./src/Images/typolabheadershrunk.png",
-    ATLASLogo: "./src/Images/cuatlas.png",
+    ATLASLogo: "./src/Images/cuatlas1c.png",
     CULogo: ""
 }

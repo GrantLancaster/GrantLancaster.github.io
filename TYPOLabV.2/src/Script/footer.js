@@ -1,4 +1,4 @@
-import { TYPOLab } from "./info.js";
+import { TYPOLab } from "../../info.js";
 
 function buildFooter() {
     const footerParent = document.createElement("div");

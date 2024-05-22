@@ -1,62 +1,136 @@
 /* ------ LEGEND ------
   USE CTRL + F OR CMD + F TO SEARCH TO KEY TERMS:
     HEADER
+    MAIN PAGE
 
     FOOTER
 --------------------*/
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+  --black: #1c1c1c;
+  --white: white;
+  --gray: gray;
+  font-family: "Open Sans", sans-serif;
+}
+
 /* ----- ALL HEADER STYLES ----- */
 #headerParent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--background-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: fit-content;
-    width:100%;
-    flex-direction: row;
-    border-bottom:2px solid black;
-  }
-  #headerImage {
-    height: 60px;
-    width: auto;
-    margin:1em 0em 1em 6em;
-  }
-  #buttonParent {
-    margin: 1em 6em 1em 0em;
-  }
-  .headerButton {
-    background-color: rgba(0,0,0,0);
-    border: 2px solid transparent;
-    font-size: large;
-    font-weight: bold;
-  }
-  .headerButton:hover {
-    border-bottom: 2px solid black;
-    border-top: 2px solid transparent;
-    margin: 0.1em, 0.5em, 0.1em, 0.5em;
-  }
-  /* ------------------------------ */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: fit-content;
+  width:100%;
+  flex-direction: row;
+  border-bottom:2px solid var(--black);
+}
+#headerImage {
+  height: 60px;
+  width: auto;
+  margin:1em 0em 1em 6em;
+}
+#buttonParent {
+  margin: 1em 6em 1em 0em;
+}
+.headerButton {
+  background-color: rgba(0,0,0,0);
+  border: 2px solid transparent;
+  font-size: large;
+  font-weight: bold;
+}
+.headerButton:hover {
+  border-bottom: 2px solid var(--black);
+  border-top: 2px solid transparent;
+  margin: 0.1em, 0.5em, 0.1em, 0.5em;
+}
+/* ------------------------------ */
 
-body {
+/*-----MAIN PAGE CONTENT STYLES-----*/
+body, p {
   margin: 0;
   padding: 0;
 }
 #contentParent {
-  height: 2000px;
-  margin: 0;
+  margin: 15em 3em 0 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
+/*-------------------------------------*/
 
-  /* ----- ALL FOOTER STYLES ----- */
+/*-----SUMMARY------*/
+
+#heading {
+  font-size: 48pt;
+  font-weight: bold;
+  margin: 1em 0 1em 0;
+}
+#TLDR {
+  font-size: 16pt;
+}
+/*-------------------*/
+
+/*-----HERO STYLES----*/
+#heroParent {
+  margin: 5em 0em 0em 0em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  width: 100%;
+}
+.heroItem {
+  width: 100%;
+}
+.heroImage {
+  height: 600px;
+  width: 100%;
+  border-radius: 2em;
+  background-size: cover;
+}
+.heroTitle {
+  font-size: 16pt;
+  text-decoration: underline;
+}
+/*--------------------*/
+
+/*----PROJECTS STYLES----*/
+#projectsParent {
+  margin: 5em 0 5em 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%
+}
+.projectsItem {
+  width: 20%;
+  margin: 0.5em;
+}
+.projectsImage {
+  height: 300px;
+  width: 100%;
+  border-radius: 2em;
+  background-size: cover;
+}
+.projectsTitle {
+  text-decoration: underline;
+}
+/*------------------------*/
+
+/* ----- ALL FOOTER STYLES ----- */
 #footerParent {
-  background-color: white;
+  background-color: var(--black);
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 2px solid black;
+  border-top: 2px solid var(--black);
   margin: 0;
 
 }
@@ -66,13 +140,12 @@ body {
   padding-left: 2em;
 }
 #footerAddress {
-  border: 0px solid orange;
   width: 30%; /* Fix this when you have the right fonts to use. */
   height: auto;
   margin: 1em 0em 1em 0em;
 }
 .addressLines {
   margin: 0;
-  color: red;
+  color: var(--white);
 }
 /* ------------------------------ */
