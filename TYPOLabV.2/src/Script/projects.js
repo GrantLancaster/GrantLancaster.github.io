@@ -42,7 +42,7 @@ function buildProjects() {
         const projectsTitle = document.createElement("p");
         projectsTitle.className = "projectsTitle";
         projectsTitle.textContent = `${directory[i].Name}`;
-        projectsItem.appendChild(projectsImage);
+        projectsItem.appendChild(projectsTitle);
 
         projectsParent.appendChild(projectsItem);
     }

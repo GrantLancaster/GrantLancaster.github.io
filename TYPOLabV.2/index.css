@@ -20,7 +20,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--white);
+  background-color: var(--black);
   position: fixed;
   top: 0;
   left: 0;
@@ -28,23 +28,26 @@
   width:100%;
   flex-direction: row;
   border-bottom:2px solid var(--black);
+  z-index: 99;
 }
 #headerImage {
   height: 60px;
   width: auto;
   margin:1em 0em 1em 6em;
+  filter:invert();
 }
 #buttonParent {
   margin: 1em 6em 1em 0em;
 }
 .headerButton {
   background-color: rgba(0,0,0,0);
+  color: var(--white);
   border: 2px solid transparent;
   font-size: large;
   font-weight: bold;
 }
 .headerButton:hover {
-  border-bottom: 2px solid var(--black);
+  border-bottom: 2px solid var(--white);
   border-top: 2px solid transparent;
   margin: 0.1em, 0.5em, 0.1em, 0.5em;
 }
@@ -56,7 +59,7 @@ body, p {
   padding: 0;
 }
 #contentParent {
-  margin: 15em 3em 0 3em;
+  margin: 10em 3em 2em 3em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,6 +96,11 @@ body, p {
   width: 100%;
   border-radius: 2em;
   background-size: cover;
+  filter: grayscale();
+}
+.heroImage:hover {
+  filter: none;
+  transform: scale(1.01);
 }
 .heroTitle {
   font-size: 16pt;
@@ -106,17 +114,23 @@ body, p {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  width: 100%
+  justify-content: space-between;
+  width: 100%;
 }
 .projectsItem {
   width: 20%;
-  margin: 0.5em;
+  margin: 0 0.5em 2em 0.5em;
 }
 .projectsImage {
   height: 300px;
   width: 100%;
   border-radius: 2em;
   background-size: cover;
+  filter: grayscale();
+}
+.projectsImage:hover {
+  filter: none;
+  transform: scale(1.05);
 }
 .projectsTitle {
   text-decoration: underline;
