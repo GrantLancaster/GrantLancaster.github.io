@@ -6,13 +6,31 @@
     FOOTER
 --------------------*/
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 :root {
   --black: #1c1c1c;
   --white: white;
   --gray: gray;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 400;
+}
+h1 {
+  font-size: 3em;
+}
+p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.8em;
 }
 
 /* ----- ALL HEADER STYLES ----- */
@@ -31,9 +49,9 @@
   z-index: 99;
 }
 #headerImage {
-  height: 60px;
+  height: 30px;
   width: auto;
-  margin:1em 0em 1em 6em;
+  margin:0.1em 0em 0.1em 6em;
   filter:invert();
 }
 #buttonParent {
@@ -43,7 +61,6 @@
   background-color: rgba(0,0,0,0);
   color: var(--white);
   border: 2px solid transparent;
-  font-size: large;
   font-weight: bold;
 }
 .headerButton:hover {
@@ -54,12 +71,8 @@
 /* ------------------------------ */
 
 /*-----MAIN PAGE CONTENT STYLES-----*/
-body, p {
-  margin: 0;
-  padding: 0;
-}
 #contentParent {
-  margin: 10em 3em 2em 3em;
+  margin: 7em 3em 2em 3em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,11 +81,11 @@ body, p {
 /*-------------------------------------*/
 
 /*-----SUMMARY------*/
-
 #heading {
   font-size: 48pt;
   font-weight: bold;
   margin: 1em 0 1em 0;
+  max-width: 60%;
 }
 #TLDR {
   font-size: 16pt;
@@ -94,16 +107,13 @@ body, p {
 .heroImage {
   height: 600px;
   width: 100%;
-  border-radius: 2em;
   background-size: cover;
   filter: grayscale();
 }
 .heroImage:hover {
   filter: none;
-  transform: scale(1.01);
 }
 .heroTitle {
-  font-size: 16pt;
   text-decoration: underline;
 }
 /*--------------------*/
@@ -124,13 +134,11 @@ body, p {
 .projectsImage {
   height: 300px;
   width: 100%;
-  border-radius: 2em;
   background-size: cover;
   filter: grayscale();
 }
 .projectsImage:hover {
   filter: none;
-  transform: scale(1.05);
 }
 .projectsTitle {
   text-decoration: underline;
@@ -146,7 +154,6 @@ body, p {
   justify-content: space-between;
   border-top: 2px solid var(--black);
   margin: 0;
-
 }
 #footerImage {
   /*width: 626px; --This matches the height with the typo lab log in the header (~40% of bowser width) */

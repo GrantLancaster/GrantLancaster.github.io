@@ -10,6 +10,12 @@ function buildButtons() {
         button.className = "headerButton";
         button.textContent = keys[i];
         
+        button.addEventListener("click", (e)=>{
+            const projectView = document.querySelector("#projectsParent");
+            e.preventDefault();
+            projectView.scrollIntoView({behavior: "smooth"});
+        })
+
         buttonParent.appendChild(button);
     }
 

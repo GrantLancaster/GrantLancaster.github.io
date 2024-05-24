@@ -15,7 +15,7 @@ function buildHero() {
         heroItem.appendChild(heroImage);
 
 
-        const heroTitle = document.createElement("p");
+        const heroTitle = document.createElement("h1");
         heroTitle.className = "heroTitle";
         heroTitle.textContent = directory[i].Name;
         heroItem.appendChild(heroTitle);
