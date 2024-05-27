@@ -16,6 +16,7 @@
   font-optical-sizing: auto;
   font-style: normal;
   font-variation-settings: "slnt" 0;
+
 }
 body {
   margin: 0;
@@ -32,6 +33,30 @@ p {
   padding: 0;
   font-size: 0.8em;
 }
+
+.hrParent {
+  display: flex;
+  gap: 2em;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 3em 0 3em 0;
+
+}
+.leftRule, .rightRule {
+  background-color: var(--black);
+  width: 100%;
+}
+.sectionParent {
+  display: flex;
+  align-items: center;
+  gap: 2em; 
+  width: 100%;
+}
+.leftSide, .rightSide {
+  width: 50%;
+}
+
 
 /* ----- ALL HEADER STYLES ----- */
 #headerParent {
@@ -74,8 +99,7 @@ p {
 #contentParent {
   margin: 7em 3em 2em 3em;
   display: flex;
-  align-items: center;
-  justify-content: center;
+
   flex-direction: column;
 }
 /*-------------------------------------*/
@@ -84,11 +108,11 @@ p {
 #heading {
   font-size: 48pt;
   font-weight: bold;
-  margin: 1em 0 1em 0;
-  max-width: 60%;
+  max-width: 90%;
 }
 #TLDR {
   font-size: 16pt;
+  max-width: 50%;
 }
 /*-------------------*/
 
@@ -132,9 +156,10 @@ p {
   margin: 0 0.5em 2em 0.5em;
 }
 .projectsImage {
-  height: 300px;
+  height: 715px;
   width: 100%;
-  background-size: cover;
+  background-size:cover;
+  background-repeat: no-repeat;
   filter: grayscale();
 }
 .projectsImage:hover {

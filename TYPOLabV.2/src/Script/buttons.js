@@ -11,7 +11,7 @@ function buildButtons() {
         button.textContent = keys[i];
         
         button.addEventListener("click", (e)=>{
-            const projectView = document.querySelector("#projectsParent");
+            const projectView = document.querySelector(`#${keys[i]}`);
             e.preventDefault();
             projectView.scrollIntoView({behavior: "smooth"});
         })

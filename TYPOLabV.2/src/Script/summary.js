@@ -1,20 +1,26 @@
 import { TYPOLab } from "../../info.js";
+import { buildLayoutParent, buildHorizontalRule, buildLayout } from "./section.js";
 
 function buildSummary() {
-    const summaryParent = document.createElement("div");
-    summaryParent.id = "summaryParent";
+    const layoutParent = buildLayoutParent();
+    const layout = buildLayout();
+    const horizontalRule = buildHorizontalRule();
+    horizontalRule.id = "About";
+
+    layoutParent.appendChild(horizontalRule);
+    layoutParent.appendChild(layout);
 
     const heading = document.createElement("p");
     heading.id = "heading";
     heading.textContent = `${TYPOLab.Summary}`;
-    summaryParent.appendChild(heading);
+    layout.childNodes[0].appendChild(heading);
 
     const TLDR = document.createElement("p");
     TLDR.id = "TLDR";
     TLDR.textContent = `${TYPOLab.Sections.About.Copy.TLDR}`;
-    summaryParent.appendChild(TLDR);
+    layout.childNodes[1].appendChild(TLDR);
 
-    return summaryParent
+    return layoutParent
 }
 
 const summary = buildSummary();
