@@ -16,11 +16,16 @@
   font-optical-sizing: auto;
   font-style: normal;
   font-variation-settings: "slnt" 0;
-
 }
+
 body {
+  width: 100%;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 h1,h2,h3,h4,h5,h6 {
   font-weight: 400;
@@ -28,12 +33,20 @@ h1,h2,h3,h4,h5,h6 {
 h1 {
   font-size: 3em;
 }
-p {
+p, a {
   margin: 0;
   padding: 0;
   font-size: 0.8em;
 }
-
+#contentParent {
+  width: 100%;
+}
+.layoutParent {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .hrParent {
   display: flex;
   gap: 2em;
@@ -41,7 +54,6 @@ p {
   justify-content: center;
   align-items: center;
   padding: 3em 0 3em 0;
-
 }
 .leftRule, .rightRule {
   background-color: var(--black);
@@ -52,6 +64,7 @@ p {
   align-items: center;
   gap: 2em; 
   width: 100%;
+  max-width: 1500px;
 }
 .leftSide, .rightSide {
   width: 100%;
@@ -158,16 +171,26 @@ p {
 .projectsImage {
   height: 22em;
   width: 100%;
+  max-width: 600px;
   background-size:cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: height 0.5s;
   filter: grayscale();
 }
 .projectsImage:hover {
+  height: 30em;
+  background-size:contain;
   filter: none;
 }
 .projectsTitle {
   text-decoration: underline;
+}
+.projectsDescription {
+  margin: 1em 0 1em 0;
+}
+.projectsPeople {
+  margin: 1em 0 1em 0;
 }
 /*------------------------*/
 

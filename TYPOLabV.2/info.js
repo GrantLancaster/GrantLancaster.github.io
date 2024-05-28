@@ -18,7 +18,7 @@ export const TYPOLab = {
                 Name: "Experimental Typography Zine",
                 Dates: "Fall 2023",
                 People: ["Nita Byati", "Sam Chen", "Jason Fontillas", "Charlotte Garrett", "Marla Kassanoff", "Reed Little", "Ashley Paulson", "Robby Strong", "Q Tran", "Atlas Zaina"],
-                ZinePDFLink : "/src/pdf/ExperimentaTypographyFA2023Zine.pdf",
+                ZinePDFLink : "./src/pdf/ExperimentaTypographyFA2023Zine.pdf",
                 Description: "N/A",
                 EntryImage: "./src/Images/ExpTypoZine2023/EntryImage.jpg",
                 Images: [ "./src/Images/ExpTypoZine2023/FA2023Zine_Page_04.jpg", 
@@ -102,15 +102,6 @@ export const TYPOLab = {
                 Images: []
             },
             7: {
-                Name: "Experimental Typography Zine",
-                Dates: "Fall 2019",
-                People: ["Logan Aker", "Gunnar Autterson", "Liz Brusco", "Bella Colosimo", "Alex Connor", "Graham Fee", "Maizie Grace", "Ruth Hunsinger", "Michael Morris", "Sofi Ozambela", "Calvin Ritger", "Dan Strangfeld", "Benjamin Vernon", "Aj Yang"],
-                ZinePDFLink : "/src/pdf/ExperimentalTypographyFA2019Zine.pdf",
-                Description: "N/A",
-                EntryImage: "./src/Images/ExpTypoZine2023/EntryImage.jpg",
-                Images: []
-            },
-            8: {
                 Name: "Experimental Typography Zine",
                 Dates: "Fall 2019",
                 People: ["Logan Aker", "Gunnar Autterson", "Liz Brusco", "Bella Colosimo", "Alex Connor", "Graham Fee", "Maizie Grace", "Ruth Hunsinger", "Michael Morris", "Sofi Ozambela", "Calvin Ritger", "Dan Strangfeld", "Benjamin Vernon", "Aj Yang"],
