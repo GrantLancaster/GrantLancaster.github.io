@@ -42,11 +42,29 @@ function buildProjects() {
         projectsImage.style.backgroundImage = `url(${directory[i].EntryImage})`;
         layout.childNodes[0].appendChild(projectsImage);
 
-
         const projectsTitle = document.createElement("h2");
         projectsTitle.className = "projectsTitle";
         projectsTitle.textContent = `${directory[i].Name}`;
-        layout.childNodes[1].appendChild(projectsTitle);
+        layout.childNodes[0].appendChild(projectsTitle);
+
+        if (directory[i].Description != "N/A") {
+            const description =  document.createElement("p");
+            description.innterText = directory[i].Description;
+            layout.childNodes[1].appendChild(description);
+
+        }
+        if (directory[i].People != "N/A") {
+            const people = document.createElement("p");
+            people.textContent = "Collaborators: ";
+            for (let j = 0; j<directory[i].People.length; j++) {
+                if (j != directory[i].People.length-1) {
+                    people.textContent += directory[i].People[j]+", ";
+                } else {
+                    people.textContent += directory[i].People[j];
+                }
+            }
+            layout.childNodes[1].appendChild(people);
+        }
     }
     return layoutParent
 }

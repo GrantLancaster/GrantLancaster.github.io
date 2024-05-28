@@ -7,7 +7,7 @@ function buildPageContent() {
     contentParent.id = "contentParent";
 
     contentParent.appendChild(summary);
-    contentParent.appendChild(hero);
+    // contentParent.appendChild(hero);
     contentParent.appendChild(projects);
 
     return contentParent

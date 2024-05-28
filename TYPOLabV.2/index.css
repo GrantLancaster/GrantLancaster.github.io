@@ -54,7 +54,11 @@ p {
   width: 100%;
 }
 .leftSide, .rightSide {
-  width: 50%;
+  width: 100%;
+}
+.leftSide {
+  display: flex;
+  gap: 1em;
 }
 
 
@@ -151,14 +155,11 @@ p {
   justify-content: space-between;
   width: 100%;
 }
-.projectsItem {
-  width: 20%;
-  margin: 0 0.5em 2em 0.5em;
-}
 .projectsImage {
-  height: 715px;
+  height: 22em;
   width: 100%;
   background-size:cover;
+  background-position: center;
   background-repeat: no-repeat;
   filter: grayscale();
 }
