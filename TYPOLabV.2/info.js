@@ -157,56 +157,56 @@ export const TYPOLab = {
         },
         Courses: {
             "Summary": "Various courses use the TYPO Lab as a resource for the production of student work.",
-            "Upcomming": {
-                1: {
+            "Upcomming": [
+                {
                     "CourseName": "Computational Typography",
                     "Instructor": ["Joel Swanson"],
                     "Dates": "Spring 2024"
                 },
-                2: {
+                {
                     "CourseName": "Text",
                     "Instructor": ["Joel Swanson"],
                     "Dates": "Spring 2024"
                 }
-            },
-            "PastCourses": {
-                1: {
+            ],
+            "PastCourses": [
+                {
                     "CourseName": "Experimental Typography",
                     "Instructor": ["Joel Swanson"],
                     "Dates": "Fall 2023",
                     "ZineLink": ""
                 },
-                2: {
+                {
                     "CourseName": "Experimental Typography",
                     "Instructor": ["Joel Swanson"],
                     "Dates": "Spring 2021",
                     "ZineLink": ""
                 },
-                3: {
+                {
                     "CourseName": "Computational Writing",
                     "Instructor": ["Joel Swanson", "Brad Gallagher"],
                     "Dates": "Fall 2021",
                     "ZineLink": ""
                 },
-                4: {
+                {
                     "CourseName": "Typography",
                     "Instructor": ["Joel Swanson"],
                     "Dates": "Fall 2020",
                     "ZineLink": ""
                 },
-                5: {
+                {
                     "CourseName": "Typography",
                     "Instructor": ["Joel Swanson"],
                     "Dates": "Fall 2019",
                     "ZineLink": ""
                 },
-                6: {
+                {
                     "CourseName": "Typography",
                     "Instructor": ["Joel Swanson"],
                     "Dates": "Fall 2018",
                     "ZineLink": "N/A"
                 }
-            }
+            ]
         },
         Contact: {
             callToAction: "Want to hear more from us?",

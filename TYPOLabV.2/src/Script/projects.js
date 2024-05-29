@@ -30,7 +30,7 @@ function buildProjects() {
 
     const keys = Object.keys(directory);
     for (let i = 1; i <= keys.length; i++) {
-        const layout = buildLayout();
+        const layout = buildLayout(false,true);
         const horizontalRule = buildHorizontalRule();
         horizontalRule.id = "Projects";
 
@@ -51,7 +51,7 @@ function buildProjects() {
             const description = document.createElement("p");
             description.className = "projectsDescription";
             description.textContent = directory[i].Description;
-            layout.childNodes[1].appendChild(description);
+            layout.childNodes[1].childNodes[0].appendChild(description);
         }
 
         if (directory[i].People != "N/A") {
@@ -65,7 +65,7 @@ function buildProjects() {
                     people.textContent += directory[i].People[j];
                 }
             }
-            layout.childNodes[1].appendChild(people);
+            layout.childNodes[1].childNodes[1].appendChild(people);
         }
 
         if (directory[i].ZinePDFLink != "N/A") {
@@ -74,7 +74,7 @@ function buildProjects() {
             link.target="_blank" ;
             link.rel="noreferrer noopener";
             link.textContent = "View Full Zine PDF";
-            layout.childNodes[1].appendChild(link);
+            layout.childNodes[1].childNodes[0].appendChild(link);
 
         }
     }

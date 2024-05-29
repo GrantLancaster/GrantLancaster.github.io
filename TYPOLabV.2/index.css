@@ -71,7 +71,21 @@ p, a {
 }
 .leftSide {
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   gap: 1em;
+}
+.rightSide {
+  display: flex;
+  gap: 1em;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.rightLeftHalf, .rightRightHalf {
+  width: 100%;
+}
+.leftLeftHalf, .leftRightHalf {
+  width: 100%;
 }
 
 
@@ -114,7 +128,7 @@ p, a {
 
 /*-----MAIN PAGE CONTENT STYLES-----*/
 #contentParent {
-  margin: 7em 3em 2em 3em;
+  margin: 3em 3em 2em 3em;
   display: flex;
 
   flex-direction: column;
@@ -175,12 +189,11 @@ p, a {
   background-size:cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: height 0.5s;
+  transition: height 0.5s, background-size 0.5s;
   filter: grayscale();
 }
 .projectsImage:hover {
-  height: 30em;
-  background-size:contain;
+  height: 35em;
   filter: none;
 }
 .projectsTitle {
@@ -191,6 +204,28 @@ p, a {
 }
 .projectsPeople {
   margin: 1em 0 1em 0;
+}
+/*------------------------*/
+
+/*-----PROFILE STYLES-----*/
+.profile {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+}
+.profilePic {
+  width: 200px;
+  height: 200px;
+  filter: grayscale();
+}
+.profileRole {
+  margin: 0;
+}
+/*------------------------------*/
+
+/*-----COURSES STYLES-----*/
+.course {
+  padding: 1em;
 }
 /*------------------------*/
 

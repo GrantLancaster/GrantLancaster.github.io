@@ -21,7 +21,7 @@ export function buildHorizontalRule() {
     return hrParent
 }
 
-export function buildLayout(leftSideContent, rightSideContent) {
+export function buildLayout(splitLeft, splitRight) {
     const sectionParent = document.createElement("div");
     sectionParent.className = "sectionParent";
 
@@ -34,6 +34,26 @@ export function buildLayout(leftSideContent, rightSideContent) {
     rightSide.className = "rightSide";
     // rightSide.appendChild(rightSideContent);
     sectionParent.appendChild(rightSide);
+
+    if (splitLeft) {
+        const leftLeftHalf = document.createElement("div");
+        leftLeftHalf.className = "leftLeftHalf";
+        leftSide.appendChild(leftLeftHalf);
+
+        const leftRightHalf = document.createElement("div");
+        leftRightHalf.className = "leftRightHalf";
+        leftSide.appendChild(leftRightHalf);
+    }
+
+    if (splitRight) {
+        const rightLeftHalf = document.createElement("div");
+        rightLeftHalf.className = "rightLeftHalf";
+        rightSide.appendChild(rightLeftHalf);
+
+        const rightRightHalf = document.createElement("div");
+        rightRightHalf.className = "rightRightHalf";
+        rightSide.appendChild(rightRightHalf);
+    }
     
     return sectionParent
 }

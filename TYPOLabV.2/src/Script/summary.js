@@ -3,7 +3,7 @@ import { buildLayoutParent, buildHorizontalRule, buildLayout } from "./section.j
 
 function buildSummary() {
     const layoutParent = buildLayoutParent();
-    const layout = buildLayout();
+    const layout = buildLayout(false, true);
     const horizontalRule = buildHorizontalRule();
     horizontalRule.id = "About";
 
@@ -18,7 +18,7 @@ function buildSummary() {
     const TLDR = document.createElement("p");
     TLDR.id = "TLDR";
     TLDR.textContent = `${TYPOLab.Sections.About.Copy.TLDR}`;
-    layout.childNodes[1].appendChild(TLDR);
+    layout.childNodes[1].childNodes[1].appendChild(TLDR);
 
     return layoutParent
 }
