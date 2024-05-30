@@ -4,13 +4,12 @@ import { buildLayoutParent, buildHorizontalRule, buildLayout } from "./section.j
 function buildCourses() {
     const directory = TYPOLab.Sections.Courses
     const layoutParent = buildLayoutParent();
+    const horizontalRule = buildHorizontalRule();
+    horizontalRule.id = "Courses";
+    layoutParent.appendChild(horizontalRule);
     for (let row = 0; row < 2; row++) {
-        const horizontalRule = buildHorizontalRule();
-        horizontalRule.id = "Courses";
-        layoutParent.appendChild(horizontalRule);
-
         if (row === 0) {
-            const layout = buildLayout(false, false);
+            const layout = buildLayout(false, false, false, false);
 
             const sectionTitle = document.createElement("h1");
             sectionTitle.textContent = "Courses";
@@ -22,7 +21,7 @@ function buildCourses() {
 
             layoutParent.appendChild(layout);
         } else {
-            const layout = buildLayout(true, true);
+            const layout = buildLayout(true, false, true, false);
 
             const rightTitle = document.createElement("h3");
             rightTitle.textContent = "Upcomming";

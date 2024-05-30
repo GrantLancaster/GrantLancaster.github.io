@@ -13,8 +13,8 @@ export const TYPOLab = {
                 "“Typo” is an abbreviation for typography, but it also signifies a typographic error or mistake. Our lab logo, based on the form of an insertion edit mark used in proofreading, is a visual reminder of the generative potential of errors and mistakes. The TYPO Lab frames the errors, glitches, and mistakes of text-based technology—and technology in general—as a locus of creative inquiry and research. We rarely notice technology when it operates as intended and the lab welcomes unconventional and unorthodox use cases that can illuminate its limitations and affordances. Further TYPO Lab seeks to destabilize these technologies to uncover the cultural biases and norms frequently embedded within their construction. TYPO Lab seeks to be a diverse and inclusive home for creative, critical, and speculative design work that transcends disciplinary perspectives and boundaries."]
             }
         },
-        Projects: {
-            1: {
+        Projects: [
+            {
                 Name: "Experimental Typography Zine",
                 Dates: "Fall 2023",
                 People: ["Nita Byati", "Sam Chen", "Jason Fontillas", "Charlotte Garrett", "Marla Kassanoff", "Reed Little", "Ashley Paulson", "Robby Strong", "Q Tran", "Atlas Zaina"],
@@ -44,7 +44,7 @@ export const TYPOLab = {
                         "./src/Images/ExpTypoZine2023/FA2023Zine_Page_24.jpg", 
                         "./src/Images/ExpTypoZine2023/FA2023Zine_Page_25.jpg"]
             },
-            2: {
+            {
                 Name: "Clews Typface",
                 Dates: "Fall 2023",
                 People: ["Nita Byati", "Sam Chen", "Jason Fontillas", "Charlotte Garrett", "Marla Kassanoff", "Reed Little", "Ashley Paulson", "Robby Strong", "Q Tran", "Atlas Zaina"],
@@ -53,7 +53,7 @@ export const TYPOLab = {
                 EntryImage: "./src/Images/ClewsTypefaceImg/EntryImage.jpeg",
                 Images: ["./src/Images/ClewsTypefaceImg/ClewsPage1.jpeg", "./src/Images/ClewsTypefaceImg/ClewsPage2.jpeg", "./src/Images/ClewsTypefaceImg/ClewsPage3.jpeg", "./src/Images/ClewsTypefaceImg/ClewsPage4.jpeg", ]
             },
-            3: {
+            {
                 Name: "Word Vector Sculptures",
                 Dates: "Spring 2021",
                 People: ["Brad Gallagher", "Anonymous Student"],
@@ -74,7 +74,7 @@ export const TYPOLab = {
                         "./src/Images/WordVectorSculpturesImg/VectorPage9.jpeg", 
                 ]
             },
-            4: {
+            {
                 Name: "3D Alphabits™ Typeface",
                 Dates: "",
                 People: ["Marla Kassanoff", "Joel Swanson"],
@@ -83,7 +83,7 @@ export const TYPOLab = {
                 EntryImage: "./src/Images/3DAlphabitsImg/EntryImage.png",
                 Images: ["./src/Images/3DAlphabitsImg/AlphabitsPage1.png", "./src/Images/3DAlphabitsImg/AlphabitsPage2.jpg"]
             },
-            5: {
+            {
                 Name: "Experimental Typography Zine",
                 Dates: "Spring 2021",
                 People: ["Gray Assi", "Olivia Blankenship", "Bella Borenstein", "Willie Green", "Julia Hancock", "Siyang Liu", "Anna Lowrimore", "Sidd Nair", "Lily Pelton", "Ayesha Rawal", "Teddy Robinson", "Paola Solorzano", "Elodie Thelliez","John Whiteman"],
@@ -92,7 +92,7 @@ export const TYPOLab = {
                 EntryImage: "./src/Images/ExpTypoZine2023/EntryImage.jpg",
                 Images: []
             },
-            6: {
+            {
                 Name: "Experimental Typography Zine",
                 Dates: "Fall 2020",
                 People: ["Lillie Bahrami", "Joshua Diesenhaus", "Alana Faller", "Emily Gould", "Jack LeGrone", "Emily Lee", "Nicole Leon-Molina", "Anna Lynton", "Sarah Olick", "Jack Plantz", "Victoria Rios", "Haley Thompson", "Reese Turney", "Mandi Wilner", "Ellie Wright", "Mary Yoder"],
@@ -101,7 +101,7 @@ export const TYPOLab = {
                 EntryImage: "./src/Images/ExpTypoZine2023/EntryImage.jpg",
                 Images: []
             },
-            7: {
+            {
                 Name: "Experimental Typography Zine",
                 Dates: "Fall 2019",
                 People: ["Logan Aker", "Gunnar Autterson", "Liz Brusco", "Bella Colosimo", "Alex Connor", "Graham Fee", "Maizie Grace", "Ruth Hunsinger", "Michael Morris", "Sofi Ozambela", "Calvin Ritger", "Dan Strangfeld", "Benjamin Vernon", "Aj Yang"],
@@ -110,51 +110,72 @@ export const TYPOLab = {
                 EntryImage: "./src/Images/ExpTypoZine2023/EntryImage.jpg",
                 Images: []
             }
-        },
-        People: {
-            0: {
+        ],
+        People: [
+            {
                 "Name": "Joel Swanson",
                 "Role": "Lab Director",
                 "PersonalSite": "joelswanson.art",
                 "Email": "joel.swanson@colorado.edu",
                 "Image": "./src/Images/swansonHeadShot.jpg"
             },
-            1: {
+            {
                 "Name": "Anna Lowrimore",
                 "Role": "Lab Assistant",
                 "PersonalSite": "",
                 "Email": "",
                 "Image": ""
             },
-            2: {
+            {
                 "Name": "Ian Hatcher",
                 "Role": "PhD Student",
                 "PersonalSite": "",
                 "Email": "",
                 "Image": ""
             },
-            3: {
+            {
                 "Name": "Elodie Thelliez",
                 "Role": "Lab Assistant",
                 "PersonalSite": "",
                 "Email": "",
                 "Image": ""
             },
-            4: {
+            {
                 "Name": "Jason Fontillas",
                 "Role": "Lab Assistant",
                 "PersonalSite": "",
                 "Email": "",
                 "Image": ""
             },
-            5: {
+            {
                 "Name": "Brad Gallagher",
                 "Role": "PhD Student",
                 "PersonalSite": "",
                 "Email": "",
                 "Image": ""
-            }
-        },
+            },
+            {
+                "Name": "Test Person",
+                "Role": "PhD Student",
+                "PersonalSite": "no-site.com",
+                "Email": "blahblah@blahblah.com",
+                "Image": ""
+            },
+            {
+                "Name": "Test Person",
+                "Role": "PhD Student",
+                "PersonalSite": "no-site.com",
+                "Email": "blahblah@blahblah.com",
+                "Image": ""
+            },
+            {
+                "Name": "Test Person",
+                "Role": "PhD Student",
+                "PersonalSite": "no-site.com",
+                "Email": "blahblah@blahblah.com",
+                "Image": ""
+            },
+        ],
         Courses: {
             "Summary": "Various courses use the TYPO Lab as a resource for the production of student work.",
             "Upcomming": [

@@ -3,7 +3,7 @@ import { buildLayoutParent, buildHorizontalRule, buildLayout } from "./section.j
 
 function buildSummary() {
     const layoutParent = buildLayoutParent();
-    const layout = buildLayout(false, true);
+    const layout = buildLayout(false, false, true, false);
     const horizontalRule = buildHorizontalRule();
     horizontalRule.id = "About";
 

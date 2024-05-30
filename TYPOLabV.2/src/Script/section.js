@@ -21,7 +21,7 @@ export function buildHorizontalRule() {
     return hrParent
 }
 
-export function buildLayout(splitLeft, splitRight) {
+export function buildLayout(splitLeft, leftFlex, splitRight, rightFlex) {
     const sectionParent = document.createElement("div");
     sectionParent.className = "sectionParent";
 
@@ -35,6 +35,13 @@ export function buildLayout(splitLeft, splitRight) {
     // rightSide.appendChild(rightSideContent);
     sectionParent.appendChild(rightSide);
 
+    if (leftFlex) {
+        leftSide.style.display = "flex";
+    }
+    if (rightFlex) {
+        rightSide.style.display = "flex";
+    }
+
     if (splitLeft) {
         const leftLeftHalf = document.createElement("div");
         leftLeftHalf.className = "leftLeftHalf";
@@ -43,7 +50,7 @@ export function buildLayout(splitLeft, splitRight) {
         const leftRightHalf = document.createElement("div");
         leftRightHalf.className = "leftRightHalf";
         leftSide.appendChild(leftRightHalf);
-    }
+    } 
 
     if (splitRight) {
         const rightLeftHalf = document.createElement("div");

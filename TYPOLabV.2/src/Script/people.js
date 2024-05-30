@@ -6,20 +6,18 @@ import { TYPOLab } from "../../info.js";
 const directory = TYPOLab.Sections.People;
 function buildProfiles() {
     const layoutParent = buildLayoutParent();
-    const neededRows = calculateNeededRows(Object.keys(directory),4);
-    console.log(Object.keys(directory).length)
+    const neededRows = calculateNeededRows(directory,4);
     let currentProfile = 0;
 
     for (let row = 0; row < neededRows; row++) {
-        const layout = buildLayout(false,false);
+        const layout = buildLayout(false, true, false, true);
         const horizontalRule = buildHorizontalRule();
         horizontalRule.id = "People";
         layoutParent.appendChild(horizontalRule);
         layoutParent.appendChild(layout);
 
         for (let item = 0; item < 4; item++) {
-            console.log(currentProfile);
-            if (currentProfile >= Object.keys(directory).length) {break};
+            if (currentProfile >= directory.length) {break};
             const profile = document.createElement("div");
             profile.className = "profile";
 

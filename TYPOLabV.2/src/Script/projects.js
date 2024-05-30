@@ -29,8 +29,8 @@ function buildProjects() {
     const layoutParent = buildLayoutParent();
 
     const keys = Object.keys(directory);
-    for (let i = 1; i <= keys.length; i++) {
-        const layout = buildLayout(false,true);
+    for (let i = 0; i < directory.length; i++) {
+        const layout = buildLayout(false, true, true, true);
         const horizontalRule = buildHorizontalRule();
         horizontalRule.id = "Projects";
 
@@ -39,12 +39,16 @@ function buildProjects() {
 
         const projectsImage = document.createElement("div");
         projectsImage.className = "projectsImage";
+        projectsImage.id = keys[i];
         projectsImage.style.backgroundImage = `url(${directory[i].EntryImage})`;
+        projectsImage.addEventListener("click", (e)=> {expandProject(e)})
         layout.childNodes[0].appendChild(projectsImage);
 
         const projectsTitle = document.createElement("h2");
         projectsTitle.className = "projectsTitle";
+        projectsTitle.id = keys[i];
         projectsTitle.textContent = directory[i].Name + " - " + directory[i].Dates;
+        projectsTitle.addEventListener("click", (e)=>{expandProject(e)});
         layout.childNodes[0].appendChild(projectsTitle);
 
         if (directory[i].Description != "N/A") {
@@ -85,3 +89,30 @@ const hero = buildHero();
 const projects = buildProjects();
 
 export { hero, projects }
+
+function expandProject(target) {
+    const contentParent = document.getElementById("contentParent");
+    const project = directory[target.target.id];
+
+    const expandedParent = document.createElement("div");
+    expandedParent.className = "expandedParent";
+
+    const placeholder = document.createElement("p");
+    placeholder.textContent = "This is a placeholder. An image Carousel will go here; tied to each project";
+    expandedParent.appendChild(placeholder);
+
+    const close =  document.createElement("button");
+    close.textContent = "click to close Panel";
+    close.addEventListener("click", (e)=> {removePanel(e.target, contentParent)});
+    expandedParent.appendChild(close);
+
+    const overlay = document.createElement("div");
+    overlay.className = "overlay";
+
+    contentParent.appendChild(expandedParent);
+}
+
+function removePanel(element, content) {
+    const panel = element.parentElement;
+    content.removeChild(panel);
+}

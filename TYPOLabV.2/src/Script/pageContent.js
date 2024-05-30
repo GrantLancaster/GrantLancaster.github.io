@@ -3,6 +3,7 @@ import { summary } from "./summary.js";
 import { hero, projects } from "./projects.js";
 import { profiles } from "./people.js";
 import { courses } from "./courses.js";
+import { contact } from "./contact.js";
 
 function buildPageContent() {
     const contentParent = document.createElement("div");
@@ -13,6 +14,7 @@ function buildPageContent() {
     contentParent.appendChild(projects);
     contentParent.appendChild(profiles);
     contentParent.appendChild(courses);
+    contentParent.appendChild(contact);
 
     return contentParent
 }
