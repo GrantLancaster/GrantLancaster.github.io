@@ -41,8 +41,24 @@ export function createCloseButton() {
     closeParent.className = "closeParent";
 
     const closeButton = document.createElement("img");
+    closeButton.src = 
+    closeButton.alt =
     closeButton = className = "closeButton";
     closeParent.appendChild(closeButton);
 
     return closeParent;
+}
+
+export function createImageCarousel(imageList) {
+    const carouselParent = document.createElement("div");
+    carouselParent.className = "carouselParent";
+
+    for (let i = 0; i < imageList.length; i++) {
+        const image = document.createElement("img");
+        image.className = "carouselImage";
+        image.src = imageList[i];
+        image.alt = "";
+        carouselParent.appendChild(image);
+    }
+    return carouselParent;
 }

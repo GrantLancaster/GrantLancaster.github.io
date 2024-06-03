@@ -100,7 +100,28 @@ const grantL = {
             hostingprofessor: "N/A",
             packages: ["react", "electron", "JSX", "Tailwind CSS", "rawg.io API", "fontawesome API", "Vite", "Vercel"],
             livePage: "https://nexus-play.vercel.app/",
-            isBuilt: true
+            isBuilt: true,
+            details: {
+                name: "Nexus Play",
+                brief: "In Brief: Nexus Play is a one-stop shop game launcher that pulls information from multiple other launchers (steam, Epic, Battle.net, etc.) and hosts it all in one place. The idea is to have a location where gamers can purchase games for the best deal, and prevent needing multiple installed platforms on their machines.",
+                process: {
+                    copy: "",
+                    techLogos: ""
+                },
+                goal: "",
+                scope:"",
+                research: {
+                    copy: "",
+                    images: ""
+                },
+                development: {
+                    copy: "",
+                    images: ""
+                },
+                struggles: "",
+                final: "",
+
+            }
         },
 
         galaga: {
