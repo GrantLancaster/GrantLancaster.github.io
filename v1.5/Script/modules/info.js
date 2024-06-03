@@ -63,13 +63,23 @@ const grantL = {
                 graduationDate: "N/A"
             }
         },
-        links: {
-            github: "https://github.com/GrantLancaster",
-            linkedin: "https://www.linkedin.com/in/grant1shdesigns/",
-            portfoliosite: "https://grantishdsigns.me",
-            resume: "https://drive.google.com/file/d/1IMLxiAVApaXvmVyvBmXxrL_xdzfx-ryd/view?usp=sharing",
-            twitchtv: ""
-        },
+        links: [
+            {
+                name: "github",
+                link: "https://github.com/GrantLancaster",
+                image: "./img/github-mark-white.png"
+            },
+            {
+                name: "LinkedIn",
+                link: "https://www.linkedin.com/in/grant1shdesigns/",
+                image: "./img/LI-In-Bug.png"
+            },
+            {
+                name: "Resume",
+                link: "https://drive.google.com/file/d/1IMLxiAVApaXvmVyvBmXxrL_xdzfx-ryd/view?usp=sharing",
+                image: "./img/view-details-64.png"
+            }
+        ],
         references: {}
     },
     projects: {

@@ -162,8 +162,8 @@ function chaos() {
   particlesJS('particles-js', json);
 }
 
-A.addEventListener("click", reset);
-B.addEventListener("click", switchBubble);
-X.addEventListener("click", chaos);
-//Y.addEventListener("click", buttonEvent);
+// A.addEventListener("click", reset);
+// B.addEventListener("click", switchBubble);
+// X.addEventListener("click", chaos);
+// Y.addEventListener("click", buttonEvent);
 

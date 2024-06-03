@@ -1,12 +1,23 @@
-export function splitLayout() {
+export function splitLayout(leftContent, rightContent) {
     const layoutParent = document.createElement("div");
     layoutParent.className = "layoutParent";
 
     const leftSide = document.createElement("div");
     leftSide.className = "leftSide";
+    for (let p = 0; p < leftContent.length; p++) {
+        const paragraph = document.createElement("p");
+        paragraph.innerText = leftContent[p]
+        leftSide.appendChild(paragraph);
+    }
 
     const rightSide = document.createElement("div");
     rightSide.className = "rightSide";
+    for (let i = 0; i < rightContent.length; i++) {
+        const logo = document.createElement("img");
+        logo.src = rightContent[i];
+        logo.alt = ""
+        rightSide.appendChild(logo);
+    }
 
     return layoutParent;
 }
