@@ -1,56 +1,43 @@
 import grantL from "./info.js";
+import { buildControllerButtons } from "./buttons.js";
 
-let int = 0;
-let entry = "";
-let construction = "";
+function buildProjectEntries() {
+    const directory = grantL.projects
+    const projectsParent = document.createElement("div");
+    projectsParent.id = "projectsParent";
 
+    for (let i = 0; i < directory.length; i++) {
+        const project = document.createElement("div");
+        project.className = "projectEntries";
 
-function buildEntries(key) {
-    let stuff = "";
-    let pckg = grantL.projects[key].packages;
+        const projectTitleParent = document.createElement("div");
+        projectTitleParent.classname = "projectTitleParent";
 
-    if (grantL.projects[key].isBuilt === false) {
-        construction = `<p class="construct">Not Live -- Under Construction</p>`
-    } else {construction = ""};
+        const title = document.createElement("h5")
+        title.className = "title";
+        title.textContent = directory[i].name;
+        projectTitleParent.appendChild(title);
 
-    for (let i = 0; i < grantL.projects[key].packages.length; i++) {
-        stuff += `
-            <div class="package">
-                <p>${pckg[i]}</p>
-            </div>
-        `}
-    entry += `
-        <div class="module" id=${key}>
-            <div class="titleParent">
-                <h5 class="title">${grantL.projects[key].name}</h5>
-                <p class="dates">${grantL.projects[key].dates}</p>
-            </div>
-            ${construction}
-            <p class="description">${grantL.projects[key].description}</p>
-                <div class="packages">
-                    ${stuff}
-                </div>
-            <a id="${int}" class="link" href=${grantL.projects[key].livePage} target="_blank" rel="noreferrer noopener"></a>
+        const date = document.createElement("p");
+        date.className = "dates";
+        date.textContent = directory[i].dates;
+        projectTitleParent.appendChild(date);
+        project.appendChild(projectTitleParent);
 
-            <div class="buttonParent" id="buttons${int}">
-                <div class="topbottom">
-                    <button class="controllerButtons" id="Ybutton" >Y</button>
-                </div>
-                <div class="middle">
-                    <button class="controllerButtons" id="Xbutton">X</button>
-                    <button class="controllerButtons" id="Bbutton">B</button>
-                </div>
-                <div class="topbottom">
-                    <a class="controllerButtons" id="Abutton" href=${grantL.projects[key].livePage} target="_blank" rel="noreferrer noopener">A</a>
-                </div>
-            </div>
-        </div>
-`
-int += 1;
+        const description = document.createElement("p");
+        description.className = "description";
+        description.textContent = directory[i].description;
+        project.appendChild(description);
+        //---------------------------------
+        const buttons = buildControllerButtons();
+        project.appendChild(buttons);
+        //-----------------------------------
+
+        projectsParent.appendChild(project);
+    }
+    return projectsParent
 }
 
-for (let key in grantL.projects) {
-    buildEntries(key);
-}
+const projects = buildProjectEntries();
 
-export default entry;
+export { projects }

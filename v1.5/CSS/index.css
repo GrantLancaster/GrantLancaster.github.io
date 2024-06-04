@@ -70,8 +70,16 @@ a {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 12pt;
+    font-size: 16pt;
     color: var(--cyan);
+}
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;
+    background-color: var(--softWhite);
+    height: 2px;
 }
 #firstName {
     font-family: "BubblePixels";
@@ -106,9 +114,12 @@ body {
 .leftSide {
     width: 100%;
     height: 100vh;
+    position: sticky;
+    top: 0;
 }
 .rightSide {
     width: 100%;
+
 }
 #header {
     margin: 2em;
@@ -165,9 +176,16 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+#aboutParent {
+    margin: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+}
 #aboutMe p {
     min-width: 300px;
-    font-size: 14pt;
+    font-size: 16pt;
 }
 #linkParent {
     bottom: 2rem;
@@ -196,14 +214,14 @@ body {
     transform: rotateZ(-90deg);
     margin-top: 3rem;
 }
-.module {
+.projectEntries {
     position: relative;
-    padding: 1rem;
-    margin: 1rem 0 1rem 0;
+    padding: 1em;
+    margin: 2em 1em 2em 1em;
     border-radius: 0.5rem;
     transition: transform 0.2s, border 0.2s, background-color 0.2s;
 }
-.module:hover {
+.projectEntries:hover {
     transform: scale(1.1) translate(-50px, 0px);
     border: 2px solid var(--magenta);
     background-color: var(--bgMagenta);
@@ -252,7 +270,7 @@ body {
     width: 100%;
 }
 .buttonParent {
-    visibility: hidden;
+    visibility: visible;
     z-index: 99;
     position: absolute;
     bottom: -43px;
@@ -264,7 +282,7 @@ body {
     border-radius: 1rem;
 }
 
-.topbottom {
+.topAndBottom {
     display: flex;
     align-items: center;
     justify-content: center;
