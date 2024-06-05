@@ -1,7 +1,11 @@
 
 export function buildControllerButtons(number) {
+    const buttonMargin = document.createElement("div");
+    buttonMargin.className = "buttonMargin";
+    buttonMargin.id = `buttons${number}`;
+
+
     const buttonParent = document.createElement("div");
-    buttonParent.id = `buttons${number}`;
     buttonParent.className = `buttonParent`;
 
     const topButtonContainer = document.createElement("div");
@@ -35,6 +39,7 @@ export function buildControllerButtons(number) {
             Abutton.textContent = "A";
     bottomButtonContainer.appendChild(Abutton);
     buttonParent.appendChild(bottomButtonContainer);
+    buttonMargin.appendChild(buttonParent);
 
-    return buttonParent
+    return buttonMargin
 }

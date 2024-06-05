@@ -1,11 +1,3 @@
-:root {
-    --cyan: #00FFFF;
-    --magenta: #FF00FF;
-    --softWhite: #B7B7B7;
-    --bgMagenta: #FF00FF0D;
-    --bgColor: #1c1c1c;
-    --bgBlue: #0F0F1E;
-}
 @font-face {
     font-family: BubblePixels;
     src: url(../fonts/04B_30__.TTF);
@@ -14,6 +6,16 @@
     font-family: BodyPixel;
     src: url(../fonts/Minecraft.ttf);
 }
+/* -----GENERAL STYLES----- */
+:root {
+    --cyan: #00FFFF;
+    --magenta: #FF00FF;
+    --softWhite: #B7B7B7;
+    --bgMagenta: #FF00FF0D;
+    --bgColor: #1c1c1c;
+    --bgBlue: #0F0F1E;
+}
+
 #particles-js {
     position: fixed;
     top: 0;
@@ -21,6 +23,16 @@
     width: 100%;
     height: 100%;
     z-index: -99;
+}
+body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--bgBlue);
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /*--------- Text/Font ---------------*/
@@ -59,7 +71,7 @@ p {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 12pt;
+    font-size: 14pt;
     color: var(--softWhite);
 }
 h1, h2, h3, h4, h5, p {
@@ -81,14 +93,7 @@ hr {
     background-color: var(--softWhite);
     height: 2px;
 }
-#firstName {
-    font-family: "BubblePixels";
-    font-size: 30pt;
-}
-#lastName {
-    font-family: "BubblePixels";
-    font-size: 30pt;
-}
+
 #quote {
     text-align: center;
     font-family: "BodyPixel";
@@ -98,19 +103,13 @@ hr {
 }
 /*----------------------------------------*/
 
-body {
-    padding: 0;
-    margin: 0;
-    background-color: var(--bgBlue);
-    width: 100%;
-    height: 100%; 
-}
+/* -----GENERAL LAYOUT STYLES----- */
 #contentParent {
+    max-width: 1500px;
     display: flex;
     justify-content: space-evenly;
     gap: 2em;
 }
-
 .leftSide {
     width: 100%;
     height: 100vh;
@@ -119,7 +118,24 @@ body {
 }
 .rightSide {
     width: 100%;
+}
+/* ------------------------------- */
 
+/* -----HEADER STYLES----- */
+#homeParent {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+#firstName {
+    font-family: "BubblePixels";
+    font-size: 30pt;
+}
+#lastName {
+    font-family: "BubblePixels";
+    font-size: 30pt;
 }
 #header {
     margin: 2em;
@@ -131,6 +147,53 @@ body {
 #subHeader {
     margin: 1rem 0 1rem 0;
 }
+/* ----------------------- */
+
+/* -----LINKS STYLES----- */
+#linkParent {
+    bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2em;
+}
+#iconParent {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+.icons {
+    width: 30px;
+    height: auto;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+.icons:hover {
+    opacity: 1;
+}
+#arrow {
+    transform: rotateZ(-90deg);
+    margin-top: 3rem;
+}
+/* ---------------------- */
+
+/* -----ABOUT BLOCK STYLES----- */
+#aboutParent {
+    margin: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+}
+#aboutMe p {
+    min-width: 300px;
+    font-size: 16pt;
+}
+/* ---------------------------- */
+
+/* -----CONTROLLER BUTTON STYLES----- */
 .controllerButtons {
     padding: 5px 9px 5px 9px;
     background-color: var(--bgColor);
@@ -138,8 +201,39 @@ body {
     font-weight: bold;
     text-decoration: none;
 }
-.controllerButtons:visited {
-    text-decoration: none;
+.buttonMargin {
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    z-index: 99;
+    position: absolute;
+    bottom: calc(-149px / 2);
+    left: calc(-154px / 2);
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10em;
+}
+.buttonParent {
+    display: flex;
+    flex-direction: column;
+    width: 90px;
+    height: 85px;
+    border-radius: 1rem;
+}
+.topAndBottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.middle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+button {
+    font-size: 12pt;
+    border: none;
 }
 #Abutton {
     color: green;
@@ -169,51 +263,9 @@ body {
     background-color: yellow;
     color: var(--bgColor);
 }
-#homeParent {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-#aboutParent {
-    margin: 2em;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+/* ----------------------------------- */
 
-}
-#aboutMe p {
-    min-width: 300px;
-    font-size: 16pt;
-}
-#linkParent {
-    bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 2em;
-}
-#iconParent {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-}
-.icons {
-    width: 30px;
-    height: auto;
-    opacity: 0.5;
-    transition: opacity 0.2s;
-}
-.icons:hover {
-    opacity: 1;
-}
-#arrow {
-    transform: rotateZ(-90deg);
-    margin-top: 3rem;
-}
+/* -----PROJECT STYLES----- */
 .projectEntries {
     position: relative;
     padding: 1em;
@@ -233,13 +285,13 @@ body {
     margin: 1rem 0 1rem 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2em;
     justify-content: space-evenly;
 }
 .package {
     font-size: 10pt;
     font-weight: bold;
-    padding: 0.5rem;
+    padding: 1em;
     border: 1px solid var(--magenta);
     background-color:#FF00FF1A;
     border-radius: 2rem;
@@ -269,33 +321,8 @@ body {
     height: 100%;
     width: 100%;
 }
-.buttonParent {
-    visibility: hidden;
-    z-index: 99;
-    position: absolute;
-    bottom: -43px;
-    left: -7%;
-    display: flex;
-    flex-direction: column;
-    width: 90px;
-    height: 85px;
-    border-radius: 1rem;
-}
+/* ------------------------------------- */
 
-.topAndBottom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.middle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-button {
-    font-size: 12pt;
-    border: none;
-}
 /*------- Specific Styles for text----------*/
 .filled {
     color: var(--cyan);
