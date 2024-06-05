@@ -236,7 +236,7 @@ body {
     gap: 1rem;
     justify-content: space-evenly;
 }
-.package p {
+.package {
     font-size: 10pt;
     font-weight: bold;
     padding: 0.5rem;
@@ -270,7 +270,7 @@ body {
     width: 100%;
 }
 .buttonParent {
-    visibility: visible;
+    visibility: hidden;
     z-index: 99;
     position: absolute;
     bottom: -43px;

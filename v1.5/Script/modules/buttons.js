@@ -1,7 +1,8 @@
 
-export function buildControllerButtons() {
+export function buildControllerButtons(number) {
     const buttonParent = document.createElement("div");
-    buttonParent.className = "buttonParent";
+    buttonParent.id = `buttons${number}`;
+    buttonParent.className = `buttonParent`;
 
     const topButtonContainer = document.createElement("div");
     topButtonContainer.className = "topAndBottom";
