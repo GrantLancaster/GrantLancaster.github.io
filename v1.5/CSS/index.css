@@ -196,15 +196,60 @@ hr {
 /* -----EXPANSION STYLES----- */
 .expansionParent {
     position: fixed;
+    padding: 2em;
+    margin: 2% 5% 2% 5%;
     top: 0;
     left: 0;
-    margin: 2em;
+    height: 85%;
+    width: 85%;
+    background-color: var(--bgMagenta);
+    border: 2px solid var(--magenta);
+    border-radius: 1em;
+    overflow-y: scroll;
+}
+.expansionOverlay {
+    background-color: var(--bgBlue);
+    position:fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: 100%;
-    height: 90%;
-    background-color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 19;
 }
+.expansionCopy {
+    color: var(--softWhite);
+    margin-top: 1em;
+}
+.EXPtitleParent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0 0 0;
+}
+.closeButton {
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    width: 40px;
+    height:auto;
+    filter:invert();
+    transition: transform 0.5s;
+}
+.closeButton:hover {
+    transform: rotate(90deg);
+}
 /* -------------------------- */
+
+/* -----GENERIC LAYOUT.JS STYLES----- */
+.splitLayoutParent {
+    display: flex;
+    gap: 1em;
+
+}
+/* ---------------------------------- */
 
 /* -----CONTROLLER BUTTON STYLES----- */
 .controllerButtons {
