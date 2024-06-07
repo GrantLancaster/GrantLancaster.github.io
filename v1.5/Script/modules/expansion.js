@@ -18,18 +18,21 @@ export function buildExpansion(target) {
     closeButton.addEventListener("click", function(e) {closeWindow(e)})
 
 
-    const h1Title = createTitle(directory.name, "h1");
+    const h1Title = heroImage(directory.bannerImage, `Banner image of logo and name: ${directory.name}`);
     expansionParent.appendChild(h1Title);
     
-   // const mainHero = heroImage(); // <---- STILL NEED MEDIA FOR THIS ONE
-    const brief = createTitle(directory.brief, "p");
+    const brief = createTitle(directory.brief, "h4");
     expansionParent.appendChild(brief);
 
-    const process = splitLayout(directory.process.copy, directory.process.copy);
+    const hr = document.createElement("hr");
+    expansionParent.appendChild(hr);
+
+    const process = splitLayout("text", directory.process, "images", directory.process);
     expansionParent.appendChild(process);
 
-    //const goal = createTitle(directory.goal ,"h3");
-    //const scope = createTitle(directory.scope,"h3");
+    const goalNScope = splitLayout("text", directory.goal, "text", directory.scope);
+    expansionParent.appendChild(goalNScope);
+
     //const research = splitLayout();
         // research.childNodes[0].appendChild();
         // research.childNodes[1].appendChild();

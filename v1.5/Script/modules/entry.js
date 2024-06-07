@@ -71,6 +71,8 @@ function renderExpansion(directory) {
     const content = document.querySelector("#contentParent");
     const expand = buildExpansion(directory);
     content.appendChild(expand);
+    const capExpand = document.querySelector(".expansionOverlay");
+    capExpand.style.animation = "0.2s ease-in-out fadein"
 }
 
 function makeVisible(event) {

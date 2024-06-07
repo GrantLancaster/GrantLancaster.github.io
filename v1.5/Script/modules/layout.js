@@ -1,24 +1,53 @@
-export function splitLayout(leftContent, rightContent) {
+export function splitLayout(leftType, leftContent, rightType, rightContent) {
     const layoutParent = document.createElement("div");
     layoutParent.className = "splitLayoutParent";
 
     const leftSide = document.createElement("div");
     leftSide.className = "splitLeftSide";
-    for (let p = 0; p < leftContent.length; p++) {
+    if (leftType === "images") {
+        for (let i = 0; i < rightContent.images.length; i++) {
+            const logo = document.createElement("img");
+            logo.className = "expansionLogos";
+            logo.src = leftContent.images[i];
+            logo.alt = "Logo for one of the libraries used in this project";
+            leftSide.appendChild(logo);
+        }
+    } else if (leftType === "text") {
+    const title = document.createElement("h4");
+    title.className = "expansionCopy";
+    title.textContent = leftContent.title;
+    leftSide.appendChild(title);
+    // leftContent = 
+    for (let p = 0; p < leftContent.copy.length; p++) {
         const paragraph = document.createElement("p");
         paragraph.className = "expansionCopy";
-        paragraph.textContent = leftContent[p];
+        paragraph.textContent = leftContent.copy[p];
         leftSide.appendChild(paragraph);
+    }
     }
     layoutParent.appendChild(leftSide);
 
     const rightSide = document.createElement("div");
     rightSide.className = "splitRightSide";
-    for (let i = 0; i < rightContent.length; i++) {
+    if (rightType === "images") {
+        for (let i = 0; i < rightContent.images.length; i++) {
+            const logo = document.createElement("img");
+            logo.className = "expansionLogos";
+            logo.src = leftContent.images[i];
+            logo.alt = "Logo for one of the libraries used in this project";
+            rightSide.appendChild(logo);
+        }
+    } else if (rightType === "text") {
+    const title = document.createElement("h4");
+    title.className = "expansionCopy";
+    title.textContent = rightContent.title;
+    rightSide.appendChild(title);
+    for (let p = 0; p < rightContent.copy.length; p++) {
         const paragraph = document.createElement("p");
         paragraph.className = "expansionCopy";
-        paragraph.textContent = rightContent[i];
+        paragraph.textContent = rightContent.copy[p];
         rightSide.appendChild(paragraph);
+    }
     }
     layoutParent.appendChild(rightSide);
 
@@ -38,16 +67,21 @@ export function heroImage(src, alt) {
     return heroParent;
 }
 
-export function createTitle(titleText, whichHeadingElement) {
+export function createTitle(directory, whichHeadingElement) {
     const titleParent = document.createElement("div");
     titleParent.className = "EXPtitleParent";
 
     const element = whichHeadingElement.toString();
     const title = document.createElement(element);
     title.className = "expansionCopy";
-    title.textContent = titleText;
+    title.textContent = directory.title;
+
+    const paragraph = document.createElement("p");
+    paragraph.className = "expansionCopy";
+    paragraph.textContent = directory.copy[0];
 
     titleParent.appendChild(title);
+    titleParent.appendChild(paragraph);
     return titleParent;
 }
 

@@ -92,6 +92,7 @@ hr {
     width: 100%;
     background-color: var(--softWhite);
     height: 2px;
+    margin: 1em 0 1em 0;
 }
 
 #quote {
@@ -196,7 +197,7 @@ hr {
 /* -----EXPANSION STYLES----- */
 .expansionParent {
     position: fixed;
-    padding: 2em;
+    padding: 2em 5em 2em 5em;
     margin: 2% 5% 2% 5%;
     top: 0;
     left: 0;
@@ -225,6 +226,7 @@ hr {
 }
 .EXPtitleParent {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 1em 0 0 0;
@@ -233,13 +235,20 @@ hr {
     position: fixed;
     top: 10%;
     right: 10%;
-    width: 40px;
+    width: 20px;
     height:auto;
-    filter:invert();
-    transition: transform 0.5s;
+    padding: 1em;
+    filter: invert();
+    transition: transform 0.5s, width 0.5s, height 0.5s;
 }
 .closeButton:hover {
     transform: rotate(90deg);
+    width: 40px;
+    height: auto;
+}
+.expansionLogos {
+    height: 100px;
+    margin: 2em;
 }
 /* -------------------------- */
 
@@ -247,7 +256,24 @@ hr {
 .splitLayoutParent {
     display: flex;
     gap: 1em;
+    margin: 2em 0 2em 0;
+}
+.splitLeftSide {
+    width: 100%;
+}
+.splitRightSide {
+    width: 100%;
+}
 
+.heroParent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heroImage {
+    width: 70%;
+    height: auto;
+    border-radius: 3em;
 }
 /* ---------------------------------- */
 
@@ -390,6 +416,12 @@ button {
     -webkit-text-stroke: 1px var(--cyan);
 }
 /*------------------------------------------*/
+
+/* -----CUSTOM SCROLL BAR----- */
+::-webkit-scrollbar {
+    color: red;
+}
+/* --------------------------- */
 
 /*--------- Animations --------------------*/
 @keyframes fadeout {
