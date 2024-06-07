@@ -17,7 +17,6 @@ export function splitLayout(leftType, leftContent, rightType, rightContent) {
     title.className = "expansionCopy";
     title.textContent = leftContent.title;
     leftSide.appendChild(title);
-    // leftContent = 
     for (let p = 0; p < leftContent.copy.length; p++) {
         const paragraph = document.createElement("p");
         paragraph.className = "expansionCopy";
@@ -33,11 +32,29 @@ export function splitLayout(leftType, leftContent, rightType, rightContent) {
         for (let i = 0; i < rightContent.images.length; i++) {
             const logo = document.createElement("img");
             logo.className = "expansionLogos";
-            logo.src = leftContent.images[i];
+            logo.src = rightContent.images[i];
             logo.alt = "Logo for one of the libraries used in this project";
             rightSide.appendChild(logo);
         }
-    } else if (rightType === "text") {
+    } 
+    else if (rightType == "singleImage") {
+        const logo = document.createElement("img");
+        logo.className = "detailedImage";
+        logo.src = rightContent;
+        logo.alt = "Logo for one of the libraries used in this project";
+        rightSide.appendChild(logo);
+    }
+    else if (rightType == "imageLink") {
+        const link = document.createElement("a");
+        link.href = rightContent.link;
+        const logo = document.createElement("img");
+        logo.className = "detailedImage";
+        logo.src = rightContent.image;
+        logo.alt = "Logo for one of the libraries used in this project";
+        link.appendChild(logo);
+        rightSide.appendChild(link);
+    } 
+    else if (rightType === "text") {
     const title = document.createElement("h4");
     title.className = "expansionCopy";
     title.textContent = rightContent.title;

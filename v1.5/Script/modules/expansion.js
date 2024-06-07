@@ -33,13 +33,25 @@ export function buildExpansion(target) {
     const goalNScope = splitLayout("text", directory.goal, "text", directory.scope);
     expansionParent.appendChild(goalNScope);
 
-    //const research = splitLayout();
-        // research.childNodes[0].appendChild();
-        // research.childNodes[1].appendChild();
-    //const development = splitLayout();
-        // development.childNodes[0].appendChild();
-        // development.childNodes[1].appendChild();
-    //const devStruggles = createTitle(directory.struggles, "h4");
+    if (typeof directory.research.copy[0] === "object") {
+        for (let i = 0; i < directory.research.copy.length; i++) {
+            const research = splitLayout("text", directory.research.copy[i], "singleImage", directory.research.copy[i].image);
+            expansionParent.appendChild(research);
+        }
+    }
+
+    if (typeof directory.development.copy[0] === "object") {
+        for (let i = 0; i < directory.development.copy.length; i++) {
+            const dev = splitLayout("text", directory.development.copy[i], "singleImage", directory.development.copy[i].image);
+            expansionParent.appendChild(dev);
+        }
+    }
+
+    const struggles = createTitle(directory.struggles, "h4");
+    expansionParent.appendChild(struggles);
+
+    const final = splitLayout("text", directory.final, "imageLink", directory.final);
+    expansionParent.appendChild(final);
     //const finalProduct = createTitle(directory.final , "h2");
 
 
