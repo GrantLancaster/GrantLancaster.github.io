@@ -202,7 +202,6 @@ hr {
     top: 0;
     left: 0;
     height: 85%;
-    width: 85%;
     background-color: var(--bgMagenta);
     border: 2px solid var(--magenta);
     border-radius: 1em;

@@ -284,7 +284,7 @@ const grantL = {
                         {
                             title: "Framework Plugins...",
                             copy: ["Being an app with multiple pages, we needed a way to update which page the person using the platform was on. Our first idea was to pass each page as a state, and when a button was clicked, the page content would be loaded with the new page held in state. This worked for some simple transitions initially, however it started to fall apart later on when we had more pages that needed to be loaded. The colleague of a group member mentioned a react router, Wouter, as an easy method for changing pages, and after some perusing of documentation, we chose the router as the desired method for changing pages."],
-                            image: ""
+                            image: "./img/Nexus_Play/WouterCombined.png"
                         },
                         {
                             title: "Electron.js...",
@@ -303,7 +303,7 @@ const grantL = {
                         {
                             title: "Github and Version Management",
                             copy: ["Github is how the team collectively kept tabs on each other's work, as well as updating the main application. Each developer created a branch off of the main tree where they did their individual development processes, and then would commit those branches back into main when they were finished. Github is also how we managed issues and conflicting code, to keep everything organized, and everyone on the same page."],
-                            image: ""
+                            image: "./img/Nexus_Play/GithubCommits.png"
                         }
                     ]
                 },
@@ -313,7 +313,7 @@ const grantL = {
                 },
                 final: {
                     title: "Final Deliverable...",
-                    copy: ["The final form of this project is a fully functioning flow through the process of purchasing a game in the launcher; with game details imported from an API. Some next steps for this project would be adding the rest of the flows to application, and connection to a backend. Since the application is made in react, Next.js would prove to be a useful framework to handle the backend, as well as some optimization when it comes to fetching from APIs. As it stands now, the components fill with content as the API readies the information. This could be optimized by awaiting all fetches to be complete before rendering, as well as add skeleton UI`s to the pages, that let the user know that information is loading, not broken. Next.js would also support database fetching and user login so it would be personalized for each person."],
+                    copy: ["The final form of this project is a fully functioning flow through the process of purchasing a game in the launcher; with game details imported from an API. Some next steps for this project would be adding the rest of the flows to application, and connection to a backend. Since the application is made in react, Next.js would prove to be a useful framework to handle the backend, as well as some optimization when it comes to fetching from APIs. As it stands now, the components fill with content as the API readies the information. This could be optimized by awaiting all fetches to be complete before rendering, as well as add skeleton UI`s to the pages, that let the user know that information is loading, not broken. Next.js would also support database fetching and user login so it would be personalized for each person.", "Click the image on the left to visit the prototype"],
                     image: "",
                     link: "https://nexus-play.vercel.app/"
                 }

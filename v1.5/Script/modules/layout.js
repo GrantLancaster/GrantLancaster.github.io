@@ -37,16 +37,19 @@ export function splitLayout(leftType, leftContent, rightType, rightContent) {
             rightSide.appendChild(logo);
         }
     } 
-    else if (rightType == "singleImage") {
+    else if (rightType === "singleImage") {
         const logo = document.createElement("img");
+        console.log(rightContent);
         logo.className = "detailedImage";
         logo.src = rightContent;
         logo.alt = "Logo for one of the libraries used in this project";
         rightSide.appendChild(logo);
     }
-    else if (rightType == "imageLink") {
+    else if (rightType === "imageLink") {
         const link = document.createElement("a");
         link.href = rightContent.link;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
         const logo = document.createElement("img");
         logo.className = "detailedImage";
         logo.src = rightContent.image;
