@@ -93,6 +93,7 @@ export { hero, projects }
 function expandProject(target) {
     const contentParent = document.getElementById("contentParent");
     const project = directory[target.target.id];
+    console.log(project);
 
     const expansionOverlay = document.createElement("div");
     expansionOverlay.className = "expansionOverlay";
@@ -101,14 +102,19 @@ function expandProject(target) {
     expandedParent.className = "expandedParent";
     expansionOverlay.appendChild(expandedParent);
 
-    const placeholder = document.createElement("p");
-    placeholder.textContent = "This is a placeholder. An image Carousel will go here; tied to each project";
-    expandedParent.appendChild(placeholder);
-
     const close =  document.createElement("button");
-    close.textContent = "click to close Panel";
+    close.className = "closeButton";
+    close.textContent = "Close";
     close.addEventListener("click", (e)=> {removePanel(e.target, contentParent)});
     expandedParent.appendChild(close);
+
+    for (let p = 0; p < project.Images.length; p++) {
+        const image = document.createElement("img");
+        image.className = "carouselImage";
+        image.src = project.Images[p];
+        image.alt = "One of the pages from this zine.";
+        expandedParent.appendChild(image);
+    }
 
     contentParent.appendChild(expansionOverlay);
 }
