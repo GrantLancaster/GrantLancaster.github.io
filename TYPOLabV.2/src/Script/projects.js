@@ -94,8 +94,12 @@ function expandProject(target) {
     const contentParent = document.getElementById("contentParent");
     const project = directory[target.target.id];
 
+    const expansionOverlay = document.createElement("div");
+    expansionOverlay.className = "expansionOverlay";
+
     const expandedParent = document.createElement("div");
     expandedParent.className = "expandedParent";
+    expansionOverlay.appendChild(expandedParent);
 
     const placeholder = document.createElement("p");
     placeholder.textContent = "This is a placeholder. An image Carousel will go here; tied to each project";
@@ -106,13 +110,10 @@ function expandProject(target) {
     close.addEventListener("click", (e)=> {removePanel(e.target, contentParent)});
     expandedParent.appendChild(close);
 
-    const overlay = document.createElement("div");
-    overlay.className = "overlay";
-
-    contentParent.appendChild(expandedParent);
+    contentParent.appendChild(expansionOverlay);
 }
 
 function removePanel(element, content) {
-    const panel = element.parentElement;
+    const panel = element.parentElement.parentElement;
     content.removeChild(panel);
 }

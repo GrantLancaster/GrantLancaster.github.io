@@ -35,6 +35,10 @@ function buildCourses() {
                 courseName.textContent = directory.Upcomming[classes].CourseName;
                 course.appendChild(courseName);
 
+                const courseDate = document.createElement("P");
+                courseDate.textContent = directory.Upcomming[classes].Dates
+                course.appendChild(courseDate);
+
                 const courseInstructor = document.createElement("p");
                 courseInstructor.textContent = directory.Upcomming[classes].Instructor;
                 course.appendChild(courseInstructor);
@@ -53,6 +57,10 @@ function buildCourses() {
                 const courseName = document.createElement("p");
                 courseName.textContent = directory.PastCourses[past].CourseName;
                 course.appendChild(courseName);
+
+                const courseDate = document.createElement("P");
+                courseDate.textContent = directory.PastCourses[past].Dates
+                course.appendChild(courseDate);
 
                 const courseInstructor = document.createElement("p");
                 courseInstructor.textContent = directory.PastCourses[past].Instructor;
