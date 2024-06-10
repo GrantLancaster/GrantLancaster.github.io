@@ -289,7 +289,7 @@ const grantL = {
                         {
                             title: "Electron.js...",
                             copy: ["Being that if the application were fully developed and released, it made most sense to develop the application as an executable, instead of just a web application. Electron.js allows you to use web based scripting languages in this kind of development, so we would be able to build with React and still build downloadable software."],
-                            image: ""
+                            image: "./img/Nexus_Play/ElectronScreenShot.png"
                         }
                     ],
                 },
@@ -298,7 +298,7 @@ const grantL = {
                         {
                             title: "Development Process",
                             copy: ["As a team of three developers, we split the creation of components up among each other, as well as some of the functionality and behind the scenes work. Bigger components like the main page, were worked on as a team, with each person creating individual aspects, while other whole components were developed by each person.", "The functionality that would be needed in the build would also be split up, with focuses on API and game information fetching, state management, and routing (after the using a router was agreed upon method of navigation).", "Sections that I managed included the detailed game page, where I was the main developer of the components, state management for the application, navigation on the home page, and assisting with the featured games section of the main page."],
-                            image: ""
+                            image: "./img/Nexus_Play/ComponentsScreenShot.png"
                         },
                         {
                             title: "Github and Version Management",
@@ -314,7 +314,7 @@ const grantL = {
                 final: {
                     title: "Final Deliverable...",
                     copy: ["The final form of this project is a fully functioning flow through the process of purchasing a game in the launcher; with game details imported from an API. Some next steps for this project would be adding the rest of the flows to application, and connection to a backend. Since the application is made in react, Next.js would prove to be a useful framework to handle the backend, as well as some optimization when it comes to fetching from APIs. As it stands now, the components fill with content as the API readies the information. This could be optimized by awaiting all fetches to be complete before rendering, as well as add skeleton UI`s to the pages, that let the user know that information is loading, not broken. Next.js would also support database fetching and user login so it would be personalized for each person.", "Click the image on the left to visit the prototype"],
-                    image: "",
+                    image: "./img/Nexus_Play/FinalImage.png",
                     link: "https://nexus-play.vercel.app/"
                 }
             }
