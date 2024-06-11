@@ -1,4 +1,3 @@
-// USE THIS TO FIX THE ISSUE https://stackoverflow.com/questions/34727936/typescript-bracket-notation-property-access 
 
 import { buildLayoutParent, buildHorizontalRule, buildLayout } from "./section.js";
 import { TYPOLab } from "../../info.js";

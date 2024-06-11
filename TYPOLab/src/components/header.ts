@@ -25,15 +25,20 @@ function buildHeader() {
     logoImage.alt = "TYPO lab logo type";
     logoImage.id = "headerImage";
     logoImage.addEventListener("click", ()=> {
+        //Giving an event listener for when the animation ends
         const bodyContent = document.querySelector<HTMLDivElement>("#pageContent")!;
         fadeInOut(false);
         bodyContent.addEventListener("animationend", ()=>{
+            //Set some styling for static header
             bodyContent.style.height = "100%";
+            //Change the header content
             bodyContent.innerHTML = homePage.outerHTML.toString();
             fadeInOut(true);
+            //Now remove the listener
             bodyContent.removeEventListener("animationend",()=>{});
         })
     } )
+    //Attach the logo to the header
     headerBox.appendChild(logoImage);
     // Pull in the buttons that wil be used for navigation
     headerBox.appendChild(buttons);

@@ -21,7 +21,7 @@ export function buildExpansion(target) {
     const h1Title = heroImage(directory.bannerImage, `Banner image of logo and name: ${directory.name}`);
     expansionParent.appendChild(h1Title);
     
-    const brief = createTitle(directory.brief, "h4");
+    const brief = createTitle(directory.brief, "h4", false);
     expansionParent.appendChild(brief);
 
     const hr = document.createElement("hr");
@@ -33,6 +33,8 @@ export function buildExpansion(target) {
     const goalNScope = splitLayout("text", directory.goal, "text", directory.scope);
     expansionParent.appendChild(goalNScope);
 
+    const processHeading = createTitle(directory.research, "h4", true);
+    expansionParent.appendChild(processHeading);
     if (typeof directory.research.copy[0] === "object") {
         for (let i = 0; i < directory.research.copy.length; i++) {
             const research = splitLayout("text", directory.research.copy[i], "singleImage", directory.research.copy[i].image);
@@ -40,6 +42,8 @@ export function buildExpansion(target) {
         }
     }
 
+    const devHeading = createTitle(directory.development, "h4", true)
+    expansionParent.appendChild(devHeading);
     if (typeof directory.development.copy[0] === "object") {
         for (let i = 0; i < directory.development.copy.length; i++) {
             const dev = splitLayout("text", directory.development.copy[i], "singleImage", directory.development.copy[i].image);
@@ -50,7 +54,7 @@ export function buildExpansion(target) {
     const struggles = createTitle(directory.struggles, "h4");
     expansionParent.appendChild(struggles);
 
-    const final = splitLayout("text", directory.final, "imageLink", directory.final);
+    const final = splitLayout("text", directory.final, "imagesLinks", directory.final);
     expansionParent.appendChild(final);
     //const finalProduct = createTitle(directory.final , "h2");
 

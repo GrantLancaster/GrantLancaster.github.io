@@ -46,16 +46,31 @@ export function splitLayout(leftType, leftContent, rightType, rightContent) {
         rightSide.appendChild(logo);
     }
     else if (rightType === "imageLink") {
-        const link = document.createElement("a");
-        link.href = rightContent.link;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        const logo = document.createElement("img");
-        logo.className = "detailedImage";
-        logo.src = rightContent.image;
-        logo.alt = "Logo for one of the libraries used in this project";
-        link.appendChild(logo);
-        rightSide.appendChild(link);
+        for (let i = 0; i < rightContent.link.length; i++) {
+            const link = document.createElement("a");
+            link.href = rightContent.link[i];
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            const logo = document.createElement("img");
+            logo.className = "detailedImage";
+            logo.src = rightContent.image[i];
+            logo.alt = "Logo for one of the libraries used in this project";
+            link.appendChild(logo);
+            rightSide.appendChild(link);
+        }
+    }     else if (rightType === "imagesLinks") {
+        for (let i = 0; i < rightContent.link.length; i++) {
+            const link = document.createElement("a");
+            link.href = rightContent.link[i];
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            const logo = document.createElement("img");
+            logo.className = "comboImage";
+            logo.src = rightContent.image[i];
+            logo.alt = "Logo for one of the libraries used in this project";
+            link.appendChild(logo);
+            rightSide.appendChild(link);
+        }
     } 
     else if (rightType === "text") {
     const title = document.createElement("h4");
@@ -87,7 +102,7 @@ export function heroImage(src, alt) {
     return heroParent;
 }
 
-export function createTitle(directory, whichHeadingElement) {
+export function createTitle(directory, whichHeadingElement, justHeading) {
     const titleParent = document.createElement("div");
     titleParent.className = "EXPtitleParent";
 
@@ -95,13 +110,20 @@ export function createTitle(directory, whichHeadingElement) {
     const title = document.createElement(element);
     title.className = "expansionCopy";
     title.textContent = directory.title;
-
-    const paragraph = document.createElement("p");
-    paragraph.className = "expansionCopy";
-    paragraph.textContent = directory.copy[0];
-
     titleParent.appendChild(title);
-    titleParent.appendChild(paragraph);
+
+    if(!justHeading) {
+        for (let i = 0; i < directory.copy.length; i++) {
+            const paragraph = document.createElement("p");
+            paragraph.className = "expansionCopy";
+            paragraph.textContent = directory.copy[i];
+            titleParent.appendChild(paragraph);
+        }
+    } else {
+        const hr = document.createElement("hr");
+        titleParent.appendChild(hr);
+    }
+
     return titleParent;
 }
 
