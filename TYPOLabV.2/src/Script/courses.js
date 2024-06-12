@@ -3,26 +3,33 @@ import { buildLayoutParent, buildHorizontalRule, buildLayout } from "./section.j
 
 function buildCourses() {
     const directory = TYPOLab.Sections.Courses
-    const layoutParent = buildLayoutParent();
-    const horizontalRule = buildHorizontalRule();
+    const layoutParent = buildLayoutParent();// The parent div holding the two collumn layout
+    const horizontalRule = buildHorizontalRule();// The horizontal rule that seperates the chunks
     horizontalRule.id = "Courses";
     layoutParent.appendChild(horizontalRule);
     for (let row = 0; row < 2; row++) {
-        if (row === 0) {
-            const layout = buildLayout(false, false, false, false);
+        if (row === 0) {//Two different layout setups needed for this one
+            //This chunk keeps the two column, left and right, layout
+            const layout = buildLayout(false, false, false, false);// The div inside the parent that is the two collumn layout
+            // Layout has two children Divs: left = childNodes[0] and right = childNodes[1]
 
+            //The heading for this courses section
             const sectionTitle = document.createElement("h1");
             sectionTitle.textContent = "Courses";
             layout.childNodes[0].appendChild(sectionTitle);
 
+            // The summary blurb for the courses section
             const sectionSummary = document.createElement("h2");
             sectionSummary.textContent = directory.Summary;
             layout.childNodes[1].appendChild(sectionSummary);
 
             layoutParent.appendChild(layout);
         } else {
-            const layout = buildLayout(true, false, true, false);
+            const layout = buildLayout(true, false, true, false);// The div inside the parent that is the two collumn layout
+            // Layout has two children Divs: left = childNodes[0] and right = childNodes[1]
+            // This layout has split the left and right sides in half also, so the content can stack a little differently
 
+            //Upcomming courses section
             const rightTitle = document.createElement("h3");
             rightTitle.textContent = "Upcomming";
             layout.childNodes[0].childNodes[0].appendChild(rightTitle);
@@ -46,6 +53,7 @@ function buildCourses() {
                 layout.childNodes[0].childNodes[1].appendChild(course);
             }
 
+            //Past Courses sections
             const leftTitle = document.createElement("h3");
             leftTitle.textContent = "Past";
             layout.childNodes[1].childNodes[0].appendChild(leftTitle);
@@ -75,6 +83,8 @@ function buildCourses() {
     return layoutParent;
 }
 
+//Create a variable that is the whole contact div and contents
+//  Then export the variable to be used other places.
 const courses = buildCourses();
 
 export { courses }

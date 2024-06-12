@@ -2,7 +2,11 @@
   USE CTRL + F OR CMD + F TO SEARCH TO KEY TERMS:
     HEADER
     MAIN PAGE
-
+    PROJECTS
+    PROJECT EXPANSION\
+    COURSES
+    PROFILE
+    CONTACT
     FOOTER
 --------------------*/
 
@@ -200,6 +204,9 @@ p, a {
 .projectsPeople {
   margin: 1em 0 1em 0;
 }
+/*-----------------------------------------*/
+
+/* -----Project Expansion STyles----- */
 .expandedParent {
   position: fixed;
   top: 0;
@@ -343,9 +350,7 @@ p, a {
   width: 100%;
   flex-direction: column;
 }
-.expansionOverlay {
 
-}
 .carouselImage {
   height: 80%;
 }

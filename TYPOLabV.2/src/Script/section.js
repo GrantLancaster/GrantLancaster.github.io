@@ -1,4 +1,4 @@
-
+//Generic parent container for the layouts
 export function buildLayoutParent() {
     const layoutParent = document.createElement("div");
     layoutParent.className = "layoutParent";
@@ -6,6 +6,7 @@ export function buildLayoutParent() {
     return layoutParent
 }
 
+//The horizontal lines that break up the website and sections
 export function buildHorizontalRule() {
     const hrParent = document.createElement("div");
     hrParent.className = "hrParent";
@@ -21,6 +22,9 @@ export function buildHorizontalRule() {
     return hrParent
 }
 
+//The two column layout that is the entire site.
+//Actually just a bunch of these that are all the same size to give the 
+//  appearance of two columns 
 export function buildLayout(splitLeft, leftFlex, splitRight, rightFlex) {
     const sectionParent = document.createElement("div");
     sectionParent.className = "sectionParent";
@@ -42,7 +46,7 @@ export function buildLayout(splitLeft, leftFlex, splitRight, rightFlex) {
         rightSide.style.display = "flex";
     }
 
-    if (splitLeft) {
+    if (splitLeft) {//Split the left half of the layout into two sections
         const leftLeftHalf = document.createElement("div");
         leftLeftHalf.className = "leftLeftHalf";
         leftSide.appendChild(leftLeftHalf);
@@ -52,7 +56,7 @@ export function buildLayout(splitLeft, leftFlex, splitRight, rightFlex) {
         leftSide.appendChild(leftRightHalf);
     } 
 
-    if (splitRight) {
+    if (splitRight) {//Split the right half of the layout into two sections
         const rightLeftHalf = document.createElement("div");
         rightLeftHalf.className = "rightLeftHalf";
         rightSide.appendChild(rightLeftHalf);

@@ -1,5 +1,3 @@
-// Could be useful to fix the inteface issue
-// https://www.educative.io/blog/typescript-interfaces
 
 export const TYPOLab = {
     Sections: {
@@ -112,6 +110,7 @@ export const TYPOLab = {
             }
         ],
         People: [
+            //JUST COPY AND PAST THE OBJECTS TO ADD NEW PEOPLE
             {
                 "Name": "Joel Swanson",
                 "Role": "Lab Director",
@@ -178,7 +177,7 @@ export const TYPOLab = {
         ],
         Courses: {
             "Summary": "Various courses use the TYPO Lab as a resource for the production of student work.",
-            "Upcomming": [
+            "Upcomming": [//COPY AND PAST THE OBJECT TO ADD NEW COURSES
                 {
                     "CourseName": "Computational Typography",
                     "Instructor": ["Joel Swanson"],
@@ -190,7 +189,7 @@ export const TYPOLab = {
                     "Dates": "Spring 2024"
                 }
             ],
-            "PastCourses": [
+            "PastCourses": [//COPY AND PAST THE OBJECT TO ADD NEW COURSES
                 {
                     "CourseName": "Experimental Typography",
                     "Instructor": ["Joel Swanson"],
