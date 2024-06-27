@@ -141,7 +141,7 @@ const grantL = {
                         {
                             title: "Component Based Structure...",
                             copy: ["From previous React.js experience, a component based development style was chosen to be used for this rebuild. The different sections were built as generic page fragments with some conditional statements to give them a little more customizability. The idea behind this choice was to be able to write the function once, and re-instantiate it like one would with a class, just passing new parameters (in this case the page content) to update and make each section different.", "This structure also supports the single parent data file system, and it lets the actual web page be automatically generated from this parent file, as long as the JSON in the file follows the same formatting. This formatting issue is helped by typescript because of the interface functionality that the language has. On top of this, updates can be made by copying the previous entry, and then changing the content. This ensures that the object will be rendered properly."],
-                            image: ""
+                            image: "./img/TYPOLab/ComponentStructure.png"
                         },
                         {
                             title: "Automation and the DOM...",
