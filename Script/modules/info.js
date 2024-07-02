@@ -207,17 +207,17 @@ const grantL = {
                         {
                             title: "Initial Idea...",
                             copy: ["This project is the spawn of something cool that I saw on Youtube, and a desire to be a part of ATLAS EXPO. I had watched a video on non-euclidean geometries in video games, and was truly taken back by the complete abnormality that was these spaces. Exploring more into this phenomenon, I stumbled across some other mind-bending illusions and trickery that games use to make these things. One of these was an impossible cube, and being interested in the topic and having a desire to be in ATLAS EXPO, I decided to make my own version."],
-                            image: ""
+                            image: "./img/Impossible_Cube/InitialIdea.PNG"
                         },
                         {
                             title: "Platform...",
                             copy: ["Deciding on what engine to make the project in was a challenge. Depending on how I wanted this project to exist, it would either need to be supported on the web and able to run in the browser, or have dedicated hardware wherever that was running the software wherever it was set up.", "First option of the engine was Unity. It was free, had great documentation, and was webGL compatible for web hosting, as well as an executable if need be. It would be able to manipulate the stencil buffer with some custom code, and has a decent interface for creating the software. Some more investigation turned up another option: Three.js. Three.js was a javascript based 3D renderer with full web compatibility. A colleague had used it to make a class project at one point and showed me some of its capabilities. All that was needed now was to figure out if it could edit the stencil buffer for objects. After some digging, it was found that Three.js could manipulate the stencil layer, as long as one did some finagling of the rendered objects. With that, Three.js was the engine, and web based platform was where this project was going to live."],
-                            image: ""
+                            image: "./img/Impossible_Cube/UnityVThree.png"
                         },
                         {
                             title: "The Stencil Buffer...",
                             copy: ["This project revolved entirely around the ability to change a part of the graphics pipeline: the stencil layer. What this layer effectively lets you do is assign individual pixels integer values, and then with those values, mask in or out certain pixels. Only pixels with the same stencil value will be shown, and all others will not appear in the scene. For example, you render a window in a wall, and through the window is a render of a tree and a person. Now say that during the rendering process of the tree and person, we assign them stencil values of 1 and 2 respectively. Changing the stencil value to the transparent plane that is the window, to 1, allows you to see the tree, but not the person. If you change the windows stencil value to 2, you would then see the person, but not the tree. This process allows you to render many objects in the same space, and then selectively show them depending on what you are looking through."],
-                            image: ""
+                            image: "./img/Impossible_Cube/GraphicsPipelinecombo.png"
                         }
                     ],
                 },
@@ -227,22 +227,22 @@ const grantL = {
                         {
                             title: "Rendering Native Mesh Objects…",
                             copy: ["Initial setup of Three.js was to get the engine to render objects, and to generalize this process to allow for a more dynamic code execution. Three.js is able to render a few different primitive meshes in its library (things like sphere, plane, cylinder, pyramid, etc.), as well as materials to attach to the meshes. When using this method, you had to create a mesh and a material separately, attach them together, and then add them to the scene. From there, you can manipulate their data values to move them around, scale them, etc. Generalizing this process was simple enough, as it was just a function that took in parameters of what mesh, type of material, and material color, which then returned to the combined, ready to render, object.", "When one of these objects was logged to the console, there were a few data values that could enable writing to the stencil layer: enabling the stencil buffer, stencil value, and the function that handles how the pixels will be rendered (same value, different value). These settings were found to exist in the materials data object."],
-                            image: ""
+                            image: "./img/Impossible_Cube/BasicModel.png"
                         },
                         {
                             title: "Rendering Customs Objects…",
                             copy: ["Getting custom objects to render was a whole different ball game from the native mesh method. Custom objects already had a material on them, which meant that I didn't need to generate a new one. This sounds like it saves a step, but with how the function that I created, set up the stencil settings, I would need to find a new way to change the stencil settings. Noting that the material object was where the stencil settings existed, Those settings could be changed again by searching through the custom object material settings. Quick note: custom objects were .gltf models, which meant that they held all of the data for materials, parent and child objects (if any) and all the other settings. This process ended up being easy for simple, one mesh custom objects, as there was only one set of settings to change.", "Where this got complicated was when the objects also had child objects. Gltf models keep track of the parent-child tree, so it’s not just one big model, but a list of all the child objects making up the full piece. So while manipulating simple custom objects was easy and only needed one change to get the stencil working, complex objects needed to be delved through, and all stencil information updated for all children. However, a hacky way of doing this was found. By delving to the bottom of the object tree and changing the information at the bottom; the changes also seemed to propagate through the rest of the chain. So as long as the bottom could be updated, then the stencil for the whole object could be changed. "],
-                            image: ""
+                            image: "./img/Impossible_Cube/CustomObject.png"
                         },
                         {
                             title: "Render Order and Object Loading…",
                             copy: ["With how the cube was set up, and each face having objects of different complexity, the render order of the cube got all sorts of skewed. The rendering function for Three.js was a procedural function, that is, it would load when the code hit that line, and would wait until the object was fully rendered before continuing on in the program. If all objects are relatively simple, and the machine that the software is being viewed on is powerful enough, then this is not a problem. Those are two pretty edge case scenarios however, and certainly will not apply to all people. When on a slower device, the objects would pop in randomly, and sometimes out of order, which would mess with the stencil layers.", "The program needed to be able to load some base level sections while also loading the objects. Thankfully, an async version of the loading function existed in the Three.js. This function combined with a promiseAll() statement meant that the objects could all be loaded at once, and the whole scene rendered when all objects were ready. This change enabled tighter control over which objects were loading where, and made sure the stencils always lined up. This vastly changed how rendering objects was handled, and made the code more performant; with the caveat of a longer loading screen when the site is initially opened."],
-                            image: ""
+                            image: "./img/Impossible_Cube/RenderOrder.PNG"
                         },
                         {
                             title: "Creative Development…",
                             copy: ["After all of the model handling was figured out and generalized, the rest of development was purely around what to put in the faces of the cube. Since each face of the cube presented a different thing, than portals to other places seemed like a great way to handle the creative aspect. Each was would have its own skybox environment, along with a weird animation inside. Some of the faces were pretty interesting so a function that would expand the side of the cube was made, to allow the viewer to see more.", "During the development of the object loading and stencil manipulation, the cube frame had accidentally been removed from the scene, which left this very weird looking cube-ish thing. The cube had no actual sides, but was implied by the different content shown on each side. This was a super interesting mess-up, so it was turned into a function and the cube frame can now be toggled on and off as desired. Finally, a second larger cube was added to the scene, so if the viewer zoomed out, they could see a second cube that plays on the first cube in some ways."],
-                            image: ""
+                            image: "./img/Impossible_Cube/CreativeDev.png"
                         },
                     ],
 
@@ -254,8 +254,8 @@ const grantL = {
                 final: {
                     title: "Final Deliverable...",
                     copy: ["The final form of this project can take place on both mobile and desktop environments. On load, the viewer can see the first cube, which has different worlds on all of its faces. Each face has an interesting or weird animation happening inside of it, which may or may not connect to the background (that is left up to the viewer to decide). If one zooms out, a second, much larger cube can be seen that plays on some of the faces of the first cube, as well as having some weird visuals to look at.", "The final form of the project was also presented during ATLAS Expo, where I (the developer) would talk people through the process of making the cube, the inspiration, and answering questions, while they got to play with it. It was being run on a large touch screen monitor, so it felt like more of an interaction than just for viewing. The ultimate intention of this project was to create something that someone would say “oh that's weird”, and then want to play with it, where it would just exist without any prior context to its existence."],
-                    image: [""],
-                    link: ["https://nexus-play.vercel.app/"]
+                    image: ["./img/Impossible_Cube/Final.png"],
+                    link: ["https://grantishdesigns.me/ImpossibleCube/dist/"]
                 }
             }
 

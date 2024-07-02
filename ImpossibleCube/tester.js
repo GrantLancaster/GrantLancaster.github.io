@@ -172,7 +172,7 @@ async function build() {
 		loadRightFace(),
 		loadBackFace(),
 		loadTopFace(),
-		loadBottomFace(),
+		loadBottomFace()
 		
 	]);
 	
@@ -181,6 +181,7 @@ async function build() {
 	impossibleCube.scale.set(2,2,2);
 
     build2();
+
 };
 async function build2() {
 	await Promise.all([
