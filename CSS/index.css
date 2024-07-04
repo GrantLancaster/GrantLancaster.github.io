@@ -476,6 +476,70 @@ button {
 }
 /*---------------------------------------------*/
 
-@media screen and (max-width: 999px) {
+@media screen and (max-width: 700px) {
+#contentParent {
+    flex-direction: column;
+}
+.leftSide {
+    position: initial;
+}
+.rightSide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3em;
+}
+#nameParent {
+    flex-direction: column;
+}
+#arrow {
+    transform: rotate(0deg)
+}
+.projectEntries {
+    transition: transform 0.2s, border 0.2s, background-color 0.2s;
+    position: static;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
+}
+.projectEntries:hover {
+    transform: scale(1);
+    border: 2px solid var(--magenta);
+    background-color: var(--bgMagenta);
+    margin-bottom: 9em;
+}
+.buttonMargin {
+    left: 30%;
+    max-width: 33%;
+    bottom:-100px;
+}
+.expansionOverlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+.expansionParent {
+    position: static;
+    padding: 1em;
+    margin: 1em;
+
+}
+.splitLayoutParent {
+    flex-direction: column;
+}
+.detailedImage {
+    height: auto;
+    max-width: 100%;
+}
+.expansionLogos {
+    max-width: 70%;
+    height: auto;
+}
+h4 {
+    font-size: 24pt;
+}
 }
