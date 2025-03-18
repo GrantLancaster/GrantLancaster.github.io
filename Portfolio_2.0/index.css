@@ -1,14 +1,34 @@
+:root {
+    --background-color: #001427;
+    --text-color: #FFFFFF;
+    --red-highlight: #FF206E;
+    --yellow-highlight: #FBFF12;
+    --blue-highlight: #41EAD4;
+}
+
 html, body {
     margin:0;
     padding:0;
     font-size: 16px;
+    color: var(--text-color)
+}
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: inherit;
+}
+a:visited {
+    color: var(--blue-highlight);
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    background-color: var(--background-color);
     position: sticky;
     top: 0;
     height: 3em;
@@ -19,12 +39,11 @@ main {
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color: aquamarine;
+    background-color: var(--background-color);
 }
 content {
     max-width: 1440px;
     width: 100%;
-    background-color: blue;
     height: 1000px;
 }
 
@@ -32,7 +51,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    background-color: var(--background-color);
     height: 3em;
     width: 100%;
 }
