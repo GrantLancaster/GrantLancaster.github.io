@@ -34,12 +34,11 @@ export function buildExpansion(target) {
 
         expansionParent.appendChild(tempParagraph);
         return expansionFragment
-    }else {
-
-
+    } else {
+        
     const h1Title = heroImage(directory.bannerImage, `Banner image of logo and name: ${directory.name}`);
     expansionParent.appendChild(h1Title);
-    
+
     const brief = createTitle(directory.brief, "h4", false);
     expansionParent.appendChild(brief);
 
