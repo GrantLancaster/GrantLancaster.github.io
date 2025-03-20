@@ -29,7 +29,7 @@ function buildHomeScreen () {
     subHeaderParent.id = "subHeader";
         const subHeader = document.createElement("p");
         subHeader.id = "subHeader";
-        subHeader.innerHTML = `Developer | Designer | ${makeControllerButton("A")}${makeControllerButton("B")}${makeControllerButton("X")}${makeControllerButton("Y")} Enthusiast`;
+        subHeader.innerHTML = `Fullstack Developer | UI/UX Designer | ${makeControllerButton("A")}${makeControllerButton("B")}${makeControllerButton("X")}${makeControllerButton("Y")} Enthusiast`;
     subHeaderParent.appendChild(subHeader);
     header.appendChild(subHeaderParent);
 

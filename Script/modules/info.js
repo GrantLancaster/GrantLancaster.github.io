@@ -1,7 +1,7 @@
 const grantL = {
-    aboutme:[`Starting off as a chemist, I couldn't find what I was looking for in my work. It lacked creativity, satisfaction, and the ability to say "I built that". I decided to try my hand at the ATLAS Institute at University of Colorado Boulder, and everything changed`,
-    `Now I'm a front-end developer making applications for fun, for people, and for exploration; trying out new techniques, designs, and functions. I love front-end, but my main passion is helping people, so I want to use my skills to create projects that enhance people and how they live.
-    `],
+    aboutme:[`I'm a fullstack developer who loves building a robust backend, clean efficient frontend, and tying the whole package together with a big red bow to be deployed to the web. My favorite work lies at the crux of development, where the design, experience, and script, collide into their final form.`,
+    `Life long learning has it's hands on the wheel; steering me down my development path. Spending time learning new technologies and teaching others the basics, I value learning very highly. I look forward to expanding my knowledge and learning from those more experienced than me.`
+],
     resume:{
         desiredjob: ["Front End Web Developer", "UX Designer", "Back-End Web Developer", "Full-Stack Developer", "Analytical Chemist"],
         skills:{
