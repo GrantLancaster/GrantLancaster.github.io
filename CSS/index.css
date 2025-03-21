@@ -72,7 +72,7 @@ p {
     font-weight: 400;
     font-style: normal;
     font-size: 14pt;
-    color: var(--softWhite);
+    color: white;
 }
 h1, h2, h3, h4, h5, p {
     margin: 0;
@@ -182,10 +182,13 @@ hr {
 
 /* -----ABOUT BLOCK STYLES----- */
 #aboutParent {
-    margin: 2em;
+    padding: 2em;
     display: flex;
     flex-direction: column;
     gap: 1em;
+    position: relative;
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 2em;
 
 }
 #aboutMe p {
@@ -388,11 +391,11 @@ button {
     position: relative;
     padding: 1em;
     margin: 2em 1em 2em 1em;
+    border: 2px solid transparent;
     border-radius: 0.5rem;
-    transition: transform 0.2s, border 0.2s, background-color 0.2s;
+    transition: border 0.2s, background-color 0.2s;
 }
 .projectEntries:hover {
-    transform: scale(1.1) translate(-50px, 0px);
     border: 2px solid var(--magenta);
     background-color: var(--bgMagenta);
 }

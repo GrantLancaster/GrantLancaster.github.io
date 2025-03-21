@@ -5,6 +5,10 @@ function buildAboutSection() {
     const aboutParent = document.createElement("div");
     aboutParent.id = "aboutParent";
 
+    const aboutBackground = document.createElement("div");
+    aboutBackground.id = "aboutBackground";
+    aboutParent.appendChild(aboutBackground);
+
     for (let i = 0; i < directory.length; i++) {
         const p = document.createElement("p");
         p.innerText = directory[i];

@@ -36,13 +36,13 @@ function buildProjectEntries() {
         const overlay = document.createElement("div");
         overlay.className = "link";
         overlay.id = i;
-        overlay.addEventListener("mouseenter", makeVisible)
-        overlay.addEventListener("mouseleave", makeInvis);
+        //overlay.addEventListener("mouseenter", makeVisible)
+        //overlay.addEventListener("mouseleave", makeInvis);
         overlay.addEventListener("click", function() {renderExpansion(directory[i])});
         project.appendChild(overlay);
         //---------------------------------
-        const buttons = buildControllerButtons(i,directory[i].livePage,directory[i],directory[i].github);
-        project.appendChild(buttons);
+        //const buttons = buildControllerButtons(i,directory[i].livePage,directory[i],directory[i].github);
+        //project.appendChild(buttons);
         const legend = buildButtonLegend(i);
         project.appendChild(legend);
         //-----------------------------------
