@@ -272,7 +272,7 @@ const grantL = {
             institution: "University of Colorado Boulder",
             collaborators: "Jyotish Vardhan, Chin-Hsuan (Andrea) Wang",
             hostingprofessor: "N/A",
-            packages: ["React.JS", "Electron.JS", "JSX", "Tailwind CSS", "Rawg.io API", "Fontawesome API", "Vite", "Vercel"],
+            packages: ["React.JS", "Electron.JS", "Tailwind CSS", "Vite", "Vercel"],
             livePage: "https://nexus-play.vercel.app/",
             github: "https://github.com/GrantLancaster/Nexus_Play/tree/main/Nexus_Play",
             isBuilt: true,

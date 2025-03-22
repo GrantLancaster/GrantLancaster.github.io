@@ -1,6 +1,7 @@
 import grantL from "./info.js";
 import { buildControllerButtons, buildButtonLegend } from "./buttons.js";
 import { buildExpansion } from "./expansion.js";
+import { buildProjectLinks } from "./projectLinks.js";
 
 function buildProjectEntries() {
     const directory = grantL.projects
@@ -36,15 +37,11 @@ function buildProjectEntries() {
         const overlay = document.createElement("div");
         overlay.className = "link";
         overlay.id = i;
-        //overlay.addEventListener("mouseenter", makeVisible)
-        //overlay.addEventListener("mouseleave", makeInvis);
         overlay.addEventListener("click", function() {renderExpansion(directory[i])});
         project.appendChild(overlay);
-        //---------------------------------
-        //const buttons = buildControllerButtons(i,directory[i].livePage,directory[i],directory[i].github);
-        //project.appendChild(buttons);
-        const legend = buildButtonLegend(i);
-        project.appendChild(legend);
+
+        const links = buildProjectLinks(directory[i].livePage, directory[i].github, directory[i]);
+        project.appendChild(links);
         //-----------------------------------
 
         projectsParent.appendChild(project);

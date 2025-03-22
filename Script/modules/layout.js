@@ -39,7 +39,6 @@ export function splitLayout(leftType, leftContent, rightType, rightContent) {
     } 
     else if (rightType === "singleImage") {
         const logo = document.createElement("img");
-        console.log(rightContent);
         logo.className = "detailedImage";
         logo.src = rightContent;
         logo.alt = "Logo for one of the libraries used in this project";

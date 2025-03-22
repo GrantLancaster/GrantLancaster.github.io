@@ -386,6 +386,15 @@ button {
 }
 /* ----------------------------------- */
 
+
+/*----------PROJECT LINK STYLES--------*/
+.projectLinkParent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5em;
+}
+/*-------------------------------------*/
 /* -----PROJECT STYLES----- */
 .projectEntries {
     position: relative;
@@ -406,8 +415,8 @@ button {
     margin: 1rem 0 1rem 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 2em;
-    justify-content: space-evenly;
+    gap: 1em;
+    justify-content: center;
 }
 .package {
     font-size: 10pt;
@@ -435,7 +444,7 @@ button {
 }
 .link {
     display: block;
-    z-index: 1;
+    z-index: 5;
     position: absolute;
     top: 0;
     left: 0;
@@ -501,7 +510,7 @@ button {
 }
 .projectEntries {
     transition: transform 0.2s, border 0.2s, background-color 0.2s;
-    position: static;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
