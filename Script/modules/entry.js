@@ -12,8 +12,14 @@ function buildProjectEntries() {
         const project = document.createElement("div");
         project.className = "projectEntries";
 
+        const projectBgImage = document.createElement("div");
+        projectBgImage.className = "projectBgImage";
+        projectBgImage.style.backgroundImage = `url(${directory[i].details.final.image[0]})`;
+
+        project.appendChild(projectBgImage);
+
         const projectTitleParent = document.createElement("div");
-        projectTitleParent.classname = "projectTitleParent";
+        projectTitleParent.className = "projectTitleParent";
 
         const title = document.createElement("h5")
         title.className = "title";

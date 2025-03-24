@@ -164,7 +164,7 @@ const grantL = {
                     title: "Final Deliverable...",
                     copy: ["Version 2.0 ended up being the final deliverable for the client, and they seemed quite pleased. The design was clean and handled well on desktop and mobile hardware. The backend and parent data file made sense and updates were easy. Being the v2 was built with javascript let the client make changes as they wanted, and left them feeling like they could do things themselves if/when they wanted to.", "Click the images on the left to view the sites."],
                     link: ["https://grantishdesigns.me/TYPOLab/dist/index.html", "https://grantishdesigns.me/TYPOLabV.2/"],
-                    image: ["./img/TYPOLab/v1Link.png", "./img/TYPOLab/v2Link.png"]
+                    image: ["./img/TYPOLab/v1HomeScreen.PNG", "./img/TYPOLab/v2Link.png"]
                 }
             }
         },

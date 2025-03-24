@@ -182,7 +182,8 @@ hr {
 
 /* -----ABOUT BLOCK STYLES----- */
 #aboutParent {
-    padding: 2em;
+    padding: 1em;
+    margin: 2em 1em 0 1em;
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -401,12 +402,22 @@ button {
     padding: 1em;
     margin: 2em 1em 2em 1em;
     border: 2px solid transparent;
-    border-radius: 0.5rem;
+    border-radius: 2em;
+    background-color: rgba(0,0,0,0.6);
     transition: border 0.2s, background-color 0.2s;
 }
 .projectEntries:hover {
     border: 2px solid var(--magenta);
     background-color: var(--bgMagenta);
+    cursor: pointer;
+}
+.projectBgImage {
+    height: 15em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border-radius: 1rem;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
 }
 .description {
     min-width: 300px;
@@ -428,10 +439,11 @@ button {
     min-width: 4rem;
     text-align: center;
 }
-.titleParent {
+.projectTitleParent {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.5rem;
+    box-shadow: 0px -10px 5px black;
 }
 .title {
     color: rgba(0, 0, 0, 0);
