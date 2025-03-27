@@ -14,7 +14,7 @@ function buildProjectEntries() {
 
         const projectBgImage = document.createElement("div");
         projectBgImage.className = "projectBgImage";
-        projectBgImage.style.backgroundImage = `url(${directory[i].details.final.image[0]})`;
+        projectBgImage.style.backgroundImage = `url(${directory[i].cardImage})`;
 
         project.appendChild(projectBgImage);
 
@@ -43,7 +43,7 @@ function buildProjectEntries() {
         const overlay = document.createElement("div");
         overlay.className = "link";
         overlay.id = i;
-        overlay.addEventListener("click", function() {renderExpansion(directory[i])});
+        //overlay.addEventListener("click", function() {renderExpansion(directory[i])});
         project.appendChild(overlay);
 
         const links = buildProjectLinks(directory[i].livePage, directory[i].github, directory[i]);

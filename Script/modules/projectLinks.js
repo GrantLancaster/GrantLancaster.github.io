@@ -15,22 +15,23 @@ export function buildProjectLinks(site, github, expansion) {
   projectGithubImg.alt = "Github logo";
 
   projectGithubLink.appendChild(projectGithubImg);
-
-  const projectLiveLink = document.createElement("a");
-  projectLiveLink.href = site;
-  projectLiveLink.target = "_blank";
-  projectLiveLink.rel = "noopener noreferrer";
-  projectLiveLink.style.zIndex = "10";
-
-  const projectLiveImg = document.createElement("img");
-  projectLiveImg.className = "icons";
-  projectLiveImg.src = "../../img/external-link.png";
-  projectLiveImg.alt = "external link icon";
-
-  projectLiveLink.appendChild(projectLiveImg);
-
   projectLinkParent.appendChild(projectGithubLink);
-  projectLinkParent.appendChild(projectLiveLink);
+
+  if (site != "N/A") {
+    const projectLiveLink = document.createElement("a");
+    projectLiveLink.href = site;
+    projectLiveLink.target = "_blank";
+    projectLiveLink.rel = "noopener noreferrer";
+    projectLiveLink.style.zIndex = "10";
+  
+    const projectLiveImg = document.createElement("img");
+    projectLiveImg.className = "icons";
+    projectLiveImg.src = "../../img/external-link.png";
+    projectLiveImg.alt = "external link icon";
+  
+    projectLiveLink.appendChild(projectLiveImg);
+    projectLinkParent.appendChild(projectLiveLink);
+  }
   
   return projectLinkParent
 }

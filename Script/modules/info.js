@@ -88,9 +88,10 @@ const grantL = {
             collaborators: "N/A",
             hostingprofessor: "N/A",
             packages: ["Node.js", "Express.js", "MySQL"],
-            livePage: "https://grantishdesigns.me/TYPOLab/dist/index.html",
+            livePage: "N/A",
             github: "https://github.com/GrantLancaster/Shapez",
             isBuilt: true,
+            cardImage: "./img/Shapez_Screenshot.png",
             details: {
                 name: "TYPOLab",
                 bannerImage: "./img/TYPOLab/typolabheader.png",
@@ -181,6 +182,7 @@ const grantL = {
             livePage: "https://grantishdesigns.me/TYPOLab/dist/index.html",
             github: "https://github.com/GrantLancaster/GrantLancaster.github.io/tree/main/TYPOLabV.2",
             isBuilt: true,
+            cardImage: "./img/TYPOLab/v1HomeScreen.PNG",
             details: {
                 name: "TYPOLab",
                 bannerImage: "./img/TYPOLab/typolabheader.png",
@@ -272,6 +274,7 @@ const grantL = {
             livePage: "https://grantishdesigns.me/ImpossibleCube/dist/index.html",
             github: "https://github.com/GrantLancaster/GrantLancaster.github.io/tree/main/ImpossibleCube",
             isBuilt: true,
+            cardImage: "./img/Impossible_Cube/Final.png",
             details: {
                 name: "Impossible Cube",
                 bannerImage: "",
@@ -367,6 +370,7 @@ const grantL = {
             livePage: "https://nexus-play.vercel.app/",
             github: "https://github.com/GrantLancaster/Nexus_Play/tree/main/Nexus_Play",
             isBuilt: true,
+            cardImage: "./img/Nexus_Play/FinalImage.PNG",
             details: {
                 name: "Nexus Play",
                 bannerImage: "./img/Nexus_Play/TitleImage.PNG",

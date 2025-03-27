@@ -25,7 +25,7 @@ let json =   {
       "value": "#ffffff"
     },
     "shape": {
-      "type": "edge",
+      "type": "polygon",
       "stroke": {
         "width": 0,
         "color": "#000000"
@@ -53,8 +53,8 @@ let json =   {
       "value": 5,
       "random": true,
       "anim": {
-        "enable": false,
-        "speed": 40,
+        "enable": true,
+        "speed": 1,
         "size_min": 0.1,
         "sync": false
       }
@@ -68,11 +68,11 @@ let json =   {
     },
     "move": {
       "enable": true,
-      "speed": 6,
+      "speed": 1,
       "direction": "bottom",
       "random": true,
       "straight": true,
-      "out_mode": "out",
+      "out_mode": "bounce",
       "attract": {
         "enable": false,
         "rotateX": 600,
@@ -85,11 +85,11 @@ let json =   {
     "events": {
       "onhover": {
         "enable": false,
-        "mode": "grab"
+        "mode": "repulse"
       },
       "onclick": {
-        "enable": false,
-        "mode": "push"
+        "enable": true,
+        "mode": "repulse"
       },
       "resize": true
     },
@@ -97,7 +97,7 @@ let json =   {
       "grab": {
         "distance": 200,
         "line_linked": {
-          "opacity": 1
+          "opacity": 0.5
         }
       },
       "bubble": {
