@@ -71,7 +71,7 @@ const grantL = {
             },
             {
                 name: "Resume",
-                link: "https://drive.google.com/file/d/1emNJM9987-N3GVF8MTzklfhc_1nLT4yc/view?usp=sharing",
+                link: "https://docs.google.com/document/d/1Du8zYi3LO6HAZPPwI8TxW1HZ_jUwD-IGCnFFQlnVHU8/edit?usp=sharing",
                 image: "./img/view-details-64.png"
             }
         ],
