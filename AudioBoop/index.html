@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AudioBoop</title>
-    <script defer type="module" src="main.js"></script>
-    <script defer src="p5.sound.js"></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script defer src="./index.js"></script>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    
+  <canvas id="myCanvas"></canvas>
+
+  <div class="button_parent">
+    <button id="start">start animation</button>
+    <button id="stop">stop animation</button>
+    <div>
+      <input name="canvas_rot" type="checkbox" id="canvas_rotation" />
+      <label for="canvas_rot">Rotating Canvas</label>
+    </div>
+    <div>
+      <input name="alt_direction" type="checkbox" id="alt_direction" />
+      <label for="alt_direction">Alternate dot Directions</label>
+    </div>
+  </div>
 </body>
 </html>
