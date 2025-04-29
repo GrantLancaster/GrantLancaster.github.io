@@ -1,6 +1,8 @@
 const canvas = document.getElementById("myCanvas");
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+canvas.height = Math.max(window.innerHeight, window.innerWidth);
+canvas.width = canvas.height;
+canvas.style.top = `${Math.max(window.innerHeight, window.innerWidth) / -4}px`;
+
 const ctx = canvas.getContext("2d");
 
 const data = {
@@ -73,7 +75,8 @@ class Circle {
     this.x = canvas.width/2 + this.dist * Math.sin( (this.angle*Math.PI)/180 );
   }
   increase_radius() {
-    this.radius += 0.001;
+    //this.radius += 0.005;
+    this.radius += this.dist/10000
   }
   check_boundries() {
     if (this.x > canvas.width + this.radius) {
