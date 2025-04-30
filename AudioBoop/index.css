@@ -26,5 +26,10 @@ body {
   position: absolute;
   top: 1em;
   left: 1em;
+  max-width: 200px;
+}
+
+#partitions {
+  width: 50px;
 }
 
