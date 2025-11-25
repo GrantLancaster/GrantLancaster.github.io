@@ -3,19 +3,21 @@ export function buildProjectLinks(site, github, expansion) {
   const projectLinkParent = document.createElement("div");
   projectLinkParent.className = "projectLinkParent";
 
-  const projectGithubLink = document.createElement("a");
-  projectGithubLink.href = github;
-  projectGithubLink.target = "_blank";
-  projectGithubLink.rel = "noopener noreferrer";
-  projectGithubLink.style.zIndex = "10";
+  if (github != "N/A") {
+    const projectGithubLink = document.createElement("a");
+    projectGithubLink.href = github;
+    projectGithubLink.target = "_blank";
+    projectGithubLink.rel = "noopener noreferrer";
+    projectGithubLink.style.zIndex = "10";
 
-  const projectGithubImg = document.createElement("img");
-  projectGithubImg.className = "icons";
-  projectGithubImg.src = "../../img/github-mark-white.png";
-  projectGithubImg.alt = "Github logo";
+    const projectGithubImg = document.createElement("img");
+    projectGithubImg.className = "icons";
+    projectGithubImg.src = "../../img/github-mark-white.png";
+    projectGithubImg.alt = "Github logo";
 
-  projectGithubLink.appendChild(projectGithubImg);
-  projectLinkParent.appendChild(projectGithubLink);
+    projectGithubLink.appendChild(projectGithubImg);
+    projectLinkParent.appendChild(projectGithubLink);
+  }
 
   if (site != "N/A") {
     const projectLiveLink = document.createElement("a");

@@ -66,7 +66,7 @@ const grantL = {
         links: {
             github: "https://github.com/GrantLancaster",
             linkedin: "https://www.linkedin.com/in/grant1shdesigns/",
-            portfoliosite: "https://grantishdsigns.me",
+            portfoliosite: "https://grantlancaster.dev",
             resume: "https://drive.google.com/file/d/1IMLxiAVApaXvmVyvBmXxrL_xdzfx-ryd/view?usp=sharing",
             twitchtv: ""
         },
@@ -82,7 +82,7 @@ const grantL = {
             collaborators: "N/A",
             hostingprofessor: "N/A",
             packages: ["Typescript", "Vite "],
-            livePage: "https://grantishdesigns.me/TYPOLab/dist/index.html",
+            livePage: "https://grantlancaster.dev/TYPOLab/dist/index.html",
             isBuilt: true
         },
         impossibleCube: {
@@ -95,7 +95,7 @@ const grantL = {
             collaborators: "N/A",
             hostingprofessor: "Anthony Pinter",
             packages: ["Three.js", "WebGL", "Javascript", "CSS", "BlockBench", "vite"],
-            livePage: "https://grantishdesigns.me/ImpossibleCube/dist/index.html",
+            livePage: "https://grantlancaster.dev/ImpossibleCube/dist/index.html",
             isBuilt: true
         },
         nexusPlay: {
@@ -171,7 +171,7 @@ const grantL = {
             collaborators: "N/A",
             hostingprofessor: "N/A",
             packages: ["Javascript","p5.JS", "p5.sound"],
-            livePage: "https://grantishdesigns.me/TextPlinko/",
+            livePage: "https://grantlancaster.dev/TextPlinko/",
             isBuilt: true
         },
         galaga: {
@@ -185,7 +185,7 @@ const grantL = {
             collaborators: "N/A",
             hostingprofessor: "N/A",
             packages: ["Javascript", "CSS", "Canvas", "Pixilart.com"],
-            livePage: "https://grantishdesigns.me/FinalProject/finalGame.html",
+            livePage: "https://grantlancaster.dev/FinalProject/finalGame.html",
             isBuilt: true
         },
         audioTurtle: {
